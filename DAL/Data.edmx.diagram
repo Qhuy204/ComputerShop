@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b92812855f3e43908d7b4c5042f0ada5" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.administrative_regions" Width="1.5" PointX="13.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.administrative_units" Width="1.5" PointX="10.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.AUTHORITY" Width="1.5" PointX="3.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.BRAND" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.CUSTOMER" Width="1.5" PointX="6" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.DISCOUNT" Width="1.5" PointX="6" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.district" Width="1.5" PointX="13" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.EMPLOYEE" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.IMPORTBILL" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.IMPORTBILL_DETAIL" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.PAYMENT" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.POSITION" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.POSITION_AUTHORITY" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.PRODUCT" Width="1.5" PointX="8.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.PRODUCTTYPE" Width="1.5" PointX="6" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.province" Width="1.5" PointX="16" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.SALEBILL" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.SALEBILL_DETAIL" Width="1.5" PointX="13.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.sysdiagram" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.ward" Width="1.5" PointX="18.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.WAREHOUSE" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <AssociationConnector Association="CuaHangMayTinhModel.provinces_administrative_region_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.districts_administrative_unit_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.provinces_administrative_unit_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.wards_administrative_unit_id_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK__POSITION___AUT_I__603D47BB" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_IMPORTBILL_BRAND" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_PRODUCT_BRAND" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_WAREHOUSE_BRAND" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_SALEBILL_CUSTOMER" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_SALEBILL_DISCOUNT" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.districts_province_code_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.wards_district_code_fkey" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK__EMPLOYEES__PS_ID__67DE6983" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_IMPORTBILL_EMPLOYEES" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_SALEBILL_EMPLOYEES" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_IMPORTBILL_DETAIL_IMPORTBILL" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_IMPORTBILL_DETAIL_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_SALEBILL_PAYMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK__POSITION___PS_ID__5F492382" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_PRODUCT_PRODUCTTYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_SALEBILL_DETAIL_PRODUCT" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_WAREHOUSE_PRODUCTTYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="CuaHangMayTinhModel.FK_SALEBILL_DETAIL_SALEBILL" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

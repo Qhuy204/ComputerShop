@@ -1,0 +1,14 @@
+D:\Visual Studio\Windows Form\Project\DA1\BUS\bin\Debug\BUS.exe.config
+D:\Visual Studio\Windows Form\Project\DA1\BUS\bin\Debug\BUS.exe
+D:\Visual Studio\Windows Form\Project\DA1\BUS\bin\Debug\BUS.pdb
+D:\Visual Studio\Windows Form\Project\DA1\BUS\bin\Debug\DAL.exe
+D:\Visual Studio\Windows Form\Project\DA1\BUS\bin\Debug\DTO.exe
+D:\Visual Studio\Windows Form\Project\DA1\BUS\bin\Debug\DAL.pdb
+D:\Visual Studio\Windows Form\Project\DA1\BUS\bin\Debug\DAL.exe.config
+D:\Visual Studio\Windows Form\Project\DA1\BUS\bin\Debug\DTO.pdb
+D:\Visual Studio\Windows Form\Project\DA1\BUS\bin\Debug\DTO.exe.config
+D:\Visual Studio\Windows Form\Project\DA1\BUS\obj\Debug\BUS.csproj.AssemblyReference.cache
+D:\Visual Studio\Windows Form\Project\DA1\BUS\obj\Debug\BUS.csproj.CoreCompileInputs.cache
+D:\Visual Studio\Windows Form\Project\DA1\BUS\obj\Debug\BUS.csproj.CopyComplete
+D:\Visual Studio\Windows Form\Project\DA1\BUS\obj\Debug\BUS.exe
+D:\Visual Studio\Windows Form\Project\DA1\BUS\obj\Debug\BUS.pdb
