@@ -51,11 +51,21 @@
             this.btnTaikhoan = new Guna.UI2.WinForms.Guna2Button();
             this.lblFuncName = new System.Windows.Forms.Label();
             this.pnNoidung = new System.Windows.Forms.Panel();
+            this.pnDonhang = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnDonhang = new Guna.UI2.WinForms.Guna2Button();
+            this.btndonbanhang = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDonnhap = new Guna.UI2.WinForms.Guna2Button();
+            this.btnKhuyenmai = new Guna.UI2.WinForms.Guna2Button();
+            this.btnBanhang = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
+            this.pnLogout = new System.Windows.Forms.FlowLayoutPanel();
             this.MenuSanpham.SuspendLayout();
             this.sidebar.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.pnDonhang.SuspendLayout();
+            this.pnLogout.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -88,14 +98,16 @@
             this.btnCauhinh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
             this.btnCauhinh.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnCauhinh.ForeColor = System.Drawing.Color.White;
+            this.btnCauhinh.Image = ((System.Drawing.Image)(resources.GetObject("btnCauhinh.Image")));
             this.btnCauhinh.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnCauhinh.Location = new System.Drawing.Point(3, 360);
+            this.btnCauhinh.Location = new System.Drawing.Point(3, 507);
             this.btnCauhinh.Name = "btnCauhinh";
             this.btnCauhinh.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnCauhinh.Size = new System.Drawing.Size(216, 47);
+            this.btnCauhinh.Size = new System.Drawing.Size(221, 47);
             this.btnCauhinh.TabIndex = 2;
             this.btnCauhinh.Text = "Cấu hình";
             this.btnCauhinh.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnCauhinh.TextOffset = new System.Drawing.Point(-10, 0);
             this.btnCauhinh.Click += new System.EventHandler(this.btnCauhinh_Click);
             this.btnCauhinh.Leave += new System.EventHandler(this.subbutton_Leave);
             // 
@@ -110,15 +122,17 @@
             this.btnbaocao.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
             this.btnbaocao.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnbaocao.ForeColor = System.Drawing.Color.White;
+            this.btnbaocao.Image = ((System.Drawing.Image)(resources.GetObject("btnbaocao.Image")));
             this.btnbaocao.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnbaocao.Location = new System.Drawing.Point(0, 310);
+            this.btnbaocao.Location = new System.Drawing.Point(0, 410);
             this.btnbaocao.Margin = new System.Windows.Forms.Padding(0);
             this.btnbaocao.Name = "btnbaocao";
             this.btnbaocao.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnbaocao.Size = new System.Drawing.Size(216, 47);
+            this.btnbaocao.Size = new System.Drawing.Size(221, 47);
             this.btnbaocao.TabIndex = 2;
             this.btnbaocao.Text = "Báo cáo";
             this.btnbaocao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnbaocao.TextOffset = new System.Drawing.Point(-10, 0);
             this.btnbaocao.Click += new System.EventHandler(this.btnbaocao_Click);
             this.btnbaocao.Leave += new System.EventHandler(this.mainbutton_Leave);
             // 
@@ -133,14 +147,16 @@
             this.btnKhachhang.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
             this.btnKhachhang.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnKhachhang.ForeColor = System.Drawing.Color.White;
+            this.btnKhachhang.Image = ((System.Drawing.Image)(resources.GetObject("btnKhachhang.Image")));
             this.btnKhachhang.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnKhachhang.Location = new System.Drawing.Point(3, 260);
+            this.btnKhachhang.Location = new System.Drawing.Point(3, 313);
             this.btnKhachhang.Name = "btnKhachhang";
             this.btnKhachhang.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnKhachhang.Size = new System.Drawing.Size(216, 47);
+            this.btnKhachhang.Size = new System.Drawing.Size(221, 47);
             this.btnKhachhang.TabIndex = 2;
             this.btnKhachhang.Text = "Khách hàng";
             this.btnKhachhang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnKhachhang.TextOffset = new System.Drawing.Point(-10, 0);
             this.btnKhachhang.Click += new System.EventHandler(this.btnKhachhang_Click);
             this.btnKhachhang.Leave += new System.EventHandler(this.mainbutton_Leave);
             // 
@@ -160,11 +176,11 @@
             this.btnNhaphang.Margin = new System.Windows.Forms.Padding(0);
             this.btnNhaphang.Name = "btnNhaphang";
             this.btnNhaphang.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnNhaphang.Size = new System.Drawing.Size(216, 47);
+            this.btnNhaphang.Size = new System.Drawing.Size(221, 47);
             this.btnNhaphang.TabIndex = 2;
             this.btnNhaphang.Text = "Nhập hàng";
             this.btnNhaphang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnNhaphang.Click += new System.EventHandler(this.subbutton_Click);
+            this.btnNhaphang.TextOffset = new System.Drawing.Point(15, 0);
             this.btnNhaphang.Leave += new System.EventHandler(this.subbutton_Leave);
             // 
             // btnNhacc
@@ -183,11 +199,12 @@
             this.btnNhacc.Margin = new System.Windows.Forms.Padding(0);
             this.btnNhacc.Name = "btnNhacc";
             this.btnNhacc.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnNhacc.Size = new System.Drawing.Size(216, 47);
+            this.btnNhacc.Size = new System.Drawing.Size(221, 47);
             this.btnNhacc.TabIndex = 2;
             this.btnNhacc.Text = "Nhà cung cấp";
             this.btnNhacc.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnNhacc.Click += new System.EventHandler(this.subbutton_Click);
+            this.btnNhacc.TextOffset = new System.Drawing.Point(15, 0);
+            this.btnNhacc.Click += new System.EventHandler(this.btnNhacc_Click);
             this.btnNhacc.Leave += new System.EventHandler(this.subbutton_Leave);
             // 
             // btnQLkho
@@ -206,10 +223,11 @@
             this.btnQLkho.Margin = new System.Windows.Forms.Padding(0);
             this.btnQLkho.Name = "btnQLkho";
             this.btnQLkho.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnQLkho.Size = new System.Drawing.Size(216, 47);
+            this.btnQLkho.Size = new System.Drawing.Size(221, 47);
             this.btnQLkho.TabIndex = 2;
             this.btnQLkho.Text = "Quản lý kho";
             this.btnQLkho.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnQLkho.TextOffset = new System.Drawing.Point(15, 0);
             this.btnQLkho.Click += new System.EventHandler(this.btnQLkho_Click);
             this.btnQLkho.Leave += new System.EventHandler(this.subbutton_Leave);
             // 
@@ -229,10 +247,11 @@
             this.btnDSSP.Margin = new System.Windows.Forms.Padding(0);
             this.btnDSSP.Name = "btnDSSP";
             this.btnDSSP.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnDSSP.Size = new System.Drawing.Size(216, 47);
+            this.btnDSSP.Size = new System.Drawing.Size(221, 47);
             this.btnDSSP.TabIndex = 2;
             this.btnDSSP.Text = "Danh sách sản phẩm";
             this.btnDSSP.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDSSP.TextOffset = new System.Drawing.Point(15, 0);
             this.btnDSSP.Click += new System.EventHandler(this.btnDSSP_Click);
             this.btnDSSP.Leave += new System.EventHandler(this.subbutton_Leave);
             // 
@@ -247,15 +266,17 @@
             this.btnSanpham.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
             this.btnSanpham.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnSanpham.ForeColor = System.Drawing.Color.White;
+            this.btnSanpham.Image = ((System.Drawing.Image)(resources.GetObject("btnSanpham.Image")));
             this.btnSanpham.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnSanpham.Location = new System.Drawing.Point(0, 0);
             this.btnSanpham.Margin = new System.Windows.Forms.Padding(0);
             this.btnSanpham.Name = "btnSanpham";
             this.btnSanpham.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnSanpham.Size = new System.Drawing.Size(216, 47);
+            this.btnSanpham.Size = new System.Drawing.Size(221, 47);
             this.btnSanpham.TabIndex = 2;
             this.btnSanpham.Text = "Sản phẩm";
             this.btnSanpham.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnSanpham.TextOffset = new System.Drawing.Point(-10, 0);
             this.btnSanpham.Click += new System.EventHandler(this.btnSanpham_Click);
             this.btnSanpham.Leave += new System.EventHandler(this.mainbutton_Leave);
             // 
@@ -267,9 +288,9 @@
             this.MenuSanpham.Controls.Add(this.btnQLkho);
             this.MenuSanpham.Controls.Add(this.btnNhaphang);
             this.MenuSanpham.Controls.Add(this.btnNhacc);
-            this.MenuSanpham.Location = new System.Drawing.Point(3, 207);
+            this.MenuSanpham.Location = new System.Drawing.Point(3, 260);
             this.MenuSanpham.Name = "MenuSanpham";
-            this.MenuSanpham.Size = new System.Drawing.Size(216, 47);
+            this.MenuSanpham.Size = new System.Drawing.Size(221, 47);
             this.MenuSanpham.TabIndex = 4;
             // 
             // btnTongquan
@@ -283,6 +304,7 @@
             this.btnTongquan.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
             this.btnTongquan.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnTongquan.ForeColor = System.Drawing.Color.White;
+            this.btnTongquan.Image = ((System.Drawing.Image)(resources.GetObject("btnTongquan.Image")));
             this.btnTongquan.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTongquan.Location = new System.Drawing.Point(0, 157);
             this.btnTongquan.Margin = new System.Windows.Forms.Padding(0);
@@ -310,19 +332,23 @@
             // 
             // sidebar
             // 
+            this.sidebar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
             this.sidebar.Controls.Add(this.panel3);
             this.sidebar.Controls.Add(this.btnTongquan);
+            this.sidebar.Controls.Add(this.pnDonhang);
             this.sidebar.Controls.Add(this.MenuSanpham);
             this.sidebar.Controls.Add(this.btnKhachhang);
+            this.sidebar.Controls.Add(this.btnKhuyenmai);
             this.sidebar.Controls.Add(this.btnbaocao);
+            this.sidebar.Controls.Add(this.btnBanhang);
             this.sidebar.Controls.Add(this.btnCauhinh);
-            this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidebar.Location = new System.Drawing.Point(0, 0);
             this.sidebar.Margin = new System.Windows.Forms.Padding(0);
             this.sidebar.Name = "sidebar";
             this.sidebar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.sidebar.Size = new System.Drawing.Size(221, 801);
+            this.sidebar.Size = new System.Drawing.Size(221, 752);
             this.sidebar.TabIndex = 5;
             // 
             // panel3
@@ -350,10 +376,11 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btnTaikhoan);
             this.panel1.Controls.Add(this.lblFuncName);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(221, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1069, 52);
@@ -385,11 +412,180 @@
             // 
             // pnNoidung
             // 
-            this.pnNoidung.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnNoidung.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnNoidung.Location = new System.Drawing.Point(221, 52);
             this.pnNoidung.Name = "pnNoidung";
-            this.pnNoidung.Size = new System.Drawing.Size(1069, 749);
+            this.pnNoidung.Size = new System.Drawing.Size(1069, 750);
             this.pnNoidung.TabIndex = 7;
+            // 
+            // pnDonhang
+            // 
+            this.pnDonhang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.pnDonhang.Controls.Add(this.btnDonhang);
+            this.pnDonhang.Controls.Add(this.btndonbanhang);
+            this.pnDonhang.Controls.Add(this.btnDonnhap);
+            this.pnDonhang.Location = new System.Drawing.Point(3, 207);
+            this.pnDonhang.Name = "pnDonhang";
+            this.pnDonhang.Size = new System.Drawing.Size(221, 47);
+            this.pnDonhang.TabIndex = 4;
+            // 
+            // btnDonhang
+            // 
+            this.btnDonhang.BackColor = System.Drawing.Color.Transparent;
+            this.btnDonhang.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnDonhang.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDonhang.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDonhang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDonhang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDonhang.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnDonhang.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnDonhang.ForeColor = System.Drawing.Color.White;
+            this.btnDonhang.Image = ((System.Drawing.Image)(resources.GetObject("btnDonhang.Image")));
+            this.btnDonhang.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDonhang.Location = new System.Drawing.Point(0, 0);
+            this.btnDonhang.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDonhang.Name = "btnDonhang";
+            this.btnDonhang.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnDonhang.Size = new System.Drawing.Size(221, 47);
+            this.btnDonhang.TabIndex = 2;
+            this.btnDonhang.Text = "Đơn hàng";
+            this.btnDonhang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDonhang.TextOffset = new System.Drawing.Point(-10, 0);
+            this.btnDonhang.Click += new System.EventHandler(this.btnDonhang_Click);
+            this.btnDonhang.Leave += new System.EventHandler(this.mainbutton_Leave);
+            // 
+            // btndonbanhang
+            // 
+            this.btndonbanhang.BackColor = System.Drawing.Color.Transparent;
+            this.btndonbanhang.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btndonbanhang.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btndonbanhang.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btndonbanhang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btndonbanhang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btndonbanhang.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btndonbanhang.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btndonbanhang.ForeColor = System.Drawing.Color.White;
+            this.btndonbanhang.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btndonbanhang.Location = new System.Drawing.Point(0, 47);
+            this.btndonbanhang.Margin = new System.Windows.Forms.Padding(0);
+            this.btndonbanhang.Name = "btndonbanhang";
+            this.btndonbanhang.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btndonbanhang.Size = new System.Drawing.Size(221, 47);
+            this.btndonbanhang.TabIndex = 2;
+            this.btndonbanhang.Text = "Đơn bán hàng";
+            this.btndonbanhang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btndonbanhang.TextOffset = new System.Drawing.Point(15, 0);
+            this.btndonbanhang.Leave += new System.EventHandler(this.subbutton_Leave);
+            // 
+            // btnDonnhap
+            // 
+            this.btnDonnhap.BackColor = System.Drawing.Color.Transparent;
+            this.btnDonnhap.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnDonnhap.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDonnhap.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDonnhap.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDonnhap.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDonnhap.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnDonnhap.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnDonnhap.ForeColor = System.Drawing.Color.White;
+            this.btnDonnhap.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDonnhap.Location = new System.Drawing.Point(0, 94);
+            this.btnDonnhap.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDonnhap.Name = "btnDonnhap";
+            this.btnDonnhap.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnDonnhap.Size = new System.Drawing.Size(221, 47);
+            this.btnDonnhap.TabIndex = 2;
+            this.btnDonnhap.Text = "Đơn nhập hàng";
+            this.btnDonnhap.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDonnhap.TextOffset = new System.Drawing.Point(15, 0);
+            this.btnDonnhap.Leave += new System.EventHandler(this.subbutton_Leave);
+            // 
+            // btnKhuyenmai
+            // 
+            this.btnKhuyenmai.BackColor = System.Drawing.Color.Transparent;
+            this.btnKhuyenmai.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnKhuyenmai.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnKhuyenmai.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnKhuyenmai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnKhuyenmai.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnKhuyenmai.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnKhuyenmai.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnKhuyenmai.ForeColor = System.Drawing.Color.White;
+            this.btnKhuyenmai.Image = ((System.Drawing.Image)(resources.GetObject("btnKhuyenmai.Image")));
+            this.btnKhuyenmai.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnKhuyenmai.Location = new System.Drawing.Point(0, 363);
+            this.btnKhuyenmai.Margin = new System.Windows.Forms.Padding(0);
+            this.btnKhuyenmai.Name = "btnKhuyenmai";
+            this.btnKhuyenmai.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnKhuyenmai.Size = new System.Drawing.Size(221, 47);
+            this.btnKhuyenmai.TabIndex = 2;
+            this.btnKhuyenmai.Text = "Khuyến mãi";
+            this.btnKhuyenmai.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnKhuyenmai.TextOffset = new System.Drawing.Point(-10, 0);
+            this.btnKhuyenmai.Click += new System.EventHandler(this.btnbaocao_Click);
+            this.btnKhuyenmai.Leave += new System.EventHandler(this.mainbutton_Leave);
+            // 
+            // btnBanhang
+            // 
+            this.btnBanhang.BackColor = System.Drawing.Color.Transparent;
+            this.btnBanhang.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnBanhang.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBanhang.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBanhang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBanhang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBanhang.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnBanhang.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnBanhang.ForeColor = System.Drawing.Color.White;
+            this.btnBanhang.Image = ((System.Drawing.Image)(resources.GetObject("btnBanhang.Image")));
+            this.btnBanhang.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnBanhang.Location = new System.Drawing.Point(0, 457);
+            this.btnBanhang.Margin = new System.Windows.Forms.Padding(0);
+            this.btnBanhang.Name = "btnBanhang";
+            this.btnBanhang.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnBanhang.Size = new System.Drawing.Size(221, 47);
+            this.btnBanhang.TabIndex = 2;
+            this.btnBanhang.Text = "Trang bán hàng";
+            this.btnBanhang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnBanhang.TextOffset = new System.Drawing.Point(-10, 0);
+            this.btnBanhang.Click += new System.EventHandler(this.btnBanle_Click);
+            this.btnBanhang.Leave += new System.EventHandler(this.mainbutton_Leave);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnLogout.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogout.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnLogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.Image = ((System.Drawing.Image)(resources.GetObject("btnLogout.Image")));
+            this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogout.Location = new System.Drawing.Point(3, 3);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnLogout.Size = new System.Drawing.Size(221, 47);
+            this.btnLogout.TabIndex = 0;
+            this.btnLogout.Text = "Đăng xuất";
+            this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogout.TextOffset = new System.Drawing.Point(-10, 0);
+            this.btnLogout.Click += new System.EventHandler(this.btnCauhinh_Click);
+            this.btnLogout.Leave += new System.EventHandler(this.subbutton_Leave);
+            // 
+            // pnLogout
+            // 
+            this.pnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pnLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.pnLogout.Controls.Add(this.btnLogout);
+            this.pnLogout.Location = new System.Drawing.Point(0, 752);
+            this.pnLogout.Name = "pnLogout";
+            this.pnLogout.Size = new System.Drawing.Size(221, 49);
+            this.pnLogout.TabIndex = 0;
             // 
             // GUI_MainForm
             // 
@@ -397,6 +593,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(1290, 801);
             this.Controls.Add(this.pnNoidung);
+            this.Controls.Add(this.pnLogout);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.sidebar);
             this.Controls.Add(this.panel2);
@@ -415,6 +612,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnDonhang.ResumeLayout(false);
+            this.pnLogout.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -442,5 +641,13 @@
         private System.Windows.Forms.Label lblFuncName;
         private Guna.UI2.WinForms.Guna2Button btnTaikhoan;
         private System.Windows.Forms.Panel pnNoidung;
+        private System.Windows.Forms.FlowLayoutPanel pnDonhang;
+        private Guna.UI2.WinForms.Guna2Button btnDonhang;
+        private Guna.UI2.WinForms.Guna2Button btndonbanhang;
+        private Guna.UI2.WinForms.Guna2Button btnDonnhap;
+        private Guna.UI2.WinForms.Guna2Button btnBanhang;
+        private Guna.UI2.WinForms.Guna2Button btnKhuyenmai;
+        private Guna.UI2.WinForms.Guna2Button btnLogout;
+        private System.Windows.Forms.FlowLayoutPanel pnLogout;
     }
 }

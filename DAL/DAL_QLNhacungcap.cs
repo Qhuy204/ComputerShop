@@ -8,7 +8,7 @@ namespace DAL
 {
     public class DAL_QLNhacungcap
     {
-        private CuaHangMayTinhEntities db = new CuaHangMayTinhEntities();
+        private CuaHangMayTinhEntities1 db = new CuaHangMayTinhEntities1();
 
         public void Add(BRAND brd)
         {
@@ -35,12 +35,18 @@ namespace DAL
         public void Update(BRAND brd)
         {
             BRAND s = db.BRANDs.SingleOrDefault(x => x.BRD_ID == brd.BRD_ID);
-            s.Ten = customer.Ten;
-            s.GioiTinh = customer.GioiTinh;
-            s.SDT = customer.SDT;
-            s.Email = customer.Email;
-            s.DiaChi = customer.DiaChi;
+            s.BRD_NAME = brd.BRD_NAME;
+            s.BRD_ADDRESS= brd.BRD_ADDRESS;
+            s.BRD_PHONE= brd.BRD_PHONE;
+            s.BRD_EMAIL= brd.BRD_EMAIL;
+            s.BRD_STATUS = brd.BRD_STATUS;
             db.SaveChanges();
+        }
+
+        public string getBRD_ID(string brdName)
+        {
+            var brandid = db.BRANDs.FirstOrDefault(p => p.BRD_NAME == brdName);
+            return brandid != null ? brandid.BRD_ID : null;
         }
     }
 }

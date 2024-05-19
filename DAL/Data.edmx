@@ -40,8 +40,8 @@
           </Key>
           <Property Name="BRD_ID" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="BRD_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="BRD_ADDRESS" Type="nvarchar" MaxLength="100" />
-          <Property Name="BRD_PHONE" Type="varchar" MaxLength="10" />
+          <Property Name="BRD_ADDRESS" Type="nvarchar" MaxLength="255" />
+          <Property Name="BRD_PHONE" Type="varchar" MaxLength="15" />
           <Property Name="BRD_EMAIL" Type="varchar" MaxLength="100" />
           <Property Name="BRD_STATUS" Type="nvarchar" MaxLength="255" />
         </EntityType>
@@ -155,11 +155,12 @@
           <Property Name="PRD_ID" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PRD_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="PRD_TYPE_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="BRD_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BRD_ID" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="RDY_FOR_SALE" Type="int" Nullable="false" />
           <Property Name="QUANTITY" Type="int" Nullable="false" />
           <Property Name="DELIVERY_ALLOWED" Type="bit" Nullable="false" />
           <Property Name="PRD_WEIGHT" Type="float" />
+          <Property Name="CREATE_DAY" Type="date" />
         </EntityType>
         <EntityType Name="PRODUCTTYPE">
           <Key>
@@ -330,11 +331,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_IMPORTBILL_DETAIL_PRODUCT">
-          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+        <Association Name="FK_IMPORTBILL_DETAIL_WAREHOUSE">
+          <End Role="WAREHOUSE" Type="Self.WAREHOUSE" Multiplicity="1" />
           <End Role="IMPORTBILL_DETAIL" Type="Self.IMPORTBILL_DETAIL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PRODUCT">
+            <Principal Role="WAREHOUSE">
               <PropertyRef Name="PRD_ID" />
             </Principal>
             <Dependent Role="IMPORTBILL_DETAIL">
@@ -351,18 +352,6 @@
             </Principal>
             <Dependent Role="IMPORTBILL">
               <PropertyRef Name="EMP_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCT_BRAND">
-          <End Role="BRAND" Type="Self.BRAND" Multiplicity="1" />
-          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="BRAND">
-              <PropertyRef Name="BRD_ID" />
-            </Principal>
-            <Dependent Role="PRODUCT">
-              <PropertyRef Name="PRD_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -557,6 +546,27 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="TimKiemSanPham" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BRD_ID" Type="varchar" Mode="In" />
+          <Parameter Name="PRD_TYPE_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="PRD_NAME" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PRD_IMG" Type="varchar" MaxLength="1000" />
+                <Property Name="PRD_ID" Type="varchar" MaxLength="100" Nullable="false" />
+                <Property Name="PRD_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+                <Property Name="PRD_TYPE_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="BRD_ID" Type="varchar" MaxLength="100" Nullable="false" />
+                <Property Name="RDY_FOR_SALE" Type="int" Nullable="false" />
+                <Property Name="QUANTITY" Type="int" Nullable="false" />
+                <Property Name="DELIVERY_ALLOWED" Type="bit" Nullable="false" />
+                <Property Name="PRD_WEIGHT" Type="float" />
+                <Property Name="CREATE_DAY" Type="date" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <EntityContainer Name="CuaHangMayTinhModelStoreContainer">
           <EntitySet Name="administrative_regions" EntityType="Self.administrative_regions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="administrative_units" EntityType="Self.administrative_units" Schema="dbo" store:Type="Tables" />
@@ -607,17 +617,13 @@
             <End Role="IMPORTBILL" EntitySet="IMPORTBILL" />
             <End Role="IMPORTBILL_DETAIL" EntitySet="IMPORTBILL_DETAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK_IMPORTBILL_DETAIL_PRODUCT" Association="Self.FK_IMPORTBILL_DETAIL_PRODUCT">
-            <End Role="PRODUCT" EntitySet="PRODUCT" />
+          <AssociationSet Name="FK_IMPORTBILL_DETAIL_WAREHOUSE" Association="Self.FK_IMPORTBILL_DETAIL_WAREHOUSE">
+            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
             <End Role="IMPORTBILL_DETAIL" EntitySet="IMPORTBILL_DETAIL" />
           </AssociationSet>
           <AssociationSet Name="FK_IMPORTBILL_EMPLOYEES" Association="Self.FK_IMPORTBILL_EMPLOYEES">
             <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
             <End Role="IMPORTBILL" EntitySet="IMPORTBILL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCT_BRAND" Association="Self.FK_PRODUCT_BRAND">
-            <End Role="BRAND" EntitySet="BRAND" />
-            <End Role="PRODUCT" EntitySet="PRODUCT" />
           </AssociationSet>
           <AssociationSet Name="FK_PRODUCT_PRODUCTTYPE" Association="Self.FK_PRODUCT_PRODUCTTYPE">
             <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPE" />
@@ -677,6 +683,18 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CuaHangMayTinhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="TimKiemSanPham_Result">
+          <Property Name="PRD_IMG" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PRD_TYPE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RDY_FOR_SALE" Type="Int32" Nullable="false" />
+          <Property Name="QUANTITY" Type="Int32" Nullable="false" />
+          <Property Name="DELIVERY_ALLOWED" Type="Boolean" Nullable="false" />
+          <Property Name="PRD_WEIGHT" Type="Double" />
+          <Property Name="CREATE_DAY" Type="DateTime" />
+        </ComplexType>
         <EntityType Name="administrative_regions">
           <Key>
             <PropertyRef Name="id" />
@@ -717,12 +735,11 @@
           </Key>
           <Property Name="BRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BRD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BRD_ADDRESS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="BRD_PHONE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BRD_ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BRD_PHONE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="BRD_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="BRD_STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="IMPORTBILLs" Relationship="Self.FK_IMPORTBILL_BRAND" FromRole="BRAND" ToRole="IMPORTBILL" />
-          <NavigationProperty Name="PRODUCT" Relationship="Self.FK_PRODUCT_BRAND" FromRole="BRAND" ToRole="PRODUCT" />
           <NavigationProperty Name="WAREHOUSEs" Relationship="Self.FK_WAREHOUSE_BRAND" FromRole="BRAND" ToRole="WAREHOUSE" />
         </EntityType>
         <EntityType Name="CUSTOMER">
@@ -815,7 +832,7 @@
           <Property Name="QUANTITY" Type="Int32" />
           <Property Name="IB_PRICE" Type="Double" />
           <NavigationProperty Name="IMPORTBILL" Relationship="Self.FK_IMPORTBILL_DETAIL_IMPORTBILL" FromRole="IMPORTBILL_DETAIL" ToRole="IMPORTBILL" />
-          <NavigationProperty Name="PRODUCT" Relationship="Self.FK_IMPORTBILL_DETAIL_PRODUCT" FromRole="IMPORTBILL_DETAIL" ToRole="PRODUCT" />
+          <NavigationProperty Name="WAREHOUSE" Relationship="Self.FK_IMPORTBILL_DETAIL_WAREHOUSE" FromRole="IMPORTBILL_DETAIL" ToRole="WAREHOUSE" />
         </EntityType>
         <EntityType Name="PAYMENT">
           <Key>
@@ -853,13 +870,12 @@
           <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PRD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PRD_TYPE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BRD_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RDY_FOR_SALE" Type="Int32" Nullable="false" />
           <Property Name="QUANTITY" Type="Int32" Nullable="false" />
           <Property Name="DELIVERY_ALLOWED" Type="Boolean" Nullable="false" />
           <Property Name="PRD_WEIGHT" Type="Double" />
-          <NavigationProperty Name="BRAND" Relationship="Self.FK_PRODUCT_BRAND" FromRole="PRODUCT" ToRole="BRAND" />
-          <NavigationProperty Name="IMPORTBILL_DETAIL" Relationship="Self.FK_IMPORTBILL_DETAIL_PRODUCT" FromRole="PRODUCT" ToRole="IMPORTBILL_DETAIL" />
+          <Property Name="CREATE_DAY" Type="DateTime" Precision="0" />
           <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK_PRODUCT_PRODUCTTYPE" FromRole="PRODUCT" ToRole="PRODUCTTYPE" />
           <NavigationProperty Name="SALEBILL_DETAIL" Relationship="Self.FK_SALEBILL_DETAIL_PRODUCT" FromRole="PRODUCT" ToRole="SALEBILL_DETAIL" />
         </EntityType>
@@ -962,6 +978,7 @@
           <Property Name="IMPORT_PRICE" Type="Double" Nullable="false" />
           <Property Name="WHOLESALE_PRICE" Type="Double" Nullable="false" />
           <NavigationProperty Name="BRAND" Relationship="Self.FK_WAREHOUSE_BRAND" FromRole="WAREHOUSE" ToRole="BRAND" />
+          <NavigationProperty Name="IMPORTBILL_DETAIL" Relationship="Self.FK_IMPORTBILL_DETAIL_WAREHOUSE" FromRole="WAREHOUSE" ToRole="IMPORTBILL_DETAIL" />
           <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK_WAREHOUSE_PRODUCTTYPE" FromRole="WAREHOUSE" ToRole="PRODUCTTYPE" />
         </EntityType>
         <Association Name="provinces_administrative_region_id_fkey">
@@ -1033,18 +1050,6 @@
             </Principal>
             <Dependent Role="IMPORTBILL">
               <PropertyRef Name="BRD_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCT_BRAND">
-          <End Role="BRAND" Type="Self.BRAND" Multiplicity="1" />
-          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="BRAND">
-              <PropertyRef Name="BRD_ID" />
-            </Principal>
-            <Dependent Role="PRODUCT">
-              <PropertyRef Name="PRD_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1156,11 +1161,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_IMPORTBILL_DETAIL_PRODUCT">
-          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+        <Association Name="FK_IMPORTBILL_DETAIL_WAREHOUSE">
+          <End Role="WAREHOUSE" Type="Self.WAREHOUSE" Multiplicity="1" />
           <End Role="IMPORTBILL_DETAIL" Type="Self.IMPORTBILL_DETAIL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PRODUCT">
+            <Principal Role="WAREHOUSE">
               <PropertyRef Name="PRD_ID" />
             </Principal>
             <Dependent Role="IMPORTBILL_DETAIL">
@@ -1240,7 +1245,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CuaHangMayTinhEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CuaHangMayTinhEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="administrative_regions" EntityType="Self.administrative_regions" />
           <EntitySet Name="administrative_units" EntityType="Self.administrative_units" />
           <EntitySet Name="AUTHORITies" EntityType="Self.AUTHORITY" />
@@ -1286,10 +1291,6 @@
             <End Role="BRAND" EntitySet="BRANDs" />
             <End Role="IMPORTBILL" EntitySet="IMPORTBILLs" />
           </AssociationSet>
-          <AssociationSet Name="FK_PRODUCT_BRAND" Association="Self.FK_PRODUCT_BRAND">
-            <End Role="BRAND" EntitySet="BRANDs" />
-            <End Role="PRODUCT" EntitySet="PRODUCTs" />
-          </AssociationSet>
           <AssociationSet Name="FK_WAREHOUSE_BRAND" Association="Self.FK_WAREHOUSE_BRAND">
             <End Role="BRAND" EntitySet="BRANDs" />
             <End Role="WAREHOUSE" EntitySet="WAREHOUSEs" />
@@ -1326,8 +1327,8 @@
             <End Role="IMPORTBILL" EntitySet="IMPORTBILLs" />
             <End Role="IMPORTBILL_DETAIL" EntitySet="IMPORTBILL_DETAIL" />
           </AssociationSet>
-          <AssociationSet Name="FK_IMPORTBILL_DETAIL_PRODUCT" Association="Self.FK_IMPORTBILL_DETAIL_PRODUCT">
-            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+          <AssociationSet Name="FK_IMPORTBILL_DETAIL_WAREHOUSE" Association="Self.FK_IMPORTBILL_DETAIL_WAREHOUSE">
+            <End Role="WAREHOUSE" EntitySet="WAREHOUSEs" />
             <End Role="IMPORTBILL_DETAIL" EntitySet="IMPORTBILL_DETAIL" />
           </AssociationSet>
           <AssociationSet Name="FK_SALEBILL_PAYMENT" Association="Self.FK_SALEBILL_PAYMENT">
@@ -1354,6 +1355,11 @@
             <End Role="SALEBILL" EntitySet="SALEBILLs" />
             <End Role="SALEBILL_DETAIL" EntitySet="SALEBILL_DETAIL" />
           </AssociationSet>
+          <FunctionImport Name="TimKiemSanPham" IsComposable="true" ReturnType="Collection(CuaHangMayTinhModel.TimKiemSanPham_Result)">
+            <Parameter Name="BRD_ID" Mode="In" Type="String" />
+            <Parameter Name="PRD_TYPE_ID" Mode="In" Type="String" />
+            <Parameter Name="PRD_NAME" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="PROC_LOGIN" ReturnType="Collection(CuaHangMayTinhModel.PROC_LOGIN_Result)">
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />
@@ -1422,7 +1428,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CuaHangMayTinhModelStoreContainer" CdmEntityContainer="CuaHangMayTinhEntities">
+        <EntityContainerMapping StorageEntityContainer="CuaHangMayTinhModelStoreContainer" CdmEntityContainer="CuaHangMayTinhEntities1">
           <EntitySetMapping Name="administrative_regions">
             <EntityTypeMapping TypeName="CuaHangMayTinhModel.administrative_regions">
               <MappingFragment StoreEntitySet="administrative_regions">
@@ -1590,6 +1596,7 @@
                 <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
                 <ScalarProperty Name="DELIVERY_ALLOWED" ColumnName="DELIVERY_ALLOWED" />
                 <ScalarProperty Name="PRD_WEIGHT" ColumnName="PRD_WEIGHT" />
+                <ScalarProperty Name="CREATE_DAY" ColumnName="CREATE_DAY" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1685,6 +1692,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionName="CuaHangMayTinhModel.Store.TimKiemSanPham" FunctionImportName="TimKiemSanPham">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CuaHangMayTinhModel.TimKiemSanPham_Result">
+                <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
+                <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
+                <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
+                <ScalarProperty Name="PRD_TYPE_ID" ColumnName="PRD_TYPE_ID" />
+                <ScalarProperty Name="BRD_ID" ColumnName="BRD_ID" />
+                <ScalarProperty Name="RDY_FOR_SALE" ColumnName="RDY_FOR_SALE" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="DELIVERY_ALLOWED" ColumnName="DELIVERY_ALLOWED" />
+                <ScalarProperty Name="PRD_WEIGHT" ColumnName="PRD_WEIGHT" />
+                <ScalarProperty Name="CREATE_DAY" ColumnName="CREATE_DAY" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="PROC_LOGIN" FunctionName="CuaHangMayTinhModel.Store.PROC_LOGIN">
             <ResultMapping>
               <ComplexTypeMapping TypeName="CuaHangMayTinhModel.PROC_LOGIN_Result">

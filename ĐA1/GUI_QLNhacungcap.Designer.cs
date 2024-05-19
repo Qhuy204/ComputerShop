@@ -28,20 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_QLNhacungcap));
             this.panelIfnodata = new System.Windows.Forms.Panel();
             this.pnIfhavedata = new System.Windows.Forms.Panel();
             this.dgvNCC = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.cltick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.clMaNCC = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.clTenNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clDiachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clTrangthai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnLocNCC = new Guna.UI2.WinForms.Guna2Button();
             this.txtTimkiemKH = new Guna.UI2.WinForms.Guna2TextBox();
@@ -55,6 +48,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnTaonhacc = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.clMaNCC = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.clTenNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clDiachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTrangthai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelIfnodata.SuspendLayout();
             this.pnIfhavedata.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNCC)).BeginInit();
@@ -79,13 +78,15 @@
             // 
             // pnIfhavedata
             // 
+            this.pnIfhavedata.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnIfhavedata.Controls.Add(this.dgvNCC);
             this.pnIfhavedata.Controls.Add(this.panel2);
             this.pnIfhavedata.Controls.Add(this.panel1);
             this.pnIfhavedata.Controls.Add(this.guna2Button1);
             this.pnIfhavedata.Controls.Add(this.btnXuatfile);
             this.pnIfhavedata.Controls.Add(this.btnThemnhacc);
-            this.pnIfhavedata.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnIfhavedata.Location = new System.Drawing.Point(0, 0);
             this.pnIfhavedata.Name = "pnIfhavedata";
             this.pnIfhavedata.Size = new System.Drawing.Size(1067, 554);
@@ -93,38 +94,43 @@
             // 
             // dgvNCC
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvNCC.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(205)))), ((int)(((byte)(208)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNCC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvNCC.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvNCC.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(205)))), ((int)(((byte)(208)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNCC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvNCC.ColumnHeadersHeight = 40;
             this.dgvNCC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cltick,
             this.clMaNCC,
             this.clTenNCC,
             this.clDiachi,
             this.clSDT,
             this.clemail,
             this.clTrangthai});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvNCC.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNCC.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvNCC.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvNCC.Location = new System.Drawing.Point(12, 193);
             this.dgvNCC.Name = "dgvNCC";
             this.dgvNCC.RowHeadersVisible = false;
-            this.dgvNCC.Size = new System.Drawing.Size(1042, 206);
+            this.dgvNCC.RowTemplate.Height = 40;
+            this.dgvNCC.RowTemplate.ReadOnly = true;
+            this.dgvNCC.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNCC.Size = new System.Drawing.Size(1042, 349);
             this.dgvNCC.TabIndex = 9;
             this.dgvNCC.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvNCC.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -144,63 +150,15 @@
             this.dgvNCC.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvNCC.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dgvNCC.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvNCC.ThemeStyle.RowsStyle.Height = 22;
+            this.dgvNCC.ThemeStyle.RowsStyle.Height = 40;
             this.dgvNCC.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvNCC.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvNCC.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNCC_CellContentClick);
             // 
-            // cltick
-            // 
-            this.cltick.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cltick.HeaderText = "";
-            this.cltick.Name = "cltick";
-            this.cltick.ReadOnly = true;
-            this.cltick.Width = 20;
-            // 
-            // clMaNCC
-            // 
-            this.clMaNCC.DataPropertyName = "BRD_ID";
-            this.clMaNCC.HeaderText = "Mã nhà cung cấp";
-            this.clMaNCC.Name = "clMaNCC";
-            this.clMaNCC.ReadOnly = true;
-            // 
-            // clTenNCC
-            // 
-            this.clTenNCC.DataPropertyName = "BRD_NAME";
-            this.clTenNCC.HeaderText = "Tên nhà cung cấp";
-            this.clTenNCC.Name = "clTenNCC";
-            this.clTenNCC.ReadOnly = true;
-            // 
-            // clDiachi
-            // 
-            this.clDiachi.DataPropertyName = "BRD_ADDRESS";
-            this.clDiachi.HeaderText = "Địa chỉ";
-            this.clDiachi.Name = "clDiachi";
-            this.clDiachi.ReadOnly = true;
-            // 
-            // clSDT
-            // 
-            this.clSDT.DataPropertyName = "BRD_PHONE";
-            this.clSDT.HeaderText = "Số điện thoại";
-            this.clSDT.Name = "clSDT";
-            this.clSDT.ReadOnly = true;
-            // 
-            // clemail
-            // 
-            this.clemail.DataPropertyName = "BRD_EMAIL";
-            this.clemail.HeaderText = "Email";
-            this.clemail.Name = "clemail";
-            this.clemail.ReadOnly = true;
-            // 
-            // clTrangthai
-            // 
-            this.clTrangthai.DataPropertyName = "BRD_STATUS";
-            this.clTrangthai.HeaderText = "Trạng thái";
-            this.clTrangthai.Name = "clTrangthai";
-            this.clTrangthai.ReadOnly = true;
-            // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.btnLocNCC);
             this.panel2.Controls.Add(this.txtTimkiemKH);
@@ -228,6 +186,8 @@
             // 
             // txtTimkiemKH
             // 
+            this.txtTimkiemKH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTimkiemKH.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTimkiemKH.DefaultText = "";
             this.txtTimkiemKH.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -247,6 +207,8 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.btnKQtimkiem);
             this.panel1.Controls.Add(this.btnTatcaNCC);
@@ -325,6 +287,7 @@
             // 
             // btnThemnhacc
             // 
+            this.btnThemnhacc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnThemnhacc.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnThemnhacc.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnThemnhacc.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -391,6 +354,48 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // clMaNCC
+            // 
+            this.clMaNCC.DataPropertyName = "BRD_ID";
+            this.clMaNCC.HeaderText = "Mã nhà cung cấp";
+            this.clMaNCC.Name = "clMaNCC";
+            this.clMaNCC.ReadOnly = true;
+            // 
+            // clTenNCC
+            // 
+            this.clTenNCC.DataPropertyName = "BRD_NAME";
+            this.clTenNCC.HeaderText = "Tên nhà cung cấp";
+            this.clTenNCC.Name = "clTenNCC";
+            this.clTenNCC.ReadOnly = true;
+            // 
+            // clDiachi
+            // 
+            this.clDiachi.DataPropertyName = "BRD_ADDRESS";
+            this.clDiachi.HeaderText = "Địa chỉ";
+            this.clDiachi.Name = "clDiachi";
+            this.clDiachi.ReadOnly = true;
+            // 
+            // clSDT
+            // 
+            this.clSDT.DataPropertyName = "BRD_PHONE";
+            this.clSDT.HeaderText = "Số điện thoại";
+            this.clSDT.Name = "clSDT";
+            this.clSDT.ReadOnly = true;
+            // 
+            // clemail
+            // 
+            this.clemail.DataPropertyName = "BRD_EMAIL";
+            this.clemail.HeaderText = "Email";
+            this.clemail.Name = "clemail";
+            this.clemail.ReadOnly = true;
+            // 
+            // clTrangthai
+            // 
+            this.clTrangthai.DataPropertyName = "BRD_STATUS";
+            this.clTrangthai.HeaderText = "Trạng thái";
+            this.clTrangthai.Name = "clTrangthai";
+            this.clTrangthai.ReadOnly = true;
+            // 
             // GUI_QLNhacungcap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -398,11 +403,14 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(246)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.panelIfnodata);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GUI_QLNhacungcap";
             this.Text = "GUI_QLNhacungcap";
+            this.Load += new System.EventHandler(this.GUI_QLNhacungcap_Load);
             this.panelIfnodata.ResumeLayout(false);
             this.panelIfnodata.PerformLayout();
             this.pnIfhavedata.ResumeLayout(false);
@@ -432,7 +440,6 @@
         private Guna.UI2.WinForms.Guna2Button btnXuatfile;
         private Guna.UI2.WinForms.Guna2Button btnThemnhacc;
         private Guna.UI2.WinForms.Guna2Button btnLocNCC;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn cltick;
         private System.Windows.Forms.DataGridViewLinkColumn clMaNCC;
         private System.Windows.Forms.DataGridViewTextBoxColumn clTenNCC;
         private System.Windows.Forms.DataGridViewTextBoxColumn clDiachi;

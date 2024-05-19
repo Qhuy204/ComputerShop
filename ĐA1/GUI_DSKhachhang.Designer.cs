@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ThemKH = new Guna.UI2.WinForms.Guna2Button();
             this.btnXuatfile = new Guna.UI2.WinForms.Guna2Button();
             this.btnNhapfile = new Guna.UI2.WinForms.Guna2Button();
@@ -41,17 +42,15 @@
             this.btnBoloc = new Guna.UI2.WinForms.Guna2Button();
             this.txtTimkiemKH = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvKH = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.cltick = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.clMakh = new System.Windows.Forms.DataGridViewLinkColumn();
             this.clTenkh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clNgaysinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clGioitinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clnhomKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clTongchitieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTongtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTongSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clTongsldonhang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clngaymuahang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKH)).BeginInit();
@@ -207,7 +206,8 @@
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvKH.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvKH.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvKH.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(205)))), ((int)(((byte)(208)))));
@@ -219,18 +219,16 @@
             this.dgvKH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvKH.ColumnHeadersHeight = 40;
             this.dgvKH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cltick,
             this.clMakh,
             this.clTenkh,
             this.clNgaysinh,
             this.clGioitinh,
             this.clSDT,
             this.clAddress,
-            this.clnhomKH,
-            this.clTongchitieu,
-            this.clTongsldonhang,
-            this.clngaymuahang});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clTongtien,
+            this.clTongSP,
+            this.clTongsldonhang});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
@@ -238,11 +236,22 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvKH.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvKH.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvKH.GridColor = System.Drawing.Color.White;
             this.dgvKH.Location = new System.Drawing.Point(12, 193);
             this.dgvKH.Name = "dgvKH";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvKH.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvKH.RowHeadersVisible = false;
-            this.dgvKH.Size = new System.Drawing.Size(1042, 206);
+            this.dgvKH.RowTemplate.Height = 40;
+            this.dgvKH.RowTemplate.ReadOnly = true;
+            this.dgvKH.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvKH.Size = new System.Drawing.Size(1042, 349);
             this.dgvKH.TabIndex = 3;
             this.dgvKH.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvKH.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -250,7 +259,7 @@
             this.dgvKH.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.dgvKH.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.dgvKH.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dgvKH.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvKH.ThemeStyle.GridColor = System.Drawing.Color.White;
             this.dgvKH.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.dgvKH.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvKH.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
@@ -262,77 +271,72 @@
             this.dgvKH.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvKH.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.dgvKH.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvKH.ThemeStyle.RowsStyle.Height = 22;
+            this.dgvKH.ThemeStyle.RowsStyle.Height = 40;
             this.dgvKH.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvKH.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // cltick
-            // 
-            this.cltick.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cltick.HeaderText = "";
-            this.cltick.Name = "cltick";
-            this.cltick.ReadOnly = true;
-            this.cltick.Width = 20;
-            // 
             // clMakh
             // 
+            this.clMakh.DataPropertyName = "CUS_ID";
             this.clMakh.HeaderText = "Mã khách hàng";
             this.clMakh.Name = "clMakh";
             this.clMakh.ReadOnly = true;
             // 
             // clTenkh
             // 
+            this.clTenkh.DataPropertyName = "CUS_NAME";
             this.clTenkh.HeaderText = "Tên khách hàng";
             this.clTenkh.Name = "clTenkh";
             this.clTenkh.ReadOnly = true;
             // 
             // clNgaysinh
             // 
+            this.clNgaysinh.DataPropertyName = "CUS_BIRTHDAY";
             this.clNgaysinh.HeaderText = "Ngày sinh";
             this.clNgaysinh.Name = "clNgaysinh";
             this.clNgaysinh.ReadOnly = true;
             // 
             // clGioitinh
             // 
+            this.clGioitinh.DataPropertyName = "CUS_GENDER";
             this.clGioitinh.HeaderText = "Giới tính";
             this.clGioitinh.Name = "clGioitinh";
             this.clGioitinh.ReadOnly = true;
             // 
             // clSDT
             // 
+            this.clSDT.DataPropertyName = "CUS_PHONE_NUMBER";
             this.clSDT.HeaderText = "Số điện thoại";
             this.clSDT.Name = "clSDT";
             this.clSDT.ReadOnly = true;
             // 
             // clAddress
             // 
+            this.clAddress.DataPropertyName = "CUS_ADDRESS";
             this.clAddress.HeaderText = "Địa chỉ";
             this.clAddress.Name = "clAddress";
             this.clAddress.ReadOnly = true;
             // 
-            // clnhomKH
+            // clTongtien
             // 
-            this.clnhomKH.HeaderText = "Nhóm khách hàng";
-            this.clnhomKH.Name = "clnhomKH";
-            this.clnhomKH.ReadOnly = true;
+            this.clTongtien.DataPropertyName = "CUS_TOTAL_SPENDING_MONEY";
+            this.clTongtien.HeaderText = "Tổng tiền đã mua";
+            this.clTongtien.Name = "clTongtien";
+            this.clTongtien.ReadOnly = true;
             // 
-            // clTongchitieu
+            // clTongSP
             // 
-            this.clTongchitieu.HeaderText = "Tổng chi tiêu";
-            this.clTongchitieu.Name = "clTongchitieu";
-            this.clTongchitieu.ReadOnly = true;
+            this.clTongSP.DataPropertyName = "CUS_TOTAL_PRODUCTS_PURCHASED";
+            this.clTongSP.HeaderText = "Tổng số sản phẩm đã mua";
+            this.clTongSP.Name = "clTongSP";
+            this.clTongSP.ReadOnly = true;
             // 
             // clTongsldonhang
             // 
+            this.clTongsldonhang.DataPropertyName = "CUS_TOTAL_QUANTITY_OF_ORDER";
             this.clTongsldonhang.HeaderText = "Tổng SL đơn hàng";
             this.clTongsldonhang.Name = "clTongsldonhang";
             this.clTongsldonhang.ReadOnly = true;
-            // 
-            // clngaymuahang
-            // 
-            this.clngaymuahang.HeaderText = "Ngày mua hàng gần nhất";
-            this.clngaymuahang.Name = "clngaymuahang";
-            this.clngaymuahang.ReadOnly = true;
             // 
             // GUI_DSKhachhang
             // 
@@ -372,17 +376,15 @@
         private Guna.UI2.WinForms.Guna2Button btnKQtimkiem;
         private Guna.UI2.WinForms.Guna2Button btnBoloc;
         private Guna.UI2.WinForms.Guna2DataGridView dgvKH;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn cltick;
         private System.Windows.Forms.DataGridViewLinkColumn clMakh;
         private System.Windows.Forms.DataGridViewTextBoxColumn clTenkh;
         private System.Windows.Forms.DataGridViewTextBoxColumn clNgaysinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn clGioitinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn clSDT;
         private System.Windows.Forms.DataGridViewTextBoxColumn clAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clnhomKH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clTongchitieu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clTongtien;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clTongSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn clTongsldonhang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clngaymuahang;
     }
 }
 

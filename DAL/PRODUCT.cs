@@ -17,7 +17,6 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PRODUCT()
         {
-            this.IMPORTBILL_DETAIL = new HashSet<IMPORTBILL_DETAIL>();
             this.SALEBILL_DETAIL = new HashSet<SALEBILL_DETAIL>();
         }
     
@@ -30,10 +29,8 @@ namespace DAL
         public int QUANTITY { get; set; }
         public bool DELIVERY_ALLOWED { get; set; }
         public Nullable<double> PRD_WEIGHT { get; set; }
+        public Nullable<System.DateTime> CREATE_DAY { get; set; }
     
-        public virtual BRAND BRAND { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IMPORTBILL_DETAIL> IMPORTBILL_DETAIL { get; set; }
         public virtual PRODUCTTYPE PRODUCTTYPE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SALEBILL_DETAIL> SALEBILL_DETAIL { get; set; }

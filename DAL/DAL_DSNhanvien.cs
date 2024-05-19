@@ -8,7 +8,7 @@ namespace DAL
 {
     public class DAL_DSNhanvien
     {
-        private CuaHangMayTinhEntities db = new CuaHangMayTinhEntities();
+        private CuaHangMayTinhEntities1 db = new CuaHangMayTinhEntities1();
 
         public void Add(EMPLOYEE staff)
         {

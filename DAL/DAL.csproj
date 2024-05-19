@@ -62,10 +62,14 @@
     <Compile Include="BRAND.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL_DSKhachhang.cs" />
     <Compile Include="CUSTOMER.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL_DSLoaiSP.cs" />
     <Compile Include="DAL_DSNhanvien.cs" />
+    <Compile Include="DAL_DSSanpham.cs" />
+    <Compile Include="DAL_Khohang.cs" />
     <Compile Include="DAL_QLNhacungcap.cs" />
     <Compile Include="Data.Context.cs">
       <AutoGen>True</AutoGen>
@@ -134,6 +138,9 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="TimKiemSanPham_Result.cs">
+      <DependentUpon>Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="ward.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
@@ -153,6 +160,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Data.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Data.edmx</DependentUpon>
@@ -163,9 +173,6 @@
       <DependentUpon>Data.edmx</DependentUpon>
       <LastGenOutput>Data.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BUS;
+using DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,7 @@ namespace ĐA1
 {
     public partial class GUI_DSKhachhang : Form
     {
+        BUS_DSKhachhang busKH = new BUS_DSKhachhang();
         public GUI_DSKhachhang()
         {
             InitializeComponent();
@@ -68,7 +71,12 @@ namespace ĐA1
 
         private void GUI_DSKhachhang_Load(object sender, EventArgs e)
         {
+            UpdateDgv(busKH.GetAll());
+        }
 
+        private void UpdateDgv(List<CUSTOMER> ctm)
+        {
+            dgvKH.DataSource = ctm.Select(x => new { x.CUS_ID, x.CUS_NAME, x.CUS_BIRTHDAY, x.CUS_GENDER, x.CUS_PHONE_NUMBER, x.CUS_ADDRESS, x.CUS_TOTAL_SPENDING_MONEY, x.CUS_TOTAL_PRODUCTS_PURCHASED, x.CUS_TOTAL_QUANTITY_OF_ORDER }).ToList();
         }
     }
 }

@@ -21,6 +21,6 @@ namespace DAL
         public Nullable<double> IB_PRICE { get; set; }
     
         public virtual IMPORTBILL IMPORTBILL { get; set; }
-        public virtual PRODUCT PRODUCT { get; set; }
+        public virtual WAREHOUSE WAREHOUSE { get; set; }
     }
 }

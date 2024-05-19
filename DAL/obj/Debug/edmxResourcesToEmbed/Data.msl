@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="CuaHangMayTinhModelStoreContainer" CdmEntityContainer="CuaHangMayTinhEntities">
+  <EntityContainerMapping StorageEntityContainer="CuaHangMayTinhModelStoreContainer" CdmEntityContainer="CuaHangMayTinhEntities1">
     <EntitySetMapping Name="administrative_regions">
       <EntityTypeMapping TypeName="CuaHangMayTinhModel.administrative_regions">
         <MappingFragment StoreEntitySet="administrative_regions">
@@ -168,6 +168,7 @@
           <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
           <ScalarProperty Name="DELIVERY_ALLOWED" ColumnName="DELIVERY_ALLOWED" />
           <ScalarProperty Name="PRD_WEIGHT" ColumnName="PRD_WEIGHT" />
+          <ScalarProperty Name="CREATE_DAY" ColumnName="CREATE_DAY" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -263,6 +264,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionName="CuaHangMayTinhModel.Store.TimKiemSanPham" FunctionImportName="TimKiemSanPham">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.TimKiemSanPham_Result">
+          <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
+          <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
+          <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
+          <ScalarProperty Name="PRD_TYPE_ID" ColumnName="PRD_TYPE_ID" />
+          <ScalarProperty Name="BRD_ID" ColumnName="BRD_ID" />
+          <ScalarProperty Name="RDY_FOR_SALE" ColumnName="RDY_FOR_SALE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="DELIVERY_ALLOWED" ColumnName="DELIVERY_ALLOWED" />
+          <ScalarProperty Name="PRD_WEIGHT" ColumnName="PRD_WEIGHT" />
+          <ScalarProperty Name="CREATE_DAY" ColumnName="CREATE_DAY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="PROC_LOGIN" FunctionName="CuaHangMayTinhModel.Store.PROC_LOGIN">
       <ResultMapping>
         <ComplexTypeMapping TypeName="CuaHangMayTinhModel.PROC_LOGIN_Result">

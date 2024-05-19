@@ -36,18 +36,19 @@ namespace ĐA1
                 MenuSanpham.Height -= MENU_TRANSITION_SPEED;
                 if (MenuSanpham.Height <= MENU_HEIGHT_COLLAPSED)
                 {
-                    menuExpanded = false;
-                    Menutransition.Stop(); // Dừng timer khi menu đã đóng
+                    MenuSanpham.Height = MENU_HEIGHT_COLLAPSED; 
+                    menuExpanded = false; 
+                    Menutransition.Stop(); 
                 }
             }
             else
             {
-                // Đang đóng, mở rộng menu
                 MenuSanpham.Height += MENU_TRANSITION_SPEED;
                 if (MenuSanpham.Height >= MENU_HEIGHT_EXPANDED)
                 {
-                    menuExpanded = true;
-                    Menutransition.Stop(); // Dừng timer khi menu đã mở
+                    MenuSanpham.Height = MENU_HEIGHT_EXPANDED; 
+                    menuExpanded = true; 
+                    Menutransition.Stop(); 
                 }
             }
         }
@@ -59,32 +60,32 @@ namespace ĐA1
             lblFuncName.Text = btnSanpham.Text;
         }
 
-        // Giả sử các biến này đã được định nghĩa đúng trước đó
-        private bool sidebarExpanded = true; // Trạng thái ban đầu: mở
-        private const int SIDEBAR_WIDTH_OPEN = 221;
-        private const int SIDEBAR_WIDTH_CLOSED = 37;
-        private const int SIDEBAR_TRANSITION_SPEED = 5; // Tốc độ thay đổi chiều rộng
+        private bool sidebarExpanded = false; 
+        private const int HEIGHT_EXPANDED = 141;
+        private const int HEIGHT_COLLAPSED = 47;
 
         private void sidebarTransition_Tick(object sender, EventArgs e)
         {
             if (sidebarExpanded)
             {
-                // Đang mở, chuyển sang trạng thái đóng
-                sidebar.Width -= SIDEBAR_TRANSITION_SPEED;
-                if (sidebar.Width <= SIDEBAR_WIDTH_CLOSED)
+                // Đang mở, thu gọn menu
+                pnDonhang.Height -= MENU_TRANSITION_SPEED;
+                if (pnDonhang.Height <= HEIGHT_COLLAPSED)
                 {
-                    sidebarExpanded = false;
-                    sidebarTransition.Stop(); // Dừng timer khi đã đóng
+                    pnDonhang.Height = HEIGHT_COLLAPSED; 
+                    sidebarExpanded = false; 
+                    sidebarTransition.Stop();
                 }
             }
             else
             {
-                // Đang đóng, chuyển sang trạng thái mở
-                sidebar.Width += SIDEBAR_TRANSITION_SPEED;
-                if (sidebar.Width >= SIDEBAR_WIDTH_OPEN)
+                // Đang đóng, mở rộng menu
+                pnDonhang.Height += MENU_TRANSITION_SPEED;
+                if (pnDonhang.Height >= HEIGHT_EXPANDED)
                 {
-                    sidebarExpanded = true;
-                    sidebarTransition.Stop(); // Dừng timer khi đã mở
+                    pnDonhang.Height = HEIGHT_EXPANDED; 
+                    sidebarExpanded = true; 
+                    sidebarTransition.Stop();
                 }
             }
         }
@@ -103,28 +104,14 @@ namespace ĐA1
 
         public void HienThiFormCon(Form frm, Panel panel)
         {
-            // Xóa các form con hiện có khỏi panel
             panel.Controls.Clear();
-
-            // Cài đặt thuộc tính cho form con
             frm.TopLevel = false;
             frm.Dock = DockStyle.Fill;
-
-            // Thêm form con vào panel
             panel.Controls.Add(frm);
-
-            // Hiển thị form con
             frm.Show();
         }
 
-        private void mainbutton_Click(object sender, EventArgs e)
-        {
-            
-        }
-        private void subbutton_Click(object sender, EventArgs e)
-        {
-            
-        }
+
         private void mainbutton_Leave(object sender, EventArgs e)
         {
             // Lấy button vừa nhấn
@@ -207,6 +194,27 @@ namespace ĐA1
             GUI_ThongtinTK frm = new GUI_ThongtinTK();
             FormHelper.HienThiFormCon(frm, pnNoidung);
             lblFuncName.Text = btnTongquan.Text;
+        }
+
+        private void btnNhacc_Click(object sender, EventArgs e)
+        {
+            Chuyenmau(sender);
+            GUI_QLNhacungcap frm = new GUI_QLNhacungcap();
+            HienThiFormCon(frm);
+        }
+
+        private void btnBanle_Click(object sender, EventArgs e)
+        {
+            Chuyenmau(sender);
+            GUI_Banhang frm = new GUI_Banhang();
+            FormHelper.HienThiFormCon(frm, pnNoidung);
+            HienThiFormCon(frm);
+            lblFuncName.Text = btnBanhang.Text; 
+        }
+
+        private void btnDonhang_Click(object sender, EventArgs e)
+        {
+            sidebarTransition.Start();
         }
     }
 }

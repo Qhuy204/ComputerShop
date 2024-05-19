@@ -1,23 +1,25 @@
-﻿using System;
+﻿using BUS;
+using DAL;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ĐA1
 {
     public partial class GUI_ThemSP : Form
     {
         PictureBox[] pictureBoxes;
-
+        private BUS_DSSanpham busSP = new BUS_DSSanpham();
+        private BUS_DSLoaiSP busLoaiSP = new BUS_DSLoaiSP();
+        private BUS_QLNhacungcap busNCC = new BUS_QLNhacungcap();
+        private BUS_Khohang busKhohang = new BUS_Khohang();
         public GUI_ThemSP()
         {
             InitializeComponent();
-            pictureBoxes = new PictureBox[] { pb1, pb2, pb3, pb4 };
+            pictureBoxes = new PictureBox[] { pb1 };
         }
 
         private void ckbVanchuyen_CheckedChanged(object sender, EventArgs e)
@@ -61,16 +63,58 @@ namespace ĐA1
         private void LoadAnhVaoPictureBox(string link)
         {
             // Create an array of PictureBox controls
-            PictureBox[] pictureBoxes = { pb1, pb2, pb3, pb4 };
+            PictureBox[] pictureBoxes = { pb1};
 
             // Load the image into the current PictureBox
-            pictureBoxes[current_picturebox].Image = Image.FromFile(link);
+            pictureBoxes[current_picturebox].Image = System.Drawing.Image.FromFile(link);
             pictureBoxes[current_picturebox].SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private void UpdatecbbLoaisp(List<PRODUCTTYPE> pt)
+        {
+            var dataSource = pt.Select(x => new { x.PRD_TYPE_NAME }).ToList();
+            cbbLoaiSP.DataSource = dataSource;
+            cbbLoaiSP.DisplayMember = "PRD_TYPE_NAME";
+            cbbLoaiSP.ValueMember = "PRD_TYPE_NAME";
+            cbbLoaiSP.SelectedIndex = -1;
+        }
+
+        private void UpdatecbbNhanhieu(List<BRAND> bd)
+        {
+            var dataSource = bd.Select(x => new { x.BRD_NAME }).ToList();
+            cbbNcc.DataSource = dataSource;
+            cbbNcc.DisplayMember = "BRD_NAME";
+            cbbNcc.ValueMember = "BRD_NAME";
+            cbbNcc.SelectedIndex = -1;
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            string image = "";
+            string id = busSP.GetNewID();
+            string name = txtTensp.Text;
+            string brand_id = busNCC.getBRD_ID(cbbNcc.Text);
+            string producttype_id = busLoaiSP.getPD_TYPE_ID(cbbLoaiSP.Text);
+            float importprice = float.Parse(txtgianhap.Text);
+            float retailprice = float.Parse(txtGiabanle.Text);
+            float wholesaleprice = float.Parse(txtgiabanbuon.Text);
+            bool deliveryallowed = ckbVanchuyen.Checked;
+            float weight = string.IsNullOrEmpty(txtKhoiluong.Text) ? 0 : float.Parse(txtKhoiluong.Text);
+            MessageBox.Show(id);
+            busSP.NewProduct(id, name, brand_id, producttype_id, deliveryallowed, weight);
+            busKhohang.AddProductInformation(id, importprice, retailprice, wholesaleprice);
+            MessageBox.Show("Product saved successfully.");
+        }
+
+        private void GUI_ThemSP_Load(object sender, EventArgs e)
+        {
+            UpdatecbbLoaisp(busLoaiSP.GetAll());
+            UpdatecbbNhanhieu(busNCC.GetAll());
         }
     }
 }
