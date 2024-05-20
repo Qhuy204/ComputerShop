@@ -1,0 +1,625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CuaHangMayTinhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="administrative_regions">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="code_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="provinces" Relationship="Self.provinces_administrative_region_id_fkey" FromRole="administrative_regions" ToRole="provinces" />
+  </EntityType>
+  <EntityType Name="administrative_units">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="full_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="short_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="short_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="code_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="districts" Relationship="Self.districts_administrative_unit_id_fkey" FromRole="administrative_units" ToRole="districts" />
+    <NavigationProperty Name="provinces" Relationship="Self.provinces_administrative_unit_id_fkey" FromRole="administrative_units" ToRole="provinces" />
+    <NavigationProperty Name="wards" Relationship="Self.wards_administrative_unit_id_fkey" FromRole="administrative_units" ToRole="wards" />
+  </EntityType>
+  <EntityType Name="AUTHORITY">
+    <Key>
+      <PropertyRef Name="AUT_ID" />
+    </Key>
+    <Property Name="AUT_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AUT_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="POSITION_AUTHORITY" Relationship="Self.FK__POSITION___AUT_I__603D47BB" FromRole="AUTHORITY" ToRole="POSITION_AUTHORITY" />
+  </EntityType>
+  <EntityType Name="BRAND">
+    <Key>
+      <PropertyRef Name="BRD_ID" />
+    </Key>
+    <Property Name="BRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BRD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BRD_ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BRD_PHONE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="BRD_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BRD_STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="IMPORTBILLs" Relationship="Self.FK_IMPORTBILL_BRAND" FromRole="BRAND" ToRole="IMPORTBILL" />
+    <NavigationProperty Name="WAREHOUSEs" Relationship="Self.FK_WAREHOUSE_BRAND" FromRole="BRAND" ToRole="WAREHOUSE" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="CUS_ID" />
+    </Key>
+    <Property Name="CUS_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CUS_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CUS_BIRTHDAY" Type="DateTime" Precision="0" />
+    <Property Name="CUS_GENDER" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="CUS_PHONE_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CUS_ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CUS_TOTAL_SPENDING_MONEY" Type="Int32" />
+    <Property Name="CUS_TOTAL_PRODUCTS_PURCHASED" Type="Int32" />
+    <Property Name="CUS_TOTAL_QUANTITY_OF_ORDER" Type="Int32" />
+    <Property Name="CUS_DATE_OF_LAST_PURCHASE" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="SALEBILLs" Relationship="Self.FK_SALEBILL_CUSTOMER" FromRole="CUSTOMER" ToRole="SALEBILL" />
+  </EntityType>
+  <EntityType Name="DISCOUNT">
+    <Key>
+      <PropertyRef Name="CODE" />
+    </Key>
+    <Property Name="CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DISCOUNT_PERCENT" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="DISCOUNT_AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MAXIMUM_DISCOUNT_AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CODE_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MIN_PURCHASE_VALUE" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MIN_QUANTITY_OF_PRODUCT" Type="Int32" />
+    <Property Name="MAXIMUM_USE" Type="Int32" />
+    <Property Name="USED_COUNT" Type="Int32" />
+    <Property Name="DISCOUNT_START_DATE" Type="DateTime" Precision="3" />
+    <Property Name="DISCOUNT_END_DATE" Type="DateTime" Precision="3" />
+    <Property Name="DISCOUNT_STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="district">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="full_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="province_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="administrative_unit_id" Type="Int32" />
+    <NavigationProperty Name="administrative_units" Relationship="Self.districts_administrative_unit_id_fkey" FromRole="districts" ToRole="administrative_units" />
+    <NavigationProperty Name="province" Relationship="Self.districts_province_code_fkey" FromRole="districts" ToRole="provinces" />
+    <NavigationProperty Name="wards" Relationship="Self.wards_district_code_fkey" FromRole="districts" ToRole="wards" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EMP_ID" />
+    </Key>
+    <Property Name="EMP_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMP_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMP_PHONE_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMP_BIRTHDAY" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EMP_GENDER" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="EMP_PROVINCE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EMP_DISTRICT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EMP_WARD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="EMP_ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMP_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMP_ACCOUNT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMP_PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HIRE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="PS_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMP_STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="POSITION" Relationship="Self.FK__EMPLOYEES__PS_ID__67DE6983" FromRole="EMPLOYEES" ToRole="POSITION" />
+  </EntityType>
+  <EntityType Name="IMPORTBILL">
+    <Key>
+      <PropertyRef Name="IB_ID" />
+    </Key>
+    <Property Name="IB_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMP_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IB_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TOTAL_MONEY" Type="Double" />
+    <Property Name="NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BRAND" Relationship="Self.FK_IMPORTBILL_BRAND" FromRole="IMPORTBILL" ToRole="BRAND" />
+    <NavigationProperty Name="IMPORTBILL_DETAIL" Relationship="Self.FK_IMPORTBILL_DETAIL_IMPORTBILL" FromRole="IMPORTBILL" ToRole="IMPORTBILL_DETAIL" />
+  </EntityType>
+  <EntityType Name="IMPORTBILL_DETAIL">
+    <Key>
+      <PropertyRef Name="IB_DETAIL_ID" />
+    </Key>
+    <Property Name="IB_DETAIL_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IB_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QUANTITY" Type="Int32" />
+    <Property Name="IB_PRICE" Type="Double" />
+    <NavigationProperty Name="IMPORTBILL" Relationship="Self.FK_IMPORTBILL_DETAIL_IMPORTBILL" FromRole="IMPORTBILL_DETAIL" ToRole="IMPORTBILL" />
+  </EntityType>
+  <EntityType Name="PAYMENT">
+    <Key>
+      <PropertyRef Name="PMT_NAME" />
+    </Key>
+    <Property Name="PMT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="POSITION">
+    <Key>
+      <PropertyRef Name="PS_ID" />
+    </Key>
+    <Property Name="PS_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PS_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PS_NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EMPLOYEES" Relationship="Self.FK__EMPLOYEES__PS_ID__67DE6983" FromRole="POSITION" ToRole="EMPLOYEES" />
+    <NavigationProperty Name="POSITION_AUTHORITY" Relationship="Self.FK__POSITION___PS_ID__5F492382" FromRole="POSITION" ToRole="POSITION_AUTHORITY" />
+  </EntityType>
+  <EntityType Name="POSITION_AUTHORITY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PS_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AUT_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ROLE_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AUTHORITY" Relationship="Self.FK__POSITION___AUT_I__603D47BB" FromRole="POSITION_AUTHORITY" ToRole="AUTHORITY" />
+    <NavigationProperty Name="POSITION" Relationship="Self.FK__POSITION___PS_ID__5F492382" FromRole="POSITION_AUTHORITY" ToRole="POSITION" />
+  </EntityType>
+  <EntityType Name="PRODUCT">
+    <Key>
+      <PropertyRef Name="PRD_ID" />
+    </Key>
+    <Property Name="PRD_IMG" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PRD_TYPE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RDY_FOR_SALE" Type="Int32" Nullable="false" />
+    <Property Name="QUANTITY" Type="Int32" Nullable="false" />
+    <Property Name="DELIVERY_ALLOWED" Type="Boolean" Nullable="false" />
+    <Property Name="PRD_WEIGHT" Type="Double" />
+    <Property Name="CREATE_DAY" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK_PRODUCT_PRODUCTTYPE" FromRole="PRODUCT" ToRole="PRODUCTTYPE" />
+  </EntityType>
+  <EntityType Name="PRODUCTTYPE">
+    <Key>
+      <PropertyRef Name="PRD_TYPE_ID" />
+    </Key>
+    <Property Name="PRD_TYPE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PRD_TYPE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PRODUCTs" Relationship="Self.FK_PRODUCT_PRODUCTTYPE" FromRole="PRODUCTTYPE" ToRole="PRODUCT" />
+    <NavigationProperty Name="WAREHOUSEs" Relationship="Self.FK_WAREHOUSE_PRODUCTTYPE" FromRole="PRODUCTTYPE" ToRole="WAREHOUSE" />
+  </EntityType>
+  <EntityType Name="PROMOTION">
+    <Key>
+      <PropertyRef Name="PROMOTION_ID" />
+    </Key>
+    <Property Name="PROMOTION_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROMOTION_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PROMOTION_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PROMOTION_START_DATE" Type="DateTime" Precision="3" />
+    <Property Name="PROMOTION_END_DATE" Type="DateTime" Precision="3" />
+    <Property Name="DISCOUNT_PERCENT" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="DISCOUNT_AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PRD_TYPE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PRD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MIN_PURCHASE_VALUE" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MIN_QUANTITY_OF_PRODUCT" Type="Int32" />
+    <Property Name="MAXIMUM_USE" Type="Int32" />
+    <Property Name="USED_COUNT" Type="Int32" />
+    <Property Name="PROMOTION_STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="province">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="full_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="administrative_unit_id" Type="Int32" />
+    <Property Name="administrative_region_id" Type="Int32" />
+    <NavigationProperty Name="administrative_regions" Relationship="Self.provinces_administrative_region_id_fkey" FromRole="provinces" ToRole="administrative_regions" />
+    <NavigationProperty Name="administrative_units" Relationship="Self.provinces_administrative_unit_id_fkey" FromRole="provinces" ToRole="administrative_units" />
+    <NavigationProperty Name="districts" Relationship="Self.districts_province_code_fkey" FromRole="provinces" ToRole="districts" />
+  </EntityType>
+  <EntityType Name="SALEBILL">
+    <Key>
+      <PropertyRef Name="SL_ID" />
+    </Key>
+    <Property Name="SL_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SL_DATE" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CUS_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EMP_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DISCOUNT_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PROMOTION_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TOTAL_MONEY" Type="Double" />
+    <Property Name="PAYMENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MONEY_CUSTOMER_GIVE" Type="Double" />
+    <Property Name="REFUND" Type="Double" />
+    <Property Name="STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_SALEBILL_CUSTOMER" FromRole="SALEBILL" ToRole="CUSTOMER" />
+    <NavigationProperty Name="SALEBILL_DETAIL" Relationship="Self.FK_SALEBILL_DETAIL_SALEBILL" FromRole="SALEBILL" ToRole="SALEBILL_DETAIL" />
+  </EntityType>
+  <EntityType Name="SALEBILL_DETAIL">
+    <Key>
+      <PropertyRef Name="SL_DETAIL_ID" />
+    </Key>
+    <Property Name="SL_DETAIL_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SL_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QUANTITY" Type="Int32" Nullable="false" />
+    <Property Name="PRICE" Type="Double" />
+    <NavigationProperty Name="SALEBILL" Relationship="Self.FK_SALEBILL_DETAIL_SALEBILL" FromRole="SALEBILL_DETAIL" ToRole="SALEBILL" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ward">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="full_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="full_name_en" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="code_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="district_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="administrative_unit_id" Type="Int32" />
+    <NavigationProperty Name="administrative_units" Relationship="Self.wards_administrative_unit_id_fkey" FromRole="wards" ToRole="administrative_units" />
+    <NavigationProperty Name="district" Relationship="Self.wards_district_code_fkey" FromRole="wards" ToRole="districts" />
+  </EntityType>
+  <EntityType Name="WAREHOUSE">
+    <Key>
+      <PropertyRef Name="PRD_ID" />
+    </Key>
+    <Property Name="PRD_IMG" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRD_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PRD_TYPE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RDY_FOR_SALE" Type="Int32" Nullable="false" />
+    <Property Name="INVENTORY_QUANTITY" Type="Int32" Nullable="false" />
+    <Property Name="CREATE_DAY" Type="DateTime" Precision="0" />
+    <Property Name="RETAIL_PRICE" Type="Double" Nullable="false" />
+    <Property Name="IMPORT_PRICE" Type="Double" Nullable="false" />
+    <Property Name="WHOLESALE_PRICE" Type="Double" Nullable="false" />
+    <NavigationProperty Name="BRAND" Relationship="Self.FK_WAREHOUSE_BRAND" FromRole="WAREHOUSE" ToRole="BRAND" />
+    <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK_WAREHOUSE_PRODUCTTYPE" FromRole="WAREHOUSE" ToRole="PRODUCTTYPE" />
+  </EntityType>
+  <Association Name="provinces_administrative_region_id_fkey">
+    <End Role="administrative_regions" Type="Self.administrative_regions" Multiplicity="0..1" />
+    <End Role="provinces" Type="Self.province" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="administrative_regions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="provinces">
+        <PropertyRef Name="administrative_region_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="districts_administrative_unit_id_fkey">
+    <End Role="administrative_units" Type="Self.administrative_units" Multiplicity="0..1" />
+    <End Role="districts" Type="Self.district" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="administrative_units">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="districts">
+        <PropertyRef Name="administrative_unit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="provinces_administrative_unit_id_fkey">
+    <End Role="administrative_units" Type="Self.administrative_units" Multiplicity="0..1" />
+    <End Role="provinces" Type="Self.province" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="administrative_units">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="provinces">
+        <PropertyRef Name="administrative_unit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="wards_administrative_unit_id_fkey">
+    <End Role="administrative_units" Type="Self.administrative_units" Multiplicity="0..1" />
+    <End Role="wards" Type="Self.ward" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="administrative_units">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="wards">
+        <PropertyRef Name="administrative_unit_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__POSITION___AUT_I__603D47BB">
+    <End Role="AUTHORITY" Type="Self.AUTHORITY" Multiplicity="0..1" />
+    <End Role="POSITION_AUTHORITY" Type="Self.POSITION_AUTHORITY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AUTHORITY">
+        <PropertyRef Name="AUT_ID" />
+      </Principal>
+      <Dependent Role="POSITION_AUTHORITY">
+        <PropertyRef Name="AUT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IMPORTBILL_BRAND">
+    <End Role="BRAND" Type="Self.BRAND" Multiplicity="1" />
+    <End Role="IMPORTBILL" Type="Self.IMPORTBILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BRAND">
+        <PropertyRef Name="BRD_ID" />
+      </Principal>
+      <Dependent Role="IMPORTBILL">
+        <PropertyRef Name="BRD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAREHOUSE_BRAND">
+    <End Role="BRAND" Type="Self.BRAND" Multiplicity="1" />
+    <End Role="WAREHOUSE" Type="Self.WAREHOUSE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BRAND">
+        <PropertyRef Name="BRD_ID" />
+      </Principal>
+      <Dependent Role="WAREHOUSE">
+        <PropertyRef Name="BRD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALEBILL_CUSTOMER">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+    <End Role="SALEBILL" Type="Self.SALEBILL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="CUS_ID" />
+      </Principal>
+      <Dependent Role="SALEBILL">
+        <PropertyRef Name="CUS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="districts_province_code_fkey">
+    <End Role="provinces" Type="Self.province" Multiplicity="0..1" />
+    <End Role="districts" Type="Self.district" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provinces">
+        <PropertyRef Name="code" />
+      </Principal>
+      <Dependent Role="districts">
+        <PropertyRef Name="province_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="wards_district_code_fkey">
+    <End Role="districts" Type="Self.district" Multiplicity="0..1" />
+    <End Role="wards" Type="Self.ward" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="districts">
+        <PropertyRef Name="code" />
+      </Principal>
+      <Dependent Role="wards">
+        <PropertyRef Name="district_code" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EMPLOYEES__PS_ID__67DE6983">
+    <End Role="POSITION" Type="Self.POSITION" Multiplicity="0..1" />
+    <End Role="EMPLOYEES" Type="Self.EMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POSITION">
+        <PropertyRef Name="PS_ID" />
+      </Principal>
+      <Dependent Role="EMPLOYEES">
+        <PropertyRef Name="PS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IMPORTBILL_DETAIL_IMPORTBILL">
+    <End Role="IMPORTBILL" Type="Self.IMPORTBILL" Multiplicity="1" />
+    <End Role="IMPORTBILL_DETAIL" Type="Self.IMPORTBILL_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IMPORTBILL">
+        <PropertyRef Name="IB_ID" />
+      </Principal>
+      <Dependent Role="IMPORTBILL_DETAIL">
+        <PropertyRef Name="IB_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__POSITION___PS_ID__5F492382">
+    <End Role="POSITION" Type="Self.POSITION" Multiplicity="0..1" />
+    <End Role="POSITION_AUTHORITY" Type="Self.POSITION_AUTHORITY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POSITION">
+        <PropertyRef Name="PS_ID" />
+      </Principal>
+      <Dependent Role="POSITION_AUTHORITY">
+        <PropertyRef Name="PS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCT_PRODUCTTYPE">
+    <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="1" />
+    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTTYPE">
+        <PropertyRef Name="PRD_TYPE_ID" />
+      </Principal>
+      <Dependent Role="PRODUCT">
+        <PropertyRef Name="PRD_TYPE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WAREHOUSE_PRODUCTTYPE">
+    <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="1" />
+    <End Role="WAREHOUSE" Type="Self.WAREHOUSE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTTYPE">
+        <PropertyRef Name="PRD_TYPE_ID" />
+      </Principal>
+      <Dependent Role="WAREHOUSE">
+        <PropertyRef Name="PRD_TYPE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALEBILL_DETAIL_SALEBILL">
+    <End Role="SALEBILL" Type="Self.SALEBILL" Multiplicity="1" />
+    <End Role="SALEBILL_DETAIL" Type="Self.SALEBILL_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SALEBILL">
+        <PropertyRef Name="SL_ID" />
+      </Principal>
+      <Dependent Role="SALEBILL_DETAIL">
+        <PropertyRef Name="SL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CuaHangMayTinhEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="administrative_regions" EntityType="Self.administrative_regions" />
+    <EntitySet Name="administrative_units" EntityType="Self.administrative_units" />
+    <EntitySet Name="AUTHORITies" EntityType="Self.AUTHORITY" />
+    <EntitySet Name="BRANDs" EntityType="Self.BRAND" />
+    <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
+    <EntitySet Name="DISCOUNTs" EntityType="Self.DISCOUNT" />
+    <EntitySet Name="districts" EntityType="Self.district" />
+    <EntitySet Name="EMPLOYEES" EntityType="Self.EMPLOYEE" />
+    <EntitySet Name="IMPORTBILLs" EntityType="Self.IMPORTBILL" />
+    <EntitySet Name="IMPORTBILL_DETAIL" EntityType="Self.IMPORTBILL_DETAIL" />
+    <EntitySet Name="PAYMENTs" EntityType="Self.PAYMENT" />
+    <EntitySet Name="POSITIONs" EntityType="Self.POSITION" />
+    <EntitySet Name="POSITION_AUTHORITY" EntityType="Self.POSITION_AUTHORITY" />
+    <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
+    <EntitySet Name="PRODUCTTYPEs" EntityType="Self.PRODUCTTYPE" />
+    <EntitySet Name="PROMOTIONs" EntityType="Self.PROMOTION" />
+    <EntitySet Name="provinces" EntityType="Self.province" />
+    <EntitySet Name="SALEBILLs" EntityType="Self.SALEBILL" />
+    <EntitySet Name="SALEBILL_DETAIL" EntityType="Self.SALEBILL_DETAIL" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="wards" EntityType="Self.ward" />
+    <EntitySet Name="WAREHOUSEs" EntityType="Self.WAREHOUSE" />
+    <AssociationSet Name="provinces_administrative_region_id_fkey" Association="Self.provinces_administrative_region_id_fkey">
+      <End Role="administrative_regions" EntitySet="administrative_regions" />
+      <End Role="provinces" EntitySet="provinces" />
+    </AssociationSet>
+    <AssociationSet Name="districts_administrative_unit_id_fkey" Association="Self.districts_administrative_unit_id_fkey">
+      <End Role="administrative_units" EntitySet="administrative_units" />
+      <End Role="districts" EntitySet="districts" />
+    </AssociationSet>
+    <AssociationSet Name="provinces_administrative_unit_id_fkey" Association="Self.provinces_administrative_unit_id_fkey">
+      <End Role="administrative_units" EntitySet="administrative_units" />
+      <End Role="provinces" EntitySet="provinces" />
+    </AssociationSet>
+    <AssociationSet Name="wards_administrative_unit_id_fkey" Association="Self.wards_administrative_unit_id_fkey">
+      <End Role="administrative_units" EntitySet="administrative_units" />
+      <End Role="wards" EntitySet="wards" />
+    </AssociationSet>
+    <AssociationSet Name="FK__POSITION___AUT_I__603D47BB" Association="Self.FK__POSITION___AUT_I__603D47BB">
+      <End Role="AUTHORITY" EntitySet="AUTHORITies" />
+      <End Role="POSITION_AUTHORITY" EntitySet="POSITION_AUTHORITY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IMPORTBILL_BRAND" Association="Self.FK_IMPORTBILL_BRAND">
+      <End Role="BRAND" EntitySet="BRANDs" />
+      <End Role="IMPORTBILL" EntitySet="IMPORTBILLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAREHOUSE_BRAND" Association="Self.FK_WAREHOUSE_BRAND">
+      <End Role="BRAND" EntitySet="BRANDs" />
+      <End Role="WAREHOUSE" EntitySet="WAREHOUSEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALEBILL_CUSTOMER" Association="Self.FK_SALEBILL_CUSTOMER">
+      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+      <End Role="SALEBILL" EntitySet="SALEBILLs" />
+    </AssociationSet>
+    <AssociationSet Name="districts_province_code_fkey" Association="Self.districts_province_code_fkey">
+      <End Role="provinces" EntitySet="provinces" />
+      <End Role="districts" EntitySet="districts" />
+    </AssociationSet>
+    <AssociationSet Name="wards_district_code_fkey" Association="Self.wards_district_code_fkey">
+      <End Role="districts" EntitySet="districts" />
+      <End Role="wards" EntitySet="wards" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EMPLOYEES__PS_ID__67DE6983" Association="Self.FK__EMPLOYEES__PS_ID__67DE6983">
+      <End Role="POSITION" EntitySet="POSITIONs" />
+      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IMPORTBILL_DETAIL_IMPORTBILL" Association="Self.FK_IMPORTBILL_DETAIL_IMPORTBILL">
+      <End Role="IMPORTBILL" EntitySet="IMPORTBILLs" />
+      <End Role="IMPORTBILL_DETAIL" EntitySet="IMPORTBILL_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__POSITION___PS_ID__5F492382" Association="Self.FK__POSITION___PS_ID__5F492382">
+      <End Role="POSITION" EntitySet="POSITIONs" />
+      <End Role="POSITION_AUTHORITY" EntitySet="POSITION_AUTHORITY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCT_PRODUCTTYPE" Association="Self.FK_PRODUCT_PRODUCTTYPE">
+      <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPEs" />
+      <End Role="PRODUCT" EntitySet="PRODUCTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WAREHOUSE_PRODUCTTYPE" Association="Self.FK_WAREHOUSE_PRODUCTTYPE">
+      <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPEs" />
+      <End Role="WAREHOUSE" EntitySet="WAREHOUSEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALEBILL_DETAIL_SALEBILL" Association="Self.FK_SALEBILL_DETAIL_SALEBILL">
+      <End Role="SALEBILL" EntitySet="SALEBILLs" />
+      <End Role="SALEBILL_DETAIL" EntitySet="SALEBILL_DETAIL" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CuaHangMayTinhModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CuaHangMayTinhModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

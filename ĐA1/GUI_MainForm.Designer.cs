@@ -42,29 +42,30 @@
             this.btnDSSP = new Guna.UI2.WinForms.Guna2Button();
             this.btnSanpham = new Guna.UI2.WinForms.Guna2Button();
             this.MenuSanpham = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnLoaiSP = new Guna.UI2.WinForms.Guna2Button();
             this.btnTongquan = new Guna.UI2.WinForms.Guna2Button();
             this.lblName = new System.Windows.Forms.Label();
             this.sidebar = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnTaikhoan = new Guna.UI2.WinForms.Guna2Button();
-            this.lblFuncName = new System.Windows.Forms.Label();
-            this.pnNoidung = new System.Windows.Forms.Panel();
             this.pnDonhang = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDonhang = new Guna.UI2.WinForms.Guna2Button();
             this.btndonbanhang = new Guna.UI2.WinForms.Guna2Button();
             this.btnDonnhap = new Guna.UI2.WinForms.Guna2Button();
             this.btnKhuyenmai = new Guna.UI2.WinForms.Guna2Button();
             this.btnBanhang = new Guna.UI2.WinForms.Guna2Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTaikhoan = new Guna.UI2.WinForms.Guna2Button();
+            this.lblFuncName = new System.Windows.Forms.Label();
+            this.pnNoidung = new System.Windows.Forms.Panel();
             this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.pnLogout = new System.Windows.Forms.FlowLayoutPanel();
             this.MenuSanpham.SuspendLayout();
             this.sidebar.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.pnDonhang.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.pnLogout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,7 +104,7 @@
             this.btnCauhinh.Location = new System.Drawing.Point(3, 507);
             this.btnCauhinh.Name = "btnCauhinh";
             this.btnCauhinh.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnCauhinh.Size = new System.Drawing.Size(221, 47);
+            this.btnCauhinh.Size = new System.Drawing.Size(218, 47);
             this.btnCauhinh.TabIndex = 2;
             this.btnCauhinh.Text = "Cấu hình";
             this.btnCauhinh.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -288,10 +289,35 @@
             this.MenuSanpham.Controls.Add(this.btnQLkho);
             this.MenuSanpham.Controls.Add(this.btnNhaphang);
             this.MenuSanpham.Controls.Add(this.btnNhacc);
+            this.MenuSanpham.Controls.Add(this.btnLoaiSP);
             this.MenuSanpham.Location = new System.Drawing.Point(3, 260);
             this.MenuSanpham.Name = "MenuSanpham";
             this.MenuSanpham.Size = new System.Drawing.Size(221, 47);
             this.MenuSanpham.TabIndex = 4;
+            // 
+            // btnLoaiSP
+            // 
+            this.btnLoaiSP.BackColor = System.Drawing.Color.Transparent;
+            this.btnLoaiSP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnLoaiSP.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLoaiSP.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLoaiSP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLoaiSP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLoaiSP.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnLoaiSP.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnLoaiSP.ForeColor = System.Drawing.Color.White;
+            this.btnLoaiSP.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLoaiSP.Location = new System.Drawing.Point(0, 235);
+            this.btnLoaiSP.Margin = new System.Windows.Forms.Padding(0);
+            this.btnLoaiSP.Name = "btnLoaiSP";
+            this.btnLoaiSP.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnLoaiSP.Size = new System.Drawing.Size(221, 47);
+            this.btnLoaiSP.TabIndex = 2;
+            this.btnLoaiSP.Text = "Loại sản phẩm";
+            this.btnLoaiSP.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLoaiSP.TextOffset = new System.Drawing.Point(15, 0);
+            this.btnLoaiSP.Click += new System.EventHandler(this.btnLoaiSP_Click);
+            this.btnLoaiSP.Leave += new System.EventHandler(this.mainbutton_Leave);
             // 
             // btnTongquan
             // 
@@ -374,52 +400,6 @@
             this.guna2CirclePictureBox1.TabIndex = 0;
             this.guna2CirclePictureBox1.TabStop = false;
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btnTaikhoan);
-            this.panel1.Controls.Add(this.lblFuncName);
-            this.panel1.Location = new System.Drawing.Point(221, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1069, 52);
-            this.panel1.TabIndex = 6;
-            // 
-            // btnTaikhoan
-            // 
-            this.btnTaikhoan.BorderRadius = 3;
-            this.btnTaikhoan.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnTaikhoan.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnTaikhoan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTaikhoan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTaikhoan.FillColor = System.Drawing.Color.White;
-            this.btnTaikhoan.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnTaikhoan.ForeColor = System.Drawing.Color.White;
-            this.btnTaikhoan.Location = new System.Drawing.Point(739, 0);
-            this.btnTaikhoan.Name = "btnTaikhoan";
-            this.btnTaikhoan.Size = new System.Drawing.Size(107, 52);
-            this.btnTaikhoan.TabIndex = 1;
-            // 
-            // lblFuncName
-            // 
-            this.lblFuncName.AutoSize = true;
-            this.lblFuncName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFuncName.Location = new System.Drawing.Point(27, 15);
-            this.lblFuncName.Name = "lblFuncName";
-            this.lblFuncName.Size = new System.Drawing.Size(0, 25);
-            this.lblFuncName.TabIndex = 0;
-            // 
-            // pnNoidung
-            // 
-            this.pnNoidung.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnNoidung.Location = new System.Drawing.Point(221, 52);
-            this.pnNoidung.Name = "pnNoidung";
-            this.pnNoidung.Size = new System.Drawing.Size(1069, 750);
-            this.pnNoidung.TabIndex = 7;
-            // 
             // pnDonhang
             // 
             this.pnDonhang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
@@ -448,7 +428,7 @@
             this.btnDonhang.Margin = new System.Windows.Forms.Padding(0);
             this.btnDonhang.Name = "btnDonhang";
             this.btnDonhang.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnDonhang.Size = new System.Drawing.Size(221, 47);
+            this.btnDonhang.Size = new System.Drawing.Size(218, 47);
             this.btnDonhang.TabIndex = 2;
             this.btnDonhang.Text = "Đơn hàng";
             this.btnDonhang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -552,6 +532,52 @@
             this.btnBanhang.Click += new System.EventHandler(this.btnBanle_Click);
             this.btnBanhang.Leave += new System.EventHandler(this.mainbutton_Leave);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnTaikhoan);
+            this.panel1.Controls.Add(this.lblFuncName);
+            this.panel1.Location = new System.Drawing.Point(221, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1069, 52);
+            this.panel1.TabIndex = 6;
+            // 
+            // btnTaikhoan
+            // 
+            this.btnTaikhoan.BorderRadius = 3;
+            this.btnTaikhoan.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTaikhoan.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTaikhoan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTaikhoan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTaikhoan.FillColor = System.Drawing.Color.White;
+            this.btnTaikhoan.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnTaikhoan.ForeColor = System.Drawing.Color.White;
+            this.btnTaikhoan.Location = new System.Drawing.Point(739, 0);
+            this.btnTaikhoan.Name = "btnTaikhoan";
+            this.btnTaikhoan.Size = new System.Drawing.Size(107, 52);
+            this.btnTaikhoan.TabIndex = 1;
+            // 
+            // lblFuncName
+            // 
+            this.lblFuncName.AutoSize = true;
+            this.lblFuncName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFuncName.Location = new System.Drawing.Point(27, 15);
+            this.lblFuncName.Name = "lblFuncName";
+            this.lblFuncName.Size = new System.Drawing.Size(0, 25);
+            this.lblFuncName.TabIndex = 0;
+            // 
+            // pnNoidung
+            // 
+            this.pnNoidung.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnNoidung.Location = new System.Drawing.Point(221, 52);
+            this.pnNoidung.Name = "pnNoidung";
+            this.pnNoidung.Size = new System.Drawing.Size(1069, 750);
+            this.pnNoidung.TabIndex = 7;
+            // 
             // btnLogout
             // 
             this.btnLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -610,9 +636,9 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
+            this.pnDonhang.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.pnDonhang.ResumeLayout(false);
             this.pnLogout.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -649,5 +675,6 @@
         private Guna.UI2.WinForms.Guna2Button btnKhuyenmai;
         private Guna.UI2.WinForms.Guna2Button btnLogout;
         private System.Windows.Forms.FlowLayoutPanel pnLogout;
+        private Guna.UI2.WinForms.Guna2Button btnLoaiSP;
     }
 }

@@ -48,5 +48,21 @@ namespace DAL
             var brandid = db.BRANDs.FirstOrDefault(p => p.BRD_NAME == brdName);
             return brandid != null ? brandid.BRD_ID : null;
         }
+
+        public List<BRAND> TimKiemNCC(string keyword)
+        {
+            var query = db.BRANDs.AsQueryable();
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(p => p.BRD_NAME.ToLower().Contains(keyword) ||
+                                         p.BRD_PHONE.ToLower().Contains(keyword) ||
+                                         p.BRD_ADDRESS.ToLower().Contains(keyword) ||
+                                         p.BRD_ID.ToLower().Contains(keyword));
+            }
+
+            return query.ToList();
+        }
+
     }
 }

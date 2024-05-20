@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace ĐA1
 {
-    public partial class SearchProduct : UserControl
+    public partial class UC_SearchProduct : UserControl
     {
-        public SearchProduct()
+        public UC_SearchProduct()
         {
             InitializeComponent();
         }

@@ -42,43 +42,13 @@ namespace DAL
         public virtual DbSet<POSITION_AUTHORITY> POSITION_AUTHORITY { get; set; }
         public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
         public virtual DbSet<PRODUCTTYPE> PRODUCTTYPEs { get; set; }
+        public virtual DbSet<PROMOTION> PROMOTIONs { get; set; }
         public virtual DbSet<province> provinces { get; set; }
         public virtual DbSet<SALEBILL> SALEBILLs { get; set; }
         public virtual DbSet<SALEBILL_DETAIL> SALEBILL_DETAIL { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<ward> wards { get; set; }
         public virtual DbSet<WAREHOUSE> WAREHOUSEs { get; set; }
-    
-        [DbFunction("CuaHangMayTinhEntities1", "TimKiemSanPham")]
-        public virtual IQueryable<TimKiemSanPham_Result> TimKiemSanPham(string bRD_ID, string pRD_TYPE_ID, string pRD_NAME)
-        {
-            var bRD_IDParameter = bRD_ID != null ?
-                new ObjectParameter("BRD_ID", bRD_ID) :
-                new ObjectParameter("BRD_ID", typeof(string));
-    
-            var pRD_TYPE_IDParameter = pRD_TYPE_ID != null ?
-                new ObjectParameter("PRD_TYPE_ID", pRD_TYPE_ID) :
-                new ObjectParameter("PRD_TYPE_ID", typeof(string));
-    
-            var pRD_NAMEParameter = pRD_NAME != null ?
-                new ObjectParameter("PRD_NAME", pRD_NAME) :
-                new ObjectParameter("PRD_NAME", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<TimKiemSanPham_Result>("[CuaHangMayTinhEntities1].[TimKiemSanPham](@BRD_ID, @PRD_TYPE_ID, @PRD_NAME)", bRD_IDParameter, pRD_TYPE_IDParameter, pRD_NAMEParameter);
-        }
-    
-        public virtual ObjectResult<PROC_LOGIN_Result> PROC_LOGIN(string username, string password)
-        {
-            var usernameParameter = username != null ?
-                new ObjectParameter("username", username) :
-                new ObjectParameter("username", typeof(string));
-    
-            var passwordParameter = password != null ?
-                new ObjectParameter("password", password) :
-                new ObjectParameter("password", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PROC_LOGIN_Result>("PROC_LOGIN", usernameParameter, passwordParameter);
-        }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

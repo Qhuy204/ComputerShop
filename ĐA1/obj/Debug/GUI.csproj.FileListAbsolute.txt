@@ -31,6 +31,10 @@ D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_DSNhanvien.res
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\EntityFramework.SqlServer.dll
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\EntityFramework.SqlServer.xml
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_Banhang.resources
-D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.SearchResult.resources
-D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.SearchProduct.resources
-D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.ProductControl.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_TaoMagiamgia.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_Khuyenmai.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.UC_ProductControl.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.UC_SearchProduct.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.UC_SearchResult.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_TaoKMOption.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_TaoCtrinhKm.resources

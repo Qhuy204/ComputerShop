@@ -24,7 +24,7 @@ namespace ĐA1
 
         // Giả sử các biến này đã tồn tại và được khởi tạo
         private bool menuExpanded = false; // Trạng thái menu (ban đầu là đóng)
-        private const int MENU_HEIGHT_EXPANDED = 235;
+        private const int MENU_HEIGHT_EXPANDED = 282;
         private const int MENU_HEIGHT_COLLAPSED = 47;
         private const int MENU_TRANSITION_SPEED = 5;
 
@@ -186,6 +186,8 @@ namespace ĐA1
         {
             Chuyendong(sender);
             lblFuncName.Text = btnbaocao.Text;
+            GUI_Khuyenmai km = new GUI_Khuyenmai();
+            HienThiFormCon(km);
         }
 
         private void btnCauhinh_Click(object sender, EventArgs e)
@@ -215,6 +217,11 @@ namespace ĐA1
         private void btnDonhang_Click(object sender, EventArgs e)
         {
             sidebarTransition.Start();
+        }
+
+        private void btnLoaiSP_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

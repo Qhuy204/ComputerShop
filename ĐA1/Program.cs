@@ -31,7 +31,7 @@ namespace ĐA1
             // Cài đặt thuộc tính cho form con
             frm.TopLevel = false;
             frm.Dock = DockStyle.Fill;
-
+            //frm.Size = frm.PreferredSize;
             // Thêm form con vào panel
             panel.Controls.Add(frm);
 

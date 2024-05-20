@@ -14,19 +14,17 @@ namespace DAL
     
     public partial class DISCOUNT
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DISCOUNT()
-        {
-            this.SALEBILLs = new HashSet<SALEBILL>();
-        }
-    
         public string CODE { get; set; }
-        public Nullable<double> DISCOUNT_PERCENT { get; set; }
+        public Nullable<decimal> DISCOUNT_PERCENT { get; set; }
+        public Nullable<decimal> DISCOUNT_AMOUNT { get; set; }
+        public Nullable<decimal> MAXIMUM_DISCOUNT_AMOUNT { get; set; }
+        public string CODE_DESCRIPTION { get; set; }
+        public Nullable<decimal> MIN_PURCHASE_VALUE { get; set; }
+        public Nullable<int> MIN_QUANTITY_OF_PRODUCT { get; set; }
         public Nullable<int> MAXIMUM_USE { get; set; }
         public Nullable<int> USED_COUNT { get; set; }
-        public Nullable<double> MAXIMUM_DISCOUNT_AMOUNT { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SALEBILL> SALEBILLs { get; set; }
+        public Nullable<System.DateTime> DISCOUNT_START_DATE { get; set; }
+        public Nullable<System.DateTime> DISCOUNT_END_DATE { get; set; }
+        public string DISCOUNT_STATUS { get; set; }
     }
 }

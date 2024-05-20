@@ -12,12 +12,6 @@ namespace BUS
     {
         private DAL_DSSanpham dalSP = new DAL_DSSanpham();
 
-        public void Add(PRODUCT Prd)
-        {
-            Prd.PRD_ID= GetNewID();
-            dalSP.Add(Prd);
-        }
-
         public bool Delete(string id)
         {
             PRODUCT product = GetbyID(id);

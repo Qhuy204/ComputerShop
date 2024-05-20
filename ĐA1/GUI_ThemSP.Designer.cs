@@ -67,6 +67,8 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel1.BorderRadius = 5;
+            this.guna2Panel1.BorderThickness = 1;
             this.guna2Panel1.Controls.Add(this.btnHuy);
             this.guna2Panel1.Controls.Add(this.panel7);
             this.guna2Panel1.Controls.Add(this.btnSave);
@@ -426,9 +428,9 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(36, 118);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 19);
+            this.label3.Size = new System.Drawing.Size(97, 19);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Nhà cung cấp";
+            this.label3.Text = "Hãng sản xuất";
             // 
             // label2
             // 

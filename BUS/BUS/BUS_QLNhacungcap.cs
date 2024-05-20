@@ -63,6 +63,11 @@ namespace BUS
         {
             return dalNCC.getBRD_ID(brdName);
         }
+
+        public List<BRAND> TimKiemNCC(string keyword)
+        {
+            return dalNCC.TimKiemNCC(keyword);
+        }
     }
 }
   

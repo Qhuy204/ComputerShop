@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CuaHangMayTinhModelStoreContainer" CdmEntityContainer="CuaHangMayTinhEntities1">
+    <EntitySetMapping Name="administrative_regions">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.administrative_regions">
+        <MappingFragment StoreEntitySet="administrative_regions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="name_en" ColumnName="name_en" />
+          <ScalarProperty Name="code_name" ColumnName="code_name" />
+          <ScalarProperty Name="code_name_en" ColumnName="code_name_en" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="administrative_units">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.administrative_units">
+        <MappingFragment StoreEntitySet="administrative_units">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
+          <ScalarProperty Name="short_name" ColumnName="short_name" />
+          <ScalarProperty Name="short_name_en" ColumnName="short_name_en" />
+          <ScalarProperty Name="code_name" ColumnName="code_name" />
+          <ScalarProperty Name="code_name_en" ColumnName="code_name_en" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AUTHORITies">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.AUTHORITY">
+        <MappingFragment StoreEntitySet="AUTHORITY">
+          <ScalarProperty Name="AUT_ID" ColumnName="AUT_ID" />
+          <ScalarProperty Name="AUT_NAME" ColumnName="AUT_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BRANDs">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.BRAND">
+        <MappingFragment StoreEntitySet="BRAND">
+          <ScalarProperty Name="BRD_ID" ColumnName="BRD_ID" />
+          <ScalarProperty Name="BRD_NAME" ColumnName="BRD_NAME" />
+          <ScalarProperty Name="BRD_ADDRESS" ColumnName="BRD_ADDRESS" />
+          <ScalarProperty Name="BRD_PHONE" ColumnName="BRD_PHONE" />
+          <ScalarProperty Name="BRD_EMAIL" ColumnName="BRD_EMAIL" />
+          <ScalarProperty Name="BRD_STATUS" ColumnName="BRD_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMERs">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />
+          <ScalarProperty Name="CUS_NAME" ColumnName="CUS_NAME" />
+          <ScalarProperty Name="CUS_BIRTHDAY" ColumnName="CUS_BIRTHDAY" />
+          <ScalarProperty Name="CUS_GENDER" ColumnName="CUS_GENDER" />
+          <ScalarProperty Name="CUS_PHONE_NUMBER" ColumnName="CUS_PHONE_NUMBER" />
+          <ScalarProperty Name="CUS_ADDRESS" ColumnName="CUS_ADDRESS" />
+          <ScalarProperty Name="CUS_TOTAL_SPENDING_MONEY" ColumnName="CUS_TOTAL_SPENDING_MONEY" />
+          <ScalarProperty Name="CUS_TOTAL_PRODUCTS_PURCHASED" ColumnName="CUS_TOTAL_PRODUCTS_PURCHASED" />
+          <ScalarProperty Name="CUS_TOTAL_QUANTITY_OF_ORDER" ColumnName="CUS_TOTAL_QUANTITY_OF_ORDER" />
+          <ScalarProperty Name="CUS_DATE_OF_LAST_PURCHASE" ColumnName="CUS_DATE_OF_LAST_PURCHASE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISCOUNTs">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.DISCOUNT">
+        <MappingFragment StoreEntitySet="DISCOUNT">
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="DISCOUNT_PERCENT" ColumnName="DISCOUNT_PERCENT" />
+          <ScalarProperty Name="DISCOUNT_AMOUNT" ColumnName="DISCOUNT_AMOUNT" />
+          <ScalarProperty Name="MAXIMUM_DISCOUNT_AMOUNT" ColumnName="MAXIMUM_DISCOUNT_AMOUNT" />
+          <ScalarProperty Name="CODE_DESCRIPTION" ColumnName="CODE_DESCRIPTION" />
+          <ScalarProperty Name="MIN_PURCHASE_VALUE" ColumnName="MIN_PURCHASE_VALUE" />
+          <ScalarProperty Name="MIN_QUANTITY_OF_PRODUCT" ColumnName="MIN_QUANTITY_OF_PRODUCT" />
+          <ScalarProperty Name="MAXIMUM_USE" ColumnName="MAXIMUM_USE" />
+          <ScalarProperty Name="USED_COUNT" ColumnName="USED_COUNT" />
+          <ScalarProperty Name="DISCOUNT_START_DATE" ColumnName="DISCOUNT_START_DATE" />
+          <ScalarProperty Name="DISCOUNT_END_DATE" ColumnName="DISCOUNT_END_DATE" />
+          <ScalarProperty Name="DISCOUNT_STATUS" ColumnName="DISCOUNT_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="districts">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.district">
+        <MappingFragment StoreEntitySet="districts">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="name_en" ColumnName="name_en" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
+          <ScalarProperty Name="code_name" ColumnName="code_name" />
+          <ScalarProperty Name="province_code" ColumnName="province_code" />
+          <ScalarProperty Name="administrative_unit_id" ColumnName="administrative_unit_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEES">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.EMPLOYEE">
+        <MappingFragment StoreEntitySet="EMPLOYEES">
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+          <ScalarProperty Name="EMP_PHONE_NUMBER" ColumnName="EMP_PHONE_NUMBER" />
+          <ScalarProperty Name="EMP_BIRTHDAY" ColumnName="EMP_BIRTHDAY" />
+          <ScalarProperty Name="EMP_GENDER" ColumnName="EMP_GENDER" />
+          <ScalarProperty Name="EMP_PROVINCE" ColumnName="EMP_PROVINCE" />
+          <ScalarProperty Name="EMP_DISTRICT" ColumnName="EMP_DISTRICT" />
+          <ScalarProperty Name="EMP_WARD" ColumnName="EMP_WARD" />
+          <ScalarProperty Name="EMP_ADDRESS" ColumnName="EMP_ADDRESS" />
+          <ScalarProperty Name="EMP_EMAIL" ColumnName="EMP_EMAIL" />
+          <ScalarProperty Name="EMP_ACCOUNT" ColumnName="EMP_ACCOUNT" />
+          <ScalarProperty Name="EMP_PASSWORD" ColumnName="EMP_PASSWORD" />
+          <ScalarProperty Name="HIRE_DATE" ColumnName="HIRE_DATE" />
+          <ScalarProperty Name="PS_ID" ColumnName="PS_ID" />
+          <ScalarProperty Name="EMP_STATUS" ColumnName="EMP_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMPORTBILLs">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.IMPORTBILL">
+        <MappingFragment StoreEntitySet="IMPORTBILL">
+          <ScalarProperty Name="IB_ID" ColumnName="IB_ID" />
+          <ScalarProperty Name="BRD_ID" ColumnName="BRD_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="IB_DATE" ColumnName="IB_DATE" />
+          <ScalarProperty Name="TOTAL_MONEY" ColumnName="TOTAL_MONEY" />
+          <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMPORTBILL_DETAIL">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.IMPORTBILL_DETAIL">
+        <MappingFragment StoreEntitySet="IMPORTBILL_DETAIL">
+          <ScalarProperty Name="IB_DETAIL_ID" ColumnName="IB_DETAIL_ID" />
+          <ScalarProperty Name="IB_ID" ColumnName="IB_ID" />
+          <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="IB_PRICE" ColumnName="IB_PRICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAYMENTs">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.PAYMENT">
+        <MappingFragment StoreEntitySet="PAYMENT">
+          <ScalarProperty Name="PMT_NAME" ColumnName="PMT_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSITIONs">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.POSITION">
+        <MappingFragment StoreEntitySet="POSITION">
+          <ScalarProperty Name="PS_ID" ColumnName="PS_ID" />
+          <ScalarProperty Name="PS_NAME" ColumnName="PS_NAME" />
+          <ScalarProperty Name="PS_NOTE" ColumnName="PS_NOTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POSITION_AUTHORITY">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.POSITION_AUTHORITY">
+        <MappingFragment StoreEntitySet="POSITION_AUTHORITY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PS_ID" ColumnName="PS_ID" />
+          <ScalarProperty Name="AUT_ID" ColumnName="AUT_ID" />
+          <ScalarProperty Name="ROLE_TYPE" ColumnName="ROLE_TYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTs">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.PRODUCT">
+        <MappingFragment StoreEntitySet="PRODUCT">
+          <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
+          <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
+          <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
+          <ScalarProperty Name="PRD_TYPE_ID" ColumnName="PRD_TYPE_ID" />
+          <ScalarProperty Name="BRD_ID" ColumnName="BRD_ID" />
+          <ScalarProperty Name="RDY_FOR_SALE" ColumnName="RDY_FOR_SALE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="DELIVERY_ALLOWED" ColumnName="DELIVERY_ALLOWED" />
+          <ScalarProperty Name="PRD_WEIGHT" ColumnName="PRD_WEIGHT" />
+          <ScalarProperty Name="CREATE_DAY" ColumnName="CREATE_DAY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTTYPEs">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.PRODUCTTYPE">
+        <MappingFragment StoreEntitySet="PRODUCTTYPE">
+          <ScalarProperty Name="PRD_TYPE_ID" ColumnName="PRD_TYPE_ID" />
+          <ScalarProperty Name="PRD_TYPE_NAME" ColumnName="PRD_TYPE_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROMOTIONs">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.PROMOTION">
+        <MappingFragment StoreEntitySet="PROMOTION">
+          <ScalarProperty Name="PROMOTION_ID" ColumnName="PROMOTION_ID" />
+          <ScalarProperty Name="PROMOTION_NAME" ColumnName="PROMOTION_NAME" />
+          <ScalarProperty Name="PROMOTION_DESCRIPTION" ColumnName="PROMOTION_DESCRIPTION" />
+          <ScalarProperty Name="PROMOTION_START_DATE" ColumnName="PROMOTION_START_DATE" />
+          <ScalarProperty Name="PROMOTION_END_DATE" ColumnName="PROMOTION_END_DATE" />
+          <ScalarProperty Name="DISCOUNT_PERCENT" ColumnName="DISCOUNT_PERCENT" />
+          <ScalarProperty Name="DISCOUNT_AMOUNT" ColumnName="DISCOUNT_AMOUNT" />
+          <ScalarProperty Name="PRD_TYPE_NAME" ColumnName="PRD_TYPE_NAME" />
+          <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
+          <ScalarProperty Name="MIN_PURCHASE_VALUE" ColumnName="MIN_PURCHASE_VALUE" />
+          <ScalarProperty Name="MIN_QUANTITY_OF_PRODUCT" ColumnName="MIN_QUANTITY_OF_PRODUCT" />
+          <ScalarProperty Name="MAXIMUM_USE" ColumnName="MAXIMUM_USE" />
+          <ScalarProperty Name="USED_COUNT" ColumnName="USED_COUNT" />
+          <ScalarProperty Name="PROMOTION_STATUS" ColumnName="PROMOTION_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provinces">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.province">
+        <MappingFragment StoreEntitySet="provinces">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="name_en" ColumnName="name_en" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
+          <ScalarProperty Name="code_name" ColumnName="code_name" />
+          <ScalarProperty Name="administrative_unit_id" ColumnName="administrative_unit_id" />
+          <ScalarProperty Name="administrative_region_id" ColumnName="administrative_region_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALEBILLs">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.SALEBILL">
+        <MappingFragment StoreEntitySet="SALEBILL">
+          <ScalarProperty Name="SL_ID" ColumnName="SL_ID" />
+          <ScalarProperty Name="SL_DATE" ColumnName="SL_DATE" />
+          <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="DISCOUNT_CODE" ColumnName="DISCOUNT_CODE" />
+          <ScalarProperty Name="PROMOTION_ID" ColumnName="PROMOTION_ID" />
+          <ScalarProperty Name="TOTAL_MONEY" ColumnName="TOTAL_MONEY" />
+          <ScalarProperty Name="PAYMENT" ColumnName="PAYMENT" />
+          <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+          <ScalarProperty Name="MONEY_CUSTOMER_GIVE" ColumnName="MONEY_CUSTOMER_GIVE" />
+          <ScalarProperty Name="REFUND" ColumnName="REFUND" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALEBILL_DETAIL">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.SALEBILL_DETAIL">
+        <MappingFragment StoreEntitySet="SALEBILL_DETAIL">
+          <ScalarProperty Name="SL_DETAIL_ID" ColumnName="SL_DETAIL_ID" />
+          <ScalarProperty Name="SL_ID" ColumnName="SL_ID" />
+          <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wards">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.ward">
+        <MappingFragment StoreEntitySet="wards">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="name_en" ColumnName="name_en" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
+          <ScalarProperty Name="code_name" ColumnName="code_name" />
+          <ScalarProperty Name="district_code" ColumnName="district_code" />
+          <ScalarProperty Name="administrative_unit_id" ColumnName="administrative_unit_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WAREHOUSEs">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.WAREHOUSE">
+        <MappingFragment StoreEntitySet="WAREHOUSE">
+          <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
+          <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
+          <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
+          <ScalarProperty Name="PRD_TYPE_ID" ColumnName="PRD_TYPE_ID" />
+          <ScalarProperty Name="BRD_ID" ColumnName="BRD_ID" />
+          <ScalarProperty Name="RDY_FOR_SALE" ColumnName="RDY_FOR_SALE" />
+          <ScalarProperty Name="INVENTORY_QUANTITY" ColumnName="INVENTORY_QUANTITY" />
+          <ScalarProperty Name="CREATE_DAY" ColumnName="CREATE_DAY" />
+          <ScalarProperty Name="RETAIL_PRICE" ColumnName="RETAIL_PRICE" />
+          <ScalarProperty Name="IMPORT_PRICE" ColumnName="IMPORT_PRICE" />
+          <ScalarProperty Name="WHOLESALE_PRICE" ColumnName="WHOLESALE_PRICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CuaHangMayTinhModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CuaHangMayTinhModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CuaHangMayTinhModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="CuaHangMayTinhModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="CuaHangMayTinhModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CuaHangMayTinhModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CuaHangMayTinhModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

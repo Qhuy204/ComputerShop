@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CuaHangMayTinhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <ComplexType Name="TimKiemSanPham_Result">
-    <Property Name="PRD_IMG" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-    <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PRD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="PRD_TYPE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="BRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="RDY_FOR_SALE" Type="Int32" Nullable="false" />
-    <Property Name="QUANTITY" Type="Int32" Nullable="false" />
-    <Property Name="DELIVERY_ALLOWED" Type="Boolean" Nullable="false" />
-    <Property Name="PRD_WEIGHT" Type="Double" />
-    <Property Name="CREATE_DAY" Type="DateTime" />
-  </ComplexType>
   <EntityType Name="administrative_regions">
     <Key>
       <PropertyRef Name="id" />
@@ -80,11 +68,17 @@
       <PropertyRef Name="CODE" />
     </Key>
     <Property Name="CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="DISCOUNT_PERCENT" Type="Double" />
+    <Property Name="DISCOUNT_PERCENT" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="DISCOUNT_AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MAXIMUM_DISCOUNT_AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CODE_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MIN_PURCHASE_VALUE" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MIN_QUANTITY_OF_PRODUCT" Type="Int32" />
     <Property Name="MAXIMUM_USE" Type="Int32" />
     <Property Name="USED_COUNT" Type="Int32" />
-    <Property Name="MAXIMUM_DISCOUNT_AMOUNT" Type="Double" />
-    <NavigationProperty Name="SALEBILLs" Relationship="Self.FK_SALEBILL_DISCOUNT" FromRole="DISCOUNT" ToRole="SALEBILL" />
+    <Property Name="DISCOUNT_START_DATE" Type="DateTime" Precision="3" />
+    <Property Name="DISCOUNT_END_DATE" Type="DateTime" Precision="3" />
+    <Property Name="DISCOUNT_STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="district">
     <Key>
@@ -122,8 +116,6 @@
     <Property Name="PS_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="EMP_STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="POSITION" Relationship="Self.FK__EMPLOYEES__PS_ID__67DE6983" FromRole="EMPLOYEES" ToRole="POSITION" />
-    <NavigationProperty Name="IMPORTBILLs" Relationship="Self.FK_IMPORTBILL_EMPLOYEES" FromRole="EMPLOYEES" ToRole="IMPORTBILL" />
-    <NavigationProperty Name="SALEBILLs" Relationship="Self.FK_SALEBILL_EMPLOYEES" FromRole="EMPLOYEES" ToRole="SALEBILL" />
   </EntityType>
   <EntityType Name="IMPORTBILL">
     <Key>
@@ -136,7 +128,6 @@
     <Property Name="TOTAL_MONEY" Type="Double" />
     <Property Name="NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="BRAND" Relationship="Self.FK_IMPORTBILL_BRAND" FromRole="IMPORTBILL" ToRole="BRAND" />
-    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_IMPORTBILL_EMPLOYEES" FromRole="IMPORTBILL" ToRole="EMPLOYEES" />
     <NavigationProperty Name="IMPORTBILL_DETAIL" Relationship="Self.FK_IMPORTBILL_DETAIL_IMPORTBILL" FromRole="IMPORTBILL" ToRole="IMPORTBILL_DETAIL" />
   </EntityType>
   <EntityType Name="IMPORTBILL_DETAIL">
@@ -149,14 +140,12 @@
     <Property Name="QUANTITY" Type="Int32" />
     <Property Name="IB_PRICE" Type="Double" />
     <NavigationProperty Name="IMPORTBILL" Relationship="Self.FK_IMPORTBILL_DETAIL_IMPORTBILL" FromRole="IMPORTBILL_DETAIL" ToRole="IMPORTBILL" />
-    <NavigationProperty Name="WAREHOUSE" Relationship="Self.FK_IMPORTBILL_DETAIL_WAREHOUSE" FromRole="IMPORTBILL_DETAIL" ToRole="WAREHOUSE" />
   </EntityType>
   <EntityType Name="PAYMENT">
     <Key>
       <PropertyRef Name="PMT_NAME" />
     </Key>
     <Property Name="PMT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="SALEBILLs" Relationship="Self.FK_SALEBILL_PAYMENT" FromRole="PAYMENT" ToRole="SALEBILL" />
   </EntityType>
   <EntityType Name="POSITION">
     <Key>
@@ -194,7 +183,6 @@
     <Property Name="PRD_WEIGHT" Type="Double" />
     <Property Name="CREATE_DAY" Type="DateTime" Precision="0" />
     <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK_PRODUCT_PRODUCTTYPE" FromRole="PRODUCT" ToRole="PRODUCTTYPE" />
-    <NavigationProperty Name="SALEBILL_DETAIL" Relationship="Self.FK_SALEBILL_DETAIL_PRODUCT" FromRole="PRODUCT" ToRole="SALEBILL_DETAIL" />
   </EntityType>
   <EntityType Name="PRODUCTTYPE">
     <Key>
@@ -204,6 +192,25 @@
     <Property Name="PRD_TYPE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="PRODUCTs" Relationship="Self.FK_PRODUCT_PRODUCTTYPE" FromRole="PRODUCTTYPE" ToRole="PRODUCT" />
     <NavigationProperty Name="WAREHOUSEs" Relationship="Self.FK_WAREHOUSE_PRODUCTTYPE" FromRole="PRODUCTTYPE" ToRole="WAREHOUSE" />
+  </EntityType>
+  <EntityType Name="PROMOTION">
+    <Key>
+      <PropertyRef Name="PROMOTION_ID" />
+    </Key>
+    <Property Name="PROMOTION_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROMOTION_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PROMOTION_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PROMOTION_START_DATE" Type="DateTime" Precision="3" />
+    <Property Name="PROMOTION_END_DATE" Type="DateTime" Precision="3" />
+    <Property Name="DISCOUNT_PERCENT" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="DISCOUNT_AMOUNT" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PRD_TYPE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PRD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MIN_PURCHASE_VALUE" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MIN_QUANTITY_OF_PRODUCT" Type="Int32" />
+    <Property Name="MAXIMUM_USE" Type="Int32" />
+    <Property Name="USED_COUNT" Type="Int32" />
+    <Property Name="PROMOTION_STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="province">
     <Key>
@@ -230,6 +237,7 @@
     <Property Name="CUS_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="EMP_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DISCOUNT_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PROMOTION_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="TOTAL_MONEY" Type="Double" />
     <Property Name="PAYMENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -237,9 +245,6 @@
     <Property Name="REFUND" Type="Double" />
     <Property Name="STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_SALEBILL_CUSTOMER" FromRole="SALEBILL" ToRole="CUSTOMER" />
-    <NavigationProperty Name="DISCOUNT" Relationship="Self.FK_SALEBILL_DISCOUNT" FromRole="SALEBILL" ToRole="DISCOUNT" />
-    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_SALEBILL_EMPLOYEES" FromRole="SALEBILL" ToRole="EMPLOYEES" />
-    <NavigationProperty Name="PAYMENT1" Relationship="Self.FK_SALEBILL_PAYMENT" FromRole="SALEBILL" ToRole="PAYMENT" />
     <NavigationProperty Name="SALEBILL_DETAIL" Relationship="Self.FK_SALEBILL_DETAIL_SALEBILL" FromRole="SALEBILL" ToRole="SALEBILL_DETAIL" />
   </EntityType>
   <EntityType Name="SALEBILL_DETAIL">
@@ -251,7 +256,6 @@
     <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="QUANTITY" Type="Int32" Nullable="false" />
     <Property Name="PRICE" Type="Double" />
-    <NavigationProperty Name="PRODUCT" Relationship="Self.FK_SALEBILL_DETAIL_PRODUCT" FromRole="SALEBILL_DETAIL" ToRole="PRODUCT" />
     <NavigationProperty Name="SALEBILL" Relationship="Self.FK_SALEBILL_DETAIL_SALEBILL" FromRole="SALEBILL_DETAIL" ToRole="SALEBILL" />
   </EntityType>
   <EntityType Name="sysdiagram">
@@ -295,7 +299,6 @@
     <Property Name="IMPORT_PRICE" Type="Double" Nullable="false" />
     <Property Name="WHOLESALE_PRICE" Type="Double" Nullable="false" />
     <NavigationProperty Name="BRAND" Relationship="Self.FK_WAREHOUSE_BRAND" FromRole="WAREHOUSE" ToRole="BRAND" />
-    <NavigationProperty Name="IMPORTBILL_DETAIL" Relationship="Self.FK_IMPORTBILL_DETAIL_WAREHOUSE" FromRole="WAREHOUSE" ToRole="IMPORTBILL_DETAIL" />
     <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK_WAREHOUSE_PRODUCTTYPE" FromRole="WAREHOUSE" ToRole="PRODUCTTYPE" />
   </EntityType>
   <Association Name="provinces_administrative_region_id_fkey">
@@ -394,18 +397,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SALEBILL_DISCOUNT">
-    <End Role="DISCOUNT" Type="Self.DISCOUNT" Multiplicity="0..1" />
-    <End Role="SALEBILL" Type="Self.SALEBILL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DISCOUNT">
-        <PropertyRef Name="CODE" />
-      </Principal>
-      <Dependent Role="SALEBILL">
-        <PropertyRef Name="DISCOUNT_CODE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="districts_province_code_fkey">
     <End Role="provinces" Type="Self.province" Multiplicity="0..1" />
     <End Role="districts" Type="Self.district" Multiplicity="*" />
@@ -442,30 +433,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_IMPORTBILL_EMPLOYEES">
-    <End Role="EMPLOYEES" Type="Self.EMPLOYEE" Multiplicity="1" />
-    <End Role="IMPORTBILL" Type="Self.IMPORTBILL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="EMPLOYEES">
-        <PropertyRef Name="EMP_ID" />
-      </Principal>
-      <Dependent Role="IMPORTBILL">
-        <PropertyRef Name="EMP_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SALEBILL_EMPLOYEES">
-    <End Role="EMPLOYEES" Type="Self.EMPLOYEE" Multiplicity="1" />
-    <End Role="SALEBILL" Type="Self.SALEBILL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="EMPLOYEES">
-        <PropertyRef Name="EMP_ID" />
-      </Principal>
-      <Dependent Role="SALEBILL">
-        <PropertyRef Name="EMP_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_IMPORTBILL_DETAIL_IMPORTBILL">
     <End Role="IMPORTBILL" Type="Self.IMPORTBILL" Multiplicity="1" />
     <End Role="IMPORTBILL_DETAIL" Type="Self.IMPORTBILL_DETAIL" Multiplicity="*" />
@@ -475,30 +442,6 @@
       </Principal>
       <Dependent Role="IMPORTBILL_DETAIL">
         <PropertyRef Name="IB_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_IMPORTBILL_DETAIL_WAREHOUSE">
-    <End Role="WAREHOUSE" Type="Self.WAREHOUSE" Multiplicity="1" />
-    <End Role="IMPORTBILL_DETAIL" Type="Self.IMPORTBILL_DETAIL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="WAREHOUSE">
-        <PropertyRef Name="PRD_ID" />
-      </Principal>
-      <Dependent Role="IMPORTBILL_DETAIL">
-        <PropertyRef Name="PRD_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SALEBILL_PAYMENT">
-    <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="1" />
-    <End Role="SALEBILL" Type="Self.SALEBILL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PAYMENT">
-        <PropertyRef Name="PMT_NAME" />
-      </Principal>
-      <Dependent Role="SALEBILL">
-        <PropertyRef Name="PAYMENT" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -526,18 +469,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SALEBILL_DETAIL_PRODUCT">
-    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
-    <End Role="SALEBILL_DETAIL" Type="Self.SALEBILL_DETAIL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PRODUCT">
-        <PropertyRef Name="PRD_ID" />
-      </Principal>
-      <Dependent Role="SALEBILL_DETAIL">
-        <PropertyRef Name="PRD_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_WAREHOUSE_PRODUCTTYPE">
     <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="1" />
     <End Role="WAREHOUSE" Type="Self.WAREHOUSE" Multiplicity="*" />
@@ -562,7 +493,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="CuaHangMayTinhEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="CuaHangMayTinhEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="administrative_regions" EntityType="Self.administrative_regions" />
     <EntitySet Name="administrative_units" EntityType="Self.administrative_units" />
     <EntitySet Name="AUTHORITies" EntityType="Self.AUTHORITY" />
@@ -578,6 +509,7 @@
     <EntitySet Name="POSITION_AUTHORITY" EntityType="Self.POSITION_AUTHORITY" />
     <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
     <EntitySet Name="PRODUCTTYPEs" EntityType="Self.PRODUCTTYPE" />
+    <EntitySet Name="PROMOTIONs" EntityType="Self.PROMOTION" />
     <EntitySet Name="provinces" EntityType="Self.province" />
     <EntitySet Name="SALEBILLs" EntityType="Self.SALEBILL" />
     <EntitySet Name="SALEBILL_DETAIL" EntityType="Self.SALEBILL_DETAIL" />
@@ -616,10 +548,6 @@
       <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
       <End Role="SALEBILL" EntitySet="SALEBILLs" />
     </AssociationSet>
-    <AssociationSet Name="FK_SALEBILL_DISCOUNT" Association="Self.FK_SALEBILL_DISCOUNT">
-      <End Role="DISCOUNT" EntitySet="DISCOUNTs" />
-      <End Role="SALEBILL" EntitySet="SALEBILLs" />
-    </AssociationSet>
     <AssociationSet Name="districts_province_code_fkey" Association="Self.districts_province_code_fkey">
       <End Role="provinces" EntitySet="provinces" />
       <End Role="districts" EntitySet="districts" />
@@ -632,25 +560,9 @@
       <End Role="POSITION" EntitySet="POSITIONs" />
       <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
     </AssociationSet>
-    <AssociationSet Name="FK_IMPORTBILL_EMPLOYEES" Association="Self.FK_IMPORTBILL_EMPLOYEES">
-      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
-      <End Role="IMPORTBILL" EntitySet="IMPORTBILLs" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SALEBILL_EMPLOYEES" Association="Self.FK_SALEBILL_EMPLOYEES">
-      <End Role="EMPLOYEES" EntitySet="EMPLOYEES" />
-      <End Role="SALEBILL" EntitySet="SALEBILLs" />
-    </AssociationSet>
     <AssociationSet Name="FK_IMPORTBILL_DETAIL_IMPORTBILL" Association="Self.FK_IMPORTBILL_DETAIL_IMPORTBILL">
       <End Role="IMPORTBILL" EntitySet="IMPORTBILLs" />
       <End Role="IMPORTBILL_DETAIL" EntitySet="IMPORTBILL_DETAIL" />
-    </AssociationSet>
-    <AssociationSet Name="FK_IMPORTBILL_DETAIL_WAREHOUSE" Association="Self.FK_IMPORTBILL_DETAIL_WAREHOUSE">
-      <End Role="WAREHOUSE" EntitySet="WAREHOUSEs" />
-      <End Role="IMPORTBILL_DETAIL" EntitySet="IMPORTBILL_DETAIL" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SALEBILL_PAYMENT" Association="Self.FK_SALEBILL_PAYMENT">
-      <End Role="PAYMENT" EntitySet="PAYMENTs" />
-      <End Role="SALEBILL" EntitySet="SALEBILLs" />
     </AssociationSet>
     <AssociationSet Name="FK__POSITION___PS_ID__5F492382" Association="Self.FK__POSITION___PS_ID__5F492382">
       <End Role="POSITION" EntitySet="POSITIONs" />
@@ -660,10 +572,6 @@
       <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPEs" />
       <End Role="PRODUCT" EntitySet="PRODUCTs" />
     </AssociationSet>
-    <AssociationSet Name="FK_SALEBILL_DETAIL_PRODUCT" Association="Self.FK_SALEBILL_DETAIL_PRODUCT">
-      <End Role="PRODUCT" EntitySet="PRODUCTs" />
-      <End Role="SALEBILL_DETAIL" EntitySet="SALEBILL_DETAIL" />
-    </AssociationSet>
     <AssociationSet Name="FK_WAREHOUSE_PRODUCTTYPE" Association="Self.FK_WAREHOUSE_PRODUCTTYPE">
       <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPEs" />
       <End Role="WAREHOUSE" EntitySet="WAREHOUSEs" />
@@ -672,15 +580,6 @@
       <End Role="SALEBILL" EntitySet="SALEBILLs" />
       <End Role="SALEBILL_DETAIL" EntitySet="SALEBILL_DETAIL" />
     </AssociationSet>
-    <FunctionImport Name="TimKiemSanPham" IsComposable="true" ReturnType="Collection(CuaHangMayTinhModel.TimKiemSanPham_Result)">
-      <Parameter Name="BRD_ID" Mode="In" Type="String" />
-      <Parameter Name="PRD_TYPE_ID" Mode="In" Type="String" />
-      <Parameter Name="PRD_NAME" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="PROC_LOGIN" ReturnType="Collection(CuaHangMayTinhModel.PROC_LOGIN_Result)">
-      <Parameter Name="username" Mode="In" Type="String" />
-      <Parameter Name="password" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -712,23 +611,6 @@
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
-  <ComplexType Name="PROC_LOGIN_Result">
-    <Property Type="String" Name="EMP_ID" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="EMP_NAME" Nullable="false" MaxLength="255" />
-    <Property Type="String" Name="EMP_PHONE_NUMBER" Nullable="false" MaxLength="10" />
-    <Property Type="DateTime" Name="EMP_BIRTHDAY" Nullable="false" />
-    <Property Type="String" Name="EMP_GENDER" Nullable="true" MaxLength="3" />
-    <Property Type="String" Name="EMP_PROVINCE" Nullable="true" MaxLength="255" />
-    <Property Type="String" Name="EMP_DISTRICT" Nullable="true" MaxLength="255" />
-    <Property Type="String" Name="EMP_WARD" Nullable="true" MaxLength="255" />
-    <Property Type="String" Name="EMP_ADDRESS" Nullable="false" MaxLength="255" />
-    <Property Type="String" Name="EMP_EMAIL" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="EMP_ACCOUNT" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="EMP_PASSWORD" Nullable="false" MaxLength="20" />
-    <Property Type="DateTime" Name="HIRE_DATE" Nullable="true" Precision="23" />
-    <Property Type="String" Name="PS_ID" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="EMP_STATUS" Nullable="true" MaxLength="255" />
-  </ComplexType>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
     <Property Type="Binary" Name="definition" Nullable="true" />

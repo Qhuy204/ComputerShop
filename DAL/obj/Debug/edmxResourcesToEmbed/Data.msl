@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="CuaHangMayTinhModelStoreContainer" CdmEntityContainer="CuaHangMayTinhEntities1">
+  <EntityContainerMapping StorageEntityContainer="CuaHangMayTinhModelStoreContainer" CdmEntityContainer="CuaHangMayTinhEntities">
     <EntitySetMapping Name="administrative_regions">
       <EntityTypeMapping TypeName="CuaHangMayTinhModel.administrative_regions">
         <MappingFragment StoreEntitySet="administrative_regions">
@@ -66,9 +66,16 @@
         <MappingFragment StoreEntitySet="DISCOUNT">
           <ScalarProperty Name="CODE" ColumnName="CODE" />
           <ScalarProperty Name="DISCOUNT_PERCENT" ColumnName="DISCOUNT_PERCENT" />
+          <ScalarProperty Name="DISCOUNT_AMOUNT" ColumnName="DISCOUNT_AMOUNT" />
+          <ScalarProperty Name="MAXIMUM_DISCOUNT_AMOUNT" ColumnName="MAXIMUM_DISCOUNT_AMOUNT" />
+          <ScalarProperty Name="CODE_DESCRIPTION" ColumnName="CODE_DESCRIPTION" />
+          <ScalarProperty Name="MIN_PURCHASE_VALUE" ColumnName="MIN_PURCHASE_VALUE" />
+          <ScalarProperty Name="MIN_QUANTITY_OF_PRODUCT" ColumnName="MIN_QUANTITY_OF_PRODUCT" />
           <ScalarProperty Name="MAXIMUM_USE" ColumnName="MAXIMUM_USE" />
           <ScalarProperty Name="USED_COUNT" ColumnName="USED_COUNT" />
-          <ScalarProperty Name="MAXIMUM_DISCOUNT_AMOUNT" ColumnName="MAXIMUM_DISCOUNT_AMOUNT" />
+          <ScalarProperty Name="DISCOUNT_START_DATE" ColumnName="DISCOUNT_START_DATE" />
+          <ScalarProperty Name="DISCOUNT_END_DATE" ColumnName="DISCOUNT_END_DATE" />
+          <ScalarProperty Name="DISCOUNT_STATUS" ColumnName="DISCOUNT_STATUS" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -180,6 +187,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="PROMOTIONs">
+      <EntityTypeMapping TypeName="CuaHangMayTinhModel.PROMOTION">
+        <MappingFragment StoreEntitySet="PROMOTION">
+          <ScalarProperty Name="PROMOTION_ID" ColumnName="PROMOTION_ID" />
+          <ScalarProperty Name="PROMOTION_NAME" ColumnName="PROMOTION_NAME" />
+          <ScalarProperty Name="PROMOTION_DESCRIPTION" ColumnName="PROMOTION_DESCRIPTION" />
+          <ScalarProperty Name="PROMOTION_START_DATE" ColumnName="PROMOTION_START_DATE" />
+          <ScalarProperty Name="PROMOTION_END_DATE" ColumnName="PROMOTION_END_DATE" />
+          <ScalarProperty Name="DISCOUNT_PERCENT" ColumnName="DISCOUNT_PERCENT" />
+          <ScalarProperty Name="DISCOUNT_AMOUNT" ColumnName="DISCOUNT_AMOUNT" />
+          <ScalarProperty Name="PRD_TYPE_NAME" ColumnName="PRD_TYPE_NAME" />
+          <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
+          <ScalarProperty Name="MIN_PURCHASE_VALUE" ColumnName="MIN_PURCHASE_VALUE" />
+          <ScalarProperty Name="MIN_QUANTITY_OF_PRODUCT" ColumnName="MIN_QUANTITY_OF_PRODUCT" />
+          <ScalarProperty Name="MAXIMUM_USE" ColumnName="MAXIMUM_USE" />
+          <ScalarProperty Name="USED_COUNT" ColumnName="USED_COUNT" />
+          <ScalarProperty Name="PROMOTION_STATUS" ColumnName="PROMOTION_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="provinces">
       <EntityTypeMapping TypeName="CuaHangMayTinhModel.province">
         <MappingFragment StoreEntitySet="provinces">
@@ -202,6 +229,7 @@
           <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />
           <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
           <ScalarProperty Name="DISCOUNT_CODE" ColumnName="DISCOUNT_CODE" />
+          <ScalarProperty Name="PROMOTION_ID" ColumnName="PROMOTION_ID" />
           <ScalarProperty Name="TOTAL_MONEY" ColumnName="TOTAL_MONEY" />
           <ScalarProperty Name="PAYMENT" ColumnName="PAYMENT" />
           <ScalarProperty Name="NOTE" ColumnName="NOTE" />
@@ -264,43 +292,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionName="CuaHangMayTinhModel.Store.TimKiemSanPham" FunctionImportName="TimKiemSanPham">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.TimKiemSanPham_Result">
-          <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
-          <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
-          <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
-          <ScalarProperty Name="PRD_TYPE_ID" ColumnName="PRD_TYPE_ID" />
-          <ScalarProperty Name="BRD_ID" ColumnName="BRD_ID" />
-          <ScalarProperty Name="RDY_FOR_SALE" ColumnName="RDY_FOR_SALE" />
-          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
-          <ScalarProperty Name="DELIVERY_ALLOWED" ColumnName="DELIVERY_ALLOWED" />
-          <ScalarProperty Name="PRD_WEIGHT" ColumnName="PRD_WEIGHT" />
-          <ScalarProperty Name="CREATE_DAY" ColumnName="CREATE_DAY" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="PROC_LOGIN" FunctionName="CuaHangMayTinhModel.Store.PROC_LOGIN">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.PROC_LOGIN_Result">
-          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
-          <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
-          <ScalarProperty Name="EMP_PHONE_NUMBER" ColumnName="EMP_PHONE_NUMBER" />
-          <ScalarProperty Name="EMP_BIRTHDAY" ColumnName="EMP_BIRTHDAY" />
-          <ScalarProperty Name="EMP_GENDER" ColumnName="EMP_GENDER" />
-          <ScalarProperty Name="EMP_PROVINCE" ColumnName="EMP_PROVINCE" />
-          <ScalarProperty Name="EMP_DISTRICT" ColumnName="EMP_DISTRICT" />
-          <ScalarProperty Name="EMP_WARD" ColumnName="EMP_WARD" />
-          <ScalarProperty Name="EMP_ADDRESS" ColumnName="EMP_ADDRESS" />
-          <ScalarProperty Name="EMP_EMAIL" ColumnName="EMP_EMAIL" />
-          <ScalarProperty Name="EMP_ACCOUNT" ColumnName="EMP_ACCOUNT" />
-          <ScalarProperty Name="EMP_PASSWORD" ColumnName="EMP_PASSWORD" />
-          <ScalarProperty Name="HIRE_DATE" ColumnName="HIRE_DATE" />
-          <ScalarProperty Name="PS_ID" ColumnName="PS_ID" />
-          <ScalarProperty Name="EMP_STATUS" ColumnName="EMP_STATUS" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CuaHangMayTinhModel.Store.sp_alterdiagram" />
     <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CuaHangMayTinhModel.Store.sp_creatediagram" />
     <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CuaHangMayTinhModel.Store.sp_dropdiagram" />

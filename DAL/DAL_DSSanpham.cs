@@ -13,12 +13,6 @@ namespace DAL
         private CuaHangMayTinhEntities1 db = new CuaHangMayTinhEntities1();
         private DataTable dt = new DataTable();
 
-        public void Add(PRODUCT prd)
-        {
-            db.PRODUCTs.Add(prd);
-            db.SaveChanges();
-        }
-
         public void Delete(PRODUCT prd)
         {
             db.PRODUCTs.Remove(prd);
@@ -56,17 +50,17 @@ namespace DAL
 
             if (!string.IsNullOrEmpty(nhanhieu))
             {
-                query = query.Where(p => p.BRD_ID.Contains(nhanhieu));
+                query = query.Where(p => p.BRD_ID.ToLower().Contains(nhanhieu));
             }
 
             if (!string.IsNullOrEmpty(loaisp))
             {
-                query = query.Where(p => p.PRD_TYPE_ID.Contains(loaisp));
+                query = query.Where(p => p.PRD_TYPE_ID.ToLower().Contains(loaisp));
             }
 
             if (!string.IsNullOrEmpty(keyword))
             {
-                query = query.Where(p => p.PRD_NAME.Contains(keyword));
+                query = query.Where(p => p.PRD_NAME.ToLower().Contains(keyword));
             }
 
             return query.ToList();

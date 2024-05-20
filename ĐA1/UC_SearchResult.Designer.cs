@@ -1,6 +1,6 @@
 ﻿namespace ĐA1
 {
-    partial class SearchResult
+    partial class UC_SearchResult
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchResult));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_SearchResult));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSearch_result = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();

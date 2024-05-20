@@ -1,6 +1,6 @@
 ﻿namespace ĐA1
 {
-    partial class ProductControl
+    partial class UC_ProductControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_ProductControl));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblSoluong = new System.Windows.Forms.Label();
             this.lblTensp = new System.Windows.Forms.Label();
@@ -49,7 +49,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(278, 91);
+            this.guna2Panel1.Size = new System.Drawing.Size(291, 91);
             this.guna2Panel1.TabIndex = 0;
             // 
             // lblSoluong
@@ -87,9 +87,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.guna2Panel1);
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ProductControl";
-            this.Size = new System.Drawing.Size(278, 91);
+            this.Size = new System.Drawing.Size(291, 91);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAnhSP)).EndInit();

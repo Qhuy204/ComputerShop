@@ -105,7 +105,6 @@ namespace ĐA1
             float wholesaleprice = float.Parse(txtgiabanbuon.Text);
             bool deliveryallowed = ckbVanchuyen.Checked;
             float weight = string.IsNullOrEmpty(txtKhoiluong.Text) ? 0 : float.Parse(txtKhoiluong.Text);
-            MessageBox.Show(id);
             busSP.NewProduct(id, name, brand_id, producttype_id, deliveryallowed, weight);
             busKhohang.AddProductInformation(id, importprice, retailprice, wholesaleprice);
             MessageBox.Show("Product saved successfully.");

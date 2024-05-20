@@ -28,7 +28,6 @@ namespace DAL
         public string NOTE { get; set; }
     
         public virtual BRAND BRAND { get; set; }
-        public virtual EMPLOYEE EMPLOYEE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IMPORTBILL_DETAIL> IMPORTBILL_DETAIL { get; set; }
     }

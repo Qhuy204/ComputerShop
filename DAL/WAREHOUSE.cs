@@ -14,12 +14,6 @@ namespace DAL
     
     public partial class WAREHOUSE
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public WAREHOUSE()
-        {
-            this.IMPORTBILL_DETAIL = new HashSet<IMPORTBILL_DETAIL>();
-        }
-    
         public string PRD_IMG { get; set; }
         public string PRD_ID { get; set; }
         public string PRD_NAME { get; set; }
@@ -33,8 +27,6 @@ namespace DAL
         public double WHOLESALE_PRICE { get; set; }
     
         public virtual BRAND BRAND { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IMPORTBILL_DETAIL> IMPORTBILL_DETAIL { get; set; }
         public virtual PRODUCTTYPE PRODUCTTYPE { get; set; }
     }
 }

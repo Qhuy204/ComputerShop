@@ -25,6 +25,7 @@ namespace DAL
         public string CUS_ID { get; set; }
         public string EMP_ID { get; set; }
         public string DISCOUNT_CODE { get; set; }
+        public string PROMOTION_ID { get; set; }
         public Nullable<double> TOTAL_MONEY { get; set; }
         public string PAYMENT { get; set; }
         public string NOTE { get; set; }
@@ -33,9 +34,6 @@ namespace DAL
         public string STATUS { get; set; }
     
         public virtual CUSTOMER CUSTOMER { get; set; }
-        public virtual DISCOUNT DISCOUNT { get; set; }
-        public virtual EMPLOYEE EMPLOYEE { get; set; }
-        public virtual PAYMENT PAYMENT1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SALEBILL_DETAIL> SALEBILL_DETAIL { get; set; }
     }

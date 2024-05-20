@@ -8,14 +8,14 @@ using System.Windows.Forms;
 
 namespace ĐA1
 {
-    public partial class SearchResult : UserControl
+    public partial class UC_SearchResult : UserControl
     {
 
         public delegate void SearchResultClickedEventHandler(object sender, EventArgs e);
 
         public static event SearchResultClickedEventHandler SearchResultClicked;
 
-        public SearchResult()
+        public UC_SearchResult()
         {
             InitializeComponent();
         }

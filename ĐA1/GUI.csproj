@@ -60,6 +60,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI_TaoCtrinhKm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_TaoCtrinhKm.Designer.cs">
+      <DependentUpon>GUI_TaoCtrinhKm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_TaoKMOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_TaoKMOption.Designer.cs">
+      <DependentUpon>GUI_TaoKMOption.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_Banhang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +101,18 @@
     </Compile>
     <Compile Include="GUI_Khohang.Designer.cs">
       <DependentUpon>GUI_Khohang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_Khuyenmai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Khuyenmai.Designer.cs">
+      <DependentUpon>GUI_Khuyenmai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_TaoMagiamgia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_TaoMagiamgia.Designer.cs">
+      <DependentUpon>GUI_TaoMagiamgia.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI_MainForm.cs">
       <SubType>Form</SubType>
@@ -138,26 +162,32 @@
     <Compile Include="GUI_Tongquan.Designer.cs">
       <DependentUpon>GUI_Tongquan.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductControl.cs">
+    <Compile Include="UC_ProductControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProductControl.Designer.cs">
-      <DependentUpon>ProductControl.cs</DependentUpon>
+    <Compile Include="UC_ProductControl.Designer.cs">
+      <DependentUpon>UC_ProductControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchProduct.cs">
+    <Compile Include="UC_SearchProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SearchProduct.Designer.cs">
-      <DependentUpon>SearchProduct.cs</DependentUpon>
+    <Compile Include="UC_SearchProduct.Designer.cs">
+      <DependentUpon>UC_SearchProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="SearchResult.cs">
+    <Compile Include="UC_SearchResult.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SearchResult.Designer.cs">
-      <DependentUpon>SearchResult.cs</DependentUpon>
+    <Compile Include="UC_SearchResult.Designer.cs">
+      <DependentUpon>UC_SearchResult.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI_TaoCtrinhKm.resx">
+      <DependentUpon>GUI_TaoCtrinhKm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_TaoKMOption.resx">
+      <DependentUpon>GUI_TaoKMOption.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_Banhang.resx">
       <DependentUpon>GUI_Banhang.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +202,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_Khohang.resx">
       <DependentUpon>GUI_Khohang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Khuyenmai.resx">
+      <DependentUpon>GUI_Khuyenmai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_TaoMagiamgia.resx">
+      <DependentUpon>GUI_TaoMagiamgia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_MainForm.resx">
       <DependentUpon>GUI_MainForm.cs</DependentUpon>
@@ -197,8 +233,8 @@
     <EmbeddedResource Include="GUI_Tongquan.resx">
       <DependentUpon>GUI_Tongquan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductControl.resx">
-      <DependentUpon>ProductControl.cs</DependentUpon>
+    <EmbeddedResource Include="UC_ProductControl.resx">
+      <DependentUpon>UC_ProductControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -209,11 +245,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SearchProduct.resx">
-      <DependentUpon>SearchProduct.cs</DependentUpon>
+    <EmbeddedResource Include="UC_SearchProduct.resx">
+      <DependentUpon>UC_SearchProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchResult.resx">
-      <DependentUpon>SearchResult.cs</DependentUpon>
+    <EmbeddedResource Include="UC_SearchResult.resx">
+      <DependentUpon>UC_SearchResult.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -1,6 +1,6 @@
 ﻿namespace ĐA1
 {
-    partial class SearchProduct
+    partial class UC_SearchProduct
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchProduct));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_SearchProduct));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTensp = new System.Windows.Forms.Label();
             this.lblGiaban = new System.Windows.Forms.Label();

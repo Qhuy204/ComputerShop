@@ -14,12 +14,6 @@ namespace DAL
     
     public partial class PRODUCT
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PRODUCT()
-        {
-            this.SALEBILL_DETAIL = new HashSet<SALEBILL_DETAIL>();
-        }
-    
         public string PRD_IMG { get; set; }
         public string PRD_ID { get; set; }
         public string PRD_NAME { get; set; }
@@ -32,7 +26,5 @@ namespace DAL
         public Nullable<System.DateTime> CREATE_DAY { get; set; }
     
         public virtual PRODUCTTYPE PRODUCTTYPE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SALEBILL_DETAIL> SALEBILL_DETAIL { get; set; }
     }
 }

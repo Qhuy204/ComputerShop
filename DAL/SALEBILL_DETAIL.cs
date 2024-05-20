@@ -20,7 +20,6 @@ namespace DAL
         public int QUANTITY { get; set; }
         public Nullable<double> PRICE { get; set; }
     
-        public virtual PRODUCT PRODUCT { get; set; }
         public virtual SALEBILL SALEBILL { get; set; }
     }
 }

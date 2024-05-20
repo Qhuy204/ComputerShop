@@ -114,7 +114,8 @@
             // 
             // pnDSSanpham
             // 
-            this.pnDSSanpham.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pnDSSanpham.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnDSSanpham.AutoScroll = true;
             this.pnDSSanpham.BackColor = System.Drawing.Color.White;
             this.pnDSSanpham.BorderColor = System.Drawing.Color.Black;

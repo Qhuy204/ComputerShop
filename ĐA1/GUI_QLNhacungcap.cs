@@ -23,19 +23,6 @@ namespace ĐA1
             InitializeComponent();
         }
 
-
-        private void btnKQtimkiem_Click(object sender, EventArgs e)
-        {
-            btnKQtimkiem.ForeColor = Color.FromArgb(90, 136, 255);
-            btnKQtimkiem.CustomBorderColor = Color.FromArgb(94, 148, 255);
-        }
-
-        private void btnKQtimkiem_Leave(object sender, EventArgs e)
-        {
-            btnKQtimkiem.ForeColor = Color.Black;
-            btnKQtimkiem.CustomBorderColor = Color.White;
-        }
-
         private void btnTatcaNCC_Click(object sender, EventArgs e)
         {
             btnTatcaNCC.ForeColor = Color.FromArgb(90, 136, 255);
@@ -62,5 +49,16 @@ namespace ĐA1
         {
             dgvNCC.DataSource = customerList.Select(x => new { x.BRD_ID, x.BRD_NAME, x.BRD_ADDRESS, x.BRD_PHONE, x.BRD_EMAIL, x.BRD_STATUS }).ToList();
         }
+
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        {
+            UpdateDgv(busNCC.TimKiemNCC(txtTimkiemKH.Text.ToLower()));
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            txtTimkiemKH.Clear();
+            GUI_QLNhacungcap_Load(sender, e);
+;        }
     }
 }

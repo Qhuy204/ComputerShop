@@ -18,7 +18,7 @@ namespace ĐA1
         public GUI_Banhang()
         {
             InitializeComponent();
-            SearchResult.SearchResultClicked += new SearchResult.SearchResultClickedEventHandler(SearchResultControl_SearchResultClicked);
+            UC_SearchResult.SearchResultClicked += new UC_SearchResult.SearchResultClickedEventHandler(SearchResultControl_SearchResultClicked);
         }
 
         private void GUI_Banhang_Load(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace ĐA1
             for (int i = 0; i < customers.Count; i++)
             {
                 CUSTOMER cus = customers[i];
-                SearchResult res = new SearchResult();
+                UC_SearchResult res = new UC_SearchResult();
                 res.Details(cus);
                 Cus_resultcontainer.Controls.Add(res);
             }
@@ -52,7 +52,7 @@ namespace ĐA1
             for (int i = 0; i < wr.Count; i++)
             {
                 WAREHOUSE wrh = wr[i];
-                SearchProduct sp = new SearchProduct();
+                UC_SearchProduct sp = new UC_SearchProduct();
                 sp.Details(wrh);
                 pnSanpham.Controls.Add(sp);
             }
@@ -64,7 +64,7 @@ namespace ĐA1
             if (txtTimKH.Text.Length >= 1)
             {
                 Cus_resultcontainer.Controls.Clear();
-                SearchResult res = new SearchResult();
+                UC_SearchResult res = new UC_SearchResult();
                 res.TxtSearchResult(txtTimKH.Text.ToLower());
                 LoadResultCustomer();
                 int newHeightKH = Cus_resultcontainer.Controls.Count * 47;
@@ -84,12 +84,12 @@ namespace ĐA1
 
         private void CheckIfClicked()
         {
-            bool isclicked = SearchResult.IsClicked();
+            bool isclicked = UC_SearchResult.IsClicked();
             if (isclicked == true)
             {
                 lblHotenKH.Visible = true;
                 lblKH.Visible = true;
-                lblHotenKH.Text = SearchResult.CusName;
+                lblHotenKH.Text = UC_SearchResult.CusName;
             }
         }
 
@@ -101,7 +101,7 @@ namespace ĐA1
         private void SearchResultControl_SearchResultClicked(object sender, EventArgs e)
         {
             // Gán giá trị cho lblTenKH từ btnSearch_result của user control SearchResult
-            lblHotenKH.Text = SearchResult.CusName;
+            lblHotenKH.Text = UC_SearchResult.CusName;
             lblHotenKH.Visible = true;
             lblKH.Visible = true;
         }
@@ -113,7 +113,7 @@ namespace ĐA1
             if (txtTimkiemSP.Text.Length >= 1)
             {
                 pnSanpham.Controls.Clear();
-                SearchProduct sp = new SearchProduct();
+                UC_SearchProduct sp = new UC_SearchProduct();
                 sp.TxtSearchResult(txtTimkiemSP.Text.ToLower());
                 LoadResultProduct();
 
@@ -145,7 +145,7 @@ namespace ĐA1
 
             for (int i = 0; i < products.Count; i++)
             {
-                var productControl = new ProductControl();
+                var productControl = new UC_ProductControl();
                 productControl.SetProductDetails(products[i].PRD_NAME, products[i].INVENTORY_QUANTITY.ToString());
 
                 // Kiểm tra nếu chiều ngang không đủ thì xuống dòng

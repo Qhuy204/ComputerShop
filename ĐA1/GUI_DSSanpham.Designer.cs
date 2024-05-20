@@ -32,18 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_DSSanpham));
             this.panelIfnodata = new System.Windows.Forms.Panel();
             this.pnIfhavedata = new System.Windows.Forms.Panel();
             this.dgvSP = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.clAnh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.clmasp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clTenNCC = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.clLoaisp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clNhanhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clcotheban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clSLtonkho = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clngayktao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnClear = new Guna.UI2.WinForms.Guna2Button();
             this.btnTimkiem = new Guna.UI2.WinForms.Guna2Button();
@@ -55,25 +46,32 @@
             this.btnnhap = new Guna.UI2.WinForms.Guna2Button();
             this.btnXuatfile = new Guna.UI2.WinForms.Guna2Button();
             this.btnThemSP = new Guna.UI2.WinForms.Guna2Button();
-            this.btnNhapfile = new Guna.UI2.WinForms.Guna2Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnTaonhacc = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.clAnh = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clmasp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTenNCC = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.clLoaisp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clNhanhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clcotheban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clSLtonkho = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clAnhSP = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clprdid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cltensp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTenLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clbrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clrdy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clquantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clKhoiluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clNgayktao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelIfnodata.SuspendLayout();
             this.pnIfhavedata.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSP)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelIfnodata
             // 
             this.panelIfnodata.Controls.Add(this.pnIfhavedata);
-            this.panelIfnodata.Controls.Add(this.btnNhapfile);
-            this.panelIfnodata.Controls.Add(this.label1);
-            this.panelIfnodata.Controls.Add(this.btnTaonhacc);
-            this.panelIfnodata.Controls.Add(this.pictureBox1);
             this.panelIfnodata.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelIfnodata.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelIfnodata.Location = new System.Drawing.Point(0, 0);
@@ -97,13 +95,13 @@
             // 
             // dgvSP
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.dgvSP.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(205)))), ((int)(((byte)(208)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(234)))), ((int)(((byte)(237)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -112,23 +110,24 @@
             this.dgvSP.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSP.ColumnHeadersHeight = 40;
             this.dgvSP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clAnh,
-            this.clmasp,
-            this.clTenNCC,
-            this.clLoaisp,
-            this.clNhanhieu,
-            this.clcotheban,
-            this.clSLtonkho,
-            this.clngayktao});
+            this.clAnhSP,
+            this.clprdid,
+            this.cltensp,
+            this.clTenLoaiSP,
+            this.clbrand,
+            this.clrdy,
+            this.clquantity,
+            this.clKhoiluong,
+            this.clNgayktao});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSP.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvSP.GridColor = System.Drawing.Color.White;
+            this.dgvSP.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
             this.dgvSP.Location = new System.Drawing.Point(12, 193);
             this.dgvSP.Margin = new System.Windows.Forms.Padding(0);
             this.dgvSP.Name = "dgvSP";
@@ -148,91 +147,28 @@
             this.dgvSP.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSP.Size = new System.Drawing.Size(1042, 349);
             this.dgvSP.TabIndex = 9;
-            this.dgvSP.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvSP.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Light;
+            this.dgvSP.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
             this.dgvSP.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvSP.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.dgvSP.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.dgvSP.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.dgvSP.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dgvSP.ThemeStyle.GridColor = System.Drawing.Color.White;
-            this.dgvSP.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvSP.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
+            this.dgvSP.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(234)))), ((int)(((byte)(237)))));
             this.dgvSP.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvSP.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.dgvSP.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvSP.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvSP.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvSP.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvSP.ThemeStyle.HeaderStyle.Height = 40;
             this.dgvSP.ThemeStyle.ReadOnly = true;
             this.dgvSP.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvSP.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvSP.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.dgvSP.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvSP.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvSP.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvSP.ThemeStyle.RowsStyle.Height = 40;
-            this.dgvSP.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvSP.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // clAnh
-            // 
-            this.clAnh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clAnh.DataPropertyName = "PRD_IMG";
-            this.clAnh.HeaderText = "Ảnh";
-            this.clAnh.Name = "clAnh";
-            this.clAnh.ReadOnly = true;
-            this.clAnh.Width = 37;
-            // 
-            // clmasp
-            // 
-            this.clmasp.DataPropertyName = "PRD_ID";
-            this.clmasp.HeaderText = "Mã sản phẩm";
-            this.clmasp.Name = "clmasp";
-            this.clmasp.ReadOnly = true;
-            this.clmasp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmasp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // clTenNCC
-            // 
-            this.clTenNCC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.clTenNCC.DataPropertyName = "PRD_NAME";
-            this.clTenNCC.HeaderText = "Tên sản phẩm";
-            this.clTenNCC.Name = "clTenNCC";
-            this.clTenNCC.ReadOnly = true;
-            this.clTenNCC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clTenNCC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.clTenNCC.Width = 106;
-            // 
-            // clLoaisp
-            // 
-            this.clLoaisp.DataPropertyName = "PRD_TYPE_ID";
-            this.clLoaisp.HeaderText = "Loại";
-            this.clLoaisp.Name = "clLoaisp";
-            this.clLoaisp.ReadOnly = true;
-            // 
-            // clNhanhieu
-            // 
-            this.clNhanhieu.DataPropertyName = "BRD_ID";
-            this.clNhanhieu.HeaderText = "Nhãn hiệu";
-            this.clNhanhieu.Name = "clNhanhieu";
-            this.clNhanhieu.ReadOnly = true;
-            // 
-            // clcotheban
-            // 
-            this.clcotheban.DataPropertyName = "RDY_FOR_SALE";
-            this.clcotheban.HeaderText = "Có thể bán";
-            this.clcotheban.Name = "clcotheban";
-            this.clcotheban.ReadOnly = true;
-            // 
-            // clSLtonkho
-            // 
-            this.clSLtonkho.DataPropertyName = "QUANTITY";
-            this.clSLtonkho.HeaderText = "Tồn kho";
-            this.clSLtonkho.Name = "clSLtonkho";
-            this.clSLtonkho.ReadOnly = true;
-            // 
-            // clngayktao
-            // 
-            this.clngayktao.DataPropertyName = "CREATE_DAY";
-            this.clngayktao.HeaderText = "Ngày khởi tạo";
-            this.clngayktao.Name = "clngayktao";
-            this.clngayktao.ReadOnly = true;
+            this.dgvSP.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
+            this.dgvSP.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
             // panel2
             // 
@@ -404,59 +340,126 @@
             this.btnThemSP.Text = "Thêm sản phẩm";
             this.btnThemSP.Click += new System.EventHandler(this.btnThemSP_Click);
             // 
-            // btnNhapfile
+            // clAnh
             // 
-            this.btnNhapfile.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(246)))), ((int)(((byte)(248)))));
-            this.btnNhapfile.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNhapfile.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNhapfile.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNhapfile.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNhapfile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(246)))), ((int)(((byte)(248)))));
-            this.btnNhapfile.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNhapfile.ForeColor = System.Drawing.Color.Black;
-            this.btnNhapfile.Location = new System.Drawing.Point(12, 12);
-            this.btnNhapfile.Name = "btnNhapfile";
-            this.btnNhapfile.Size = new System.Drawing.Size(121, 39);
-            this.btnNhapfile.TabIndex = 3;
-            this.btnNhapfile.Text = "Nhập file";
+            this.clAnh.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clAnh.DataPropertyName = "PRD_IMG";
+            this.clAnh.HeaderText = "Ảnh";
+            this.clAnh.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.clAnh.Name = "clAnh";
+            this.clAnh.ReadOnly = true;
             // 
-            // label1
+            // clmasp
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(244, 57);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(580, 37);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Cửa hàng của bạn chưa có nhà cung cấp nào";
+            this.clmasp.DataPropertyName = "PRD_ID";
+            this.clmasp.HeaderText = "Mã sản phẩm";
+            this.clmasp.Name = "clmasp";
+            this.clmasp.ReadOnly = true;
+            this.clmasp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmasp.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // btnTaonhacc
+            // clTenNCC
             // 
-            this.btnTaonhacc.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnTaonhacc.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnTaonhacc.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTaonhacc.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTaonhacc.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(138)))), ((int)(((byte)(254)))));
-            this.btnTaonhacc.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnTaonhacc.ForeColor = System.Drawing.Color.White;
-            this.btnTaonhacc.Location = new System.Drawing.Point(426, 431);
-            this.btnTaonhacc.Margin = new System.Windows.Forms.Padding(0);
-            this.btnTaonhacc.Name = "btnTaonhacc";
-            this.btnTaonhacc.Size = new System.Drawing.Size(215, 41);
-            this.btnTaonhacc.TabIndex = 1;
-            this.btnTaonhacc.Text = "Tạo nhà cung cấp đầu tiên";
+            this.clTenNCC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.clTenNCC.DataPropertyName = "PRD_NAME";
+            this.clTenNCC.HeaderText = "Tên sản phẩm";
+            this.clTenNCC.Name = "clTenNCC";
+            this.clTenNCC.ReadOnly = true;
+            this.clTenNCC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clTenNCC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // pictureBox1
+            // clLoaisp
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(383, 114);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(301, 301);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.clLoaisp.DataPropertyName = "PRD_TYPE_ID";
+            this.clLoaisp.HeaderText = "Loại";
+            this.clLoaisp.Name = "clLoaisp";
+            this.clLoaisp.ReadOnly = true;
+            // 
+            // clNhanhieu
+            // 
+            this.clNhanhieu.DataPropertyName = "BRD_ID";
+            this.clNhanhieu.HeaderText = "Nhãn hiệu";
+            this.clNhanhieu.Name = "clNhanhieu";
+            this.clNhanhieu.ReadOnly = true;
+            // 
+            // clcotheban
+            // 
+            this.clcotheban.DataPropertyName = "RDY_FOR_SALE";
+            this.clcotheban.HeaderText = "Có thể bán";
+            this.clcotheban.Name = "clcotheban";
+            this.clcotheban.ReadOnly = true;
+            // 
+            // clSLtonkho
+            // 
+            this.clSLtonkho.DataPropertyName = "QUANTITY";
+            this.clSLtonkho.HeaderText = "Tồn kho";
+            this.clSLtonkho.Name = "clSLtonkho";
+            this.clSLtonkho.ReadOnly = true;
+            // 
+            // clAnhSP
+            // 
+            this.clAnhSP.DataPropertyName = "PRD_IMG";
+            this.clAnhSP.HeaderText = "Ảnh";
+            this.clAnhSP.Name = "clAnhSP";
+            this.clAnhSP.ReadOnly = true;
+            this.clAnhSP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clAnhSP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // clprdid
+            // 
+            this.clprdid.DataPropertyName = "PRD_ID";
+            this.clprdid.HeaderText = "Mã sản phẩm";
+            this.clprdid.Name = "clprdid";
+            this.clprdid.ReadOnly = true;
+            // 
+            // cltensp
+            // 
+            this.cltensp.DataPropertyName = "PRD_NAME";
+            this.cltensp.HeaderText = "Tên sản phẩm";
+            this.cltensp.Name = "cltensp";
+            this.cltensp.ReadOnly = true;
+            // 
+            // clTenLoaiSP
+            // 
+            this.clTenLoaiSP.DataPropertyName = "PRD_TYPE_NAME";
+            this.clTenLoaiSP.HeaderText = "Loại sản phẩm";
+            this.clTenLoaiSP.Name = "clTenLoaiSP";
+            this.clTenLoaiSP.ReadOnly = true;
+            // 
+            // clbrand
+            // 
+            this.clbrand.DataPropertyName = "BRD_NAME";
+            this.clbrand.HeaderText = "Hãng";
+            this.clbrand.Name = "clbrand";
+            this.clbrand.ReadOnly = true;
+            // 
+            // clrdy
+            // 
+            this.clrdy.DataPropertyName = "RDY_FOR_SALE";
+            this.clrdy.HeaderText = "Có thể bán";
+            this.clrdy.Name = "clrdy";
+            this.clrdy.ReadOnly = true;
+            // 
+            // clquantity
+            // 
+            this.clquantity.DataPropertyName = "QUANTITY";
+            this.clquantity.HeaderText = "Tồn kho";
+            this.clquantity.Name = "clquantity";
+            this.clquantity.ReadOnly = true;
+            // 
+            // clKhoiluong
+            // 
+            this.clKhoiluong.DataPropertyName = "PRD_WEIGHT";
+            this.clKhoiluong.HeaderText = "Khối lượng";
+            this.clKhoiluong.Name = "clKhoiluong";
+            this.clKhoiluong.ReadOnly = true;
+            // 
+            // clNgayktao
+            // 
+            this.clNgayktao.DataPropertyName = "CREATE_DAY";
+            this.clNgayktao.HeaderText = "Ngày khởi tạo";
+            this.clNgayktao.Name = "clNgayktao";
+            this.clNgayktao.ReadOnly = true;
             // 
             // GUI_DSSanpham
             // 
@@ -471,34 +474,30 @@
             this.Text = "GUI_DSSanpham";
             this.Load += new System.EventHandler(this.GUI_DSSanpham_Load);
             this.panelIfnodata.ResumeLayout(false);
-            this.panelIfnodata.PerformLayout();
             this.pnIfhavedata.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSP)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
         private System.Windows.Forms.Panel panelIfnodata;
         private System.Windows.Forms.Panel pnIfhavedata;
         private Guna.UI2.WinForms.Guna2DataGridView dgvSP;
         private System.Windows.Forms.Panel panel2;
+        private Guna.UI2.WinForms.Guna2Button btnClear;
+        private Guna.UI2.WinForms.Guna2Button btnTimkiem;
+        private Guna.UI2.WinForms.Guna2ComboBox cbbNhanhieu;
+        private Guna.UI2.WinForms.Guna2ComboBox cbbLoaisp;
         private Guna.UI2.WinForms.Guna2TextBox txtTimkiemSP;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button btnTatcaSP;
         private Guna.UI2.WinForms.Guna2Button btnnhap;
         private Guna.UI2.WinForms.Guna2Button btnXuatfile;
         private Guna.UI2.WinForms.Guna2Button btnThemSP;
-        private Guna.UI2.WinForms.Guna2Button btnNhapfile;
-        private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2Button btnTaonhacc;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private Guna.UI2.WinForms.Guna2ComboBox cbbLoaisp;
-        private Guna.UI2.WinForms.Guna2ComboBox cbbNhanhieu;
-        private Guna.UI2.WinForms.Guna2Button btnTimkiem;
         private System.Windows.Forms.DataGridViewImageColumn clAnh;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmasp;
         private System.Windows.Forms.DataGridViewLinkColumn clTenNCC;
@@ -506,7 +505,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clNhanhieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn clcotheban;
         private System.Windows.Forms.DataGridViewTextBoxColumn clSLtonkho;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clngayktao;
-        private Guna.UI2.WinForms.Guna2Button btnClear;
+        private System.Windows.Forms.DataGridViewImageColumn clAnhSP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clprdid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cltensp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clTenLoaiSP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clbrand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clrdy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clquantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clKhoiluong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clNgayktao;
     }
 }

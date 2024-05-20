@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ĐA1
 {
-    public partial class ProductControl : UserControl
+    public partial class UC_ProductControl : UserControl
     {
 
         public string ProductName { get; set; }
@@ -21,7 +21,7 @@ namespace ĐA1
         public Image ProductImage { get; set; }
 
 
-        public ProductControl()
+        public UC_ProductControl()
         {
             InitializeComponent();
         }
