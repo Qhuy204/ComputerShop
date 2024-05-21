@@ -27,13 +27,10 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<administrative_regions> administrative_regions { get; set; }
-        public virtual DbSet<administrative_units> administrative_units { get; set; }
         public virtual DbSet<AUTHORITY> AUTHORITies { get; set; }
         public virtual DbSet<BRAND> BRANDs { get; set; }
         public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
         public virtual DbSet<DISCOUNT> DISCOUNTs { get; set; }
-        public virtual DbSet<district> districts { get; set; }
         public virtual DbSet<EMPLOYEE> EMPLOYEES { get; set; }
         public virtual DbSet<IMPORTBILL> IMPORTBILLs { get; set; }
         public virtual DbSet<IMPORTBILL_DETAIL> IMPORTBILL_DETAIL { get; set; }
@@ -43,11 +40,9 @@ namespace DAL
         public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
         public virtual DbSet<PRODUCTTYPE> PRODUCTTYPEs { get; set; }
         public virtual DbSet<PROMOTION> PROMOTIONs { get; set; }
-        public virtual DbSet<province> provinces { get; set; }
         public virtual DbSet<SALEBILL> SALEBILLs { get; set; }
         public virtual DbSet<SALEBILL_DETAIL> SALEBILL_DETAIL { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<ward> wards { get; set; }
         public virtual DbSet<WAREHOUSE> WAREHOUSEs { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)

@@ -11,10 +11,6 @@ namespace ĐA1
     public partial class UC_SearchResult : UserControl
     {
 
-        public delegate void SearchResultClickedEventHandler(object sender, EventArgs e);
-
-        public static event SearchResultClickedEventHandler SearchResultClicked;
-
         public UC_SearchResult()
         {
             InitializeComponent();
@@ -65,10 +61,7 @@ namespace ĐA1
 
         private void btnSearch_result_Click(object sender, EventArgs e)
         {
-            if (SearchResultClicked != null)
-            {
-                SearchResultClicked(this, e);
-            }
+
         }
 
         public static bool IsClicked()

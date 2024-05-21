@@ -11,11 +11,16 @@ namespace BUS
     {
         private DAL_DSNhanvien dalNhanvien = new DAL_DSNhanvien();
 
-        public bool Add(EMPLOYEE staff)
+        public void NewEmployee(
+        string id,
+        string name,
+        string phone,
+        DateTime birthday,
+        string email,
+        string account,
+        string password)
         {
-            staff.EMP_ID = GetNewID(staff.PS_ID);
-            dalNhanvien.Add(staff);
-            return true;
+            dalNhanvien.NewEmployee(id, name, phone, birthday, email, account, password);
         }
 
         public bool Delete(string id)
@@ -39,10 +44,24 @@ namespace BUS
             return dalNhanvien.GetByID(id);
         }
 
-        public string GetNewID(string position)
+        public string GetNewID()
         {
-            int id = GetAll().Count() == 0 ? 1 : Int32.Parse(GetAll().Where(x => x.EMP_ID.Contains(position)).Last().EMP_ID.Substring(2)) + 1;
-            return position + id;
+            var allItems = GetAll();
+            int maxID = 0;
+
+            if (allItems.Any())
+            {
+                maxID = allItems
+                            .Select(p =>
+                            {
+                                int id;
+                                bool success = Int32.TryParse(p.EMP_ID.Substring(3), out id);
+                                return success ? id : 0;
+                            })
+                            .Max();
+            }
+
+            return "EMP" + (maxID + 1);
         }
 
         public List<EMPLOYEE> SearchStaffsByName(string keyword)

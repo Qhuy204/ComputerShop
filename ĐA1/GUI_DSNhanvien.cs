@@ -26,7 +26,7 @@ namespace ĐA1
         private void btnThemNV_Click(object sender, EventArgs e)
         {
             GUI_ThemNV themnv = new GUI_ThemNV();
-            themnv.Show();
+            themnv.ShowDialog();
         }
 
         private void GUI_DSNhanvien_Load(object sender, EventArgs e)
@@ -41,9 +41,30 @@ namespace ĐA1
 
         private void UpdateDgv(List<EMPLOYEE> staffList)
         {
-            dgvNhanvien.DataSource = staffList.Select(x => new { x.EMP_NAME, x.PS_ID }).ToList();
+            dgvNhanvien.DataSource = staffList.Select(x => new { x.EMP_ID,x.EMP_NAME, x.PS_ID }).ToList();
         }
 
+        private void dgvNhanvien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewRow row = dgvNhanvien.Rows[e.RowIndex];
+                DataGridViewCell cell = row.Cells[0];
+                string id = cell.Value.ToString();
 
+                var thongtinTK= Application.OpenForms.OfType<GUI_ThongtinTK>().FirstOrDefault();
+                if (thongtinTK != null)
+                {
+                    // Nếu đã mở, chỉ cần cập nhật dữ liệu
+                    thongtinTK.LoadData();
+                }
+                else
+                {
+                    // Nếu chưa mở, tạo mới và hiển thị
+                    GUI_ThongtinTK newthongtinTK = new GUI_ThongtinTK(id);
+                    newthongtinTK.ShowDialog();
+                }
+            }
+        }
     }
 }

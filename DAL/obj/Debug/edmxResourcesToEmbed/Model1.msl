@@ -1,30 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="CuaHangMayTinhModelStoreContainer" CdmEntityContainer="CuaHangMayTinhEntities1">
-    <EntitySetMapping Name="administrative_regions">
-      <EntityTypeMapping TypeName="CuaHangMayTinhModel.administrative_regions">
-        <MappingFragment StoreEntitySet="administrative_regions">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="name_en" ColumnName="name_en" />
-          <ScalarProperty Name="code_name" ColumnName="code_name" />
-          <ScalarProperty Name="code_name_en" ColumnName="code_name_en" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="administrative_units">
-      <EntityTypeMapping TypeName="CuaHangMayTinhModel.administrative_units">
-        <MappingFragment StoreEntitySet="administrative_units">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="full_name" ColumnName="full_name" />
-          <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
-          <ScalarProperty Name="short_name" ColumnName="short_name" />
-          <ScalarProperty Name="short_name_en" ColumnName="short_name_en" />
-          <ScalarProperty Name="code_name" ColumnName="code_name" />
-          <ScalarProperty Name="code_name_en" ColumnName="code_name_en" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="AUTHORITies">
       <EntityTypeMapping TypeName="CuaHangMayTinhModel.AUTHORITY">
         <MappingFragment StoreEntitySet="AUTHORITY">
@@ -79,20 +55,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="districts">
-      <EntityTypeMapping TypeName="CuaHangMayTinhModel.district">
-        <MappingFragment StoreEntitySet="districts">
-          <ScalarProperty Name="code" ColumnName="code" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="name_en" ColumnName="name_en" />
-          <ScalarProperty Name="full_name" ColumnName="full_name" />
-          <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
-          <ScalarProperty Name="code_name" ColumnName="code_name" />
-          <ScalarProperty Name="province_code" ColumnName="province_code" />
-          <ScalarProperty Name="administrative_unit_id" ColumnName="administrative_unit_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="EMPLOYEES">
       <EntityTypeMapping TypeName="CuaHangMayTinhModel.EMPLOYEE">
         <MappingFragment StoreEntitySet="EMPLOYEES">
@@ -101,9 +63,6 @@
           <ScalarProperty Name="EMP_PHONE_NUMBER" ColumnName="EMP_PHONE_NUMBER" />
           <ScalarProperty Name="EMP_BIRTHDAY" ColumnName="EMP_BIRTHDAY" />
           <ScalarProperty Name="EMP_GENDER" ColumnName="EMP_GENDER" />
-          <ScalarProperty Name="EMP_PROVINCE" ColumnName="EMP_PROVINCE" />
-          <ScalarProperty Name="EMP_DISTRICT" ColumnName="EMP_DISTRICT" />
-          <ScalarProperty Name="EMP_WARD" ColumnName="EMP_WARD" />
           <ScalarProperty Name="EMP_ADDRESS" ColumnName="EMP_ADDRESS" />
           <ScalarProperty Name="EMP_EMAIL" ColumnName="EMP_EMAIL" />
           <ScalarProperty Name="EMP_ACCOUNT" ColumnName="EMP_ACCOUNT" />
@@ -207,20 +166,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="provinces">
-      <EntityTypeMapping TypeName="CuaHangMayTinhModel.province">
-        <MappingFragment StoreEntitySet="provinces">
-          <ScalarProperty Name="code" ColumnName="code" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="name_en" ColumnName="name_en" />
-          <ScalarProperty Name="full_name" ColumnName="full_name" />
-          <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
-          <ScalarProperty Name="code_name" ColumnName="code_name" />
-          <ScalarProperty Name="administrative_unit_id" ColumnName="administrative_unit_id" />
-          <ScalarProperty Name="administrative_region_id" ColumnName="administrative_region_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="SALEBILLs">
       <EntityTypeMapping TypeName="CuaHangMayTinhModel.SALEBILL">
         <MappingFragment StoreEntitySet="SALEBILL">
@@ -258,20 +203,6 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="wards">
-      <EntityTypeMapping TypeName="CuaHangMayTinhModel.ward">
-        <MappingFragment StoreEntitySet="wards">
-          <ScalarProperty Name="code" ColumnName="code" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="name_en" ColumnName="name_en" />
-          <ScalarProperty Name="full_name" ColumnName="full_name" />
-          <ScalarProperty Name="full_name_en" ColumnName="full_name_en" />
-          <ScalarProperty Name="code_name" ColumnName="code_name" />
-          <ScalarProperty Name="district_code" ColumnName="district_code" />
-          <ScalarProperty Name="administrative_unit_id" ColumnName="administrative_unit_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

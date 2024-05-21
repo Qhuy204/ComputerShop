@@ -70,6 +70,7 @@ namespace DAL
             s.MAXIMUM_USE = dt.MAXIMUM_USE;
             s.DISCOUNT_START_DATE = dt.DISCOUNT_START_DATE;
             s.DISCOUNT_END_DATE = dt.DISCOUNT_END_DATE;
+            s.USED_COUNT = dt.USED_COUNT;
             db.SaveChanges();
         }
     }

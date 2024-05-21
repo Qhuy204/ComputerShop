@@ -40,7 +40,7 @@ namespace ĐA1
         private void btnHuy_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-                "Nếu bạn hủy các thay đổi này thì thông tin đã điền. Bạn có muốn tiếp tục thêm không?",
+                "Nếu bạn hủy các thay đổi này thì các thông tin đã điền sẽ không được lưu. Bạn có muốn tiếp tục thêm không?",
                 "Hủy thêm mã giảm giá",
                 MessageBoxButtons.YesNo, 
                 MessageBoxIcon.Warning); 
@@ -125,6 +125,18 @@ namespace ĐA1
 
             busKM.NewCode(code, discount_percent, discount_amount, max_discount_amount, code_description, min_purchase, min_quantityof_product, maximum_use, start_date, end_date);
             MessageBox.Show("Mã giảm giá được lưu thành công.");
+        }
+
+        private void GUI_TaoMagiamgia_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Lấy form GUI_Khuyenmai
+            var mainForm = Application.OpenForms.OfType<GUI_Khuyenmai>().FirstOrDefault();
+
+            if (mainForm != null)
+            {
+                // Gọi PerformClick trên btnMagiamgia của form GUI_Khuyenmai
+                mainForm.btnMagiamgia.PerformClick();
+            }
         }
     }
 }

@@ -19,9 +19,6 @@ namespace DAL
         public string EMP_PHONE_NUMBER { get; set; }
         public System.DateTime EMP_BIRTHDAY { get; set; }
         public string EMP_GENDER { get; set; }
-        public string EMP_PROVINCE { get; set; }
-        public string EMP_DISTRICT { get; set; }
-        public string EMP_WARD { get; set; }
         public string EMP_ADDRESS { get; set; }
         public string EMP_EMAIL { get; set; }
         public string EMP_ACCOUNT { get; set; }

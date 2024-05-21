@@ -38,3 +38,5 @@ D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.UC_SearchProduct.r
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.UC_SearchResult.resources
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_TaoKMOption.resources
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_TaoCtrinhKm.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_ThongtinMGG.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_ThongtinCTKM.resources

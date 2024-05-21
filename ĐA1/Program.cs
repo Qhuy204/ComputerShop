@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -37,6 +39,57 @@ namespace ĐA1
 
             // Hiển thị form con
             frm.Show();
+        }
+    }
+    public static class SendEmail
+    {
+        public static Random rd = new Random();
+        public static bool issended = false;
+        public static bool SendMail(string email, string username, string password)
+        {
+            int code = rd.Next(100000, 999999);
+            // Set sender address
+            var fromAddress = new MailAddress("musicapplication2@gmail.com"); //Sender
+
+            // Add recipient correctly
+            var toAddress = new MailAddress(email); //Receiver 
+            const string pass = "vkagacwumrfctuwd";
+            // Set subject and body
+            const string subject = "THÔNG BÁO - CỬA HÀNG MÁY TÍNH";
+            string body = "\n" + "Tài khoản nhân viên của bạn đã được tạo thành công.\nVui lòng đăng nhập và tiến hành đổi mật khẩu để bảo mật thông tin!\nTên đăng nhập: " + username + "\nMật khẩu: " + password;
+
+
+            // Send email
+            try
+            {
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAddress.Address, pass),
+                    Timeout = 20000
+                };
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = subject,
+                    Body = body
+                })
+                {
+                    smtp.Send(message);
+                }
+
+                MessageBox.Show("Email sent successfully!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                issended = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return issended;
         }
     }
 }

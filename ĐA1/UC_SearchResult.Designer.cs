@@ -60,7 +60,7 @@
             this.btnSearch_result.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnSearch_result.Click += new System.EventHandler(this.btnSearch_result_Click);
             // 
-            // SearchResult
+            // UC_SearchResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -68,7 +68,7 @@
             this.Controls.Add(this.btnSearch_result);
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "SearchResult";
+            this.Name = "UC_SearchResult";
             this.Size = new System.Drawing.Size(349, 47);
             this.Load += new System.EventHandler(this.SearchResult_Load);
             this.MouseLeave += new System.EventHandler(this.SearchResult_MouseLeave);
@@ -81,6 +81,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Guna.UI2.WinForms.Guna2Button btnSearch_result;
+        public Guna.UI2.WinForms.Guna2Button btnSearch_result;
     }
 }

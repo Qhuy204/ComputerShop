@@ -10,9 +10,30 @@ namespace DAL
     {
         private CuaHangMayTinhEntities1 db = new CuaHangMayTinhEntities1();
 
-        public void Add(EMPLOYEE staff)
+        public void NewEmployee(
+        string id,
+        string name,
+        string phone,
+        DateTime birthday,
+        string email,
+        string account,
+        string password)
         {
-            db.EMPLOYEES.Add(staff);
+            var employee = new EMPLOYEE
+            {
+                EMP_ID = id,
+                EMP_NAME = name,
+                EMP_PHONE_NUMBER = phone,
+                EMP_BIRTHDAY = birthday,
+                EMP_EMAIL = email,
+                EMP_ADDRESS = "temp",
+                HIRE_DATE = DateTime.Now,
+                EMP_ACCOUNT = account,
+                EMP_PASSWORD = password,
+                PS_ID = "PS002",
+                EMP_STATUS = "Đang làm việc"
+            };
+            db.EMPLOYEES.Add(employee);
             db.SaveChanges();
         }
 
@@ -39,14 +60,10 @@ namespace DAL
             s.EMP_PHONE_NUMBER = staff.EMP_PHONE_NUMBER;
             s.EMP_BIRTHDAY = staff.EMP_BIRTHDAY;
             s.EMP_GENDER = staff.EMP_GENDER;
-            s.EMP_PROVINCE = staff.EMP_PROVINCE;
-            s.EMP_DISTRICT= staff.EMP_DISTRICT;
-            s.EMP_WARD = staff.EMP_WARD;
             s.EMP_ADDRESS = staff.EMP_ADDRESS;
             s.EMP_EMAIL = staff.EMP_EMAIL;
             s.EMP_ACCOUNT= staff.EMP_ACCOUNT;
             s.EMP_PASSWORD = staff.EMP_PASSWORD;
-            s.HIRE_DATE = staff.HIRE_DATE;
             s.PS_ID = staff.PS_ID;
             s.EMP_STATUS = staff.EMP_STATUS;
             db.SaveChanges();

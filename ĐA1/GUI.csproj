@@ -150,6 +150,18 @@
     <Compile Include="GUI_ThemSP.Designer.cs">
       <DependentUpon>GUI_ThemSP.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_ThongtinCTKM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_ThongtinCTKM.Designer.cs">
+      <DependentUpon>GUI_ThongtinCTKM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_ThongtinMGG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_ThongtinMGG.Designer.cs">
+      <DependentUpon>GUI_ThongtinMGG.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_ThongtinTK.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +238,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_ThemSP.resx">
       <DependentUpon>GUI_ThemSP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_ThongtinCTKM.resx">
+      <DependentUpon>GUI_ThongtinCTKM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_ThongtinMGG.resx">
+      <DependentUpon>GUI_ThongtinMGG.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_ThongtinTK.resx">
       <DependentUpon>GUI_ThongtinTK.cs</DependentUpon>

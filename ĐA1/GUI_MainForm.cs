@@ -193,7 +193,7 @@ namespace ĐA1
         private void btnCauhinh_Click(object sender, EventArgs e)
         {
             Chuyendong(sender);
-            GUI_ThongtinTK frm = new GUI_ThongtinTK();
+            GUI_DSNhanvien frm = new GUI_DSNhanvien();
             FormHelper.HienThiFormCon(frm, pnNoidung);
             lblFuncName.Text = btnTongquan.Text;
         }

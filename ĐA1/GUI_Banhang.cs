@@ -10,15 +10,14 @@ namespace ĐA1
 {
     public partial class GUI_Banhang : Form
     {
-        private DAL_DSSanpham dalSpham = new DAL_DSSanpham();
-        private DAL_DSKhachhang dalKhachhang = new DAL_DSKhachhang();
+        private BUS_DSKhachhang busKH = new BUS_DSKhachhang();
+        private BUS_DSSanpham busSP = new BUS_DSSanpham();
 
         public static string CusName;
 
         public GUI_Banhang()
         {
             InitializeComponent();
-            UC_SearchResult.SearchResultClicked += new UC_SearchResult.SearchResultClickedEventHandler(SearchResultControl_SearchResultClicked);
         }
 
         private void GUI_Banhang_Load(object sender, EventArgs e)
@@ -61,7 +60,7 @@ namespace ĐA1
 
         private void txtTimKH_TextChanged(object sender, EventArgs e)
         {
-            if (txtTimKH.Text.Length >= 1)
+            /*if (txtTimKH.Text.Length >= 1)
             {
                 Cus_resultcontainer.Controls.Clear();
                 UC_SearchResult res = new UC_SearchResult();
@@ -70,11 +69,36 @@ namespace ĐA1
                 int newHeightKH = Cus_resultcontainer.Controls.Count * 47;
 
                 Cus_resultcontainer.Height = Math.Min(newHeightKH, MaxHeight);
+                res.Anchor = AnchorStyles.Top | AnchorStyles.Left;
+            }
+            else
+            {
+                Cus_resultcontainer.Height = 0;
+            }*/
+
+            if (txtTimKH.Text.Length >= 1)
+            {
+                var ctmList = busKH.GetByName(txtTimKH.Text);
+                UpdateDgv(ctmList);
+                if (dgvKH.Rows.Count > 0)
+                {
+                    Cus_resultcontainer.Height = dgvKH.Rows.Count * 30;
+                }
+                else
+                {
+                    Cus_resultcontainer.Height = 0;
+                }
             }
             else
             {
                 Cus_resultcontainer.Height = 0;
             }
+
+        }
+
+        private void UpdateDgv(CUSTOMER ctm)
+        {
+            dgvKH.DataSource = new List<object> { new { CUS_ID = ctm.CUS_ID, CUS_NAME = ctm.CUS_NAME } };
         }
 
         private void Cus_resultcontainer_Click(object sender, EventArgs e)
@@ -82,7 +106,7 @@ namespace ĐA1
             // Handle click event if needed
         }
 
-        private void CheckIfClicked()
+        public void CheckIfClicked()
         {
             bool isclicked = UC_SearchResult.IsClicked();
             if (isclicked == true)
@@ -136,6 +160,7 @@ namespace ĐA1
 
         private void BtnDanhsachSP_Click(object sender, EventArgs e)
         {
+            pnDSSanpham.Height = 300;
             pnDSSanpham.Controls.Clear();
             pnDSSanpham.Width = (int)(0.60f * this.Width); 
             var products = GetProducts(); 
@@ -172,6 +197,8 @@ namespace ĐA1
             List<WAREHOUSE> wrh = buskhohang.GetAll();
             return wrh;
         }
+
+
 
        
     }

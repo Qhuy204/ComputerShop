@@ -170,7 +170,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnMagiamgia.Controls.Add(this.panel3);
             this.pnMagiamgia.Controls.Add(this.dgvmagg);
-            this.pnMagiamgia.Location = new System.Drawing.Point(12, 130);
+            this.pnMagiamgia.Location = new System.Drawing.Point(12, 127);
             this.pnMagiamgia.Name = "pnMagiamgia";
             this.pnMagiamgia.Size = new System.Drawing.Size(1043, 418);
             this.pnMagiamgia.TabIndex = 20;
@@ -372,6 +372,7 @@
             this.dgvmagg.ThemeStyle.RowsStyle.Height = 40;
             this.dgvmagg.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.dgvmagg.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvmagg.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvmagg_CellContentClick);
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -477,6 +478,7 @@
             this.dgvctrinhgg.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvctrinhgg.RowHeadersVisible = false;
             this.dgvctrinhgg.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dgvctrinhgg.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvctrinhgg.RowTemplate.Height = 40;
             this.dgvctrinhgg.RowTemplate.ReadOnly = true;
             this.dgvctrinhgg.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -504,6 +506,7 @@
             this.dgvctrinhgg.ThemeStyle.RowsStyle.Height = 40;
             this.dgvctrinhgg.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.dgvctrinhgg.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvctrinhgg.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvctrinhgg_CellContentClick);
             // 
             // clMaggia
             // 
@@ -714,6 +717,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GUI_Khuyenmai";
             this.Text = "GUI_Khuyenmai";
+            this.Load += new System.EventHandler(this.GUI_Khuyenmai_Load);
             this.panel1.ResumeLayout(false);
             this.pnIfhavedata.ResumeLayout(false);
             this.pnIfhavedata.PerformLayout();
@@ -731,11 +735,11 @@
 
         #endregion
         private Guna.UI2.WinForms.Guna2Button btnTaokmai;
-        private Guna.UI2.WinForms.Guna2Button btnMagiamgia;
+        public Guna.UI2.WinForms.Guna2Button btnMagiamgia;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnIfhavedata;
         private System.Windows.Forms.Panel panelIfnodata;
-        private Guna.UI2.WinForms.Guna2Button btnCtrinhgiamgia;
+        public Guna.UI2.WinForms.Guna2Button btnCtrinhgiamgia;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2DataGridView dgvctrinhgg;
         private System.Windows.Forms.DataGridViewTextBoxColumn clMaggia;
