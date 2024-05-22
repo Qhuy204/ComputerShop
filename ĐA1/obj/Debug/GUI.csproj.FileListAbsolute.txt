@@ -40,3 +40,6 @@ D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_TaoKMOption.re
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_TaoCtrinhKm.resources
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_ThongtinMGG.resources
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_ThongtinCTKM.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_Chucvu.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_Themchucvu.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_DSChucvu.resources

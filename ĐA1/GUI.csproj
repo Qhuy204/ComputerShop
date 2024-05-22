@@ -60,6 +60,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI_Chucvu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Chucvu.Designer.cs">
+      <DependentUpon>GUI_Chucvu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_DSChucvu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_DSChucvu.Designer.cs">
+      <DependentUpon>GUI_DSChucvu.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_TaoCtrinhKm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +150,12 @@
     <Compile Include="GUI_DSNhanvien.Designer.cs">
       <DependentUpon>GUI_DSNhanvien.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_Themchucvu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Themchucvu.Designer.cs">
+      <DependentUpon>GUI_Themchucvu.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_ThemNV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +212,12 @@
     <Compile Include="UC_SearchResult.Designer.cs">
       <DependentUpon>UC_SearchResult.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI_Chucvu.resx">
+      <DependentUpon>GUI_Chucvu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_DSChucvu.resx">
+      <DependentUpon>GUI_DSChucvu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_TaoCtrinhKm.resx">
       <DependentUpon>GUI_TaoCtrinhKm.cs</DependentUpon>
     </EmbeddedResource>
@@ -232,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_DSNhanvien.resx">
       <DependentUpon>GUI_DSNhanvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Themchucvu.resx">
+      <DependentUpon>GUI_Themchucvu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_ThemNV.resx">
       <DependentUpon>GUI_ThemNV.cs</DependentUpon>

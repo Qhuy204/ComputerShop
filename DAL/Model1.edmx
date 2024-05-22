@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CuaHangMayTinhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CuaHangMayTinhModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AUTHORITY">
           <Key>
             <PropertyRef Name="AUT_ID" />
@@ -114,7 +114,6 @@
           <Property Name="ID" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PS_ID" Type="varchar" MaxLength="100" />
           <Property Name="AUT_ID" Type="varchar" MaxLength="100" />
-          <Property Name="ROLE_TYPE" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PRODUCT">
           <Key>
@@ -420,8 +419,7 @@
             <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CuaHangMayTinhModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -544,7 +542,6 @@
           <Property Name="ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PS_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="AUT_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ROLE_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AUTHORITY" Relationship="Self.FK__POSITION___AUT_I__603D47BB" FromRole="POSITION_AUTHORITY" ToRole="AUTHORITY" />
           <NavigationProperty Name="POSITION" Relationship="Self.FK__POSITION___PS_ID__5F492382" FromRole="POSITION_AUTHORITY" ToRole="POSITION" />
         </EntityType>
@@ -993,7 +990,6 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PS_ID" ColumnName="PS_ID" />
                 <ScalarProperty Name="AUT_ID" ColumnName="AUT_ID" />
-                <ScalarProperty Name="ROLE_TYPE" ColumnName="ROLE_TYPE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

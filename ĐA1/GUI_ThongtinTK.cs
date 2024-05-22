@@ -6,9 +6,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Xml.Linq;
 
 namespace ĐA1
 {
@@ -53,6 +56,7 @@ namespace ĐA1
                     cbbGioitinh.SelectedIndex = cbbGioitinh.FindStringExact(data.EMP_GENDER);
                     var cvu = busCV.GetByID(data.PS_ID);
                     cbbChucvu.SelectedIndex = cbbChucvu.FindStringExact(cvu.PS_NAME);
+                    lblemail.Text = txtEmail.Text;
                 }
                 catch (Exception ex)
                 {
@@ -158,6 +162,31 @@ namespace ĐA1
             {
                 MessageBox.Show("Không thể cập nhật thông tin.");
             }
+        }
+
+        private void btnKhoiphucmk_Click(object sender, EventArgs e)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+            Random random = new Random();
+
+            // Tạo mã ngẫu nhiên
+            string randomCode = new string(Enumerable.Repeat(chars, 10) 
+                                                    .Select(s => s[random.Next(s.Length)]) 
+                                                    .ToArray());
+
+            
+            string new_password = randomCode;
+            EMPLOYEE emp = new EMPLOYEE
+            {
+                EMP_PASSWORD = new_password
+            };
+            busNV.Update(emp);
+
+            SendEmail.SendMail_password(txtEmail.Text, new_password);
+            MessageBox.Show("Yêu cầu mật khẩu mới thành công");
+            this.Close();
+
         }
     }
 }

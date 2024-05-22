@@ -11,10 +11,12 @@ namespace BUS
     {
         private DAL_Chucvu dalChucvu = new DAL_Chucvu();
 
-        public void Add(POSITION ps)
+        public void NewCV(
+        string id,
+        string name,
+        string note)
         {
-            ps.PS_ID= GetNewID();
-            dalChucvu.Add(ps);
+            dalChucvu.NewCV(id, name, note);
         }
 
         public bool Delete(string position)
@@ -49,20 +51,15 @@ namespace BUS
             return GetAll().Where(x => x.PS_NAME.ToLower().Contains(keyword)).ToList();
         }
 
-        /*public bool Update(POSITION ps)
+        public bool Update(POSITION ps)
         {
             if (GetByID(ps.PS_ID) != null)
             {
-                dalChucvu.Update(wr);
+                dalChucvu.Update(ps);
                 return true;
             }
             return false;
         }
-
-        public void AddProductInformation(string id, float importprice, float retailprice, float wholesaleprice)
-        {
-            dalKhohang.AddProductInformation(id, importprice, retailprice, wholesaleprice);
-        }*/
 
         public POSITION TimKiemChucvu(string keyword)
         {

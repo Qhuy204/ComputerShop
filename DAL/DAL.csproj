@@ -61,13 +61,19 @@
     </Compile>
     <Compile Include="DAL_Chucvu.cs" />
     <Compile Include="DAL_CodeKhuyenmai.cs" />
+    <Compile Include="DAL_CTHDBanhang.cs" />
+    <Compile Include="DAL_CTHoadonnhaphang.cs" />
     <Compile Include="DAL_CTKhuyenmai.cs" />
     <Compile Include="DAL_DSKhachhang.cs" />
     <Compile Include="DAL_DSLoaiSP.cs" />
     <Compile Include="DAL_DSNhanvien.cs" />
     <Compile Include="DAL_DSSanpham.cs" />
+    <Compile Include="DAL_HDBanhang.cs" />
+    <Compile Include="DAL_Hoadonnhaphang.cs" />
     <Compile Include="DAL_Khohang.cs" />
     <Compile Include="DAL_QLNhacungcap.cs" />
+    <Compile Include="DAL_Quyen.cs" />
+    <Compile Include="DAL_QuyenofChucvu.cs" />
     <Compile Include="DISCOUNT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

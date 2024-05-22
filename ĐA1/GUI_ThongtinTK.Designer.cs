@@ -50,7 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtTaikhoan = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtdiachi = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtHoten = new Guna.UI2.WinForms.Guna2TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -66,6 +65,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnHuy = new Guna.UI2.WinForms.Guna2Button();
             this.btnXoaKM = new Guna.UI2.WinForms.Guna2Button();
+            this.txtdiachi = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -119,6 +119,7 @@
             this.btnKhoiphucmk.Size = new System.Drawing.Size(300, 40);
             this.btnKhoiphucmk.TabIndex = 6;
             this.btnKhoiphucmk.Text = "Gửi Email khôi phục mật khẩu cho tài khoản";
+            this.btnKhoiphucmk.Click += new System.EventHandler(this.btnKhoiphucmk_Click);
             // 
             // lblemail
             // 
@@ -347,6 +348,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.txtdiachi);
             this.panel1.Controls.Add(this.btnKhoiphucmk);
             this.panel1.Controls.Add(this.lblemail);
             this.panel1.Controls.Add(this.label13);
@@ -358,7 +360,6 @@
             this.panel1.Controls.Add(this.txttrangthai);
             this.panel1.Controls.Add(this.txtMatkhau);
             this.panel1.Controls.Add(this.txtTaikhoan);
-            this.panel1.Controls.Add(this.txtdiachi);
             this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Controls.Add(this.txtHoten);
             this.panel1.Controls.Add(this.label5);
@@ -397,26 +398,6 @@
             this.txtTaikhoan.SelectedText = "";
             this.txtTaikhoan.Size = new System.Drawing.Size(186, 36);
             this.txtTaikhoan.TabIndex = 1;
-            // 
-            // txtdiachi
-            // 
-            this.txtdiachi.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtdiachi.DefaultText = "";
-            this.txtdiachi.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtdiachi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtdiachi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtdiachi.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtdiachi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtdiachi.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtdiachi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtdiachi.Location = new System.Drawing.Point(239, 146);
-            this.txtdiachi.Name = "txtdiachi";
-            this.txtdiachi.PasswordChar = '\0';
-            this.txtdiachi.PlaceholderText = "";
-            this.txtdiachi.ReadOnly = true;
-            this.txtdiachi.SelectedText = "";
-            this.txtdiachi.Size = new System.Drawing.Size(637, 36);
-            this.txtdiachi.TabIndex = 1;
             // 
             // txtEmail
             // 
@@ -595,6 +576,25 @@
             this.btnXoaKM.Text = "Xóa";
             this.btnXoaKM.Click += new System.EventHandler(this.btnXoaKM_Click);
             // 
+            // txtdiachi
+            // 
+            this.txtdiachi.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtdiachi.DefaultText = "";
+            this.txtdiachi.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtdiachi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtdiachi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtdiachi.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtdiachi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtdiachi.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtdiachi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtdiachi.Location = new System.Drawing.Point(243, 146);
+            this.txtdiachi.Name = "txtdiachi";
+            this.txtdiachi.PasswordChar = '\0';
+            this.txtdiachi.PlaceholderText = "";
+            this.txtdiachi.SelectedText = "";
+            this.txtdiachi.Size = new System.Drawing.Size(633, 35);
+            this.txtdiachi.TabIndex = 7;
+            // 
             // GUI_ThongtinTK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -646,7 +646,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txttrangthai;
         private Guna.UI2.WinForms.Guna2TextBox txtMatkhau;
         private Guna.UI2.WinForms.Guna2TextBox txtTaikhoan;
-        private Guna.UI2.WinForms.Guna2TextBox txtdiachi;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2TextBox txtHoten;
         private System.Windows.Forms.Label label5;
@@ -662,5 +661,6 @@
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2Button btnHuy;
         private Guna.UI2.WinForms.Guna2Button btnXoaKM;
+        private Guna.UI2.WinForms.Guna2TextBox txtdiachi;
     }
 }

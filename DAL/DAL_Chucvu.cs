@@ -10,10 +10,21 @@ namespace DAL
     {
         private CuaHangMayTinhEntities1 db = new CuaHangMayTinhEntities1();
 
-        public void Add(POSITION ps)
+        public void NewCV(
+        string id,
+        string name,
+        string note)
         {
-            db.POSITIONs.Add(ps);
+            var chucvu = new POSITION
+            {
+                PS_ID = id,
+                PS_NAME = name,
+                PS_NOTE = note
+            };
+
+            db.POSITIONs.Add(chucvu);
             db.SaveChanges();
+
         }
 
         public void Delete(POSITION ps)
@@ -32,35 +43,14 @@ namespace DAL
             return db.POSITIONs.Find(id);
         }
 
-        /*public void Update(WAREHOUSE wr)
+        public void Update(POSITION ps)
         {
-            WAREHOUSE s = db.WAREHOUSEs.SingleOrDefault(x => x.PRD_ID == wr.PRD_ID);
-            s.PRD_IMG = wr.PRD_IMG;
-            s.PRD_ID = wr.PRD_ID;
-            s.PRD_NAME = wr.PRD_NAME;
-            s.PRD_TYPE_ID = wr.PRD_TYPE_ID;
-            s.BRD_ID = wr.BRD_ID;
-            s.RDY_FOR_SALE = wr.RDY_FOR_SALE;
-            s.INVENTORY_QUANTITY = wr.INVENTORY_QUANTITY;
-            s.CREATE_DAY = wr.CREATE_DAY;
-            s.RETAIL_PRICE = wr.RETAIL_PRICE;
-            s.IMPORT_PRICE = wr.IMPORT_PRICE;
-            s.WHOLESALE_PRICE = wr.WHOLESALE_PRICE;
+            POSITION s = db.POSITIONs.SingleOrDefault(x => x.PS_ID == ps.PS_ID);
+            s.PS_ID = ps.PS_ID;
+            s.PS_NAME = ps.PS_NAME;
+            s.PS_NOTE = ps.PS_NOTE;
             db.SaveChanges();
         }
-
-        public void AddProductInformation(string id, float importprice, float retailprice, float wholesaleprice)
-        {
-            var product = db.WAREHOUSEs.FirstOrDefault(p => p.PRD_ID == id);
-            if (product != null)
-            {
-                product.IMPORT_PRICE = importprice;
-                product.RETAIL_PRICE = retailprice;
-                product.WHOLESALE_PRICE = wholesaleprice;
-
-                db.SaveChanges();
-            }
-        }*/
 
         public POSITION TimKiemChucvu(string keyword)
         {

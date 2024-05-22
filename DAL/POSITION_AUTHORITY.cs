@@ -17,7 +17,6 @@ namespace DAL
         public string ID { get; set; }
         public string PS_ID { get; set; }
         public string AUT_ID { get; set; }
-        public string ROLE_TYPE { get; set; }
     
         public virtual AUTHORITY AUTHORITY { get; set; }
         public virtual POSITION POSITION { get; set; }

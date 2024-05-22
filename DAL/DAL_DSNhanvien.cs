@@ -30,7 +30,7 @@ namespace DAL
                 HIRE_DATE = DateTime.Now,
                 EMP_ACCOUNT = account,
                 EMP_PASSWORD = password,
-                PS_ID = "PS002",
+                PS_ID = "PS0",
                 EMP_STATUS = "Đang làm việc"
             };
             db.EMPLOYEES.Add(employee);

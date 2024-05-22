@@ -109,7 +109,6 @@
     <Property Name="ID" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="PS_ID" Type="varchar" MaxLength="100" />
     <Property Name="AUT_ID" Type="varchar" MaxLength="100" />
-    <Property Name="ROLE_TYPE" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="PRODUCT">
     <Key>

@@ -24,12 +24,7 @@ namespace ĐA1
 
         private void btnDangnhap_Click(object sender, EventArgs e)
         {
-            if (txtTaikhoan.Text.ToLower() == "admin" && txtMatkhau.Text == "Admin")
-            {
-                this.Hide();
-                GUI_MainForm mf = new GUI_MainForm();
-                mf.ShowDialog();
-            }
+            
         }
 
         private void swAdmin_CheckedChanged(object sender, EventArgs e)
