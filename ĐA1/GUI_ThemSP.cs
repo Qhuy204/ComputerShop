@@ -3,6 +3,7 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
@@ -19,7 +20,7 @@ namespace ĐA1
         public GUI_ThemSP()
         {
             InitializeComponent();
-            pictureBoxes = new PictureBox[] { pb1 };
+            pictureBoxes = new PictureBox[] { pbhinhanh };
         }
 
         private void ckbVanchuyen_CheckedChanged(object sender, EventArgs e)
@@ -63,7 +64,7 @@ namespace ĐA1
         private void LoadAnhVaoPictureBox(string link)
         {
             // Create an array of PictureBox controls
-            PictureBox[] pictureBoxes = { pb1};
+            PictureBox[] pictureBoxes = { pbhinhanh};
 
             // Load the image into the current PictureBox
             pictureBoxes[current_picturebox].Image = System.Drawing.Image.FromFile(link);
@@ -95,19 +96,32 @@ namespace ĐA1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string image = "";
-            string id = busSP.GetNewID();
-            string name = txtTensp.Text;
-            string brand_id = busNCC.getBRD_ID(cbbNcc.Text);
-            string producttype_id = busLoaiSP.getPD_TYPE_ID(cbbLoaiSP.Text);
-            float importprice = float.Parse(txtgianhap.Text);
-            float retailprice = float.Parse(txtGiabanle.Text);
-            float wholesaleprice = float.Parse(txtgiabanbuon.Text);
-            bool deliveryallowed = ckbVanchuyen.Checked;
-            float weight = string.IsNullOrEmpty(txtKhoiluong.Text) ? 0 : float.Parse(txtKhoiluong.Text);
-            busSP.NewProduct(id, name, brand_id, producttype_id, deliveryallowed, weight);
-            busKhohang.AddProductInformation(id, importprice, retailprice, wholesaleprice);
-            MessageBox.Show("Product saved successfully.");
+            byte[] image;
+            if (pbhinhanh.Image != null)
+            {
+                MemoryStream memoryStream = new MemoryStream();
+                pbhinhanh.Image.Save(memoryStream, pbhinhanh.Image.RawFormat);
+                image = memoryStream.ToArray();
+                string id = busSP.GetNewID();
+                string name = txtTensp.Text;
+                string brand_id = busNCC.getBRD_ID(cbbNcc.Text);
+                string producttype_id = busLoaiSP.getPD_TYPE_ID(cbbLoaiSP.Text);
+                float importprice = float.Parse(txtgianhap.Text);
+                float retailprice = float.Parse(txtGiabanle.Text);
+                float wholesaleprice = float.Parse(txtgiabanbuon.Text);
+                bool deliveryallowed = ckbVanchuyen.Checked;
+                float weight = string.IsNullOrEmpty(txtKhoiluong.Text) ? 0 : float.Parse(txtKhoiluong.Text);
+                busSP.NewProduct(image, id, name, brand_id, producttype_id, deliveryallowed, weight);
+                busKhohang.AddProductInformation(id, importprice, retailprice, wholesaleprice);
+                MessageBox.Show("Product saved successfully.");
+            }
+            else
+            {
+                MessageBox.Show("Không thể thêm sản phẩm mới! Lỗi Ảnh");
+            }
+
+
+            
         }
 
         private void GUI_ThemSP_Load(object sender, EventArgs e)

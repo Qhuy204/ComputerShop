@@ -13,23 +13,23 @@ namespace BUS
 
         public bool Delete(string id)
         {
-            HD product = GetbyID(id);
-            if (product != null)
+            SALEBILL hdbanhang = GetbyID(id);
+            if (hdbanhang != null)
             {
-                dalSP.Delete(product);
+                dalhdbh.Delete(hdbanhang);
                 return true;
             }
             return false;
         }
 
-        public List<PRODUCT> GetAll()
+        public List<SALEBILL> GetAll()
         {
-            return dalSP.GetAll();
+            return dalhdbh.GetAll();
         }
 
-        public PRODUCT GetbyID(string id)
+        public SALEBILL GetbyID(string id)
         {
-            return dalSP.GetByID(id);
+            return dalhdbh.GetByID(id);
         }
         public string GetNewID()
         {
@@ -42,49 +42,46 @@ namespace BUS
                             .Select(p =>
                             {
                                 int id;
-                                bool success = Int32.TryParse(p.PRD_ID.Substring(3), out id);
+                                bool success = Int32.TryParse(p.SL_ID.Substring(2), out id);
                                 return success ? id : 0;
                             })
                             .Max();
             }
 
-            return "PRD" + (maxID + 1);
+            return "SB" + (maxID + 1);
         }
-        public List<PRODUCT> SearchProduct(string keyword, string loaisp, string nhanhieu)
+        public List<SALEBILL> SearchSalebill(string keyword, string idkh)
         {
-            return GetAll().Where(x => x.PRD_NAME.ToLower().Contains(keyword)).ToList();
+            return GetAll().Where(x => x.CUS_ID.ToLower().Contains(keyword)).ToList();
         }
 
-        public bool Update(PRODUCT Prd)
+        public bool Update(SALEBILL sl)
         {
-            if (GetbyID(Prd.PRD_ID) != null)
+            if (GetbyID(sl.SL_ID) != null)
             {
-                dalSP.Update(Prd);
+                dalhdbh.Update(sl);
                 return true;
             }
             return false;
         }
 
-        public List<PRODUCT> TimKiemSanPham(string nhanhieu, string loaisp, string keyword)
+        public List<SALEBILL> TimKiemHoadonban(string khachhang, string nhanvien, string id, DateTime? startDate, DateTime? endDate)
         {
-            return dalSP.TimKiemSanPham(nhanhieu, loaisp, keyword);
+            return dalhdbh.TimKiemHoadonban(khachhang, nhanvien, id, startDate, endDate);
         }
 
-        public string getPRD_ID(string prdName)
-        {
-            return dalSP.getPRD_ID(prdName);
-        }
-
-        public void NewProduct(
-        //string image,
+        public void NewSalebill(
         string id,
-        string name,
-        string brand_id,
-        string producttype_id,
-        bool deliveryallowed,
-        float weight)
+        DateTime date,
+        string cusid,
+        string empid,
+        string discode,
+        string promotion,
+        string payment,
+        string note,
+        string status)
         {
-            dalSP.NewProduct(id, name, brand_id, producttype_id, deliveryallowed, weight);
+            dalhdbh.NewSalebill(id, date, cusid, empid, discode, promotion, payment, note, status);
         }
     }
 }

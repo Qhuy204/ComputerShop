@@ -35,6 +35,15 @@
             this.panelIfnodata = new System.Windows.Forms.Panel();
             this.pnIfhavedata = new System.Windows.Forms.Panel();
             this.dgvSP = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.clAnhSP = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clprdid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cltensp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTenLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clbrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clrdy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clquantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clKhoiluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clNgayktao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnClear = new Guna.UI2.WinForms.Guna2Button();
             this.btnTimkiem = new Guna.UI2.WinForms.Guna2Button();
@@ -53,15 +62,6 @@
             this.clNhanhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clcotheban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clSLtonkho = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clAnhSP = new System.Windows.Forms.DataGridViewImageColumn();
-            this.clprdid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cltensp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clTenLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clbrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clrdy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clquantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clKhoiluong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clNgayktao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelIfnodata.SuspendLayout();
             this.pnIfhavedata.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSP)).BeginInit();
@@ -169,6 +169,73 @@
             this.dgvSP.ThemeStyle.RowsStyle.Height = 40;
             this.dgvSP.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.dgvSP.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvSP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSP_CellContentClick);
+            // 
+            // clAnhSP
+            // 
+            this.clAnhSP.DataPropertyName = "PRD_IMG";
+            this.clAnhSP.HeaderText = "Ảnh";
+            this.clAnhSP.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.clAnhSP.Name = "clAnhSP";
+            this.clAnhSP.ReadOnly = true;
+            this.clAnhSP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clAnhSP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // clprdid
+            // 
+            this.clprdid.DataPropertyName = "PRD_ID";
+            this.clprdid.HeaderText = "Mã sản phẩm";
+            this.clprdid.Name = "clprdid";
+            this.clprdid.ReadOnly = true;
+            // 
+            // cltensp
+            // 
+            this.cltensp.DataPropertyName = "PRD_NAME";
+            this.cltensp.HeaderText = "Tên sản phẩm";
+            this.cltensp.Name = "cltensp";
+            this.cltensp.ReadOnly = true;
+            // 
+            // clTenLoaiSP
+            // 
+            this.clTenLoaiSP.DataPropertyName = "PRD_TYPE_NAME";
+            this.clTenLoaiSP.HeaderText = "Loại sản phẩm";
+            this.clTenLoaiSP.Name = "clTenLoaiSP";
+            this.clTenLoaiSP.ReadOnly = true;
+            // 
+            // clbrand
+            // 
+            this.clbrand.DataPropertyName = "BRD_NAME";
+            this.clbrand.HeaderText = "Hãng";
+            this.clbrand.Name = "clbrand";
+            this.clbrand.ReadOnly = true;
+            // 
+            // clrdy
+            // 
+            this.clrdy.DataPropertyName = "RDY_FOR_SALE";
+            this.clrdy.HeaderText = "Có thể bán";
+            this.clrdy.Name = "clrdy";
+            this.clrdy.ReadOnly = true;
+            // 
+            // clquantity
+            // 
+            this.clquantity.DataPropertyName = "QUANTITY";
+            this.clquantity.HeaderText = "Tồn kho";
+            this.clquantity.Name = "clquantity";
+            this.clquantity.ReadOnly = true;
+            // 
+            // clKhoiluong
+            // 
+            this.clKhoiluong.DataPropertyName = "PRD_WEIGHT";
+            this.clKhoiluong.HeaderText = "Khối lượng";
+            this.clKhoiluong.Name = "clKhoiluong";
+            this.clKhoiluong.ReadOnly = true;
+            // 
+            // clNgayktao
+            // 
+            this.clNgayktao.DataPropertyName = "CREATE_DAY";
+            this.clNgayktao.HeaderText = "Ngày khởi tạo";
+            this.clNgayktao.Name = "clNgayktao";
+            this.clNgayktao.ReadOnly = true;
             // 
             // panel2
             // 
@@ -307,6 +374,7 @@
             this.btnnhap.TabIndex = 5;
             this.btnnhap.Text = "Nhập File";
             this.btnnhap.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnnhap.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnXuatfile
             // 
@@ -323,6 +391,7 @@
             this.btnXuatfile.TabIndex = 6;
             this.btnXuatfile.Text = "Xuất File";
             this.btnXuatfile.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnXuatfile.Click += new System.EventHandler(this.btnXuatfile_Click);
             // 
             // btnThemSP
             // 
@@ -395,71 +464,6 @@
             this.clSLtonkho.HeaderText = "Tồn kho";
             this.clSLtonkho.Name = "clSLtonkho";
             this.clSLtonkho.ReadOnly = true;
-            // 
-            // clAnhSP
-            // 
-            this.clAnhSP.DataPropertyName = "PRD_IMG";
-            this.clAnhSP.HeaderText = "Ảnh";
-            this.clAnhSP.Name = "clAnhSP";
-            this.clAnhSP.ReadOnly = true;
-            this.clAnhSP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clAnhSP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // clprdid
-            // 
-            this.clprdid.DataPropertyName = "PRD_ID";
-            this.clprdid.HeaderText = "Mã sản phẩm";
-            this.clprdid.Name = "clprdid";
-            this.clprdid.ReadOnly = true;
-            // 
-            // cltensp
-            // 
-            this.cltensp.DataPropertyName = "PRD_NAME";
-            this.cltensp.HeaderText = "Tên sản phẩm";
-            this.cltensp.Name = "cltensp";
-            this.cltensp.ReadOnly = true;
-            // 
-            // clTenLoaiSP
-            // 
-            this.clTenLoaiSP.DataPropertyName = "PRD_TYPE_NAME";
-            this.clTenLoaiSP.HeaderText = "Loại sản phẩm";
-            this.clTenLoaiSP.Name = "clTenLoaiSP";
-            this.clTenLoaiSP.ReadOnly = true;
-            // 
-            // clbrand
-            // 
-            this.clbrand.DataPropertyName = "BRD_NAME";
-            this.clbrand.HeaderText = "Hãng";
-            this.clbrand.Name = "clbrand";
-            this.clbrand.ReadOnly = true;
-            // 
-            // clrdy
-            // 
-            this.clrdy.DataPropertyName = "RDY_FOR_SALE";
-            this.clrdy.HeaderText = "Có thể bán";
-            this.clrdy.Name = "clrdy";
-            this.clrdy.ReadOnly = true;
-            // 
-            // clquantity
-            // 
-            this.clquantity.DataPropertyName = "QUANTITY";
-            this.clquantity.HeaderText = "Tồn kho";
-            this.clquantity.Name = "clquantity";
-            this.clquantity.ReadOnly = true;
-            // 
-            // clKhoiluong
-            // 
-            this.clKhoiluong.DataPropertyName = "PRD_WEIGHT";
-            this.clKhoiluong.HeaderText = "Khối lượng";
-            this.clKhoiluong.Name = "clKhoiluong";
-            this.clKhoiluong.ReadOnly = true;
-            // 
-            // clNgayktao
-            // 
-            this.clNgayktao.DataPropertyName = "CREATE_DAY";
-            this.clNgayktao.HeaderText = "Ngày khởi tạo";
-            this.clNgayktao.Name = "clNgayktao";
-            this.clNgayktao.ReadOnly = true;
             // 
             // GUI_DSSanpham
             // 

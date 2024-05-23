@@ -77,7 +77,7 @@ namespace BUS
         }
 
         public void NewProduct(
-        //string image,
+        byte[] image,
         string id,
         string name,
         string brand_id,
@@ -85,7 +85,7 @@ namespace BUS
         bool deliveryallowed,
         float weight)
         {
-            dalSP.NewProduct(id, name, brand_id, producttype_id, deliveryallowed, weight);
+            dalSP.NewProduct(image, id, name, brand_id, producttype_id, deliveryallowed, weight);
         }       
     }
 }

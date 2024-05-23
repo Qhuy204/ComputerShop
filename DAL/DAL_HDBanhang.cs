@@ -10,7 +10,6 @@ namespace DAL
     public class DAL_HDBanhang
     {
         private CuaHangMayTinhEntities1 db = new CuaHangMayTinhEntities1();
-        private DataTable dt = new DataTable();
 
         public void Delete(SALEBILL sl)
         {
@@ -38,8 +37,6 @@ namespace DAL
             s.PROMOTION_ID = sl.PROMOTION_ID;
             s.PAYMENT = sl.PAYMENT;
             s.NOTE = sl.NOTE;
-            s.MONEY_CUSTOMER_GIVE = sl.MONEY_CUSTOMER_GIVE;
-            s.REFUND = sl.REFUND;
             s.STATUS = sl.STATUS;
             db.SaveChanges();
         }
@@ -77,12 +74,6 @@ namespace DAL
         }
 
 
-        /*public string getSALEBILL_ID(string prdName)
-        {
-            var product = db.PRODUCTs.FirstOrDefault(p => p.PRD_NAME == prdName);
-            return product != null ? product.PRD_ID : null;
-        }*/
-
         public void NewSalebill(
         string id,
         DateTime date,
@@ -92,8 +83,6 @@ namespace DAL
         string promotion,
         string payment,
         string note,
-        float moneycusgive,
-        float refund,
         string status)
         {
             var salebill = new SALEBILL
@@ -107,8 +96,6 @@ namespace DAL
                 TOTAL_MONEY = 0,
                 PAYMENT = payment,
                 NOTE = note,
-                MONEY_CUSTOMER_GIVE = moneycusgive,
-                REFUND = refund,
                 STATUS = status
             };
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,22 @@ namespace ĐA1
 
             if (wrh != null && wrh.Count > 0)
             {
+                var productNames = wrh.Where(c => c.PRD_NAME != null).Select(c => c.PRD_NAME).ToList();
+                if (productNames.Any())
+                {
+                    var imageBytes = wrh.FirstOrDefault(c => c.PRD_IMG != null)?.PRD_IMG;
+                    if (imageBytes != null)
+                    {
+                        using (var ms = new MemoryStream(imageBytes))
+                        {
+                            pbHinhanh.Image = Image.FromStream(ms);
+                        }
+                    }
+                }
+                else
+                {
+                    return;
+                }
                 lblTensp.Text = string.Join(", ", wrh.Select(c => c.PRD_NAME));
                 lblGiaban.Text = string.Join(", ", wrh.Select(c => c.RETAIL_PRICE));
                 lblSoluong.Text = string.Join(", ", wrh.Select(c => c.INVENTORY_QUANTITY));

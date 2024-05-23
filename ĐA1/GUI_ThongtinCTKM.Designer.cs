@@ -41,6 +41,7 @@
             this.txtTrangthai = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtMucgiam = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnXoaKM = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.txtDasd = new Guna.UI2.WinForms.Guna2TextBox();
@@ -65,7 +66,6 @@
             this.dtpBatdau = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnXoaKM = new Guna.UI2.WinForms.Guna2Button();
             this.pnMucgiam.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -167,6 +167,7 @@
             this.btnLuu.Size = new System.Drawing.Size(133, 45);
             this.btnLuu.TabIndex = 0;
             this.btnLuu.Text = "Lưu";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // pnMucgiam
             // 
@@ -288,6 +289,24 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1115, 584);
             this.guna2Panel1.TabIndex = 2;
+            // 
+            // btnXoaKM
+            // 
+            this.btnXoaKM.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnXoaKM.BorderRadius = 5;
+            this.btnXoaKM.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnXoaKM.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnXoaKM.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnXoaKM.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnXoaKM.FillColor = System.Drawing.Color.Red;
+            this.btnXoaKM.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnXoaKM.ForeColor = System.Drawing.Color.White;
+            this.btnXoaKM.Location = new System.Drawing.Point(658, 499);
+            this.btnXoaKM.Name = "btnXoaKM";
+            this.btnXoaKM.Size = new System.Drawing.Size(133, 45);
+            this.btnXoaKM.TabIndex = 12;
+            this.btnXoaKM.Text = "Xóa";
+            this.btnXoaKM.Click += new System.EventHandler(this.btnXoaKM_Click);
             // 
             // guna2Panel2
             // 
@@ -637,24 +656,6 @@
             this.label4.Size = new System.Drawing.Size(115, 17);
             this.label4.TabIndex = 4;
             this.label4.Text = "Thời gian hiệu lực";
-            // 
-            // btnXoaKM
-            // 
-            this.btnXoaKM.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnXoaKM.BorderRadius = 5;
-            this.btnXoaKM.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnXoaKM.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnXoaKM.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnXoaKM.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnXoaKM.FillColor = System.Drawing.Color.Red;
-            this.btnXoaKM.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnXoaKM.ForeColor = System.Drawing.Color.White;
-            this.btnXoaKM.Location = new System.Drawing.Point(658, 499);
-            this.btnXoaKM.Name = "btnXoaKM";
-            this.btnXoaKM.Size = new System.Drawing.Size(133, 45);
-            this.btnXoaKM.TabIndex = 12;
-            this.btnXoaKM.Text = "Xóa";
-            this.btnXoaKM.Click += new System.EventHandler(this.btnXoaKM_Click);
             // 
             // GUI_ThongtinCTKM
             // 

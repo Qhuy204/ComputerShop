@@ -119,7 +119,6 @@
           <Key>
             <PropertyRef Name="PRD_ID" />
           </Key>
-          <Property Name="PRD_IMG" Type="varchar" MaxLength="1000" />
           <Property Name="PRD_ID" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PRD_NAME" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="PRD_TYPE_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -129,6 +128,7 @@
           <Property Name="DELIVERY_ALLOWED" Type="bit" Nullable="false" />
           <Property Name="PRD_WEIGHT" Type="float" />
           <Property Name="CREATE_DAY" Type="date" />
+          <Property Name="PRD_IMG" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="PRODUCTTYPE">
           <Key>
@@ -169,9 +169,8 @@
           <Property Name="TOTAL_MONEY" Type="float" />
           <Property Name="PAYMENT" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="NOTE" Type="nvarchar" MaxLength="255" />
-          <Property Name="MONEY_CUSTOMER_GIVE" Type="float" />
-          <Property Name="REFUND" Type="float" />
           <Property Name="STATUS" Type="nvarchar" MaxLength="255" />
+          <Property Name="BANGGIA" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="SALEBILL_DETAIL">
           <Key>
@@ -183,6 +182,15 @@
           <Property Name="QUANTITY" Type="int" Nullable="false" />
           <Property Name="PRICE" Type="float" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'CuaHangMayTinh.dbo.STOREINFO' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="STOREINFO">
+          <Property Name="STR_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="STR_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="STR_GPKD_NUMBER" Type="varchar" MaxLength="100" />
+          <Property Name="STR_PHONE" Type="varchar" MaxLength="15" />
+          <Property Name="STR_ADDRESS" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -197,7 +205,6 @@
           <Key>
             <PropertyRef Name="PRD_ID" />
           </Key>
-          <Property Name="PRD_IMG" Type="varchar" MaxLength="1000" />
           <Property Name="PRD_ID" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PRD_NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="PRD_TYPE_ID" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -208,6 +215,7 @@
           <Property Name="RETAIL_PRICE" Type="float" Nullable="false" />
           <Property Name="IMPORT_PRICE" Type="float" Nullable="false" />
           <Property Name="WHOLESALE_PRICE" Type="float" Nullable="false" />
+          <Property Name="PRD_IMG" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK__EMPLOYEES__PS_ID__67DE6983">
           <End Role="POSITION" Type="Self.POSITION" Multiplicity="0..1" />
@@ -549,7 +557,6 @@
           <Key>
             <PropertyRef Name="PRD_ID" />
           </Key>
-          <Property Name="PRD_IMG" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PRD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PRD_TYPE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -559,6 +566,7 @@
           <Property Name="DELIVERY_ALLOWED" Type="Boolean" Nullable="false" />
           <Property Name="PRD_WEIGHT" Type="Double" />
           <Property Name="CREATE_DAY" Type="DateTime" Precision="0" />
+          <Property Name="PRD_IMG" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK_PRODUCT_PRODUCTTYPE" FromRole="PRODUCT" ToRole="PRODUCTTYPE" />
         </EntityType>
         <EntityType Name="PRODUCTTYPE">
@@ -602,9 +610,8 @@
           <Property Name="TOTAL_MONEY" Type="Double" />
           <Property Name="PAYMENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MONEY_CUSTOMER_GIVE" Type="Double" />
-          <Property Name="REFUND" Type="Double" />
           <Property Name="STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BANGGIA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_SALEBILL_CUSTOMER" FromRole="SALEBILL" ToRole="CUSTOMER" />
           <NavigationProperty Name="SALEBILL_DETAIL" Relationship="Self.FK_SALEBILL_DETAIL_SALEBILL" FromRole="SALEBILL" ToRole="SALEBILL_DETAIL" />
         </EntityType>
@@ -633,7 +640,6 @@
           <Key>
             <PropertyRef Name="PRD_ID" />
           </Key>
-          <Property Name="PRD_IMG" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PRD_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PRD_TYPE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -644,6 +650,7 @@
           <Property Name="RETAIL_PRICE" Type="Double" Nullable="false" />
           <Property Name="IMPORT_PRICE" Type="Double" Nullable="false" />
           <Property Name="WHOLESALE_PRICE" Type="Double" Nullable="false" />
+          <Property Name="PRD_IMG" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="BRAND" Relationship="Self.FK_WAREHOUSE_BRAND" FromRole="WAREHOUSE" ToRole="BRAND" />
           <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK_WAREHOUSE_PRODUCTTYPE" FromRole="WAREHOUSE" ToRole="PRODUCTTYPE" />
         </EntityType>
@@ -996,7 +1003,6 @@
           <EntitySetMapping Name="PRODUCTs">
             <EntityTypeMapping TypeName="CuaHangMayTinhModel.PRODUCT">
               <MappingFragment StoreEntitySet="PRODUCT">
-                <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
                 <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
                 <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
                 <ScalarProperty Name="PRD_TYPE_ID" ColumnName="PRD_TYPE_ID" />
@@ -1006,6 +1012,7 @@
                 <ScalarProperty Name="DELIVERY_ALLOWED" ColumnName="DELIVERY_ALLOWED" />
                 <ScalarProperty Name="PRD_WEIGHT" ColumnName="PRD_WEIGHT" />
                 <ScalarProperty Name="CREATE_DAY" ColumnName="CREATE_DAY" />
+                <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1049,9 +1056,8 @@
                 <ScalarProperty Name="TOTAL_MONEY" ColumnName="TOTAL_MONEY" />
                 <ScalarProperty Name="PAYMENT" ColumnName="PAYMENT" />
                 <ScalarProperty Name="NOTE" ColumnName="NOTE" />
-                <ScalarProperty Name="MONEY_CUSTOMER_GIVE" ColumnName="MONEY_CUSTOMER_GIVE" />
-                <ScalarProperty Name="REFUND" ColumnName="REFUND" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="BANGGIA" ColumnName="BANGGIA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1080,7 +1086,6 @@
           <EntitySetMapping Name="WAREHOUSEs">
             <EntityTypeMapping TypeName="CuaHangMayTinhModel.WAREHOUSE">
               <MappingFragment StoreEntitySet="WAREHOUSE">
-                <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
                 <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
                 <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
                 <ScalarProperty Name="PRD_TYPE_ID" ColumnName="PRD_TYPE_ID" />
@@ -1091,6 +1096,7 @@
                 <ScalarProperty Name="RETAIL_PRICE" ColumnName="RETAIL_PRICE" />
                 <ScalarProperty Name="IMPORT_PRICE" ColumnName="IMPORT_PRICE" />
                 <ScalarProperty Name="WHOLESALE_PRICE" ColumnName="WHOLESALE_PRICE" />
+                <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1133,7 +1139,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

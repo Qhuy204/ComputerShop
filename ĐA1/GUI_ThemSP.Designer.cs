@@ -45,7 +45,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pb1 = new System.Windows.Forms.PictureBox();
+            this.pbhinhanh = new System.Windows.Forms.PictureBox();
             this.btnThemanh = new Guna.UI2.WinForms.Guna2Button();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -60,7 +60,7 @@
             this.panel7.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbhinhanh)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -302,7 +302,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.pb1);
+            this.panel2.Controls.Add(this.pbhinhanh);
             this.panel2.Controls.Add(this.btnThemanh);
             this.panel2.Controls.Add(this.label7);
             this.panel2.ForeColor = System.Drawing.Color.Black;
@@ -311,13 +311,13 @@
             this.panel2.Size = new System.Drawing.Size(228, 243);
             this.panel2.TabIndex = 9;
             // 
-            // pb1
+            // pbhinhanh
             // 
-            this.pb1.Location = new System.Drawing.Point(15, 79);
-            this.pb1.Name = "pb1";
-            this.pb1.Size = new System.Drawing.Size(196, 148);
-            this.pb1.TabIndex = 3;
-            this.pb1.TabStop = false;
+            this.pbhinhanh.Location = new System.Drawing.Point(15, 79);
+            this.pbhinhanh.Name = "pbhinhanh";
+            this.pbhinhanh.Size = new System.Drawing.Size(196, 148);
+            this.pbhinhanh.TabIndex = 3;
+            this.pbhinhanh.TabStop = false;
             // 
             // btnThemanh
             // 
@@ -476,7 +476,7 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbhinhanh)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -502,7 +502,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pb1;
+        private System.Windows.Forms.PictureBox pbhinhanh;
         private Guna.UI2.WinForms.Guna2Button btnThemanh;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;

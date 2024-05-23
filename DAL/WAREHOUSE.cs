@@ -14,7 +14,6 @@ namespace DAL
     
     public partial class WAREHOUSE
     {
-        public string PRD_IMG { get; set; }
         public string PRD_ID { get; set; }
         public string PRD_NAME { get; set; }
         public string PRD_TYPE_ID { get; set; }
@@ -25,6 +24,7 @@ namespace DAL
         public double RETAIL_PRICE { get; set; }
         public double IMPORT_PRICE { get; set; }
         public double WHOLESALE_PRICE { get; set; }
+        public byte[] PRD_IMG { get; set; }
     
         public virtual BRAND BRAND { get; set; }
         public virtual PRODUCTTYPE PRODUCTTYPE { get; set; }

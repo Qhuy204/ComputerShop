@@ -29,23 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_SearchProduct));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbHinhanh = new System.Windows.Forms.PictureBox();
             this.lblTensp = new System.Windows.Forms.Label();
             this.lblGiaban = new System.Windows.Forms.Label();
             this.lblSoluong = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHinhanh)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // pbHinhanh
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(58, 58);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pbHinhanh.Image = ((System.Drawing.Image)(resources.GetObject("pbHinhanh.Image")));
+            this.pbHinhanh.Location = new System.Drawing.Point(0, 0);
+            this.pbHinhanh.Name = "pbHinhanh";
+            this.pbHinhanh.Size = new System.Drawing.Size(58, 58);
+            this.pbHinhanh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHinhanh.TabIndex = 0;
+            this.pbHinhanh.TabStop = false;
             // 
             // lblTensp
             // 
@@ -93,7 +93,7 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Khả dụng";
             // 
-            // SearchProduct
+            // UC_SearchProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -103,12 +103,12 @@
             this.Controls.Add(this.lblSoluong);
             this.Controls.Add(this.lblGiaban);
             this.Controls.Add(this.lblTensp);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbHinhanh);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "SearchProduct";
+            this.Name = "UC_SearchProduct";
             this.Size = new System.Drawing.Size(1402, 61);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHinhanh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,7 +116,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbHinhanh;
         private System.Windows.Forms.Label lblTensp;
         private System.Windows.Forms.Label lblGiaban;
         private System.Windows.Forms.Label lblSoluong;

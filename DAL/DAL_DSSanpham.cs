@@ -29,20 +29,30 @@ namespace DAL
             return db.PRODUCTs.Find(id);
         }
 
-        public void Update(PRODUCT prd)
+        public bool Update(PRODUCT prd)
         {
-            PRODUCT s = db.PRODUCTs.SingleOrDefault(x => x.PRD_ID == prd.BRD_ID);
-            s.PRD_IMG = prd.PRD_IMG;
-            s.PRD_NAME = prd.PRD_NAME;
-            s.PRD_TYPE_ID = prd.PRD_TYPE_ID;
-            s.BRD_ID = prd.BRD_ID;
-            s.RDY_FOR_SALE = prd.RDY_FOR_SALE;
-            s.QUANTITY = prd.QUANTITY;
-            s.DELIVERY_ALLOWED = prd.DELIVERY_ALLOWED;
-            s.PRD_WEIGHT = prd.PRD_WEIGHT;
-            //s.CREA
-            db.SaveChanges();
+            PRODUCT s = db.PRODUCTs.SingleOrDefault(x => x.PRD_ID == prd.PRD_ID);
+
+            if (s != null)
+            {
+                s.PRD_ID = prd.PRD_ID;
+                s.PRD_IMG = prd.PRD_IMG;
+                s.PRD_NAME = prd.PRD_NAME;
+                s.PRD_TYPE_ID = prd.PRD_TYPE_ID;
+                s.BRD_ID = prd.BRD_ID;
+                s.DELIVERY_ALLOWED = prd.DELIVERY_ALLOWED;
+                s.PRD_WEIGHT = prd.PRD_WEIGHT;
+
+                db.SaveChanges();
+                return true;
+            }
+            else
+            {
+                // Log or handle the case when the product is not found
+                return false;
+            }
         }
+
 
         public List<PRODUCT> TimKiemSanPham(string nhanhieu, string loaisp, string keyword)
         {
@@ -73,7 +83,7 @@ namespace DAL
         }
 
         public void NewProduct(
-        //string image,
+        byte[] image,
         string id,
         string name,
         string brand_id,
@@ -83,7 +93,7 @@ namespace DAL
         {
             var product = new PRODUCT
             {
-                //PRD_IMG = image,
+                PRD_IMG = image,
                 PRD_ID = id,
                 PRD_NAME = name,
                 BRD_ID = brand_id,

@@ -126,7 +126,6 @@
     <Key>
       <PropertyRef Name="PRD_ID" />
     </Key>
-    <Property Name="PRD_IMG" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PRD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PRD_TYPE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -136,6 +135,7 @@
     <Property Name="DELIVERY_ALLOWED" Type="Boolean" Nullable="false" />
     <Property Name="PRD_WEIGHT" Type="Double" />
     <Property Name="CREATE_DAY" Type="DateTime" Precision="0" />
+    <Property Name="PRD_IMG" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK_PRODUCT_PRODUCTTYPE" FromRole="PRODUCT" ToRole="PRODUCTTYPE" />
   </EntityType>
   <EntityType Name="PRODUCTTYPE">
@@ -179,9 +179,8 @@
     <Property Name="TOTAL_MONEY" Type="Double" />
     <Property Name="PAYMENT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="NOTE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="MONEY_CUSTOMER_GIVE" Type="Double" />
-    <Property Name="REFUND" Type="Double" />
     <Property Name="STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="BANGGIA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_SALEBILL_CUSTOMER" FromRole="SALEBILL" ToRole="CUSTOMER" />
     <NavigationProperty Name="SALEBILL_DETAIL" Relationship="Self.FK_SALEBILL_DETAIL_SALEBILL" FromRole="SALEBILL" ToRole="SALEBILL_DETAIL" />
   </EntityType>
@@ -210,7 +209,6 @@
     <Key>
       <PropertyRef Name="PRD_ID" />
     </Key>
-    <Property Name="PRD_IMG" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PRD_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PRD_TYPE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -221,6 +219,7 @@
     <Property Name="RETAIL_PRICE" Type="Double" Nullable="false" />
     <Property Name="IMPORT_PRICE" Type="Double" Nullable="false" />
     <Property Name="WHOLESALE_PRICE" Type="Double" Nullable="false" />
+    <Property Name="PRD_IMG" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="BRAND" Relationship="Self.FK_WAREHOUSE_BRAND" FromRole="WAREHOUSE" ToRole="BRAND" />
     <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK_WAREHOUSE_PRODUCTTYPE" FromRole="WAREHOUSE" ToRole="PRODUCTTYPE" />
   </EntityType>

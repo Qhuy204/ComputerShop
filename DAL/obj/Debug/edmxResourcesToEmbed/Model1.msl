@@ -124,7 +124,6 @@
     <EntitySetMapping Name="PRODUCTs">
       <EntityTypeMapping TypeName="CuaHangMayTinhModel.PRODUCT">
         <MappingFragment StoreEntitySet="PRODUCT">
-          <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
           <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
           <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
           <ScalarProperty Name="PRD_TYPE_ID" ColumnName="PRD_TYPE_ID" />
@@ -134,6 +133,7 @@
           <ScalarProperty Name="DELIVERY_ALLOWED" ColumnName="DELIVERY_ALLOWED" />
           <ScalarProperty Name="PRD_WEIGHT" ColumnName="PRD_WEIGHT" />
           <ScalarProperty Name="CREATE_DAY" ColumnName="CREATE_DAY" />
+          <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -177,9 +177,8 @@
           <ScalarProperty Name="TOTAL_MONEY" ColumnName="TOTAL_MONEY" />
           <ScalarProperty Name="PAYMENT" ColumnName="PAYMENT" />
           <ScalarProperty Name="NOTE" ColumnName="NOTE" />
-          <ScalarProperty Name="MONEY_CUSTOMER_GIVE" ColumnName="MONEY_CUSTOMER_GIVE" />
-          <ScalarProperty Name="REFUND" ColumnName="REFUND" />
           <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="BANGGIA" ColumnName="BANGGIA" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -208,7 +207,6 @@
     <EntitySetMapping Name="WAREHOUSEs">
       <EntityTypeMapping TypeName="CuaHangMayTinhModel.WAREHOUSE">
         <MappingFragment StoreEntitySet="WAREHOUSE">
-          <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
           <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
           <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
           <ScalarProperty Name="PRD_TYPE_ID" ColumnName="PRD_TYPE_ID" />
@@ -219,6 +217,7 @@
           <ScalarProperty Name="RETAIL_PRICE" ColumnName="RETAIL_PRICE" />
           <ScalarProperty Name="IMPORT_PRICE" ColumnName="IMPORT_PRICE" />
           <ScalarProperty Name="WHOLESALE_PRICE" ColumnName="WHOLESALE_PRICE" />
+          <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

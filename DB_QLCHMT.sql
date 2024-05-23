@@ -18,8 +18,6 @@ CREATE TABLE BRAND(
 	BRD_STATUS NVARCHAR(255) --Trạng thái (Đang hợp tác, dừng hợp tác...)
 );
 GO
-ALTER TABLE BRAND
-ALTER COLUMN BRD_ADDRESS NVARCHAR(255);
 
 CREATE TABLE POSITION(
 	PS_ID VARCHAR(100) PRIMARY KEY,
@@ -79,7 +77,7 @@ CREATE TABLE PRODUCTTYPE(
 GO
 
 CREATE TABLE PRODUCT (
-	PRD_IMG VARCHAR(1000), 
+	PRD_IMG VARBINARY(MAX), 
     PRD_ID VARCHAR(100) PRIMARY KEY,
     PRD_NAME NVARCHAR(255) NOT NULL,
     PRD_TYPE_ID NVARCHAR(50) NOT NULL,
@@ -100,7 +98,7 @@ drop constraint FK_PRODUCT_BRAND
 ALTER COLUMN BRD_ID VARCHAR(100) NOT NULL;
 
 CREATE TABLE WAREHOUSE(
-	PRD_IMG VARCHAR(1000),
+	PRD_IMG VARBINARY(MAX), 
 	PRD_ID VARCHAR(100) PRIMARY KEY,
 	PRD_NAME NVARCHAR(100) NOT NULL,
 	PRD_TYPE_ID NVARCHAR(50) NOT NULL,
@@ -123,8 +121,7 @@ CREATE TABLE SALEBILL (
     EMP_ID VARCHAR(100) NOT NULL, 
 	DISCOUNT_CODE VARCHAR(100),
 	PROMOTION_ID VARCHAR(10),
-    TOTAL_MONEY FLOAT,
-    PAYMENT NVARCHAR(50) NOT NULL,
+    BANGGIA NVARCHAR(100),
     NOTE NVARCHAR(255),
 	MONEY_CUSTOMER_GIVE FLOAT,
 	REFUND FLOAT,
@@ -699,6 +696,90 @@ BEGIN
        OR USED_COUNT >= MAXIMUM_USE;
 END;
 GO
+
+
+--Trigger cập nhật dư liệu khi xóa SALEBILL
+CREATE TRIGGER trg_DeleteSaleBill
+ON SALEBILL
+AFTER DELETE
+AS
+BEGIN
+    -- Xóa các chi tiết hóa đơn liên quan
+    DELETE FROM SALEBILL_DETAIL
+    WHERE SL_ID IN (SELECT SL_ID FROM DELETED);
+
+    -- Cập nhật thông tin khách hàng
+    UPDATE CUSTOMER
+    SET 
+        CUS_TOTAL_SPENDING_MONEY = CUS_TOTAL_SPENDING_MONEY - ISNULL(DeletedSales.TotalMoney, 0),
+        CUS_TOTAL_PRODUCTS_PURCHASED = CUS_TOTAL_PRODUCTS_PURCHASED - ISNULL(DeletedSales.TotalProducts, 0),
+        CUS_TOTAL_QUANTITY_OF_ORDER = CUS_TOTAL_QUANTITY_OF_ORDER - ISNULL(DeletedSales.TotalOrders, 0)
+    FROM CUSTOMER
+    INNER JOIN (
+        SELECT 
+            d.CUS_ID, 
+            SUM(d.TOTAL_MONEY) AS TotalMoney,
+            SUM(sd.QUANTITY) AS TotalProducts,
+            COUNT(d.SL_ID) AS TotalOrders
+        FROM DELETED d
+        LEFT JOIN SALEBILL_DETAIL sd ON d.SL_ID = sd.SL_ID
+        GROUP BY d.CUS_ID
+    ) AS DeletedSales
+    ON CUSTOMER.CUS_ID = DeletedSales.CUS_ID;
+
+    -- Cập nhật thông tin sản phẩm trong bảng PRODUCT
+    UPDATE PRODUCT
+    SET 
+        RDY_FOR_SALE = p.RDY_FOR_SALE + ISNULL(DeletedDetails.TotalQuantity, 0),
+            QUANTITY = p.QUANTITY + ISNULL(DeletedDetails.TotalQuantity, 0)
+    FROM PRODUCT p
+    INNER JOIN (
+        SELECT 
+            sd.PRD_ID,
+            SUM(sd.QUANTITY) AS TotalQuantity
+        FROM SALEBILL_DETAIL sd
+        INNER JOIN DELETED d ON sd.SL_ID = d.SL_ID
+        GROUP BY sd.PRD_ID
+    ) AS DeletedDetails
+    ON p.PRD_ID = DeletedDetails.PRD_ID;
+
+    -- Cập nhật thông tin sản phẩm trong bảng WAREHOUSE
+    UPDATE WAREHOUSE
+    SET 
+        RDY_FOR_SALE = w.RDY_FOR_SALE + ISNULL(DeletedDetails.TotalQuantity, 0),
+        INVENTORY_QUANTITY = w.INVENTORY_QUANTITY + ISNULL(DeletedDetails.TotalQuantity, 0)
+    FROM WAREHOUSE w
+    INNER JOIN (
+        SELECT 
+            sd.PRD_ID,
+            SUM(sd.QUANTITY) AS TotalQuantity
+        FROM SALEBILL_DETAIL sd
+        INNER JOIN DELETED d ON sd.SL_ID = d.SL_ID
+        GROUP BY sd.PRD_ID
+    ) AS DeletedDetails
+    ON w.PRD_ID = DeletedDetails.PRD_ID;
+END
+
+--Trigger xóa producttype
+CREATE TRIGGER trg_DeleteProductType
+ON PRODUCTTYPE
+INSTEAD OF DELETE
+AS
+BEGIN
+    -- Xóa các sản phẩm trong bảng WAREHOUSE có PRD_TYPE_ID trùng với PRD_TYPE_ID bị xóa
+    DELETE FROM WAREHOUSE
+    WHERE PRD_TYPE_ID IN (SELECT PRD_TYPE_ID FROM DELETED);
+
+    -- Xóa các sản phẩm trong bảng PRODUCT có PRD_TYPE_ID trùng với PRD_TYPE_ID bị xóa
+    DELETE FROM PRODUCT
+    WHERE PRD_TYPE_ID IN (SELECT PRD_TYPE_ID FROM DELETED);
+
+    -- Xóa các bản ghi trong bảng PRODUCTTYPE
+    DELETE FROM PRODUCTTYPE
+    WHERE PRD_TYPE_ID IN (SELECT PRD_TYPE_ID FROM DELETED);
+END
+GO
+
 
 
 select * from districts

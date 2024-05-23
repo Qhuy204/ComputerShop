@@ -145,5 +145,10 @@ namespace ĐA1
                 this.Close();
             }
         }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

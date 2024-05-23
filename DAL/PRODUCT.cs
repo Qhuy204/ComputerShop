@@ -14,7 +14,6 @@ namespace DAL
     
     public partial class PRODUCT
     {
-        public string PRD_IMG { get; set; }
         public string PRD_ID { get; set; }
         public string PRD_NAME { get; set; }
         public string PRD_TYPE_ID { get; set; }
@@ -24,6 +23,7 @@ namespace DAL
         public bool DELIVERY_ALLOWED { get; set; }
         public Nullable<double> PRD_WEIGHT { get; set; }
         public Nullable<System.DateTime> CREATE_DAY { get; set; }
+        public byte[] PRD_IMG { get; set; }
     
         public virtual PRODUCTTYPE PRODUCTTYPE { get; set; }
     }

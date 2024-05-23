@@ -29,9 +29,8 @@ namespace DAL
         public Nullable<double> TOTAL_MONEY { get; set; }
         public string PAYMENT { get; set; }
         public string NOTE { get; set; }
-        public Nullable<double> MONEY_CUSTOMER_GIVE { get; set; }
-        public Nullable<double> REFUND { get; set; }
         public string STATUS { get; set; }
+        public string BANGGIA { get; set; }
     
         public virtual CUSTOMER CUSTOMER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
