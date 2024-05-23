@@ -69,7 +69,7 @@ namespace ĐA1
             txtTimkiemKH.Text = null;
         }
 
-        private void GUI_DSKhachhang_Load(object sender, EventArgs e)
+        public void GUI_DSKhachhang_Load(object sender, EventArgs e)
         {
             UpdateDgv(busKH.GetAll());
         }
@@ -77,6 +77,12 @@ namespace ĐA1
         private void UpdateDgv(List<CUSTOMER> ctm)
         {
             dgvKH.DataSource = ctm.Select(x => new { x.CUS_ID, x.CUS_NAME, x.CUS_BIRTHDAY, x.CUS_GENDER, x.CUS_PHONE_NUMBER, x.CUS_ADDRESS, x.CUS_TOTAL_SPENDING_MONEY, x.CUS_TOTAL_PRODUCTS_PURCHASED, x.CUS_TOTAL_QUANTITY_OF_ORDER }).ToList();
+        }
+
+        private void ThemKH_Click(object sender, EventArgs e)
+        {
+            GUI_ThemKH themkh = new GUI_ThemKH();
+            themkh.ShowDialog();
         }
     }
 }

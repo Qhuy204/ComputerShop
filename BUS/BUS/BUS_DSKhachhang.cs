@@ -11,10 +11,16 @@ namespace BUS
     {
         private DAL_DSKhachhang dalKH = new DAL_DSKhachhang();
 
-        public void Add(CUSTOMER ct)
+        public void NewCustomer(
+        string id,
+        string name,
+        string phone,
+        DateTime birthday,
+        string email,
+        string gender,
+        string address)
         {
-            ct.CUS_ID= GetNewID();
-            dalKH.Add(ct);
+            dalKH.NewCustomer(id, name, phone, birthday, email, gender, address);
         }
 
         public bool Delete(string ctmID)

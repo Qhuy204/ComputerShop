@@ -37,6 +37,7 @@
           <Property Name="CUS_TOTAL_PRODUCTS_PURCHASED" Type="int" />
           <Property Name="CUS_TOTAL_QUANTITY_OF_ORDER" Type="int" />
           <Property Name="CUS_DATE_OF_LAST_PURCHASE" Type="date" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="DISCOUNT">
           <Key>
@@ -467,6 +468,7 @@ warning 6013: The table/view 'CuaHangMayTinh.dbo.STOREINFO' does not have a prim
           <Property Name="CUS_TOTAL_QUANTITY_OF_ORDER" Type="Int32" />
           <Property Name="CUS_DATE_OF_LAST_PURCHASE" Type="DateTime" Precision="0" />
           <NavigationProperty Name="SALEBILLs" Relationship="Self.FK_SALEBILL_CUSTOMER" FromRole="CUSTOMER" ToRole="SALEBILL" />
+          <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="DISCOUNT">
           <Key>
@@ -903,6 +905,7 @@ warning 6013: The table/view 'CuaHangMayTinh.dbo.STOREINFO' does not have a prim
           <EntitySetMapping Name="CUSTOMERs">
             <EntityTypeMapping TypeName="CuaHangMayTinhModel.CUSTOMER">
               <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />
                 <ScalarProperty Name="CUS_NAME" ColumnName="CUS_NAME" />
                 <ScalarProperty Name="CUS_BIRTHDAY" ColumnName="CUS_BIRTHDAY" />

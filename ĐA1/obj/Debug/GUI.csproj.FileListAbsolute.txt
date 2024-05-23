@@ -50,3 +50,5 @@ D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\EPPlus.Interfaces.dll
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\EPPlus.System.Drawing.dll
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\EPPlus.xml
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_Thongke.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_Taohdban.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_ThemKH.resources

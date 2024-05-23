@@ -175,7 +175,7 @@
             // 
             this.clAnhSP.DataPropertyName = "PRD_IMG";
             this.clAnhSP.HeaderText = "Ảnh";
-            this.clAnhSP.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.clAnhSP.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.clAnhSP.Name = "clAnhSP";
             this.clAnhSP.ReadOnly = true;
             this.clAnhSP.Resizable = System.Windows.Forms.DataGridViewTriState.True;

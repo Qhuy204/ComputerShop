@@ -18,7 +18,7 @@ namespace ĐA1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI_MainForm());
+            Application.Run(new GUI_Dangnhap());
         }
 
     }

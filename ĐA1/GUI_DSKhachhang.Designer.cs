@@ -71,6 +71,7 @@
             this.ThemKH.TabIndex = 0;
             this.ThemKH.Text = "Thêm khách hàng";
             this.ThemKH.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ThemKH.Click += new System.EventHandler(this.ThemKH_Click);
             // 
             // btnXuatfile
             // 

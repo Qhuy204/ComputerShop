@@ -125,6 +125,34 @@ namespace ĐA1
 
             busKM.NewCode(code, discount_percent, discount_amount, max_discount_amount, code_description, min_purchase, min_quantityof_product, maximum_use, start_date, end_date);
             MessageBox.Show("Mã giảm giá được lưu thành công.");
+            DialogResult result = MessageBox.Show(
+                "Bạn có muốn tiếp tục thêm không?",
+                "Thêm mã giảm giá",
+                MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.No)
+            {
+                this.Close();  
+            }
+            else
+            {
+                Clearform();
+            }
+        }
+
+        private void Clearform()
+        {
+            txtGiamtoida.Clear();
+            txtgtritoithieu.Clear();
+            txtMakm.Clear();
+            txtMota.Clear();
+            txtMucgiam.Clear();
+            txtSLsudung.Clear();
+            txtsoluongtoithieu.Clear();
+            cbbdonvi1.SelectedIndex = -1;
+            cbbdonvi2.SelectedIndex = -1;
+            dtpBatdau.ResetText();
+            dtpKetthuc.ResetText();
         }
 
         private void GUI_TaoMagiamgia_FormClosing(object sender, FormClosingEventArgs e)

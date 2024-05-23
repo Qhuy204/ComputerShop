@@ -32,6 +32,7 @@
     <Property Name="CUS_TOTAL_PRODUCTS_PURCHASED" Type="int" />
     <Property Name="CUS_TOTAL_QUANTITY_OF_ORDER" Type="int" />
     <Property Name="CUS_DATE_OF_LAST_PURCHASE" Type="date" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="DISCOUNT">
     <Key>

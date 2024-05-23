@@ -10,9 +10,29 @@ namespace DAL
     {
         private CuaHangMayTinhEntities1 db = new CuaHangMayTinhEntities1();
 
-        public void Add(CUSTOMER ct)
+        public void NewCustomer(
+        string id,
+        string name,
+        string phone,
+        DateTime birthday,
+        string email,
+        string gender,
+        string address)
         {
-            db.CUSTOMERs.Add(ct);
+            var customer = new CUSTOMER
+            {
+                CUS_ID = id,
+                CUS_NAME = name,
+                CUS_PHONE_NUMBER = phone,
+                CUS_BIRTHDAY = birthday,
+                EMAIL = email,
+                CUS_ADDRESS = address,
+                CUS_GENDER = gender,
+                CUS_TOTAL_SPENDING_MONEY = 0,
+                CUS_TOTAL_PRODUCTS_PURCHASED = 0,
+                CUS_TOTAL_QUANTITY_OF_ORDER = 0
+            };
+            db.CUSTOMERs.Add(customer);
             db.SaveChanges();
         }
 

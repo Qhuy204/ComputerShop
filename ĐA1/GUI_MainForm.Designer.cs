@@ -60,6 +60,8 @@
             this.pnNoidung = new System.Windows.Forms.Panel();
             this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.pnLogout = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTenquyen = new System.Windows.Forms.Label();
             this.MenuSanpham.SuspendLayout();
             this.sidebar.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -537,6 +539,8 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblTenquyen);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnTaikhoan);
             this.panel1.Controls.Add(this.lblFuncName);
             this.panel1.Location = new System.Drawing.Point(221, 0);
@@ -554,7 +558,7 @@
             this.btnTaikhoan.FillColor = System.Drawing.Color.White;
             this.btnTaikhoan.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnTaikhoan.ForeColor = System.Drawing.Color.White;
-            this.btnTaikhoan.Location = new System.Drawing.Point(739, 0);
+            this.btnTaikhoan.Location = new System.Drawing.Point(509, 0);
             this.btnTaikhoan.Name = "btnTaikhoan";
             this.btnTaikhoan.Size = new System.Drawing.Size(107, 52);
             this.btnTaikhoan.TabIndex = 1;
@@ -612,6 +616,24 @@
             this.pnLogout.Name = "pnLogout";
             this.pnLogout.Size = new System.Drawing.Size(221, 49);
             this.pnLogout.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(735, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 16);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Quyền: ";
+            // 
+            // lblTenquyen
+            // 
+            this.lblTenquyen.AutoSize = true;
+            this.lblTenquyen.Location = new System.Drawing.Point(785, 15);
+            this.lblTenquyen.Name = "lblTenquyen";
+            this.lblTenquyen.Size = new System.Drawing.Size(44, 16);
+            this.lblTenquyen.TabIndex = 2;
+            this.lblTenquyen.Text = "label1";
             // 
             // GUI_MainForm
             // 
@@ -676,5 +698,7 @@
         private Guna.UI2.WinForms.Guna2Button btnLogout;
         private System.Windows.Forms.FlowLayoutPanel pnLogout;
         private Guna.UI2.WinForms.Guna2Button btnLoaiSP;
+        private System.Windows.Forms.Label lblTenquyen;
+        private System.Windows.Forms.Label label1;
     }
 }

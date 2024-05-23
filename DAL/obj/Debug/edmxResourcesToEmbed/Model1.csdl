@@ -36,6 +36,7 @@
     <Property Name="CUS_TOTAL_QUANTITY_OF_ORDER" Type="Int32" />
     <Property Name="CUS_DATE_OF_LAST_PURCHASE" Type="DateTime" Precision="0" />
     <NavigationProperty Name="SALEBILLs" Relationship="Self.FK_SALEBILL_CUSTOMER" FromRole="CUSTOMER" ToRole="SALEBILL" />
+    <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="DISCOUNT">
     <Key>

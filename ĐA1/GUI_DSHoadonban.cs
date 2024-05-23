@@ -16,5 +16,15 @@ namespace ĐA1
         {
             InitializeComponent();
         }
+
+        private void dgvKH_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnTaodonhang_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

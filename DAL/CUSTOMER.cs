@@ -30,6 +30,7 @@ namespace DAL
         public Nullable<int> CUS_TOTAL_PRODUCTS_PURCHASED { get; set; }
         public Nullable<int> CUS_TOTAL_QUANTITY_OF_ORDER { get; set; }
         public Nullable<System.DateTime> CUS_DATE_OF_LAST_PURCHASE { get; set; }
+        public string EMAIL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SALEBILL> SALEBILLs { get; set; }

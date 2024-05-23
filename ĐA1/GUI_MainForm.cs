@@ -14,12 +14,26 @@ namespace ĐA1
 {
     public partial class GUI_MainForm : Form
     {
-        public GUI_MainForm()
+        public string quyen;
+
+        public GUI_MainForm(string a)
         {
             InitializeComponent();
             GUI_Tongquan frm = new GUI_Tongquan();
             FormHelper.HienThiFormCon(frm, pnNoidung);
             lblFuncName.Text = btnTongquan.Text;
+            this.quyen = a;
+            lblTenquyen.Text = a;
+            if (quyen == "Nhân viên quản lý kho")
+            {
+                btnBanhang.Visible = false;
+                btnbaocao.Visible = false;
+                btnCauhinh.Visible = false;
+                btndonbanhang.Visible = false;
+                btnKhachhang.Visible = false;
+                btnKhuyenmai.Visible = false;
+                btnNhaphang.Visible = false;
+            }
         }
 
         // Giả sử các biến này đã tồn tại và được khởi tạo

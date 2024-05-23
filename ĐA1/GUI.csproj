@@ -102,6 +102,12 @@
     <Compile Include="GUI_TaoCtrinhKm.Designer.cs">
       <DependentUpon>GUI_TaoCtrinhKm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_Taohdban.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Taohdban.Designer.cs">
+      <DependentUpon>GUI_Taohdban.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_TaoKMOption.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,12 @@
     </Compile>
     <Compile Include="GUI_Themchucvu.Designer.cs">
       <DependentUpon>GUI_Themchucvu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_ThemKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_ThemKH.Designer.cs">
+      <DependentUpon>GUI_ThemKH.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI_ThemNV.cs">
       <SubType>Form</SubType>
@@ -260,6 +272,9 @@
     <EmbeddedResource Include="GUI_TaoCtrinhKm.resx">
       <DependentUpon>GUI_TaoCtrinhKm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Taohdban.resx">
+      <DependentUpon>GUI_Taohdban.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_TaoKMOption.resx">
       <DependentUpon>GUI_TaoKMOption.cs</DependentUpon>
     </EmbeddedResource>
@@ -298,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_Themchucvu.resx">
       <DependentUpon>GUI_Themchucvu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_ThemKH.resx">
+      <DependentUpon>GUI_ThemKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_ThemNV.resx">
       <DependentUpon>GUI_ThemNV.cs</DependentUpon>

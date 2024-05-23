@@ -156,7 +156,6 @@
             this.txtMatkhau.SelectedText = "";
             this.txtMatkhau.Size = new System.Drawing.Size(313, 63);
             this.txtMatkhau.TabIndex = 1;
-            this.txtMatkhau.TextChanged += new System.EventHandler(this.btnExit_Click);
             // 
             // chkRemember
             // 

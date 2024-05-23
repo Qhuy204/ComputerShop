@@ -24,6 +24,7 @@
     <EntitySetMapping Name="CUSTOMERs">
       <EntityTypeMapping TypeName="CuaHangMayTinhModel.CUSTOMER">
         <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
           <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />
           <ScalarProperty Name="CUS_NAME" ColumnName="CUS_NAME" />
           <ScalarProperty Name="CUS_BIRTHDAY" ColumnName="CUS_BIRTHDAY" />
