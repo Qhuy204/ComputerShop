@@ -35,6 +35,12 @@
             this.panelIfnodata = new System.Windows.Forms.Panel();
             this.pnIfhavedata = new System.Windows.Forms.Panel();
             this.dgvNCC = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.clMaNCC = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.clTenNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clDiachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTrangthai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
             this.btnTimkiem = new Guna.UI2.WinForms.Guna2Button();
@@ -48,12 +54,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnTaonhacc = new Guna.UI2.WinForms.Guna2Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.clMaNCC = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.clTenNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clDiachi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clemail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clTrangthai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelIfnodata.SuspendLayout();
             this.pnIfhavedata.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNCC)).BeginInit();
@@ -155,6 +155,48 @@
             this.dgvNCC.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.dgvNCC.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvNCC.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNCC_CellContentClick);
+            // 
+            // clMaNCC
+            // 
+            this.clMaNCC.DataPropertyName = "BRD_ID";
+            this.clMaNCC.HeaderText = "Mã ";
+            this.clMaNCC.Name = "clMaNCC";
+            this.clMaNCC.ReadOnly = true;
+            // 
+            // clTenNCC
+            // 
+            this.clTenNCC.DataPropertyName = "BRD_NAME";
+            this.clTenNCC.HeaderText = "Tên hãng sản xuất";
+            this.clTenNCC.Name = "clTenNCC";
+            this.clTenNCC.ReadOnly = true;
+            // 
+            // clDiachi
+            // 
+            this.clDiachi.DataPropertyName = "BRD_ADDRESS";
+            this.clDiachi.HeaderText = "Địa chỉ";
+            this.clDiachi.Name = "clDiachi";
+            this.clDiachi.ReadOnly = true;
+            // 
+            // clSDT
+            // 
+            this.clSDT.DataPropertyName = "BRD_PHONE";
+            this.clSDT.HeaderText = "Số điện thoại";
+            this.clSDT.Name = "clSDT";
+            this.clSDT.ReadOnly = true;
+            // 
+            // clemail
+            // 
+            this.clemail.DataPropertyName = "BRD_EMAIL";
+            this.clemail.HeaderText = "Email";
+            this.clemail.Name = "clemail";
+            this.clemail.ReadOnly = true;
+            // 
+            // clTrangthai
+            // 
+            this.clTrangthai.DataPropertyName = "BRD_STATUS";
+            this.clTrangthai.HeaderText = "Trạng thái";
+            this.clTrangthai.Name = "clTrangthai";
+            this.clTrangthai.ReadOnly = true;
             // 
             // panel2
             // 
@@ -350,48 +392,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // clMaNCC
-            // 
-            this.clMaNCC.DataPropertyName = "BRD_ID";
-            this.clMaNCC.HeaderText = "Mã ";
-            this.clMaNCC.Name = "clMaNCC";
-            this.clMaNCC.ReadOnly = true;
-            // 
-            // clTenNCC
-            // 
-            this.clTenNCC.DataPropertyName = "BRD_NAME";
-            this.clTenNCC.HeaderText = "Tên hãng sản xuất";
-            this.clTenNCC.Name = "clTenNCC";
-            this.clTenNCC.ReadOnly = true;
-            // 
-            // clDiachi
-            // 
-            this.clDiachi.DataPropertyName = "BRD_ADDRESS";
-            this.clDiachi.HeaderText = "Địa chỉ";
-            this.clDiachi.Name = "clDiachi";
-            this.clDiachi.ReadOnly = true;
-            // 
-            // clSDT
-            // 
-            this.clSDT.DataPropertyName = "BRD_PHONE";
-            this.clSDT.HeaderText = "Số điện thoại";
-            this.clSDT.Name = "clSDT";
-            this.clSDT.ReadOnly = true;
-            // 
-            // clemail
-            // 
-            this.clemail.DataPropertyName = "BRD_EMAIL";
-            this.clemail.HeaderText = "Email";
-            this.clemail.Name = "clemail";
-            this.clemail.ReadOnly = true;
-            // 
-            // clTrangthai
-            // 
-            this.clTrangthai.DataPropertyName = "BRD_STATUS";
-            this.clTrangthai.HeaderText = "Trạng thái";
-            this.clTrangthai.Name = "clTrangthai";
-            this.clTrangthai.ReadOnly = true;
-            // 
             // GUI_QLNhacungcap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -405,6 +405,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GUI_QLNhacungcap";
+            this.ShowInTaskbar = false;
             this.Text = "GUI_QLNhacungcap";
             this.Load += new System.EventHandler(this.GUI_QLNhacungcap_Load);
             this.panelIfnodata.ResumeLayout(false);

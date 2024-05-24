@@ -136,6 +136,12 @@ namespace ĐA1
             {
                 frmkh.GUI_DSKhachhang_Load(sender, e);
             }
+            var frmbh = System.Windows.Forms.Application.OpenForms.OfType<GUI_Taohdban>().FirstOrDefault();
+            if (frmbh != null)
+            {
+                var listcus = buskh.GetAll();
+                frmbh.Loadcbbkhachhang(listcus);
+            }
         }
     }
 }

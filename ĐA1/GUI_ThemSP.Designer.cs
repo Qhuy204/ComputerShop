@@ -30,11 +30,6 @@
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnHuy = new Guna.UI2.WinForms.Guna2Button();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.ckbVanchuyen = new System.Windows.Forms.CheckBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtKhoiluong = new Guna.UI2.WinForms.Guna2TextBox();
-            this.lblkhoiluong = new System.Windows.Forms.Label();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -57,7 +52,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbhinhanh)).BeginInit();
@@ -70,7 +64,6 @@
             this.guna2Panel1.BorderRadius = 5;
             this.guna2Panel1.BorderThickness = 1;
             this.guna2Panel1.Controls.Add(this.btnHuy);
-            this.guna2Panel1.Controls.Add(this.panel7);
             this.guna2Panel1.Controls.Add(this.btnSave);
             this.guna2Panel1.Controls.Add(this.panel3);
             this.guna2Panel1.Controls.Add(this.panel2);
@@ -78,7 +71,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(824, 794);
+            this.guna2Panel1.Size = new System.Drawing.Size(824, 622);
             this.guna2Panel1.TabIndex = 0;
             // 
             // btnHuy
@@ -98,74 +91,6 @@
             this.btnHuy.Text = "Hủy";
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.White;
-            this.panel7.Controls.Add(this.ckbVanchuyen);
-            this.panel7.Controls.Add(this.label15);
-            this.panel7.Controls.Add(this.txtKhoiluong);
-            this.panel7.Controls.Add(this.lblkhoiluong);
-            this.panel7.ForeColor = System.Drawing.Color.Black;
-            this.panel7.Location = new System.Drawing.Point(35, 568);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(755, 153);
-            this.panel7.TabIndex = 11;
-            // 
-            // ckbVanchuyen
-            // 
-            this.ckbVanchuyen.AutoSize = true;
-            this.ckbVanchuyen.ForeColor = System.Drawing.Color.Black;
-            this.ckbVanchuyen.Location = new System.Drawing.Point(16, 37);
-            this.ckbVanchuyen.Name = "ckbVanchuyen";
-            this.ckbVanchuyen.Size = new System.Drawing.Size(153, 23);
-            this.ckbVanchuyen.TabIndex = 0;
-            this.ckbVanchuyen.Text = "Cho phép giao hàng";
-            this.ckbVanchuyen.UseVisualStyleBackColor = true;
-            this.ckbVanchuyen.CheckedChanged += new System.EventHandler(this.ckbVanchuyen_CheckedChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(12, 13);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(100, 21);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Vận chuyển";
-            // 
-            // txtKhoiluong
-            // 
-            this.txtKhoiluong.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtKhoiluong.DefaultText = "";
-            this.txtKhoiluong.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtKhoiluong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtKhoiluong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtKhoiluong.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtKhoiluong.Enabled = false;
-            this.txtKhoiluong.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtKhoiluong.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtKhoiluong.ForeColor = System.Drawing.Color.Black;
-            this.txtKhoiluong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtKhoiluong.Location = new System.Drawing.Point(16, 95);
-            this.txtKhoiluong.Name = "txtKhoiluong";
-            this.txtKhoiluong.PasswordChar = '\0';
-            this.txtKhoiluong.PlaceholderText = "Kg";
-            this.txtKhoiluong.SelectedText = "";
-            this.txtKhoiluong.Size = new System.Drawing.Size(274, 35);
-            this.txtKhoiluong.TabIndex = 1;
-            // 
-            // lblkhoiluong
-            // 
-            this.lblkhoiluong.AutoSize = true;
-            this.lblkhoiluong.Enabled = false;
-            this.lblkhoiluong.ForeColor = System.Drawing.Color.Black;
-            this.lblkhoiluong.Location = new System.Drawing.Point(12, 73);
-            this.lblkhoiluong.Name = "lblkhoiluong";
-            this.lblkhoiluong.Size = new System.Drawing.Size(75, 19);
-            this.lblkhoiluong.TabIndex = 1;
-            this.lblkhoiluong.Text = "Khối lượng";
-            // 
             // btnSave
             // 
             this.btnSave.BorderRadius = 2;
@@ -175,7 +100,7 @@
             this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(704, 741);
+            this.btnSave.Location = new System.Drawing.Point(704, 562);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(86, 37);
             this.btnSave.TabIndex = 12;
@@ -458,7 +383,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(246)))), ((int)(((byte)(248)))));
-            this.ClientSize = new System.Drawing.Size(824, 794);
+            this.ClientSize = new System.Drawing.Size(824, 622);
             this.Controls.Add(this.guna2Panel1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -470,8 +395,6 @@
             this.Text = "GUI_ThemSP";
             this.Load += new System.EventHandler(this.GUI_ThemSP_Load);
             this.guna2Panel1.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -487,11 +410,6 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Button btnHuy;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.CheckBox ckbVanchuyen;
-        private System.Windows.Forms.Label label15;
-        private Guna.UI2.WinForms.Guna2TextBox txtKhoiluong;
-        private System.Windows.Forms.Label lblkhoiluong;
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label8;

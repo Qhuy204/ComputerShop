@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ĐA1
 {
     public partial class GUI_DSHoadonban : Form
     {
-        public GUI_DSHoadonban()
+        public string id;
+        public GUI_DSHoadonban(string id)
         {
             InitializeComponent();
+            this.id = id;
         }
 
         private void dgvKH_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -22,9 +17,16 @@ namespace ĐA1
 
         }
 
-        private void btnTaodonhang_Click(object sender, EventArgs e)
+        private void btntaodonhangle_Click(object sender, EventArgs e)
         {
+            GUI_Taohdban taohdban = new GUI_Taohdban("Giá lẻ", id);
+            taohdban.ShowDialog();
+        }
 
+        private void btnTaodonhangsi_Click(object sender, EventArgs e)
+        {
+            GUI_Taohdban taohdban = new GUI_Taohdban("Giá sỉ", id); 
+            taohdban.ShowDialog();
         }
     }
 }

@@ -5,13 +5,18 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+using ZXing;
+using ZXing.Common;
+using ZXing.QrCode.Internal;
+using ZXing.Rendering;
 
 namespace ĐA1
 {
     public partial class GUI_Banhang : Form
     {
         private BUS_DSKhachhang busKH = new BUS_DSKhachhang();
-        private BUS_DSSanpham busSP = new BUS_DSSanpham();
+        private BUS_Khohang busSP = new BUS_Khohang();
 
         public static string CusName;
 
@@ -23,6 +28,7 @@ namespace ĐA1
         private void GUI_Banhang_Load(object sender, EventArgs e)
         {
             CheckIfClicked();
+            cbbptthanhtoan.SelectedIndex = -1;
         }
 
         private void LoadResultCustomer()
@@ -60,39 +66,7 @@ namespace ĐA1
 
         private void txtTimKH_TextChanged(object sender, EventArgs e)
         {
-            /*if (txtTimKH.Text.Length >= 1)
-            {
-                Cus_resultcontainer.Controls.Clear();
-                UC_SearchResult res = new UC_SearchResult();
-                res.TxtSearchResult(txtTimKH.Text.ToLower());
-                LoadResultCustomer();
-                int newHeightKH = Cus_resultcontainer.Controls.Count * 47;
-
-                Cus_resultcontainer.Height = Math.Min(newHeightKH, MaxHeight);
-                res.Anchor = AnchorStyles.Top | AnchorStyles.Left;
-            }
-            else
-            {
-                Cus_resultcontainer.Height = 0;
-            }*/
-
-            if (txtTimKH.Text.Length >= 1)
-            {
-                var ctmList = busKH.GetByName(txtTimKH.Text);
-                UpdateDgv(ctmList);
-                if (dgvKH.Rows.Count > 0)
-                {
-                    Cus_resultcontainer.Height = dgvKH.Rows.Count * 30;
-                }
-                else
-                {
-                    Cus_resultcontainer.Height = 0;
-                }
-            }
-            else
-            {
-                Cus_resultcontainer.Height = 0;
-            }
+            
 
         }
 
@@ -198,8 +172,87 @@ namespace ĐA1
             return wrh;
         }
 
+        public Image resizeImage(Image image, int new_height, int new_width)
+        {
+            Bitmap new_image = new Bitmap(new_width, new_height);
+            Graphics g = Graphics.FromImage((Image)new_image);
+            g.InterpolationMode = InterpolationMode.High;
+            g.DrawImage(image, 0, 0, new_width, new_height);
+            return new_image;
+        }
 
+        public void CreateMomoQR()
+        {
+            // Text to encode in the QR code
+            var qrcodeText = $"2|99|{"0856012976"}|{"Trương Quốc Huy"}|{"truongquochuy234@gmail.com"}|0|0|{lblcantra.Text.Trim()}";
 
-       
+            // Create a BarcodeWriter instance
+            BarcodeWriter barcodeWriter = new BarcodeWriter
+            {
+                Format = BarcodeFormat.QR_CODE,
+                Options = new EncodingOptions
+                {
+                    Width = 250,
+                    Height = 250,
+                    Margin = 0,
+                    PureBarcode = false,
+                    Hints = { { EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H } }
+                },
+                Renderer = new BitmapRenderer()
+            };
+
+            // Generate the QR code bitmap
+            Bitmap bitmap = barcodeWriter.Write(qrcodeText);
+
+            // Load and resize the logo
+            Bitmap logo = ResizeImage(Properties.Resources.logo_momo, 64, 64) as Bitmap;
+
+            // Draw the logo in the center of the QR code
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                int centerX = (bitmap.Width - logo.Width) / 2;
+                int centerY = (bitmap.Height - logo.Height) / 2;
+                g.DrawImage(logo, centerX, centerY);
+            }
+
+            // Set the QR code with the logo to a PictureBox
+            pic_qrcode.Image = bitmap;
+        }
+
+        // Helper method to resize an image
+        private Image ResizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new System.Drawing.Imaging.ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
+        }
+
+        private void cbbptthanhtoan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            CreateMomoQR();
+        }
     }
 }

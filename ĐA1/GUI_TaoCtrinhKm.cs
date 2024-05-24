@@ -16,8 +16,7 @@ namespace ĐA1
     {
         BUS_CTKhuyenmai busCtkm = new BUS_CTKhuyenmai();
         BUS_DSLoaiSP busDSLoaiSP = new BUS_DSLoaiSP();
-        BUS_DSSanpham busDSSP = new BUS_DSSanpham();
-
+        BUS_Khohang busdssp = new BUS_Khohang();
         public GUI_TaoCtrinhKm()
         {
             InitializeComponent();
@@ -37,7 +36,7 @@ namespace ĐA1
             }
         }
 
-        public void LoadcbbTenSP(List<PRODUCT> prd)
+        public void LoadcbbTenSP(List<WAREHOUSE> prd)
         {
             var sp = prd.Select(x => new { x.PRD_NAME }).ToList();
             cbbTenSP.DataSource = sp;
@@ -157,7 +156,7 @@ namespace ĐA1
         private void GUI_TaoCtrinhKm_Load(object sender, EventArgs e)
         {
             var loaisp = busDSLoaiSP.GetAll();
-            var tensp = busDSSP.GetAll();
+            var tensp = busdssp.GetAll();
             LoadcbbLoaisp(loaisp);
             LoadcbbTenSP(tensp);
             Clearform();

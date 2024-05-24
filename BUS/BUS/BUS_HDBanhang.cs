@@ -79,9 +79,11 @@ namespace BUS
         string promotion,
         string payment,
         string note,
-        string status)
+        string status,
+        float totalmoney,
+        string banggia)
         {
-            dalhdbh.NewSalebill(id, date, cusid, empid, discode, promotion, payment, note, status);
+            dalhdbh.NewSalebill(id, date, cusid, empid, discode, promotion, payment, note, status, totalmoney, banggia);
         }
     }
 }

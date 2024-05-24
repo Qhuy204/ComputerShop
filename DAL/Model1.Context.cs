@@ -37,7 +37,6 @@ namespace DAL
         public virtual DbSet<PAYMENT> PAYMENTs { get; set; }
         public virtual DbSet<POSITION> POSITIONs { get; set; }
         public virtual DbSet<POSITION_AUTHORITY> POSITION_AUTHORITY { get; set; }
-        public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
         public virtual DbSet<PRODUCTTYPE> PRODUCTTYPEs { get; set; }
         public virtual DbSet<PROMOTION> PROMOTIONs { get; set; }
         public virtual DbSet<SALEBILL> SALEBILLs { get; set; }
@@ -143,9 +142,92 @@ namespace DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
         }
     
+        public virtual ObjectResult<sp_ThongKeDoanhThu_Result> sp_ThongKeDoanhThu()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeDoanhThu_Result>("sp_ThongKeDoanhThu");
+        }
+    
+        public virtual ObjectResult<sp_ThongKeKhachHangChiTieuNhieuNhat_Result> sp_ThongKeKhachHangChiTieuNhieuNhat(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeKhachHangChiTieuNhieuNhat_Result>("sp_ThongKeKhachHangChiTieuNhieuNhat", startDateParameter, endDateParameter);
+        }
+    
+        public virtual ObjectResult<sp_ThongKeNhanVienBanNhieuNhat_Result> sp_ThongKeNhanVienBanNhieuNhat(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeNhanVienBanNhieuNhat_Result>("sp_ThongKeNhanVienBanNhieuNhat", startDateParameter, endDateParameter);
+        }
+    
+        public virtual ObjectResult<sp_ThongKeSanPhamBanChay_Result> sp_ThongKeSanPhamBanChay(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeSanPhamBanChay_Result>("sp_ThongKeSanPhamBanChay", startDateParameter, endDateParameter);
+        }
+    
+        public virtual ObjectResult<sp_ThongKeSanPhamBanRaTheoNgay_Result> sp_ThongKeSanPhamBanRaTheoNgay(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeSanPhamBanRaTheoNgay_Result>("sp_ThongKeSanPhamBanRaTheoNgay", startDateParameter, endDateParameter);
+        }
+    
+        public virtual ObjectResult<sp_ThongKeSoDonHang_Result> sp_ThongKeSoDonHang(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeSoDonHang_Result>("sp_ThongKeSoDonHang", startDateParameter, endDateParameter);
+        }
+    
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<sp_ThongKeDoanhThuTheoKhoangThoiGian_Result> sp_ThongKeDoanhThuTheoKhoangThoiGian(Nullable<System.DateTime> startDate, Nullable<System.DateTime> endDate)
+        {
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var endDateParameter = endDate.HasValue ?
+                new ObjectParameter("EndDate", endDate) :
+                new ObjectParameter("EndDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeDoanhThuTheoKhoangThoiGian_Result>("sp_ThongKeDoanhThuTheoKhoangThoiGian", startDateParameter, endDateParameter);
         }
     }
 }

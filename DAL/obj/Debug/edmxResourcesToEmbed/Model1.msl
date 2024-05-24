@@ -24,7 +24,6 @@
     <EntitySetMapping Name="CUSTOMERs">
       <EntityTypeMapping TypeName="CuaHangMayTinhModel.CUSTOMER">
         <MappingFragment StoreEntitySet="CUSTOMER">
-          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
           <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />
           <ScalarProperty Name="CUS_NAME" ColumnName="CUS_NAME" />
           <ScalarProperty Name="CUS_BIRTHDAY" ColumnName="CUS_BIRTHDAY" />
@@ -35,6 +34,7 @@
           <ScalarProperty Name="CUS_TOTAL_PRODUCTS_PURCHASED" ColumnName="CUS_TOTAL_PRODUCTS_PURCHASED" />
           <ScalarProperty Name="CUS_TOTAL_QUANTITY_OF_ORDER" ColumnName="CUS_TOTAL_QUANTITY_OF_ORDER" />
           <ScalarProperty Name="CUS_DATE_OF_LAST_PURCHASE" ColumnName="CUS_DATE_OF_LAST_PURCHASE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -119,22 +119,6 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="PS_ID" ColumnName="PS_ID" />
           <ScalarProperty Name="AUT_ID" ColumnName="AUT_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PRODUCTs">
-      <EntityTypeMapping TypeName="CuaHangMayTinhModel.PRODUCT">
-        <MappingFragment StoreEntitySet="PRODUCT">
-          <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
-          <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
-          <ScalarProperty Name="PRD_TYPE_ID" ColumnName="PRD_TYPE_ID" />
-          <ScalarProperty Name="BRD_ID" ColumnName="BRD_ID" />
-          <ScalarProperty Name="RDY_FOR_SALE" ColumnName="RDY_FOR_SALE" />
-          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
-          <ScalarProperty Name="DELIVERY_ALLOWED" ColumnName="DELIVERY_ALLOWED" />
-          <ScalarProperty Name="PRD_WEIGHT" ColumnName="PRD_WEIGHT" />
-          <ScalarProperty Name="CREATE_DAY" ColumnName="CREATE_DAY" />
-          <ScalarProperty Name="PRD_IMG" ColumnName="PRD_IMG" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -245,6 +229,66 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CuaHangMayTinhModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_ThongKeDoanhThu" FunctionName="CuaHangMayTinhModel.Store.sp_ThongKeDoanhThu">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.sp_ThongKeDoanhThu_Result">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ThongKeKhachHangChiTieuNhieuNhat" FunctionName="CuaHangMayTinhModel.Store.sp_ThongKeKhachHangChiTieuNhieuNhat">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.sp_ThongKeKhachHangChiTieuNhieuNhat_Result">
+          <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />
+          <ScalarProperty Name="CUS_NAME" ColumnName="CUS_NAME" />
+          <ScalarProperty Name="TotalSpent" ColumnName="TotalSpent" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ThongKeNhanVienBanNhieuNhat" FunctionName="CuaHangMayTinhModel.Store.sp_ThongKeNhanVienBanNhieuNhat">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.sp_ThongKeNhanVienBanNhieuNhat_Result">
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="EMP_NAME" ColumnName="EMP_NAME" />
+          <ScalarProperty Name="TotalSales" ColumnName="TotalSales" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ThongKeSanPhamBanChay" FunctionName="CuaHangMayTinhModel.Store.sp_ThongKeSanPhamBanChay">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.sp_ThongKeSanPhamBanChay_Result">
+          <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
+          <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
+          <ScalarProperty Name="TotalQuantitySold" ColumnName="TotalQuantitySold" />
+          <ScalarProperty Name="Tongtiendaban" ColumnName="Tongtiendaban" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ThongKeSanPhamBanRaTheoNgay" FunctionName="CuaHangMayTinhModel.Store.sp_ThongKeSanPhamBanRaTheoNgay">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.sp_ThongKeSanPhamBanRaTheoNgay_Result">
+          <ScalarProperty Name="SL_DATE" ColumnName="SL_DATE" />
+          <ScalarProperty Name="TotalQuantity" ColumnName="TotalQuantity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ThongKeSoDonHang" FunctionName="CuaHangMayTinhModel.Store.sp_ThongKeSoDonHang">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.sp_ThongKeSoDonHang_Result">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="OrderCount" ColumnName="OrderCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CuaHangMayTinhModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_ThongKeDoanhThuTheoKhoangThoiGian" FunctionName="CuaHangMayTinhModel.Store.sp_ThongKeDoanhThuTheoKhoangThoiGian">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.sp_ThongKeDoanhThuTheoKhoangThoiGian_Result">
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TotalRevenue" ColumnName="TotalRevenue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

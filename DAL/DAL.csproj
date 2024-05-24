@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -67,13 +67,14 @@
     <Compile Include="DAL_DSKhachhang.cs" />
     <Compile Include="DAL_DSLoaiSP.cs" />
     <Compile Include="DAL_DSNhanvien.cs" />
-    <Compile Include="DAL_DSSanpham.cs" />
     <Compile Include="DAL_HDBanhang.cs" />
     <Compile Include="DAL_Hoadonnhaphang.cs" />
     <Compile Include="DAL_Khohang.cs" />
+    <Compile Include="DAL_Payment.cs" />
     <Compile Include="DAL_QLNhacungcap.cs" />
     <Compile Include="DAL_Quyen.cs" />
     <Compile Include="DAL_QuyenofChucvu.cs" />
+    <Compile Include="DAL_StatisticsService.cs" />
     <Compile Include="DISCOUNT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -110,9 +111,6 @@
     <Compile Include="POSITION_AUTHORITY.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="PRODUCT.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="PRODUCTTYPE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -130,6 +128,27 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ThongKeDoanhThuTheoKhoangThoiGian_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ThongKeDoanhThu_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ThongKeKhachHangChiTieuNhieuNhat_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ThongKeNhanVienBanNhieuNhat_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ThongKeSanPhamBanChay_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ThongKeSanPhamBanRaTheoNgay_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ThongKeSoDonHang_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">

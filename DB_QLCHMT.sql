@@ -55,7 +55,6 @@ CREATE TABLE EMPLOYEES(
 );
 GO
 
-
 CREATE TABLE CUSTOMER (
     CUS_ID VARCHAR(100) PRIMARY KEY,
     CUS_NAME NVARCHAR(255) NOT NULL,
@@ -69,33 +68,14 @@ CREATE TABLE CUSTOMER (
 	CUS_DATE_OF_LAST_PURCHASE DATE,
 );
 GO
+ALTER TABLE CUSTOMER
+ADD EMAIL VARCHAR(255) 
 
 CREATE TABLE PRODUCTTYPE(
 	PRD_TYPE_ID NVARCHAR(50) PRIMARY KEY,
 	PRD_TYPE_NAME NVARCHAR(100) NOT NULL
 );
 GO
-
-CREATE TABLE PRODUCT (
-	PRD_IMG VARBINARY(MAX), 
-    PRD_ID VARCHAR(100) PRIMARY KEY,
-    PRD_NAME NVARCHAR(255) NOT NULL,
-    PRD_TYPE_ID NVARCHAR(50) NOT NULL,
-    BRD_ID VARCHAR(100) NOT NULL,
-    RDY_FOR_SALE INT NOT NULL,
-    QUANTITY INT NOT NULL,
-	DELIVERY_ALLOWED BIT NOT NULL,
-	PRD_WEIGHT FLOAT,
-	CREATE_DAY DATE,
-	CONSTRAINT FK_PRODUCT_BRAND FOREIGN KEY (PRD_ID) REFERENCES BRAND(BRD_ID),
-	CONSTRAINT FK_PRODUCT_PRODUCTTYPE FOREIGN KEY (PRD_TYPE_ID) REFERENCES PRODUCTTYPE(PRD_TYPE_ID)
-);
-GO
-
-
-ALTER TABLE product
-drop constraint FK_PRODUCT_BRAND
-ALTER COLUMN BRD_ID VARCHAR(100) NOT NULL;
 
 CREATE TABLE WAREHOUSE(
 	PRD_IMG VARBINARY(MAX), 
@@ -114,6 +94,7 @@ CREATE TABLE WAREHOUSE(
 )
 GO
 
+
 CREATE TABLE SALEBILL (
     SL_ID VARCHAR(100) PRIMARY KEY,
     SL_DATE DATE NOT NULL,
@@ -123,8 +104,8 @@ CREATE TABLE SALEBILL (
 	PROMOTION_ID VARCHAR(10),
     BANGGIA NVARCHAR(100),
     NOTE NVARCHAR(255),
-	MONEY_CUSTOMER_GIVE FLOAT,
-	REFUND FLOAT,
+	TOTAL_MONEY FLOAT,
+	PAYMENT NVARCHAR(255),
 	STATUS NVARCHAR(255),
     CONSTRAINT FK_SALEBILL_CUSTOMER FOREIGN KEY (CUS_ID) REFERENCES CUSTOMER(CUS_ID)
 );
@@ -328,111 +309,6 @@ VALUES
     ('IBD004', 'IB002', 'PRD004', 6, 27600000);
 
 
-
-
-
-
-
-
---Trigger
---tự động cập nhật dữ liệu bảng product khi cập nhật warehouse
-drop trigger trg_InsertWarehouse
-drop trigger trg_DeleteWarehouse
-drop trigger trg_UpdateWarehouse
-
-CREATE TRIGGER trg_InsertWarehouse
-ON WAREHOUSE 
-AFTER INSERT
-AS
-BEGIN
-    INSERT INTO PRODUCT (PRD_IMG, PRD_ID, PRD_NAME, PRD_TYPE_ID, BRD_ID, RDY_FOR_SALE, QUANTITY, DELIVERY_ALLOWED, PRD_WEIGHT)
-    SELECT i.PRD_IMG, i.PRD_ID, i.PRD_NAME, i.PRD_TYPE_ID, i.BRD_ID, i.RDY_FOR_SALE, i.INVENTORY_QUANTITY, 1, 0
-    FROM inserted i
-    WHERE NOT EXISTS (
-        SELECT 1
-        FROM PRODUCT p
-        WHERE p.PRD_ID = i.PRD_ID
-    );
-END;
-
-CREATE TRIGGER trg_UpdateWarehouse
-ON WAREHOUSE
-AFTER UPDATE
-AS
-BEGIN
-    UPDATE p
-    SET p.PRD_NAME = i.PRD_NAME,
-        p.PRD_TYPE_ID = i.PRD_TYPE_ID,
-        p.BRD_ID = i.BRD_ID,
-        p.RDY_FOR_SALE = i.RDY_FOR_SALE,
-        p.QUANTITY = i.INVENTORY_QUANTITY
-    FROM PRODUCT p
-    INNER JOIN inserted i ON p.PRD_ID = i.PRD_ID;
-END;
-
-CREATE TRIGGER trg_DeleteWarehouse
-ON WAREHOUSE
-AFTER DELETE
-AS
-BEGIN
-    DELETE FROM PRODUCT
-    WHERE PRD_ID IN (
-        SELECT d.PRD_ID
-        FROM deleted d
-    );
-END;
-
---Trigger tự động cập nhật dữ liệu bảng warehouse khi bảng product thay đổi: 
-CREATE TRIGGER trgProductInsert
-ON PRODUCT
-AFTER INSERT
-AS
-BEGIN
-    INSERT INTO WAREHOUSE (PRD_IMG, PRD_ID, PRD_NAME, PRD_TYPE_ID, BRD_ID, RDY_FOR_SALE, INVENTORY_QUANTITY, CREATE_DAY, RETAIL_PRICE, IMPORT_PRICE, WHOLESALE_PRICE)
-    SELECT 
-        i.PRD_IMG, 
-        i.PRD_ID, 
-        i.PRD_NAME, 
-        i.PRD_TYPE_ID, 
-        i.BRD_ID, 
-        i.RDY_FOR_SALE, 
-        i.QUANTITY AS INVENTORY_QUANTITY, 
-        i.CREATE_DAY, 
-        0 AS RETAIL_PRICE,  -- Giá bán lẻ mặc định là 0, cần điều chỉnh nếu có logic giá cụ thể
-        0 AS IMPORT_PRICE,  -- Giá nhập mặc định là 0, cần điều chỉnh nếu có logic giá cụ thể
-        0 AS WHOLESALE_PRICE  -- Giá bán buôn mặc định là 0, cần điều chỉnh nếu có logic giá cụ thể
-    FROM INSERTED i;
-END;
-
-CREATE TRIGGER trgProductUpdate
-ON PRODUCT
-AFTER UPDATE
-AS
-BEGIN
-    UPDATE w
-    SET 
-        w.PRD_IMG = i.PRD_IMG, 
-        w.PRD_NAME = i.PRD_NAME, 
-        w.PRD_TYPE_ID = i.PRD_TYPE_ID, 
-        w.BRD_ID = i.BRD_ID, 
-        w.RDY_FOR_SALE = i.RDY_FOR_SALE, 
-        w.INVENTORY_QUANTITY = i.QUANTITY, 
-        w.CREATE_DAY = i.CREATE_DAY
-    FROM WAREHOUSE w
-    INNER JOIN INSERTED i ON w.PRD_ID = i.PRD_ID
-    INNER JOIN DELETED d ON w.PRD_ID = d.PRD_ID;
-END;
-
-CREATE TRIGGER trgProductDelete
-ON PRODUCT
-AFTER DELETE
-AS
-BEGIN
-    DELETE FROM WAREHOUSE
-    WHERE PRD_ID IN (SELECT PRD_ID FROM DELETED);
-END;
-
-
 CREATE OR ALTER TRIGGER trg_update_importbill_total
 ON IMPORTBILL_DETAIL
 AFTER INSERT, UPDATE, DELETE
@@ -459,7 +335,7 @@ GO
 --trigger cập nhật TOTAL_MONEY của IMPORTBILL, (RDY_FOR_SALE = QUANTITY =  IMPORTBILL_DETAIL.QUANTITY) của PRODUCT,  
 --(RDY_FOR_SALE = INVENTORY_QUANTITY IMPORTBILL_DETAIL.QUANTITY) của WAREHOUSE khi 
 --INSERT/UPDATE/DELETE một IMPORTBILL_DETAIL (Tăng lên/Thay đổi/Giảm đi tương ứng với INSERT/UPDATE/DELETE)
-CREATE TRIGGER trg_UpdateImportBillDetails
+ALTER TRIGGER trg_UpdateImportBillDetails
 ON IMPORTBILL_DETAIL
 AFTER INSERT, UPDATE, DELETE
 AS
@@ -543,15 +419,15 @@ GO
 
 ----------
 -- trigger cập nhật TOTAL_MONEY của SALEBILL, (RDY_FOR_SALE = QUANTITY =  SALEBILL_DETAIL.QUANTITY) của PRODUCT,  
---(RDY_FOR_SALE = INVENTORY_QUANTITY SALEBILL_DETAIL.QUANTITY) của WAREHOUSE, 
+--(RDY_FOR_SALE = SALEBILL_DETAIL.QUANTITY) của WAREHOUSE, 
+--(INVENTORY_QUANTITY == SALEBILL_DETAIL.QUANTITY) của WAREHOUSE
 --(CUS_TOTAL_SPENDING_MONEY = tổng TOTAL_MONEY của các SALEBILL , 
 --CUS_TOTAL_PRODUCTS_PURCHASED = tổng QUANTITY của các SALEBILL_DETAIL, 
 --CUS_TOTAL_QUANTITY_OF_ORDER = Tổng số lượng SALEBILL tương ứng với CUS_ID đó, 
 --CUS_DATE_OF_LAST_PURCHASE =  SL_DATE của SALEBILL) khi INSERT/UPDATE/DELETE một SALEBILL_DETAIL 
 --(Tăng lên/Thay đổi/Giảm đi tương ứng với INSERT/UPDATE/DELETE)
 
-
-CREATE TRIGGER trg_UpdateSaleBillDetails
+ALTER TRIGGER trg_UpdateSaleBillDetails
 ON SALEBILL_DETAIL
 AFTER INSERT, UPDATE, DELETE
 AS
@@ -589,39 +465,36 @@ BEGIN
     -- Get customer ID and sale date
     SELECT @CUS_ID = CUS_ID, @SL_DATE = SL_DATE FROM SALEBILL WHERE SL_ID = @SL_ID;
 
-    -- Adjust PRODUCT RDY_FOR_SALE and WAREHOUSE INVENTORY_QUANTITY
+    -- Adjust WAREHOUSE INVENTORY_QUANTITY and RDY_FOR_SALE
     IF EXISTS (SELECT * FROM inserted) AND NOT EXISTS (SELECT * FROM deleted)
     BEGIN
         -- INSERT
-        UPDATE PRODUCT
-        SET RDY_FOR_SALE = RDY_FOR_SALE - @NEW_QUANTITY
-        WHERE PRD_ID = @PRD_ID;
-
         UPDATE WAREHOUSE
-        SET INVENTORY_QUANTITY = INVENTORY_QUANTITY - @NEW_QUANTITY
+        SET 
+            INVENTORY_QUANTITY = INVENTORY_QUANTITY - @NEW_QUANTITY,
+            RDY_FOR_SALE = RDY_FOR_SALE - @NEW_QUANTITY
         WHERE PRD_ID = @PRD_ID;
     END
     ELSE IF EXISTS (SELECT * FROM deleted) AND NOT EXISTS (SELECT * FROM inserted)
     BEGIN
         -- DELETE
-        UPDATE PRODUCT
-        SET RDY_FOR_SALE = RDY_FOR_SALE + @OLD_QUANTITY
-        WHERE PRD_ID = @PRD_ID;
-
         UPDATE WAREHOUSE
-        SET INVENTORY_QUANTITY = INVENTORY_QUANTITY + @OLD_QUANTITY
+        SET 
+            INVENTORY_QUANTITY = INVENTORY_QUANTITY + @OLD_QUANTITY,
+            RDY_FOR_SALE = RDY_FOR_SALE + @OLD_QUANTITY
         WHERE PRD_ID = @PRD_ID;
     END
     ELSE
     BEGIN
         -- UPDATE
-        SELECT @OLD_QUANTITY = d.QUANTITY FROM deleted d JOIN inserted i ON d.SL_DETAIL_ID = i.SL_DETAIL_ID;
-        UPDATE PRODUCT
-        SET RDY_FOR_SALE = RDY_FOR_SALE + @OLD_QUANTITY - @NEW_QUANTITY
-        WHERE PRD_ID = @PRD_ID;
-
+        SELECT @OLD_QUANTITY = d.QUANTITY 
+        FROM deleted d 
+        JOIN inserted i ON d.SL_DETAIL_ID = i.SL_DETAIL_ID;
+        
         UPDATE WAREHOUSE
-        SET INVENTORY_QUANTITY = INVENTORY_QUANTITY + @OLD_QUANTITY - @NEW_QUANTITY
+        SET 
+            INVENTORY_QUANTITY = INVENTORY_QUANTITY + @OLD_QUANTITY - @NEW_QUANTITY,
+            RDY_FOR_SALE = RDY_FOR_SALE + @OLD_QUANTITY - @NEW_QUANTITY
         WHERE PRD_ID = @PRD_ID;
     END
 
@@ -652,6 +525,7 @@ BEGIN
     WHERE CUS_ID = @CUS_ID;
 END;
 GO
+
 
 
 --Trigger cập nhật trạng thái PROMOTION_STATUS:
@@ -698,8 +572,8 @@ END;
 GO
 
 
---Trigger cập nhật dư liệu khi xóa SALEBILL
-CREATE TRIGGER trg_DeleteSaleBill
+-- Trigger cập nhật dữ liệu khi xóa SALEBILL
+ALTER TRIGGER trg_DeleteSaleBill
 ON SALEBILL
 AFTER DELETE
 AS
@@ -727,26 +601,9 @@ BEGIN
     ) AS DeletedSales
     ON CUSTOMER.CUS_ID = DeletedSales.CUS_ID;
 
-    -- Cập nhật thông tin sản phẩm trong bảng PRODUCT
-    UPDATE PRODUCT
-    SET 
-        RDY_FOR_SALE = p.RDY_FOR_SALE + ISNULL(DeletedDetails.TotalQuantity, 0),
-            QUANTITY = p.QUANTITY + ISNULL(DeletedDetails.TotalQuantity, 0)
-    FROM PRODUCT p
-    INNER JOIN (
-        SELECT 
-            sd.PRD_ID,
-            SUM(sd.QUANTITY) AS TotalQuantity
-        FROM SALEBILL_DETAIL sd
-        INNER JOIN DELETED d ON sd.SL_ID = d.SL_ID
-        GROUP BY sd.PRD_ID
-    ) AS DeletedDetails
-    ON p.PRD_ID = DeletedDetails.PRD_ID;
-
     -- Cập nhật thông tin sản phẩm trong bảng WAREHOUSE
     UPDATE WAREHOUSE
     SET 
-        RDY_FOR_SALE = w.RDY_FOR_SALE + ISNULL(DeletedDetails.TotalQuantity, 0),
         INVENTORY_QUANTITY = w.INVENTORY_QUANTITY + ISNULL(DeletedDetails.TotalQuantity, 0)
     FROM WAREHOUSE w
     INNER JOIN (
@@ -758,7 +615,9 @@ BEGIN
         GROUP BY sd.PRD_ID
     ) AS DeletedDetails
     ON w.PRD_ID = DeletedDetails.PRD_ID;
-END
+END;
+GO
+
 
 --Trigger xóa producttype
 CREATE TRIGGER trg_DeleteProductType
@@ -784,4 +643,251 @@ GO
 
 select * from districts
 where name = N'Quận 1'
+
+
+-------------------
+--PROCEDURE
+--1. Thống kê số lượng sản phẩm bán ra theo từng ngày trong 1 khoảng thời gian:
+ALTER PROCEDURE sp_ThongKeSanPhamBanRaTheoNgay
+    @StartDate DATE,
+    @EndDate DATE
+AS
+BEGIN
+    ;WITH DateRange AS (
+        SELECT @StartDate AS Date
+        UNION ALL
+        SELECT DATEADD(DAY, 1, Date)
+        FROM DateRange
+        WHERE DATEADD(DAY, 1, Date) <= @EndDate
+    )
+    SELECT 
+        DR.Date AS SL_DATE,
+        ISNULL(SUM(SL_DETAIL.QUANTITY), 0) AS TotalQuantity
+    FROM 
+        DateRange DR
+    LEFT JOIN 
+        SALEBILL SL ON DR.Date = SL.SL_DATE
+    LEFT JOIN 
+        SALEBILL_DETAIL SL_DETAIL ON SL.SL_ID = SL_DETAIL.SL_ID
+    GROUP BY 
+        DR.Date
+    ORDER BY 
+        DR.Date
+    OPTION (MAXRECURSION 0);
+END;
+GO
+
+
+exec sp_ThongKeSanPhamBanRaTheoNgay '2024-05-01', '2024-05-30'
+
+--2. Thống kê Khách hàng có số tiền chi tiêu nhiều nhất trong 1 khoảng thời gian:
+CREATE PROCEDURE sp_ThongKeKhachHangChiTieuNhieuNhat
+    @StartDate DATE,
+    @EndDate DATE
+AS
+BEGIN
+    SELECT 
+        CUS.CUS_ID,
+        CUS.CUS_NAME,
+        SUM(SL.TOTAL_MONEY) AS TotalSpent
+    FROM 
+        SALEBILL SL
+    INNER JOIN 
+        CUSTOMER CUS ON SL.CUS_ID = CUS.CUS_ID
+    WHERE 
+        SL.SL_DATE BETWEEN @StartDate AND @EndDate
+    GROUP BY 
+        CUS.CUS_ID, CUS.CUS_NAME
+    ORDER BY 
+        TotalSpent DESC;
+END;
+GO
+
+EXEC sp_ThongKeKhachHangChiTieuNhieuNhat '2024-05-01', '2024-05-30'
+
+--3. Thống kê doanh thu theo ngày, tháng, năm:
+CREATE PROCEDURE sp_ThongKeDoanhThu
+AS
+BEGIN
+    -- Doanh thu theo ngày
+    SELECT 
+        SL_DATE AS Date,
+        SUM(TOTAL_MONEY) AS Revenue
+    FROM 
+        SALEBILL
+    GROUP BY 
+        SL_DATE
+    ORDER BY 
+        SL_DATE;
+
+    -- Doanh thu theo tháng
+    SELECT 
+        YEAR(SL_DATE) AS Year, 
+        MONTH(SL_DATE) AS Month, 
+        SUM(TOTAL_MONEY) AS Revenue
+    FROM 
+        SALEBILL
+    GROUP BY 
+        YEAR(SL_DATE), MONTH(SL_DATE)
+    ORDER BY 
+        Year, Month;
+
+    -- Doanh thu theo năm
+    SELECT 
+        YEAR(SL_DATE) AS Year, 
+        SUM(TOTAL_MONEY) AS Revenue
+    FROM 
+        SALEBILL
+    GROUP BY 
+        YEAR(SL_DATE)
+    ORDER BY 
+        Year;
+END;
+GO
+
+EXEC sp_ThongKeDoanhThu
+
+
+--4. Thống kê số đơn hàng theo ngày, tháng, năm:
+CREATE PROCEDURE sp_ThongKeSoDonHang
+AS
+BEGIN
+    -- Số đơn hàng theo ngày
+    SELECT 
+        SL_DATE AS Date,
+        COUNT(SL_ID) AS OrderCount
+    FROM 
+        SALEBILL
+    GROUP BY 
+        SL_DATE
+    ORDER BY 
+        SL_DATE;
+
+    -- Số đơn hàng theo tháng
+    SELECT 
+        YEAR(SL_DATE) AS Year, 
+        MONTH(SL_DATE) AS Month, 
+        COUNT(SL_ID) AS OrderCount
+    FROM 
+        SALEBILL
+    GROUP BY 
+        YEAR(SL_DATE), MONTH(SL_DATE)
+    ORDER BY 
+        Year, Month;
+
+    -- Số đơn hàng theo năm
+    SELECT 
+        YEAR(SL_DATE) AS Year, 
+        COUNT(SL_ID) AS OrderCount
+    FROM 
+        SALEBILL
+    GROUP BY 
+        YEAR(SL_DATE)
+    ORDER BY 
+        Year;
+END;
+GO
+
+EXEC sp_ThongKeSoDonHang
+
+
+--5. Thống kê sản phẩm bán chạy:
+ALTER PROCEDURE sp_ThongKeSanPhamBanChay
+    @StartDate DATE,
+    @EndDate DATE
+AS
+BEGIN
+    SELECT 
+        PRD.PRD_ID,
+        PRD.PRD_NAME,
+        SUM(SL_DETAIL.QUANTITY) AS TotalQuantitySold
+    FROM 
+        SALEBILL_DETAIL SL_DETAIL
+    INNER JOIN 
+        WAREHOUSE PRD ON SL_DETAIL.PRD_ID = PRD.PRD_ID
+    INNER JOIN 
+        SALEBILL SL ON SL_DETAIL.SL_ID = SL.SL_ID
+    WHERE 
+        SL.SL_DATE BETWEEN @StartDate AND @EndDate
+    GROUP BY 
+        PRD.PRD_ID, PRD.PRD_NAME
+    ORDER BY 
+        TotalQuantitySold DESC;
+END;
+GO
+
+ 
+exec sp_ThongKeSanPhamBanChay '2024-05-01', '2024-05-30'
+
+--6. Thống kê nhân viên bán được nhiều nhất:
+ALTER PROCEDURE sp_ThongKeNhanVienBanNhieuNhat
+    @StartDate DATE,
+    @EndDate DATE
+AS
+BEGIN
+    SELECT 
+        EMP.EMP_ID,
+        EMP.EMP_NAME,
+        SUM(SL.TOTAL_MONEY) AS TotalSales
+    FROM 
+        SALEBILL SL
+    INNER JOIN 
+        EMPLOYEES EMP ON SL.EMP_ID = EMP.EMP_ID
+    WHERE 
+        SL.SL_DATE BETWEEN @StartDate AND @EndDate
+    GROUP BY 
+        EMP.EMP_ID, EMP.EMP_NAME
+    ORDER BY 
+        TotalSales DESC;
+END;
+GO
+
+EXEC sp_ThongKeNhanVienBanNhieuNhat '2024-05-01', '2024-05-15'
+
+
+--Function
+--Function tính tổng số hóa đơn bán hàng trong khoảng thời gian:
+CREATE FUNCTION dbo.fn_TotalSaleBills (
+    @StartDate DATE,
+    @EndDate DATE
+)
+RETURNS INT
+AS
+BEGIN
+    DECLARE @TotalSaleBills INT;
+
+    SELECT @TotalSaleBills = COUNT(*)
+    FROM SALEBILL
+    WHERE SL_DATE BETWEEN @StartDate AND @EndDate;
+
+    RETURN @TotalSaleBills;
+END;
+GO
+
+--Function tính tổng doanh thu trong khoảng thời gian:
+CREATE FUNCTION dbo.fn_TotalRevenue (
+    @StartDate DATE,
+    @EndDate DATE
+)
+RETURNS FLOAT
+AS
+BEGIN
+    DECLARE @TotalRevenue FLOAT;
+
+    SELECT @TotalRevenue = SUM(TOTAL_MONEY)
+    FROM SALEBILL
+    WHERE SL_DATE BETWEEN @StartDate AND @EndDate;
+
+    RETURN @TotalRevenue;
+END;
+GO
+
+DECLARE @StartDate DATE = '2024-05-01';
+DECLARE @EndDate DATE = '2023-05-31';
+
+-- Tính tổng số hóa đơn bán hàng
+SELECT dbo.fn_TotalSaleBills(@StartDate, @EndDate) AS TotalSaleBills;
+
+-- Tính tổng doanh thu
+SELECT dbo.fn_TotalRevenue(@StartDate, @EndDate) AS TotalRevenue;
 

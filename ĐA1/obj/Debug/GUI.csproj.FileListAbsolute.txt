@@ -52,3 +52,10 @@ D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\EPPlus.xml
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_Thongke.resources
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_Taohdban.resources
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_ThemKH.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\zxing.dll
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\zxing.presentation.dll
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\zxing.xml
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\zxing.presentation.xml
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\Guna.Charts.WinForms.dll
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\Guna.Charts.WinForms.xml
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\BUS.dll.config

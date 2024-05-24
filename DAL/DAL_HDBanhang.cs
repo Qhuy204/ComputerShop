@@ -83,7 +83,9 @@ namespace DAL
         string promotion,
         string payment,
         string note,
-        string status)
+        string status,
+        float totalmoney, 
+        string banggia)
         {
             var salebill = new SALEBILL
             {
@@ -93,10 +95,11 @@ namespace DAL
                 EMP_ID = empid,
                 DISCOUNT_CODE = discode,
                 PROMOTION_ID = promotion,
-                TOTAL_MONEY = 0,
+                TOTAL_MONEY = totalmoney,
                 PAYMENT = payment,
                 NOTE = note,
-                STATUS = status
+                STATUS = status,
+                BANGGIA = banggia
             };
 
             db.SALEBILLs.Add(salebill);

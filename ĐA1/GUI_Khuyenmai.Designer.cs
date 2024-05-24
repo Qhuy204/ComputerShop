@@ -717,6 +717,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GUI_Khuyenmai";
+            this.ShowInTaskbar = false;
             this.Text = "GUI_Khuyenmai";
             this.Load += new System.EventHandler(this.GUI_Khuyenmai_Load);
             this.panel1.ResumeLayout(false);

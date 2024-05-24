@@ -11,11 +11,6 @@ namespace BUS
     {
         private DAL_Khohang dalKhohang= new DAL_Khohang();
 
-        public void Add(WAREHOUSE wr)
-        {
-            wr.PRD_ID = GetNewID();
-            dalKhohang.Add(wr);
-        }
 
         public bool Delete(string wrID)
         {
@@ -63,7 +58,32 @@ namespace BUS
         {
             dalKhohang.AddProductInformation(id, importprice, retailprice, wholesaleprice);
         }
+        public List<WAREHOUSE> TimKiemSanPham(string keyword)
+        {
+            return dalKhohang.TimKiemSanPham(keyword);
+        }
 
+        public List<WAREHOUSE> TimKiemSanPham3(string nhanhieu, string loaisp, string keyword)
+        {
+            return dalKhohang.TimKiemSanPham3(nhanhieu, loaisp, keyword);
+        }
 
+        public string getPRD_ID(string prdName)
+        {
+            return dalKhohang.getPRD_ID(prdName);
+        }
+
+        public void NewProduct(
+        byte[] image,
+        string id,
+        string name,
+        string brand_id,
+        string producttype_id,
+        float import,
+        float retail,
+        float whole)
+        {
+            dalKhohang.NewProduct(image, id, name, brand_id, producttype_id, import, retail, whole);
+        }
     }
 }

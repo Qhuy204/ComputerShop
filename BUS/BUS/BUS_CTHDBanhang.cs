@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BUS
 {
@@ -42,7 +40,7 @@ namespace BUS
                             .Select(p =>
                             {
                                 int id;
-                                bool success = Int32.TryParse(p.SL_DETAIL_ID.Substring(2), out id);
+                                bool success = Int32.TryParse(p.SL_DETAIL_ID.Substring(3), out id);
                                 return success ? id : 0;
                             })
                             .Max();

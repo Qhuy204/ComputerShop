@@ -17,15 +17,12 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PRODUCTTYPE()
         {
-            this.PRODUCTs = new HashSet<PRODUCT>();
             this.WAREHOUSEs = new HashSet<WAREHOUSE>();
         }
     
         public string PRD_TYPE_ID { get; set; }
         public string PRD_TYPE_NAME { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCT> PRODUCTs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WAREHOUSE> WAREHOUSEs { get; set; }
     }

@@ -1,13 +1,5 @@
 ﻿using BUS;
-using DAL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ĐA1
@@ -29,6 +21,8 @@ namespace ĐA1
         }
 
         public string quyen;
+        public string name;
+        public string id;
 
         private void btnDangnhap_Click(object sender, EventArgs e)
         {
@@ -48,17 +42,28 @@ namespace ĐA1
                     if (emp.EMP_PASSWORD == matkhau)
                     {
                         var role = buscv.GetByID(emp.PS_ID).PS_NAME;
+
+                        if (ischecked == true && emp.PS_ID != "PS1")
+                        {
+                            MessageBox.Show("Bạn không có quyền quản lý");
+                            return; // Dừng lại nếu không có quyền quản lý
+                        }
+
                         MessageBox.Show("Đăng nhập thành công với quyền " + role);
                         quyen = role;
+                        name = emp.EMP_NAME;
+                        id = emp.EMP_ID;
+
                         this.Hide();
-                        GUI_MainForm main = new GUI_MainForm(quyen);
+                        GUI_MainForm main = new GUI_MainForm(quyen, name, id);
                         main.Show();
+                        return; // Dừng lại sau khi đăng nhập thành công
                     }
                     else
                     {
                         MessageBox.Show("Sai mật khẩu! Vui lòng nhập lại");
+                        return; // Dừng lại nếu sai mật khẩu
                     }
-                    break;
                 }
             }
 
@@ -66,14 +71,19 @@ namespace ĐA1
             {
                 MessageBox.Show("Kiểm tra lại tài khoản hoặc mật khẩu của bạn!");
             }
-
-
-
         }
+
 
         private void swAdmin_CheckedChanged(object sender, EventArgs e)
         {
-            ischecked = true;
+            if (ischecked == false)
+            {
+                ischecked = true;
+            }
+            else
+            {
+                ischecked = false;
+            }
         }
     }
 }

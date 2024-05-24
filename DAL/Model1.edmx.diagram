@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b3202061d8744d08b359338a3d5e3bcb" Name="Diagram1">
+      <Diagram DiagramId="7b3e8fdad800499ca919a94b6d6a9425" Name="Diagram1">
         <EntityTypeShape EntityType="CuaHangMayTinhModel.AUTHORITY" Width="1.5" PointX="10.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CuaHangMayTinhModel.BRAND" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangMayTinhModel.CUSTOMER" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.CUSTOMER" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="CuaHangMayTinhModel.DISCOUNT" Width="1.5" PointX="7.75" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CuaHangMayTinhModel.EMPLOYEE" Width="1.5" PointX="10" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CuaHangMayTinhModel.IMPORTBILL" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
@@ -15,12 +15,11 @@
         <EntityTypeShape EntityType="CuaHangMayTinhModel.PAYMENT" Width="1.5" PointX="5.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CuaHangMayTinhModel.POSITION" Width="1.5" PointX="7.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CuaHangMayTinhModel.POSITION_AUTHORITY" Width="1.5" PointX="13" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangMayTinhModel.PRODUCT" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangMayTinhModel.PRODUCTTYPE" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.PRODUCTTYPE" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CuaHangMayTinhModel.PROMOTION" Width="1.5" PointX="9.75" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CuaHangMayTinhModel.SALEBILL" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CuaHangMayTinhModel.SALEBILL_DETAIL" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CuaHangMayTinhModel.sysdiagram" Width="1.5" PointX="11.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CuaHangMayTinhModel.sysdiagram" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CuaHangMayTinhModel.WAREHOUSE" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="CuaHangMayTinhModel.FK__POSITION___AUT_I__603D47BB" ManuallyRouted="false" />
         <AssociationConnector Association="CuaHangMayTinhModel.FK_IMPORTBILL_BRAND" ManuallyRouted="false" />
@@ -29,7 +28,6 @@
         <AssociationConnector Association="CuaHangMayTinhModel.FK__EMPLOYEES__PS_ID__67DE6983" ManuallyRouted="false" />
         <AssociationConnector Association="CuaHangMayTinhModel.FK_IMPORTBILL_DETAIL_IMPORTBILL" ManuallyRouted="false" />
         <AssociationConnector Association="CuaHangMayTinhModel.FK__POSITION___PS_ID__5F492382" ManuallyRouted="false" />
-        <AssociationConnector Association="CuaHangMayTinhModel.FK_PRODUCT_PRODUCTTYPE" ManuallyRouted="false" />
         <AssociationConnector Association="CuaHangMayTinhModel.FK_WAREHOUSE_PRODUCTTYPE" ManuallyRouted="false" />
         <AssociationConnector Association="CuaHangMayTinhModel.FK_SALEBILL_DETAIL_SALEBILL" ManuallyRouted="false" />
       </Diagram>

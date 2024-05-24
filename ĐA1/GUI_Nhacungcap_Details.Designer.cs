@@ -43,20 +43,20 @@
             this.btnTrangthaiGD = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnTatcaNCC = new Guna.UI2.WinForms.Guna2Button();
             this.dgvLSNhaphang = new Guna.UI2.WinForms.Guna2DataGridView();
             this.clMahdn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clTrangthai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clTongtien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clNgaynhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clNgaycapnhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnTatcaNCC = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.pnThaotackhac.SuspendLayout();
             this.panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLSNhaphang)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnDSncc
@@ -206,32 +206,6 @@
             this.guna2Panel2.Size = new System.Drawing.Size(1011, 218);
             this.guna2Panel2.TabIndex = 2;
             // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.btnTatcaNCC);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1011, 64);
-            this.panel2.TabIndex = 1;
-            // 
-            // btnTatcaNCC
-            // 
-            this.btnTatcaNCC.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.btnTatcaNCC.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnTatcaNCC.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnTatcaNCC.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTatcaNCC.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTatcaNCC.FillColor = System.Drawing.Color.White;
-            this.btnTatcaNCC.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTatcaNCC.ForeColor = System.Drawing.Color.Black;
-            this.btnTatcaNCC.Location = new System.Drawing.Point(7, 6);
-            this.btnTatcaNCC.Name = "btnTatcaNCC";
-            this.btnTatcaNCC.Size = new System.Drawing.Size(142, 50);
-            this.btnTatcaNCC.TabIndex = 4;
-            this.btnTatcaNCC.Text = "Lịch sử nhập hàng";
-            // 
             // dgvLSNhaphang
             // 
             this.dgvLSNhaphang.AllowUserToDeleteRows = false;
@@ -241,10 +215,9 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvLSNhaphang.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLSNhaphang.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgvLSNhaphang.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -327,6 +300,32 @@
             this.clNgaycapnhat.Name = "clNgaycapnhat";
             this.clNgaycapnhat.ReadOnly = true;
             // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.btnTatcaNCC);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1011, 64);
+            this.panel2.TabIndex = 1;
+            // 
+            // btnTatcaNCC
+            // 
+            this.btnTatcaNCC.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.btnTatcaNCC.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTatcaNCC.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTatcaNCC.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTatcaNCC.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTatcaNCC.FillColor = System.Drawing.Color.White;
+            this.btnTatcaNCC.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTatcaNCC.ForeColor = System.Drawing.Color.Black;
+            this.btnTatcaNCC.Location = new System.Drawing.Point(7, 6);
+            this.btnTatcaNCC.Name = "btnTatcaNCC";
+            this.btnTatcaNCC.Size = new System.Drawing.Size(142, 50);
+            this.btnTatcaNCC.TabIndex = 4;
+            this.btnTatcaNCC.Text = "Lịch sử nhập hàng";
+            // 
             // GUI_Nhacungcap_Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -341,14 +340,15 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GUI_Nhacungcap_Details";
+            this.ShowInTaskbar = false;
             this.Text = "GUI_Nhacungcap_Details";
             this.guna2Panel1.ResumeLayout(false);
             this.pnThaotackhac.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLSNhaphang)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

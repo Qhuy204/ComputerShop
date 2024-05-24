@@ -33,7 +33,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.Menutransition = new System.Windows.Forms.Timer(this.components);
             this.sidebarTransition = new System.Windows.Forms.Timer(this.components);
-            this.btnCauhinh = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDsnhanvien = new Guna.UI2.WinForms.Guna2Button();
             this.btnbaocao = new Guna.UI2.WinForms.Guna2Button();
             this.btnKhachhang = new Guna.UI2.WinForms.Guna2Button();
             this.btnNhaphang = new Guna.UI2.WinForms.Guna2Button();
@@ -54,14 +54,17 @@
             this.btnDonnhap = new Guna.UI2.WinForms.Guna2Button();
             this.btnKhuyenmai = new Guna.UI2.WinForms.Guna2Button();
             this.btnBanhang = new Guna.UI2.WinForms.Guna2Button();
+            this.btnqlchucvu = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblten = new System.Windows.Forms.Label();
+            this.lblTenquyen = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnTaikhoan = new Guna.UI2.WinForms.Guna2Button();
             this.lblFuncName = new System.Windows.Forms.Label();
             this.pnNoidung = new System.Windows.Forms.Panel();
             this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.pnLogout = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblTenquyen = new System.Windows.Forms.Label();
             this.MenuSanpham.SuspendLayout();
             this.sidebar.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -90,29 +93,29 @@
             this.sidebarTransition.Interval = 10;
             this.sidebarTransition.Tick += new System.EventHandler(this.sidebarTransition_Tick);
             // 
-            // btnCauhinh
+            // btnDsnhanvien
             // 
-            this.btnCauhinh.BackColor = System.Drawing.Color.Transparent;
-            this.btnCauhinh.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
-            this.btnCauhinh.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCauhinh.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCauhinh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCauhinh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCauhinh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
-            this.btnCauhinh.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnCauhinh.ForeColor = System.Drawing.Color.White;
-            this.btnCauhinh.Image = ((System.Drawing.Image)(resources.GetObject("btnCauhinh.Image")));
-            this.btnCauhinh.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnCauhinh.Location = new System.Drawing.Point(3, 507);
-            this.btnCauhinh.Name = "btnCauhinh";
-            this.btnCauhinh.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
-            this.btnCauhinh.Size = new System.Drawing.Size(218, 47);
-            this.btnCauhinh.TabIndex = 2;
-            this.btnCauhinh.Text = "Cấu hình";
-            this.btnCauhinh.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnCauhinh.TextOffset = new System.Drawing.Point(-10, 0);
-            this.btnCauhinh.Click += new System.EventHandler(this.btnCauhinh_Click);
-            this.btnCauhinh.Leave += new System.EventHandler(this.subbutton_Leave);
+            this.btnDsnhanvien.BackColor = System.Drawing.Color.Transparent;
+            this.btnDsnhanvien.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnDsnhanvien.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDsnhanvien.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDsnhanvien.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDsnhanvien.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDsnhanvien.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnDsnhanvien.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnDsnhanvien.ForeColor = System.Drawing.Color.White;
+            this.btnDsnhanvien.Image = ((System.Drawing.Image)(resources.GetObject("btnDsnhanvien.Image")));
+            this.btnDsnhanvien.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDsnhanvien.Location = new System.Drawing.Point(3, 507);
+            this.btnDsnhanvien.Name = "btnDsnhanvien";
+            this.btnDsnhanvien.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnDsnhanvien.Size = new System.Drawing.Size(218, 47);
+            this.btnDsnhanvien.TabIndex = 2;
+            this.btnDsnhanvien.Text = "Danh sách nhân viên";
+            this.btnDsnhanvien.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDsnhanvien.TextOffset = new System.Drawing.Point(-10, 0);
+            this.btnDsnhanvien.Click += new System.EventHandler(this.btnCauhinh_Click);
+            this.btnDsnhanvien.Leave += new System.EventHandler(this.subbutton_Leave);
             // 
             // btnbaocao
             // 
@@ -371,7 +374,8 @@
             this.sidebar.Controls.Add(this.btnKhuyenmai);
             this.sidebar.Controls.Add(this.btnbaocao);
             this.sidebar.Controls.Add(this.btnBanhang);
-            this.sidebar.Controls.Add(this.btnCauhinh);
+            this.sidebar.Controls.Add(this.btnDsnhanvien);
+            this.sidebar.Controls.Add(this.btnqlchucvu);
             this.sidebar.Location = new System.Drawing.Point(0, 0);
             this.sidebar.Margin = new System.Windows.Forms.Padding(0);
             this.sidebar.Name = "sidebar";
@@ -459,6 +463,7 @@
             this.btndonbanhang.Text = "Đơn bán hàng";
             this.btndonbanhang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btndonbanhang.TextOffset = new System.Drawing.Point(15, 0);
+            this.btndonbanhang.Click += new System.EventHandler(this.btndonbanhang_Click);
             this.btndonbanhang.Leave += new System.EventHandler(this.subbutton_Leave);
             // 
             // btnDonnhap
@@ -534,12 +539,38 @@
             this.btnBanhang.Click += new System.EventHandler(this.btnBanle_Click);
             this.btnBanhang.Leave += new System.EventHandler(this.mainbutton_Leave);
             // 
+            // btnqlchucvu
+            // 
+            this.btnqlchucvu.BackColor = System.Drawing.Color.Transparent;
+            this.btnqlchucvu.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnqlchucvu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnqlchucvu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnqlchucvu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnqlchucvu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnqlchucvu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(37)))), ((int)(((byte)(55)))));
+            this.btnqlchucvu.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnqlchucvu.ForeColor = System.Drawing.Color.White;
+            this.btnqlchucvu.Image = ((System.Drawing.Image)(resources.GetObject("btnqlchucvu.Image")));
+            this.btnqlchucvu.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnqlchucvu.Location = new System.Drawing.Point(3, 560);
+            this.btnqlchucvu.Name = "btnqlchucvu";
+            this.btnqlchucvu.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnqlchucvu.Size = new System.Drawing.Size(218, 47);
+            this.btnqlchucvu.TabIndex = 2;
+            this.btnqlchucvu.Text = "Quản lý chức vụ";
+            this.btnqlchucvu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnqlchucvu.TextOffset = new System.Drawing.Point(-10, 0);
+            this.btnqlchucvu.Click += new System.EventHandler(this.btnqlchucvu_Click);
+            this.btnqlchucvu.Leave += new System.EventHandler(this.subbutton_Leave);
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lblten);
             this.panel1.Controls.Add(this.lblTenquyen);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnTaikhoan);
             this.panel1.Controls.Add(this.lblFuncName);
@@ -547,6 +578,46 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1069, 52);
             this.panel1.TabIndex = 6;
+            // 
+            // lblten
+            // 
+            this.lblten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblten.AutoSize = true;
+            this.lblten.Location = new System.Drawing.Point(927, 11);
+            this.lblten.Name = "lblten";
+            this.lblten.Size = new System.Drawing.Size(44, 16);
+            this.lblten.TabIndex = 2;
+            this.lblten.Text = "label1";
+            // 
+            // lblTenquyen
+            // 
+            this.lblTenquyen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTenquyen.AutoSize = true;
+            this.lblTenquyen.Location = new System.Drawing.Point(927, 27);
+            this.lblTenquyen.Name = "lblTenquyen";
+            this.lblTenquyen.Size = new System.Drawing.Size(44, 16);
+            this.lblTenquyen.TabIndex = 2;
+            this.lblTenquyen.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(854, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Nhân viên:";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(854, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 16);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Quyền: ";
             // 
             // btnTaikhoan
             // 
@@ -604,7 +675,7 @@
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLogout.TextOffset = new System.Drawing.Point(-10, 0);
-            this.btnLogout.Click += new System.EventHandler(this.btnCauhinh_Click);
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             this.btnLogout.Leave += new System.EventHandler(this.subbutton_Leave);
             // 
             // pnLogout
@@ -616,24 +687,6 @@
             this.pnLogout.Name = "pnLogout";
             this.pnLogout.Size = new System.Drawing.Size(221, 49);
             this.pnLogout.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(735, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 16);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Quyền: ";
-            // 
-            // lblTenquyen
-            // 
-            this.lblTenquyen.AutoSize = true;
-            this.lblTenquyen.Location = new System.Drawing.Point(785, 15);
-            this.lblTenquyen.Name = "lblTenquyen";
-            this.lblTenquyen.Size = new System.Drawing.Size(44, 16);
-            this.lblTenquyen.TabIndex = 2;
-            this.lblTenquyen.Text = "label1";
             // 
             // GUI_MainForm
             // 
@@ -671,7 +724,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Timer Menutransition;
         private System.Windows.Forms.Timer sidebarTransition;
-        private Guna.UI2.WinForms.Guna2Button btnCauhinh;
+        private Guna.UI2.WinForms.Guna2Button btnDsnhanvien;
         private Guna.UI2.WinForms.Guna2Button btnbaocao;
         private Guna.UI2.WinForms.Guna2Button btnKhachhang;
         private Guna.UI2.WinForms.Guna2Button btnNhaphang;
@@ -700,5 +753,8 @@
         private Guna.UI2.WinForms.Guna2Button btnLoaiSP;
         private System.Windows.Forms.Label lblTenquyen;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblten;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2Button btnqlchucvu;
     }
 }

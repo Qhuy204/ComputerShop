@@ -7,13 +7,14 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ĐA1
 {
     public partial class GUI_ThemSP : Form
     {
         PictureBox[] pictureBoxes;
-        private BUS_DSSanpham busSP = new BUS_DSSanpham();
+
         private BUS_DSLoaiSP busLoaiSP = new BUS_DSLoaiSP();
         private BUS_QLNhacungcap busNCC = new BUS_QLNhacungcap();
         private BUS_Khohang busKhohang = new BUS_Khohang();
@@ -21,20 +22,6 @@ namespace ĐA1
         {
             InitializeComponent();
             pictureBoxes = new PictureBox[] { pbhinhanh };
-        }
-
-        private void ckbVanchuyen_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ckbVanchuyen.Checked )
-            {
-                lblkhoiluong.Enabled = true;
-                txtKhoiluong.Enabled = true;
-            }
-            else
-            {
-                lblkhoiluong.Enabled = false;
-                txtKhoiluong.Enabled = false;
-            }
         }
 
 
@@ -96,33 +83,45 @@ namespace ĐA1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            byte[] image;
-            if (pbhinhanh.Image != null)
+            try
             {
-                MemoryStream memoryStream = new MemoryStream();
-                pbhinhanh.Image.Save(memoryStream, pbhinhanh.Image.RawFormat);
-                image = memoryStream.ToArray();
-                string id = busSP.GetNewID();
+                if (pbhinhanh.Image == null)
+                {
+                    MessageBox.Show("Không thể thêm sản phẩm mới! Thiếu ảnh.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Chuyển đổi ảnh sang dạng byte[]
+                byte[] image;
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    pbhinhanh.Image.Save(memoryStream, pbhinhanh.Image.RawFormat);
+                    image = memoryStream.ToArray();
+                }
+
+                // Kiểm tra và chuyển đổi dữ liệu đầu vào
+                string id = busKhohang.GetNewID();
                 string name = txtTensp.Text;
                 string brand_id = busNCC.getBRD_ID(cbbNcc.Text);
                 string producttype_id = busLoaiSP.getPD_TYPE_ID(cbbLoaiSP.Text);
-                float importprice = float.Parse(txtgianhap.Text);
-                float retailprice = float.Parse(txtGiabanle.Text);
-                float wholesaleprice = float.Parse(txtgiabanbuon.Text);
-                bool deliveryallowed = ckbVanchuyen.Checked;
-                float weight = string.IsNullOrEmpty(txtKhoiluong.Text) ? 0 : float.Parse(txtKhoiluong.Text);
-                busSP.NewProduct(image, id, name, brand_id, producttype_id, deliveryallowed, weight);
-                busKhohang.AddProductInformation(id, importprice, retailprice, wholesaleprice);
-                MessageBox.Show("Product saved successfully.");
+                if (!float.TryParse(txtgianhap.Text, out float importprice) ||
+                    !float.TryParse(txtGiabanle.Text, out float retailprice) ||
+                    !float.TryParse(txtgiabanbuon.Text, out float wholesaleprice))
+                {
+                    MessageBox.Show("Giá trị không hợp lệ. Vui lòng kiểm tra lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Thêm sản phẩm mới vào cơ sở dữ liệu
+                busKhohang.NewProduct(image, id, name, brand_id, producttype_id, importprice, retailprice, wholesaleprice);
+                MessageBox.Show("Thêm sản phẩm thành công.");
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Không thể thêm sản phẩm mới! Lỗi Ảnh");
+                MessageBox.Show("Không thể thêm sản phẩm mới. Hãy kiểm tra lại dữ liệu đầu vào!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-            
         }
+
 
         private void GUI_ThemSP_Load(object sender, EventArgs e)
         {

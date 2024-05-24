@@ -10,3 +10,6 @@ D:\Visual Studio\Windows Form\Project\DA1\BUS\BUS\obj\Debug\BUS.csproj.CoreCompi
 D:\Visual Studio\Windows Form\Project\DA1\BUS\BUS\obj\Debug\BUS.csproj.CopyComplete
 D:\Visual Studio\Windows Form\Project\DA1\BUS\BUS\obj\Debug\BUS.dll
 D:\Visual Studio\Windows Form\Project\DA1\BUS\BUS\obj\Debug\BUS.pdb
+D:\Visual Studio\Windows Form\Project\DA1\BUS\BUS\bin\Debug\BUS.dll.config
+D:\Visual Studio\Windows Form\Project\DA1\BUS\BUS\bin\Debug\EntityFramework.SqlServer.dll
+D:\Visual Studio\Windows Form\Project\DA1\BUS\BUS\bin\Debug\EntityFramework.SqlServer.xml

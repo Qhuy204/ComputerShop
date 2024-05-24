@@ -104,5 +104,7 @@ namespace ĐA1
                 MessageBox.Show("Không thể cập nhật thông tin chức vụ");
             }
         }
+
+
     }
 }

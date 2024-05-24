@@ -16,8 +16,7 @@ namespace ĐA1
     {
         BUS_CTKhuyenmai busCtkm = new BUS_CTKhuyenmai();
         BUS_DSLoaiSP busDSLoaiSP = new BUS_DSLoaiSP();
-        BUS_DSSanpham busDSSP = new BUS_DSSanpham();
-
+        BUS_Khohang busDSSP = new BUS_Khohang();
         public string id;
 
         public GUI_ThongtinCTKM(string id)
@@ -27,7 +26,7 @@ namespace ĐA1
             LoadData();
         }
 
-        public void LoadcbbTenSP(List<PRODUCT> prd)
+        public void LoadcbbTenSP(List<WAREHOUSE> prd)
         {
             var sp = prd.Select(x => new { x.PRD_NAME }).ToList();
             cbbTenSP.DataSource = sp;

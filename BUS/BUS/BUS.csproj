@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,13 +56,14 @@
     <Compile Include="BUS_DSKhachhang.cs" />
     <Compile Include="BUS_DSLoaiSP.cs" />
     <Compile Include="BUS_DSNhanvien.cs" />
-    <Compile Include="BUS_DSSanpham.cs" />
     <Compile Include="BUS_HDBanhang.cs" />
     <Compile Include="BUS_Hoadonnhaphang.cs" />
     <Compile Include="BUS_Khohang.cs" />
+    <Compile Include="BUS_Payment.cs" />
     <Compile Include="BUS_QLNhacungcap.cs" />
     <Compile Include="BUS_Quyen.cs" />
     <Compile Include="BUS_QuyenofChucvu.cs" />
+    <Compile Include="BUS_StatisticsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +71,10 @@
       <Project>{300be173-5e32-4b5a-a823-84500142f702}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

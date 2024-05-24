@@ -19,7 +19,6 @@ namespace ĐA1
         BUS_Khohang buskho = new BUS_Khohang();
         BUS_DSLoaiSP busDSLoaiSP = new BUS_DSLoaiSP();
         BUS_QLNhacungcap busncc = new BUS_QLNhacungcap();
-        BUS_DSSanpham busdssp = new BUS_DSSanpham();
         public GUI_ThongtinSP(string a)
         {
             InitializeComponent();
@@ -141,58 +140,62 @@ namespace ĐA1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            byte[] image;
-            if (pbhinhanh.Image != null)
+            try
             {
-                try
+                // Kiểm tra ảnh
+                if (pbhinhanh.Image == null)
                 {
-                    MemoryStream memoryStream = new MemoryStream();
+                    MessageBox.Show("Không thể cập nhật thông tin sản phẩm! Thiếu ảnh.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Chuyển đổi ảnh sang dạng byte[]
+                byte[] image;
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
                     pbhinhanh.Image.Save(memoryStream, pbhinhanh.Image.RawFormat);
                     image = memoryStream.ToArray();
-
-                    string idsp = id;
-                    string name = txtTensp.Text;
-                    string brand_id = busncc.getBRD_ID(cbbNcc.Text);
-                    string producttype_id = busDSLoaiSP.getPD_TYPE_ID(cbbLoaiSP.Text);
-                    float importprice = float.Parse(txtgianhap.Text);
-                    float retailprice = float.Parse(txtGiabanle.Text);
-                    float wholesaleprice = float.Parse(txtgiabanbuon.Text);
-                    bool deliveryallowed = ckbVanchuyen.Checked;
-                    float weight = string.IsNullOrEmpty(txtKhoiluong.Text) ? 0 : float.Parse(txtKhoiluong.Text);
-
-                    PRODUCT prd = new PRODUCT()
-                    {
-                        PRD_ID = idsp,
-                        PRD_NAME = name,
-                        BRD_ID = brand_id,
-                        PRD_TYPE_ID = producttype_id,
-                        PRD_IMG = image,
-                        DELIVERY_ALLOWED = deliveryallowed,
-                        PRD_WEIGHT = weight
-                    };
-
-                    if (busdssp.Update(prd))
-                    {
-                        buskho.AddProductInformation(id, importprice, retailprice, wholesaleprice);
-                        MessageBox.Show("Cập nhật thông tin sản phẩm thành công.");
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không thể cập nhật thông tin sản phẩm.");
-                    }
                 }
-                catch (Exception ex)
+
+                // Kiểm tra và chuyển đổi dữ liệu đầu vào
+                string idsp = id;
+                string name = txtTensp.Text;
+                string brand_id = busncc.getBRD_ID(cbbNcc.Text);
+                string producttype_id = busDSLoaiSP.getPD_TYPE_ID(cbbLoaiSP.Text);
+                if (!float.TryParse(txtgianhap.Text, out float importprice) ||
+                    !float.TryParse(txtGiabanle.Text, out float retailprice) ||
+                    !float.TryParse(txtgiabanbuon.Text, out float wholesaleprice) ||
+                    !int.TryParse(txtsltonkho.Text, out int sltonkho) ||
+                    !int.TryParse(txtSlcotheban.Text, out int cotheban))
                 {
-                    MessageBox.Show("Không thể cập nhật dữ liệu. Hãy kiểm tra lại dữ liệu đầu vào!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Giá trị không hợp lệ. Vui lòng kiểm tra lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
+                // Cập nhật dữ liệu vào cơ sở dữ liệu
+                WAREHOUSE prd = new WAREHOUSE()
+                {
+                    PRD_ID = idsp,
+                    PRD_NAME = name,
+                    BRD_ID = brand_id,
+                    PRD_TYPE_ID = producttype_id,
+                    PRD_IMG = image,
+                    IMPORT_PRICE = importprice,
+                    RETAIL_PRICE = retailprice,
+                    WHOLESALE_PRICE = wholesaleprice,
+                    INVENTORY_QUANTITY = sltonkho,
+                    RDY_FOR_SALE = cotheban
+                };
+                buskho.Update(prd);
+                MessageBox.Show("Cập nhật thông tin sản phẩm thành công.");
+                this.Close();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Không thể cập nhật thông tin sản phẩm! Lỗi Ảnh");
+                MessageBox.Show("Không thể cập nhật dữ liệu. Hãy kiểm tra lại dữ liệu đầu vào!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
     }
 }

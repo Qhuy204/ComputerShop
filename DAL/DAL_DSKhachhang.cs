@@ -66,9 +66,32 @@ namespace DAL
             db.SaveChanges();
         }
 
-        public CUSTOMER GetByName(string name)
+        /*public List<CUSTOMER> TimKiemKhachang(string nhanhieu, string loaisp, string keyword)
         {
-            return db.CUSTOMERs.Find(name);
+            var query = db.PRODUCTs.AsQueryable();
+
+            if (!string.IsNullOrEmpty(nhanhieu))
+            {
+                query = query.Where(p => p.BRD_ID.ToLower().Contains(nhanhieu));
+            }
+
+            if (!string.IsNullOrEmpty(loaisp))
+            {
+                query = query.Where(p => p.PRD_TYPE_ID.ToLower().Contains(loaisp));
+            }
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(p => p.PRD_NAME.ToLower().Contains(keyword));
+            }
+
+            return query.ToList();
+        }
+*/
+        public string getCUS_ID(string Name)
+        {
+            var product = db.CUSTOMERs.FirstOrDefault(p => p.CUS_NAME == Name);
+            return product != null ? product.CUS_ID : null;
         }
     }
 }

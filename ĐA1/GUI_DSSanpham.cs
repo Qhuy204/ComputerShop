@@ -14,11 +14,10 @@ namespace ĐA1
 {
     public partial class GUI_DSSanpham : Form
     {
-        private BUS_DSSanpham busSP = new BUS_DSSanpham();
+        private BUS_Khohang busSP = new BUS_Khohang();
         private BUS_DSLoaiSP busLoaiSP = new BUS_DSLoaiSP();
         private BUS_QLNhacungcap busNCC = new BUS_QLNhacungcap();
 
-        private PRODUCT spFromform;
 
         public event EventHandler ThemSanPhamClicked;
 
@@ -77,13 +76,13 @@ namespace ĐA1
         {
             string brdid = busNCC.getBRD_ID(cbbNhanhieu.Text.ToLower());
             string ptid = busLoaiSP.getPD_TYPE_ID(cbbLoaisp.Text.ToLower());
-            var filteredProducts = busSP.TimKiemSanPham(brdid, ptid, txtTimkiemSP.Text.ToLower());
+            var filteredProducts = busSP.TimKiemSanPham3(brdid, ptid, txtTimkiemSP.Text.ToLower());
             var allBrands = busNCC.GetAll();
             var allProductTypes = busLoaiSP.GetAll();
             UpdateDgv(filteredProducts, allBrands, allProductTypes);
         }
 
-        private void UpdateDgv(List<PRODUCT> prd, List<BRAND> brd, List<PRODUCTTYPE> prdt)
+        private void UpdateDgv(List<WAREHOUSE> prd, List<BRAND> brd, List<PRODUCTTYPE> prdt)
         {
             var dataSource = (from p in prd
                               join b in brd on p.BRD_ID equals b.BRD_ID
@@ -96,8 +95,7 @@ namespace ĐA1
                                   b.BRD_NAME,
                                   t.PRD_TYPE_NAME,
                                   p.RDY_FOR_SALE,
-                                  p.QUANTITY,
-                                  p.PRD_WEIGHT,
+                                  p.INVENTORY_QUANTITY,
                                   p.CREATE_DAY
                               }).ToList();
 

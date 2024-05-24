@@ -44,9 +44,9 @@ namespace BUS
             return dalKH.GetByID(id);
         }
 
-        public CUSTOMER GetByName(string name)
+        public string getCUS_ID(string Name)
         {
-            return dalKH.GetByName(name);
+            return dalKH.getCUS_ID(Name);
         }
 
 
@@ -70,5 +70,6 @@ namespace BUS
             }
             return false;
         }
+
     }
 }

@@ -35,8 +35,8 @@
     <Property Name="CUS_TOTAL_PRODUCTS_PURCHASED" Type="Int32" />
     <Property Name="CUS_TOTAL_QUANTITY_OF_ORDER" Type="Int32" />
     <Property Name="CUS_DATE_OF_LAST_PURCHASE" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="SALEBILLs" Relationship="Self.FK_SALEBILL_CUSTOMER" FromRole="CUSTOMER" ToRole="SALEBILL" />
     <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SALEBILLs" Relationship="Self.FK_SALEBILL_CUSTOMER" FromRole="CUSTOMER" ToRole="SALEBILL" />
   </EntityType>
   <EntityType Name="DISCOUNT">
     <Key>
@@ -123,29 +123,12 @@
     <NavigationProperty Name="AUTHORITY" Relationship="Self.FK__POSITION___AUT_I__603D47BB" FromRole="POSITION_AUTHORITY" ToRole="AUTHORITY" />
     <NavigationProperty Name="POSITION" Relationship="Self.FK__POSITION___PS_ID__5F492382" FromRole="POSITION_AUTHORITY" ToRole="POSITION" />
   </EntityType>
-  <EntityType Name="PRODUCT">
-    <Key>
-      <PropertyRef Name="PRD_ID" />
-    </Key>
-    <Property Name="PRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PRD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="PRD_TYPE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="BRD_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="RDY_FOR_SALE" Type="Int32" Nullable="false" />
-    <Property Name="QUANTITY" Type="Int32" Nullable="false" />
-    <Property Name="DELIVERY_ALLOWED" Type="Boolean" Nullable="false" />
-    <Property Name="PRD_WEIGHT" Type="Double" />
-    <Property Name="CREATE_DAY" Type="DateTime" Precision="0" />
-    <Property Name="PRD_IMG" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <NavigationProperty Name="PRODUCTTYPE" Relationship="Self.FK_PRODUCT_PRODUCTTYPE" FromRole="PRODUCT" ToRole="PRODUCTTYPE" />
-  </EntityType>
   <EntityType Name="PRODUCTTYPE">
     <Key>
       <PropertyRef Name="PRD_TYPE_ID" />
     </Key>
     <Property Name="PRD_TYPE_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="PRD_TYPE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="PRODUCTs" Relationship="Self.FK_PRODUCT_PRODUCTTYPE" FromRole="PRODUCTTYPE" ToRole="PRODUCT" />
     <NavigationProperty Name="WAREHOUSEs" Relationship="Self.FK_WAREHOUSE_PRODUCTTYPE" FromRole="PRODUCTTYPE" ToRole="WAREHOUSE" />
   </EntityType>
   <EntityType Name="PROMOTION">
@@ -308,18 +291,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PRODUCT_PRODUCTTYPE">
-    <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="1" />
-    <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PRODUCTTYPE">
-        <PropertyRef Name="PRD_TYPE_ID" />
-      </Principal>
-      <Dependent Role="PRODUCT">
-        <PropertyRef Name="PRD_TYPE_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_WAREHOUSE_PRODUCTTYPE">
     <End Role="PRODUCTTYPE" Type="Self.PRODUCTTYPE" Multiplicity="1" />
     <End Role="WAREHOUSE" Type="Self.WAREHOUSE" Multiplicity="*" />
@@ -355,7 +326,6 @@
     <EntitySet Name="PAYMENTs" EntityType="Self.PAYMENT" />
     <EntitySet Name="POSITIONs" EntityType="Self.POSITION" />
     <EntitySet Name="POSITION_AUTHORITY" EntityType="Self.POSITION_AUTHORITY" />
-    <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
     <EntitySet Name="PRODUCTTYPEs" EntityType="Self.PRODUCTTYPE" />
     <EntitySet Name="PROMOTIONs" EntityType="Self.PROMOTION" />
     <EntitySet Name="SALEBILLs" EntityType="Self.SALEBILL" />
@@ -389,10 +359,6 @@
     <AssociationSet Name="FK__POSITION___PS_ID__5F492382" Association="Self.FK__POSITION___PS_ID__5F492382">
       <End Role="POSITION" EntitySet="POSITIONs" />
       <End Role="POSITION_AUTHORITY" EntitySet="POSITION_AUTHORITY" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PRODUCT_PRODUCTTYPE" Association="Self.FK_PRODUCT_PRODUCTTYPE">
-      <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPEs" />
-      <End Role="PRODUCT" EntitySet="PRODUCTs" />
     </AssociationSet>
     <AssociationSet Name="FK_WAREHOUSE_PRODUCTTYPE" Association="Self.FK_WAREHOUSE_PRODUCTTYPE">
       <End Role="PRODUCTTYPE" EntitySet="PRODUCTTYPEs" />
@@ -431,7 +397,32 @@
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_ThongKeDoanhThu" ReturnType="Collection(CuaHangMayTinhModel.sp_ThongKeDoanhThu_Result)" />
+    <FunctionImport Name="sp_ThongKeKhachHangChiTieuNhieuNhat" ReturnType="Collection(CuaHangMayTinhModel.sp_ThongKeKhachHangChiTieuNhieuNhat_Result)">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKeNhanVienBanNhieuNhat" ReturnType="Collection(CuaHangMayTinhModel.sp_ThongKeNhanVienBanNhieuNhat_Result)">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKeSanPhamBanChay" ReturnType="Collection(CuaHangMayTinhModel.sp_ThongKeSanPhamBanChay_Result)">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKeSanPhamBanRaTheoNgay" ReturnType="Collection(CuaHangMayTinhModel.sp_ThongKeSanPhamBanRaTheoNgay_Result)">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ThongKeSoDonHang" ReturnType="Collection(CuaHangMayTinhModel.sp_ThongKeSoDonHang_Result)">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="sp_ThongKeDoanhThuTheoKhoangThoiGian" ReturnType="Collection(CuaHangMayTinhModel.sp_ThongKeDoanhThuTheoKhoangThoiGian_Result)">
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -443,5 +434,37 @@
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeDoanhThu_Result">
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <Property Type="Double" Name="Revenue" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeKhachHangChiTieuNhieuNhat_Result">
+    <Property Type="String" Name="CUS_ID" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="CUS_NAME" Nullable="false" MaxLength="255" />
+    <Property Type="Double" Name="TotalSpent" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeNhanVienBanNhieuNhat_Result">
+    <Property Type="String" Name="EMP_ID" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMP_NAME" Nullable="false" MaxLength="255" />
+    <Property Type="Double" Name="TotalSales" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeSanPhamBanChay_Result">
+    <Property Type="String" Name="PRD_ID" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="PRD_NAME" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="TotalQuantitySold" Nullable="true" />
+    <Property Type="Double" Name="Tongtiendaban" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeSanPhamBanRaTheoNgay_Result">
+    <Property Type="DateTime" Name="SL_DATE" Nullable="true" />
+    <Property Type="Int32" Name="TotalQuantity" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeSoDonHang_Result">
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <Property Type="Int32" Name="OrderCount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_ThongKeDoanhThuTheoKhoangThoiGian_Result">
+    <Property Type="DateTime" Name="Date" Nullable="true" />
+    <Property Type="Double" Name="TotalRevenue" Nullable="false" />
   </ComplexType>
 </Schema>
