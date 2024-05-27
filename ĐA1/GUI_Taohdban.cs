@@ -2,9 +2,14 @@
 using DAL;
 using System;
 using System.Collections.Generic;
-using System.IO.Packaging;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using ZXing.Common;
+using ZXing.QrCode.Internal;
+using ZXing.Rendering;
+using ZXing;
+using System.Drawing.Drawing2D;
 
 namespace ĐA1
 {
@@ -17,7 +22,8 @@ namespace ĐA1
         BUS_CodeKhuyenmai buscode= new BUS_CodeKhuyenmai();
         BUS_HDBanhang busHDban = new BUS_HDBanhang();
         BUS_CTHDBanhang buscthdbh = new BUS_CTHDBanhang();
-
+        BUS_CTKhuyenmai busctkm = new BUS_CTKhuyenmai();
+        BUS_DSLoaiSP busloaisp = new BUS_DSLoaiSP();
         public string banggia;
         public string id;
         public GUI_Taohdban(string giaban, string id)
@@ -34,7 +40,8 @@ namespace ĐA1
             this.id = id;
             isLoading = false;
             this.banggia = giaban;
-            lblgia.Text = banggia; 
+            lblgia.Text = banggia;
+            rbNo.Checked = true;
         }
 
 
@@ -72,9 +79,27 @@ namespace ĐA1
             cbbHtthanhtoan.SelectedIndex = -1;
         }
 
+        public void Loadcbbctkm(List<PROMOTION> prm)
+        {
+            cbbctkm.DataSource = prm;
+            cbbctkm.DisplayMember = "PROMOTION_NAME";
+            cbbctkm.ValueMember = "PROMOTION_NAME";
+            cbbctkm.SelectedIndex = -1;
+        }
+
         public void Loadcbbmagiamgia(List<DISCOUNT> dc)
         {
-            cbbMagiamgia.DataSource = dc;
+            List<DISCOUNT> dskm = new List<DISCOUNT>(); 
+
+            for (int i = 0; i < dc.Count; i++)
+            {
+                if (dc[i].USED_COUNT < dc[i].MAXIMUM_USE)
+                {
+                    dskm.Add(dc[i]);
+                }
+            }
+
+            cbbMagiamgia.DataSource = dskm;
             cbbMagiamgia.DisplayMember = "CODE";
             cbbMagiamgia.ValueMember = "CODE";
             cbbMagiamgia.SelectedIndex = -1;
@@ -164,14 +189,14 @@ namespace ĐA1
         {
             if (e.RowIndex >= 0)
             {
-                // Retrieve the clicked row
                 DataGridViewRow clickedRow = dgvfindsp.Rows[e.RowIndex];
+                var ctkm = busctkm.GetAll();
 
                 // Retrieve the data from the clicked row
                 var prdId = clickedRow.Cells["clID"].Value.ToString();
                 var name = clickedRow.Cells["clName"].Value.ToString();
                 var soluong = 1;
-                var retailprice = string.Empty; // Declare the variable outside the if-else blocks
+                var retailprice = string.Empty;
                 var sltonkho = clickedRow.Cells["clSoluong"].Value.ToString();
                 if (lblgia.Text == "Giá sỉ")
                 {
@@ -344,53 +369,407 @@ namespace ĐA1
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            // Tạo hóa đơn mới
-            string hdid = busHDban.GetNewID();
-            string banggia = lblgia.Text;
-            string makh = lblmakh.Text;
-            string manv = id;
-            DateTime ngaytao = DateTime.Now;
-            string ghichu = txtghichu.Text;
-            string status = "Đã hoàn thành";
-
-            if (!int.TryParse(txtslsp.Text, out int slsanpham))
+            try
             {
-                MessageBox.Show("Số lượng sản phẩm không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var magg = buscode.GetAll();
+
+                // Tạo hóa đơn mới
+                string hdid = busHDban.GetNewID();
+                string banggia = lblgia.Text;
+                string makh = lblmakh.Text;
+                string manv = id;
+                DateTime ngaytao = DateTime.Now;
+                string ghichu = txtghichu.Text;
+                string status = "Đã hoàn thành";
+
+                if (!int.TryParse(txtslsp.Text, out int slsanpham))
+                {
+                    MessageBox.Show("Số lượng sản phẩm không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!float.TryParse(txttongtienhang.Text, out float tongtien))
+                {
+                    MessageBox.Show("Tổng tiền hàng không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string magiamgia = cbbMagiamgia.Text;
+                string ctgiamgia = cbbctkm.Text;
+                string htthanhtoan = cbbHtthanhtoan.Text;
+
+                var mgg = buscode.GetByCODE(magiamgia);
+                decimal? discount_value = mgg?.DISCOUNT_AMOUNT;
+                decimal? max_discount_value = mgg?.MAXIMUM_DISCOUNT_AMOUNT;
+                float moneyafterdiscount = 0;
+
+                if (discount_value.HasValue)
+                {
+                    txtdescribe.Text = mgg.CODE_DESCRIPTION;
+                    if (discount_value > 100)
+                    {
+                        // Nếu giá trị giảm giá là một số tiền trực tiếp
+                        float discount = (float)discount_value.Value;
+                        moneyafterdiscount = tongtien - discount;
+                    }
+                    else
+                    {
+                        // Nếu giá trị giảm giá là phần trăm
+                        float discount = (float)discount_value.Value;
+                        float _discount = (discount / 100) * tongtien;
+
+                        // Kiểm tra giá trị giảm giá tối đa nếu có
+                        if (max_discount_value.HasValue)
+                        {
+                            float maxDiscount = (float)max_discount_value.Value;
+                            if (_discount > maxDiscount)
+                            {
+                                _discount = maxDiscount;
+                            }
+                        }
+                        txtgiamgia.Text = _discount.ToString("N0");
+                        moneyafterdiscount = tongtien - _discount;
+                    }
+                }
+                else
+                {
+                    // Xử lý trường hợp không có giá trị giảm giá
+                    moneyafterdiscount = tongtien;
+                    txtgiamgia.Text = "0";
+                }
+                txttongtien.Text = moneyafterdiscount.ToString("N0");
+
+
+
+                busHDban.NewSalebill(hdid, ngaytao, makh, manv, magiamgia, ctgiamgia, htthanhtoan, ghichu, status, tongtien, banggia, moneyafterdiscount);
+
+                // Duyệt từng dòng trong dgvchitiet để lưu chi tiết hóa đơn
+                for (int i = 0; i < dgvchitiet.Rows.Count; i++)
+                {
+                    DataGridViewRow row = dgvchitiet.Rows[i];
+                    if (row.IsNewRow) continue;
+
+                    string detailId = buscthdbh.GetNewID();
+                    string slid = hdid;
+                    string prdid = row.Cells["clmasp"].Value?.ToString();
+                    if (string.IsNullOrEmpty(prdid))
+                    {
+                        MessageBox.Show("Mã sản phẩm không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (!int.TryParse(row.Cells["clSoluongmua"].Value?.ToString(), out int quantity))
+                    {
+                        MessageBox.Show("Số lượng mua không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (!float.TryParse(row.Cells["clGia"].Value?.ToString(), out float price))
+                    {
+                        MessageBox.Show("Giá không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+
+                    buscthdbh.NewSalebilldetail(detailId, slid, prdid, quantity, price);
+                }
+
+                MessageBox.Show("Tạo hóa đơn và chi tiết hóa đơn thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void cbbHtthanhtoan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbHtthanhtoan.SelectedIndex == 0)
+            {
+                btnTaoQR.Enabled = true;
+            }
+            else
+            {
+                btnTaoQR.Enabled = false;
+            }
+        }
+
+        private void btnTaoQR_Click(object sender, EventArgs e)
+        {
+            CreateMomoQR();
+        }
+
+        public void CreateMomoQR()
+        {
+            // Text to encode in the QR code
+            var qrcodeText = $"2|99|{"0856012976"}|{"Trương Quốc Huy"}|{"truongquochuy234@gmail.com"}|0|0|{txttongtienhang.Text.Trim()}";
+
+            // Create a BarcodeWriter instance
+            BarcodeWriter barcodeWriter = new BarcodeWriter
+            {
+                Format = BarcodeFormat.QR_CODE,
+                Options = new EncodingOptions
+                {
+                    Width = 250,
+                    Height = 250,
+                    Margin = 0,
+                    PureBarcode = false,
+                    Hints = { { EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H } }
+                },
+                Renderer = new BitmapRenderer()
+            };
+
+            // Generate the QR code bitmap
+            Bitmap bitmap = barcodeWriter.Write(qrcodeText);
+
+            // Load and resize the logo
+            Bitmap logo = ResizeImage(Properties.Resources.logo_momo, 64, 64) as Bitmap;
+
+            // Draw the logo in the center of the QR code
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                int centerX = (bitmap.Width - logo.Width) / 2;
+                int centerY = (bitmap.Height - logo.Height) / 2;
+                g.DrawImage(logo, centerX, centerY);
+            }
+
+            // Set the QR code with the logo to a PictureBox
+            pbQR.Image = bitmap;
+        }
+
+        private Image ResizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new System.Drawing.Imaging.ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
+        }
+
+        public Image resizeImage(Image image, int new_height, int new_width)
+        {
+            Bitmap new_image = new Bitmap(new_width, new_height);
+            Graphics g = Graphics.FromImage((Image)new_image);
+            g.InterpolationMode = InterpolationMode.High;
+            g.DrawImage(image, 0, 0, new_width, new_height);
+            return new_image;
+        }
+
+        private void cbbMagiamgia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var dskm = buscode.GetByCODE(cbbMagiamgia.Text);
+            if (dskm != null)
+            {
+                txtdescribe.Text = dskm.CODE_DESCRIPTION.ToString().Trim();
+                string magiamgia = cbbMagiamgia.Text;
+                if (!float.TryParse(txttongtienhang.Text, out float tongtienhang))
+                {
+                    return;
+                }
+
+                decimal? discount_value = dskm.DISCOUNT_AMOUNT;
+                decimal? max_discount_value = dskm.MAXIMUM_DISCOUNT_AMOUNT;
+                float moneyafterdiscount = tongtienhang;
+
+                if (discount_value.HasValue)
+                {
+                    if (discount_value > 100)
+                    {
+                        // Nếu giá trị giảm giá là một số tiền trực tiếp
+                        float discount = (float)discount_value.Value;
+                        moneyafterdiscount = tongtienhang - discount;
+                        txtgiamgia.Text = discount.ToString("N0");
+                    }
+                    else
+                    {
+                        // Nếu giá trị giảm giá là phần trăm
+                        float discount = (float)discount_value.Value;
+                        float _discount = (discount / 100) * tongtienhang;
+
+                        // Kiểm tra giá trị giảm giá tối đa nếu có
+                        if (max_discount_value.HasValue)
+                        {
+                            float maxDiscount = (float)max_discount_value.Value;
+                            if (_discount > maxDiscount)
+                            {
+                                _discount = maxDiscount;
+                            }
+                        }
+                        txtgiamgia.Text = _discount.ToString("N0");
+                        moneyafterdiscount = tongtienhang - _discount;
+                    }
+                }
+                else
+                {
+                    txtgiamgia.Text = "0";
+                }
+
+                txttongtien.Text = moneyafterdiscount.ToString("N0");
+            }
+            else
+            {
+                txtdescribe.Text = string.Empty;
+                txtgiamgia.Text = "0";
+                if (float.TryParse(txttongtienhang.Text, out float tongtienhang))
+                {
+                    txttongtien.Text = tongtienhang.ToString("N0");
+                }
+                else
+                {
+                    txttongtien.Text = "0";
+                }
+            }
+        }
+
+
+        private void rbYes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbYes.Checked == true)
+            {
+                rbNo.Checked = false;
+                var ctkmdata = busctkm.GetAll();
+                cbbctkm.DataSource = ctkmdata.Select(x => new { x.PROMOTION_NAME }).ToList();
+                cbbctkm.DisplayMember = "PROMOTION_NAME";
+                cbbctkm.ValueMember = "PROMOTION_NAME";
+            }
+
+            cbbMagiamgia.Enabled = false;
+        }
+
+        private void rbNo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbNo.Checked == true)
+            {
+                rbYes.Checked = false;
+                cbbctkm.DataSource = null;
+            }
+            cbbMagiamgia.Enabled = true;
+        }
+
+        private void GUI_Taohdban_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbctkm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbctkm.SelectedIndex == -1)
+            {
+                // Nếu không có mã giảm giá được chọn, đặt lại giá trị các ô tương ứng
+                for (int i = 0; i < dgvchitiet.Rows.Count; i++)
+                {
+                    DataGridViewRow row = dgvchitiet.Rows[i];
+                    row.Cells["clCTKM"].Value = null;
+
+                    string retailprice = string.Empty;
+                    if (lblgia.Text == "Giá sỉ")
+                    {
+                        if (row.Cells["clgiasi"].Value != null)
+                        {
+                            retailprice = row.Cells["clgiasi"].Value.ToString();
+                        }
+                    }
+                    else
+                    {
+                        if (row.Cells["clGia"].Value != null)
+                        {
+                            retailprice = row.Cells["clGia"].Value.ToString();
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(retailprice))
+                    {
+                        int newSoluong = 0;
+                        if (row.Cells["clSoluongmua"].Value != null)
+                        {
+                            int.TryParse(row.Cells["clSoluongmua"].Value.ToString(), out newSoluong);
+                        }
+
+                        float parsedPrice;
+                        if (float.TryParse(retailprice, out parsedPrice))
+                        {
+                            var Tongtien = newSoluong * parsedPrice;
+                            row.Cells["clThanhtien"].Value = Tongtien.ToString("N0");
+                        }
+                        else
+                        {
+                            // Xử lý trường hợp retailprice không phải là số hợp lệ
+                            row.Cells["clThanhtien"].Value = "0";
+                        }
+                    }
+                }
                 return;
             }
 
-            if (!float.TryParse(txttongtienhang.Text, out float tongtien))
+            var datactkm = busctkm.GetbyName(cbbctkm.Text);
+
+            if (datactkm != null)
             {
-                MessageBox.Show("Tổng tiền hàng không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                string loaisp = datactkm.PRD_TYPE_NAME?.ToString() ?? string.Empty;
+                string tensp = datactkm.PRD_NAME?.ToString() ?? string.Empty;
+
+                var loaispdata = busloaisp.GetbyName(loaisp);
+                if (loaispdata != null)
+                {
+                    string idloaisp = loaispdata.PRD_TYPE_ID?.ToString() ?? string.Empty;
+                    for (int i = 0; i < dgvchitiet.Rows.Count; i++)
+                    {
+                        DataGridViewRow row = dgvchitiet.Rows[i];
+                        string masp = row.Cells["clmasp"].Value?.ToString() ?? string.Empty;
+                        var datasp = busdssp.GetByID(masp);
+                        if (datasp != null && (datasp.PRD_TYPE_ID?.ToString() == idloaisp || datasp.PRD_NAME?.ToString() == tensp))
+                        {
+                            dgvchitiet.Rows[i].Cells["clCTKM"].Value = cbbctkm.Text;
+                            var currentTongtien = float.Parse(row.Cells["clThanhtien"].Value.ToString());
+                            float newTongtien = 0;
+
+                            if (datactkm.DISCOUNT_AMOUNT.HasValue)
+                            {
+                                float discountAmount = (float)datactkm.DISCOUNT_AMOUNT.Value;
+                                if (discountAmount <= 100)
+                                {
+                                    newTongtien = currentTongtien - (currentTongtien * discountAmount / 100);
+                                }
+                                else
+                                {
+                                    newTongtien = currentTongtien - discountAmount;
+                                }
+                            }
+                            else
+                            {
+                                newTongtien = currentTongtien;
+                            }
+
+                            row.Cells["clThanhtien"].Value = newTongtien.ToString("N0");
+                        }
+                    }
+                }
             }
+        }
 
-            string magiamgia = cbbMagiamgia.Text;
-            string ctgiamgia = ""; // Assuming ctgiamgia is calculated or set somewhere else
-            string htthanhtoan = cbbHtthanhtoan.Text;
-
-            // Gọi hàm tạo hóa đơn mới
-            busHDban.NewSalebill(hdid, ngaytao, makh, manv, magiamgia, ctgiamgia, htthanhtoan, ghichu, status, tongtien, banggia);
-
-            // Duyệt từng dòng trong dgvchitiet để lưu chi tiết hóa đơn
-            for (int i = 0; i < dgvchitiet.Rows.Count; i++)
-            {
-                DataGridViewRow row = dgvchitiet.Rows[i];
-                if (row.IsNewRow) continue;
-
-                string detailId = buscthdbh.GetNewID();
-                string slid = hdid;
-                string prdid = row.Cells["clmasp"].Value.ToString();
-                int quantity = int.Parse(row.Cells["clSoluongmua"].Value.ToString());
-                float price = float.Parse(row.Cells["clGia"].Value.ToString());
-
-                buscthdbh.NewSalebilldetail(detailId, slid, prdid, quantity, price);
-            }
-
-            MessageBox.Show("Tạo hóa đơn và chi tiết hóa đơn thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 
 
-    
+
 }

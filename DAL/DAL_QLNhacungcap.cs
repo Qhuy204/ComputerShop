@@ -10,9 +10,24 @@ namespace DAL
     {
         private CuaHangMayTinhEntities1 db = new CuaHangMayTinhEntities1();
 
-        public void Add(BRAND brd)
+        public void NewNCC(
+        string id,
+        string name,
+        string phone,
+        string email,
+        string address,
+        string status)
         {
-            db.BRANDs.Add(brd);
+            var ncc = new BRAND
+            {
+                BRD_ID = id,
+                BRD_NAME = name,
+                BRD_PHONE = phone,
+                BRD_ADDRESS = address,
+                BRD_EMAIL = email,
+                BRD_STATUS = status
+            };
+            db.BRANDs.Add(ncc);
             db.SaveChanges();
         }
 

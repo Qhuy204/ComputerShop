@@ -34,14 +34,14 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnXuatdulieu = new Guna.UI2.WinForms.Guna2Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btXuatdulieu = new Guna.UI2.WinForms.Guna2Button();
             this.dtpendate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.dtstartdate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.btntaodonhangle = new Guna.UI2.WinForms.Guna2Button();
             this.btnTaodonhangsi = new Guna.UI2.WinForms.Guna2Button();
-            this.btnxoamgg = new Guna.UI2.WinForms.Guna2Button();
-            this.btnsearchmgg = new Guna.UI2.WinForms.Guna2Button();
-            this.cbbTrangthaimgg = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.btnxoafilter = new Guna.UI2.WinForms.Guna2Button();
+            this.btnsearch = new Guna.UI2.WinForms.Guna2Button();
+            this.cbbKhachhang = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtTimmgg = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvhdban = new Guna.UI2.WinForms.Guna2DataGridView();
             this.clID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +66,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1184, 588);
+            this.guna2Panel1.Size = new System.Drawing.Size(1012, 588);
             this.guna2Panel1.TabIndex = 0;
             // 
             // btnXuatdulieu
@@ -76,19 +76,19 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXuatdulieu.BackColor = System.Drawing.Color.White;
             this.btnXuatdulieu.Controls.Add(this.label3);
-            this.btnXuatdulieu.Controls.Add(this.guna2Button1);
+            this.btnXuatdulieu.Controls.Add(this.btXuatdulieu);
             this.btnXuatdulieu.Controls.Add(this.dtpendate);
             this.btnXuatdulieu.Controls.Add(this.dtstartdate);
             this.btnXuatdulieu.Controls.Add(this.btntaodonhangle);
             this.btnXuatdulieu.Controls.Add(this.btnTaodonhangsi);
-            this.btnXuatdulieu.Controls.Add(this.btnxoamgg);
-            this.btnXuatdulieu.Controls.Add(this.btnsearchmgg);
-            this.btnXuatdulieu.Controls.Add(this.cbbTrangthaimgg);
+            this.btnXuatdulieu.Controls.Add(this.btnxoafilter);
+            this.btnXuatdulieu.Controls.Add(this.btnsearch);
+            this.btnXuatdulieu.Controls.Add(this.cbbKhachhang);
             this.btnXuatdulieu.Controls.Add(this.txtTimmgg);
             this.btnXuatdulieu.Controls.Add(this.dgvhdban);
             this.btnXuatdulieu.Location = new System.Drawing.Point(31, 33);
             this.btnXuatdulieu.Name = "btnXuatdulieu";
-            this.btnXuatdulieu.Size = new System.Drawing.Size(1120, 530);
+            this.btnXuatdulieu.Size = new System.Drawing.Size(969, 530);
             this.btnXuatdulieu.TabIndex = 0;
             // 
             // label3
@@ -102,20 +102,22 @@
             this.label3.TabIndex = 18;
             this.label3.Text = "đến";
             // 
-            // guna2Button1
+            // btXuatdulieu
             // 
-            this.guna2Button1.BorderRadius = 5;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(690, 23);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(136, 50);
-            this.guna2Button1.TabIndex = 15;
-            this.guna2Button1.Text = "Xuất dữ liệu";
+            this.btXuatdulieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btXuatdulieu.BorderRadius = 5;
+            this.btXuatdulieu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btXuatdulieu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btXuatdulieu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btXuatdulieu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btXuatdulieu.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btXuatdulieu.ForeColor = System.Drawing.Color.White;
+            this.btXuatdulieu.Location = new System.Drawing.Point(539, 24);
+            this.btXuatdulieu.Name = "btXuatdulieu";
+            this.btXuatdulieu.Size = new System.Drawing.Size(136, 50);
+            this.btXuatdulieu.TabIndex = 15;
+            this.btXuatdulieu.Text = "Xuất dữ liệu";
+            this.btXuatdulieu.Click += new System.EventHandler(this.btXuatdulieu_Click);
             // 
             // dtpendate
             // 
@@ -123,12 +125,12 @@
             this.dtpendate.Checked = true;
             this.dtpendate.FillColor = System.Drawing.Color.White;
             this.dtpendate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpendate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtpendate.Location = new System.Drawing.Point(595, 97);
+            this.dtpendate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpendate.Location = new System.Drawing.Point(591, 97);
             this.dtpendate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpendate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpendate.Name = "dtpendate";
-            this.dtpendate.Size = new System.Drawing.Size(183, 36);
+            this.dtpendate.Size = new System.Drawing.Size(127, 36);
             this.dtpendate.TabIndex = 16;
             this.dtpendate.Value = new System.DateTime(2024, 5, 19, 20, 55, 39, 283);
             // 
@@ -138,17 +140,18 @@
             this.dtstartdate.Checked = true;
             this.dtstartdate.FillColor = System.Drawing.Color.White;
             this.dtstartdate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtstartdate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.dtstartdate.Location = new System.Drawing.Point(357, 97);
+            this.dtstartdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtstartdate.Location = new System.Drawing.Point(421, 97);
             this.dtstartdate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtstartdate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtstartdate.Name = "dtstartdate";
-            this.dtstartdate.Size = new System.Drawing.Size(183, 36);
+            this.dtstartdate.Size = new System.Drawing.Size(127, 36);
             this.dtstartdate.TabIndex = 17;
             this.dtstartdate.Value = new System.DateTime(2024, 5, 19, 20, 55, 39, 283);
             // 
             // btntaodonhangle
             // 
+            this.btntaodonhangle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btntaodonhangle.BorderRadius = 5;
             this.btntaodonhangle.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btntaodonhangle.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -156,7 +159,7 @@
             this.btntaodonhangle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btntaodonhangle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btntaodonhangle.ForeColor = System.Drawing.Color.White;
-            this.btntaodonhangle.Location = new System.Drawing.Point(974, 23);
+            this.btntaodonhangle.Location = new System.Drawing.Point(823, 24);
             this.btntaodonhangle.Name = "btntaodonhangle";
             this.btntaodonhangle.Size = new System.Drawing.Size(136, 50);
             this.btntaodonhangle.TabIndex = 14;
@@ -165,6 +168,7 @@
             // 
             // btnTaodonhangsi
             // 
+            this.btnTaodonhangsi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTaodonhangsi.BorderRadius = 5;
             this.btnTaodonhangsi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnTaodonhangsi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -172,62 +176,63 @@
             this.btnTaodonhangsi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTaodonhangsi.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnTaodonhangsi.ForeColor = System.Drawing.Color.White;
-            this.btnTaodonhangsi.Location = new System.Drawing.Point(832, 23);
+            this.btnTaodonhangsi.Location = new System.Drawing.Point(681, 24);
             this.btnTaodonhangsi.Name = "btnTaodonhangsi";
             this.btnTaodonhangsi.Size = new System.Drawing.Size(136, 50);
             this.btnTaodonhangsi.TabIndex = 14;
             this.btnTaodonhangsi.Text = "Tạo đơn hàng sỉ";
             this.btnTaodonhangsi.Click += new System.EventHandler(this.btnTaodonhangsi_Click);
             // 
-            // btnxoamgg
+            // btnxoafilter
             // 
-            this.btnxoamgg.BorderRadius = 5;
-            this.btnxoamgg.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnxoamgg.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnxoamgg.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnxoamgg.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnxoamgg.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnxoamgg.ForeColor = System.Drawing.Color.White;
-            this.btnxoamgg.Location = new System.Drawing.Point(926, 97);
-            this.btnxoamgg.Name = "btnxoamgg";
-            this.btnxoamgg.Size = new System.Drawing.Size(109, 36);
-            this.btnxoamgg.TabIndex = 14;
-            this.btnxoamgg.Text = "Xóa filter";
+            this.btnxoafilter.BorderRadius = 5;
+            this.btnxoafilter.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnxoafilter.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnxoafilter.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnxoafilter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnxoafilter.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnxoafilter.ForeColor = System.Drawing.Color.White;
+            this.btnxoafilter.Location = new System.Drawing.Point(851, 97);
+            this.btnxoafilter.Name = "btnxoafilter";
+            this.btnxoafilter.Size = new System.Drawing.Size(109, 36);
+            this.btnxoafilter.TabIndex = 14;
+            this.btnxoafilter.Text = "Xóa filter";
+            this.btnxoafilter.Click += new System.EventHandler(this.btnxoafilter_Click);
             // 
-            // btnsearchmgg
+            // btnsearch
             // 
-            this.btnsearchmgg.BorderRadius = 5;
-            this.btnsearchmgg.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnsearchmgg.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnsearchmgg.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnsearchmgg.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnsearchmgg.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnsearchmgg.ForeColor = System.Drawing.Color.White;
-            this.btnsearchmgg.Location = new System.Drawing.Point(799, 97);
-            this.btnsearchmgg.Name = "btnsearchmgg";
-            this.btnsearchmgg.Size = new System.Drawing.Size(109, 36);
-            this.btnsearchmgg.TabIndex = 15;
-            this.btnsearchmgg.Text = "Tìm kiếm";
+            this.btnsearch.BorderRadius = 5;
+            this.btnsearch.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnsearch.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnsearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnsearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnsearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnsearch.ForeColor = System.Drawing.Color.White;
+            this.btnsearch.Location = new System.Drawing.Point(731, 97);
+            this.btnsearch.Name = "btnsearch";
+            this.btnsearch.Size = new System.Drawing.Size(109, 36);
+            this.btnsearch.TabIndex = 15;
+            this.btnsearch.Text = "Tìm kiếm";
+            this.btnsearch.Click += new System.EventHandler(this.btnsearch_Click);
             // 
-            // cbbTrangthaimgg
+            // cbbKhachhang
             // 
-            this.cbbTrangthaimgg.BackColor = System.Drawing.Color.Transparent;
-            this.cbbTrangthaimgg.BorderRadius = 5;
-            this.cbbTrangthaimgg.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbbTrangthaimgg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbTrangthaimgg.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbbTrangthaimgg.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbbTrangthaimgg.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbbTrangthaimgg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cbbTrangthaimgg.ItemHeight = 30;
-            this.cbbTrangthaimgg.Location = new System.Drawing.Point(205, 97);
-            this.cbbTrangthaimgg.Name = "cbbTrangthaimgg";
-            this.cbbTrangthaimgg.Size = new System.Drawing.Size(150, 36);
-            this.cbbTrangthaimgg.TabIndex = 13;
+            this.cbbKhachhang.BackColor = System.Drawing.Color.Transparent;
+            this.cbbKhachhang.BorderRadius = 5;
+            this.cbbKhachhang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbKhachhang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbKhachhang.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbKhachhang.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbKhachhang.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbbKhachhang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbbKhachhang.ItemHeight = 30;
+            this.cbbKhachhang.Location = new System.Drawing.Point(211, 97);
+            this.cbbKhachhang.Name = "cbbKhachhang";
+            this.cbbKhachhang.Size = new System.Drawing.Size(206, 36);
+            this.cbbKhachhang.TabIndex = 13;
             // 
             // txtTimmgg
             // 
-            this.txtTimmgg.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtTimmgg.BorderRadius = 5;
             this.txtTimmgg.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTimmgg.DefaultText = "";
@@ -238,10 +243,10 @@
             this.txtTimmgg.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTimmgg.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtTimmgg.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTimmgg.Location = new System.Drawing.Point(10, 97);
+            this.txtTimmgg.Location = new System.Drawing.Point(9, 97);
             this.txtTimmgg.Name = "txtTimmgg";
             this.txtTimmgg.PasswordChar = '\0';
-            this.txtTimmgg.PlaceholderText = "Tìm kiếm theo mã giảm giá";
+            this.txtTimmgg.PlaceholderText = "Tìm kiếm theo mã hóa đơn";
             this.txtTimmgg.SelectedText = "";
             this.txtTimmgg.Size = new System.Drawing.Size(196, 36);
             this.txtTimmgg.TabIndex = 12;
@@ -291,7 +296,7 @@
             this.dgvhdban.RowTemplate.Height = 40;
             this.dgvhdban.RowTemplate.ReadOnly = true;
             this.dgvhdban.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvhdban.Size = new System.Drawing.Size(1100, 349);
+            this.dgvhdban.Size = new System.Drawing.Size(949, 349);
             this.dgvhdban.TabIndex = 10;
             this.dgvhdban.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Light;
             this.dgvhdban.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
@@ -398,7 +403,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 588);
+            this.ClientSize = new System.Drawing.Size(1012, 588);
             this.Controls.Add(this.guna2Panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -434,12 +439,12 @@
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpendate;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtstartdate;
-        private Guna.UI2.WinForms.Guna2Button btnxoamgg;
-        private Guna.UI2.WinForms.Guna2Button btnsearchmgg;
-        private Guna.UI2.WinForms.Guna2ComboBox cbbTrangthaimgg;
+        private Guna.UI2.WinForms.Guna2Button btnxoafilter;
+        private Guna.UI2.WinForms.Guna2Button btnsearch;
+        private Guna.UI2.WinForms.Guna2ComboBox cbbKhachhang;
         private Guna.UI2.WinForms.Guna2TextBox txtTimmgg;
         private Guna.UI2.WinForms.Guna2Button btnTaodonhangsi;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btXuatdulieu;
         private Guna.UI2.WinForms.Guna2Button btntaodonhangle;
     }
 }

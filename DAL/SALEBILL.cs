@@ -31,6 +31,7 @@ namespace DAL
         public string NOTE { get; set; }
         public string STATUS { get; set; }
         public string BANGGIA { get; set; }
+        public Nullable<double> MONEY_AFTER_DISCOUNT { get; set; }
     
         public virtual CUSTOMER CUSTOMER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

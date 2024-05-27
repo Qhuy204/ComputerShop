@@ -188,5 +188,15 @@ namespace ĐA1
             this.Close();
 
         }
+
+        private void GUI_ThongtinTK_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var thongtinKh = Application.OpenForms.OfType<GUI_MainForm>().FirstOrDefault();
+            if (thongtinKh != null)
+            {
+                // Nếu đã mở, chỉ cần cập nhật dữ liệu
+                thongtinKh.btnDsnhanvien.PerformClick();
+            }
+        }
     }
 }

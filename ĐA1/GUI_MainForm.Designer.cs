@@ -115,7 +115,7 @@
             this.btnDsnhanvien.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDsnhanvien.TextOffset = new System.Drawing.Point(-10, 0);
             this.btnDsnhanvien.Click += new System.EventHandler(this.btnCauhinh_Click);
-            this.btnDsnhanvien.Leave += new System.EventHandler(this.subbutton_Leave);
+            this.btnDsnhanvien.Leave += new System.EventHandler(this.mainbutton_Leave);
             // 
             // btnbaocao
             // 
@@ -322,7 +322,7 @@
             this.btnLoaiSP.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLoaiSP.TextOffset = new System.Drawing.Point(15, 0);
             this.btnLoaiSP.Click += new System.EventHandler(this.btnLoaiSP_Click);
-            this.btnLoaiSP.Leave += new System.EventHandler(this.mainbutton_Leave);
+            this.btnLoaiSP.Leave += new System.EventHandler(this.subbutton_Leave);
             // 
             // btnTongquan
             // 
@@ -487,6 +487,7 @@
             this.btnDonnhap.Text = "Đơn nhập hàng";
             this.btnDonnhap.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDonnhap.TextOffset = new System.Drawing.Point(15, 0);
+            this.btnDonnhap.Click += new System.EventHandler(this.btnDonnhap_Click);
             this.btnDonnhap.Leave += new System.EventHandler(this.subbutton_Leave);
             // 
             // btnKhuyenmai
@@ -511,7 +512,7 @@
             this.btnKhuyenmai.Text = "Khuyến mãi";
             this.btnKhuyenmai.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnKhuyenmai.TextOffset = new System.Drawing.Point(-10, 0);
-            this.btnKhuyenmai.Click += new System.EventHandler(this.btnbaocao_Click);
+            this.btnKhuyenmai.Click += new System.EventHandler(this.btnKhuyenmai_Click);
             this.btnKhuyenmai.Leave += new System.EventHandler(this.mainbutton_Leave);
             // 
             // btnBanhang
@@ -561,7 +562,7 @@
             this.btnqlchucvu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnqlchucvu.TextOffset = new System.Drawing.Point(-10, 0);
             this.btnqlchucvu.Click += new System.EventHandler(this.btnqlchucvu_Click);
-            this.btnqlchucvu.Leave += new System.EventHandler(this.subbutton_Leave);
+            this.btnqlchucvu.Leave += new System.EventHandler(this.mainbutton_Leave);
             // 
             // panel1
             // 
@@ -724,37 +725,37 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Timer Menutransition;
         private System.Windows.Forms.Timer sidebarTransition;
-        private Guna.UI2.WinForms.Guna2Button btnDsnhanvien;
-        private Guna.UI2.WinForms.Guna2Button btnbaocao;
-        private Guna.UI2.WinForms.Guna2Button btnKhachhang;
-        private Guna.UI2.WinForms.Guna2Button btnNhaphang;
-        private Guna.UI2.WinForms.Guna2Button btnNhacc;
-        private Guna.UI2.WinForms.Guna2Button btnQLkho;
-        private Guna.UI2.WinForms.Guna2Button btnDSSP;
-        private Guna.UI2.WinForms.Guna2Button btnSanpham;
-        private System.Windows.Forms.FlowLayoutPanel MenuSanpham;
-        private Guna.UI2.WinForms.Guna2Button btnTongquan;
+        public Guna.UI2.WinForms.Guna2Button btnDsnhanvien;
+        public Guna.UI2.WinForms.Guna2Button btnbaocao;
+        public Guna.UI2.WinForms.Guna2Button btnKhachhang;
+        public Guna.UI2.WinForms.Guna2Button btnNhaphang;
+        public Guna.UI2.WinForms.Guna2Button btnNhacc;
+        public Guna.UI2.WinForms.Guna2Button btnQLkho;
+        public Guna.UI2.WinForms.Guna2Button btnDSSP;
+        public Guna.UI2.WinForms.Guna2Button btnSanpham;
+        public System.Windows.Forms.FlowLayoutPanel MenuSanpham;
+        public Guna.UI2.WinForms.Guna2Button btnTongquan;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.FlowLayoutPanel sidebar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.Label lblFuncName;
-        private Guna.UI2.WinForms.Guna2Button btnTaikhoan;
+        public Guna.UI2.WinForms.Guna2Button btnTaikhoan;
         private System.Windows.Forms.Panel pnNoidung;
         private System.Windows.Forms.FlowLayoutPanel pnDonhang;
-        private Guna.UI2.WinForms.Guna2Button btnDonhang;
-        private Guna.UI2.WinForms.Guna2Button btndonbanhang;
-        private Guna.UI2.WinForms.Guna2Button btnDonnhap;
-        private Guna.UI2.WinForms.Guna2Button btnBanhang;
-        private Guna.UI2.WinForms.Guna2Button btnKhuyenmai;
-        private Guna.UI2.WinForms.Guna2Button btnLogout;
+        public Guna.UI2.WinForms.Guna2Button btnDonhang;
+        public Guna.UI2.WinForms.Guna2Button btndonbanhang;
+        public Guna.UI2.WinForms.Guna2Button btnDonnhap;
+        public Guna.UI2.WinForms.Guna2Button btnBanhang;
+        public Guna.UI2.WinForms.Guna2Button btnKhuyenmai;
+        public Guna.UI2.WinForms.Guna2Button btnLogout;
         private System.Windows.Forms.FlowLayoutPanel pnLogout;
-        private Guna.UI2.WinForms.Guna2Button btnLoaiSP;
+        public Guna.UI2.WinForms.Guna2Button btnLoaiSP;
         private System.Windows.Forms.Label lblTenquyen;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblten;
         private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2Button btnqlchucvu;
+        public Guna.UI2.WinForms.Guna2Button btnqlchucvu;
     }
 }

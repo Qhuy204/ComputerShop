@@ -28,74 +28,75 @@ namespace ĐA1
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
-                string ma = buskh.GetNewID();
-                string hoten = txtHoten.Text.Trim(); 
-                if (string.IsNullOrEmpty(hoten))
-                {
-                    MessageBox.Show("Họ tên không được để trống!");
-                    return;
-                }
-
-                string diachi = txtdiachi.Text.Trim(); 
-                if (string.IsNullOrEmpty(diachi))
-                {
-                    MessageBox.Show("Địa chỉ không được để trống!");
-                    return;
-                }
-
-                string email = txtEmail.Text.Trim();
-
-                string sdt = txtSdt.Text.Trim(); 
-                if (string.IsNullOrEmpty(sdt))
-                {
-                    MessageBox.Show("Số điện thoại không được để trống!");
-                    return;
-                }
-
-                string gioitinh = "";
-                if (rbNam.Checked)
-                {
-                    gioitinh = "Nam";
-                }
-                else if (rbNu.Checked)
-                {
-                    gioitinh = "Nữ";
-                }
-                else if (rbKhac.Checked)
-                {
-                    gioitinh = "Khác";
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng chọn giới tính khách hàng");
-                    return; 
-                }
-
-                DateTime ngaysinh = dtpNgaysinh.Value;
-
-                if (ngaysinh > DateTime.Now)
-                {
-                    MessageBox.Show("Ngày sinh không hợp lệ!");
-                    return;
-                }
-
-                buskh.NewCustomer(ma, hoten, sdt, ngaysinh, email, gioitinh, diachi);
-                MessageBox.Show("Lưu khách hàng thành công!");
-                DialogResult result = MessageBox.Show("Bạn có muốn tiếp tục thêm khách hàng mới không?", "Thêm khách hàng", MessageBoxButtons.YesNo);
-                if (result == DialogResult.No)
-                {
-                    this.Close();
-                }
-                else
-                {
-                    Clearform();
-                }
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message); 
+            }*/
+            string ma = buskh.GetNewID();
+            string hoten = txtHoten.Text.Trim();
+            if (string.IsNullOrEmpty(hoten))
+            {
+                MessageBox.Show("Họ tên không được để trống!");
+                return;
+            }
+
+            string diachi = txtdiachi.Text.Trim();
+            if (string.IsNullOrEmpty(diachi))
+            {
+                MessageBox.Show("Địa chỉ không được để trống!");
+                return;
+            }
+
+            string email = txtEmail.Text.Trim();
+
+            string sdt = txtSdt.Text.Trim();
+            if (string.IsNullOrEmpty(sdt))
+            {
+                MessageBox.Show("Số điện thoại không được để trống!");
+                return;
+            }
+
+            string gioitinh = "";
+            if (rbNam.Checked)
+            {
+                gioitinh = "Nam";
+            }
+            else if (rbNu.Checked)
+            {
+                gioitinh = "Nữ";
+            }
+            else if (rbKhac.Checked)
+            {
+                gioitinh = "Khác";
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn giới tính khách hàng");
+                return;
+            }
+
+            DateTime ngaysinh = dtpNgaysinh.Value;
+
+            if (ngaysinh > DateTime.Now)
+            {
+                MessageBox.Show("Ngày sinh không hợp lệ!");
+                return;
+            }
+
+            buskh.NewCustomer(ma, hoten, sdt, ngaysinh, email, gioitinh, diachi);
+            MessageBox.Show("Lưu khách hàng thành công!");
+            DialogResult result = MessageBox.Show("Bạn có muốn tiếp tục thêm khách hàng mới không?", "Thêm khách hàng", MessageBoxButtons.YesNo);
+            if (result == DialogResult.No)
+            {
+                this.Close();
+            }
+            else
+            {
+                Clearform();
             }
         }
         

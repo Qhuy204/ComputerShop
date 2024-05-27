@@ -337,6 +337,7 @@
             this.btnThemnhacc.Size = new System.Drawing.Size(158, 44);
             this.btnThemnhacc.TabIndex = 4;
             this.btnThemnhacc.Text = "Thêm nhà cung cấp";
+            this.btnThemnhacc.Click += new System.EventHandler(this.btnThemnhacc_Click_1);
             // 
             // btnNhapfile
             // 

@@ -146,20 +146,33 @@ namespace ĐA1
         {
             Excel.Application application = new Excel.Application();
             application.Application.Workbooks.Add(Type.Missing);
+
+            // Tạo tiêu đề cho các cột
             for (int i = 0; i < dgvSP.Columns.Count; i++)
             {
                 application.Cells[1, i + 1] = dgvSP.Columns[i].HeaderText;
             }
+
+            // Ghi dữ liệu vào các ô trong Excel
             for (int i = 0; i < dgvSP.Rows.Count; i++)
             {
                 for (int j = 0; j < dgvSP.Columns.Count; j++)
                 {
-                    application.Cells[i + 2, j + 1] = dgvSP.Rows[i].Cells[j].Value;
+                    if (j == 0)
+                    {
+                        application.Cells[i + 2, j + 1] = null; // Cột đầu tiên xuất giá trị null
+                    }
+                    else
+                    {
+                        application.Cells[i + 2, j + 1] = dgvSP.Rows[i].Cells[j].Value;
+                    }
                 }
             }
+
             application.Columns.AutoFit();
             application.ActiveWorkbook.SaveCopyAs(path);
             application.ActiveWorkbook.Saved = true;
+            application.Quit();
         }
 
         public void ImportExcel(string path)

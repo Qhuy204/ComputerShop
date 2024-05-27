@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Interop;
+using ZXing.QrCode.Internal;
 
 namespace ĐA1
 {
@@ -196,6 +198,15 @@ namespace ĐA1
             }
         }
 
-
+        private void btnXoaKM_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                buskho.Delete(id);
+                MessageBox.Show("Xóa thành công!");
+                this.Close();
+            }
+        }
     }
 }

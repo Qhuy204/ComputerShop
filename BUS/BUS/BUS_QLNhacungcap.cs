@@ -11,10 +11,15 @@ namespace BUS
     {
         private DAL_QLNhacungcap dalNCC = new DAL_QLNhacungcap();
 
-        public void Add(BRAND brd)
+        public void NewNCC(
+        string id,
+        string name,
+        string phone,
+        string email,
+        string address,
+        string status)
         {
-            brd.BRD_ID = GetNewID();
-            dalNCC.Add(brd);
+            dalNCC.NewNCC(id, name, phone, email, address, status);
         }
 
         public bool Delete(string brdID)
@@ -40,8 +45,22 @@ namespace BUS
 
         public string GetNewID()
         {
-            int id = GetAll().Count() == 0 ? 1 : Int32.Parse(GetAll().Last().BRD_ID.Substring(3)) + 1;
-            return "NCC" + id;
+            var allItems = GetAll();
+            int maxID = 0;
+
+            if (allItems.Any())
+            {
+                maxID = allItems
+                            .Select(p =>
+                            {
+                                int id;
+                                bool success = Int32.TryParse(p.BRD_ID.Substring(3), out id);
+                                return success ? id : 0;
+                            })
+                            .Max();
+            }
+
+            return "NCC" + (maxID + 1);
         }
 
         public List<BRAND> SearchBrandByName(string keyword)

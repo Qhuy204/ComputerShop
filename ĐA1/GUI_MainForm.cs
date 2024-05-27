@@ -37,6 +37,7 @@ namespace ĐA1
                 btnKhachhang.Visible = false;
                 btnKhuyenmai.Visible = false;
                 btnNhaphang.Visible = false;
+                btnqlchucvu.Visible = false;
             }
         }
 
@@ -73,7 +74,8 @@ namespace ĐA1
 
         private void btnSanpham_Click(object sender, EventArgs e)
         {
-            Menutransition.Start();
+            Chuyendong(sender);
+            Menutransition.Start(); 
             btnSanpham.FillColor = Color.FromArgb(0, 136, 255);
             lblFuncName.Text = btnSanpham.Text;
         }
@@ -137,7 +139,6 @@ namespace ĐA1
 
             // Thay đổi FillColor và ForeColor của button
             button.FillColor = Color.FromArgb(24, 37, 55);
-            lblFuncName.Text = null;
         }
         private void subbutton_Leave(object sender, EventArgs e)
         {
@@ -146,10 +147,9 @@ namespace ĐA1
 
             // Thay đổi FillColor và ForeColor của button
             button.ForeColor = Color.White;
-            lblFuncName.Text = null;
         }
 
-        private void btnKhachhang_Click(object sender, EventArgs e)
+        public void btnKhachhang_Click(object sender, EventArgs e)
         {
             Chuyendong(sender);
             GUI_DSKhachhang frm = new GUI_DSKhachhang();
@@ -157,22 +157,12 @@ namespace ĐA1
             lblFuncName.Text = btnKhachhang.Text;
         }
 
-        private void btnTongquan_Click(object sender, EventArgs e)
+        public void btnTongquan_Click(object sender, EventArgs e)
         {
             //pnNoidung.Hide();
         }
 
-        private void Chuyenmau(object sender)
-        {
-            // Lấy button vừa nhấn
-            Guna2Button button = (Guna2Button)sender;
-
-            // Thay đổi FillColor và ForeColor của button
-            button.ForeColor = Color.FromArgb(0, 136, 255);
-            lblFuncName.Text = button.Text;
-        }
-
-        private void Chuyendong(object sender)
+        public void Chuyendong(object sender)
         {
             // Lấy button vừa nhấn
             Guna2Button button = (Guna2Button)sender;
@@ -184,23 +174,29 @@ namespace ĐA1
             {
                 Menutransition.Start();
             }
+            if (sidebarExpanded == true)
+            {
+                sidebarTransition.Start();
+            }
         }
 
-        private void btnDSSP_Click(object sender, EventArgs e)
+        public void btnDSSP_Click(object sender, EventArgs e)
         {
-            Chuyenmau(sender);
             GUI_DSSanpham frm = new GUI_DSSanpham();
             HienThiFormCon(frm);
+            lblFuncName.Text = btnDSSP.Text;
+
         }
 
-        private void btnQLkho_Click(object sender, EventArgs e)
+        public void btnQLkho_Click(object sender, EventArgs e)
         {
-            Chuyenmau(sender);
             GUI_Khohang frm = new GUI_Khohang();
             HienThiFormCon(frm);
+            lblFuncName.Text = btnQLkho.Text;
+
         }
 
-        private void btnbaocao_Click(object sender, EventArgs e)
+        public void btnbaocao_Click(object sender, EventArgs e)
         {
             Chuyendong(sender);
             lblFuncName.Text = btnbaocao.Text;
@@ -208,7 +204,7 @@ namespace ĐA1
             HienThiFormCon(km);
         }
 
-        private void btnCauhinh_Click(object sender, EventArgs e)
+        public void btnCauhinh_Click(object sender, EventArgs e)
         {
             Chuyendong(sender);
             GUI_DSNhanvien frm = new GUI_DSNhanvien();
@@ -216,33 +212,35 @@ namespace ĐA1
             lblFuncName.Text = btnTongquan.Text;
         }
 
-        private void btnNhacc_Click(object sender, EventArgs e)
+        public void btnNhacc_Click(object sender, EventArgs e)
         {
-            Chuyenmau(sender);
             GUI_QLNhacungcap frm = new GUI_QLNhacungcap();
             HienThiFormCon(frm);
+            lblFuncName.Text = btnNhacc.Text;
         }
 
-        private void btnBanle_Click(object sender, EventArgs e)
+        public void btnBanle_Click(object sender, EventArgs e)
         {
-            Chuyenmau(sender);
             GUI_Taohdban frm = new GUI_Taohdban("Giá bán lẻ", id);
             FormHelper.HienThiFormCon(frm, pnNoidung);
-            HienThiFormCon(frm);
             lblFuncName.Text = btnBanhang.Text; 
         }
 
-        private void btnDonhang_Click(object sender, EventArgs e)
+        public void btnDonhang_Click(object sender, EventArgs e)
         {
+            Chuyendong(sender);
+            lblFuncName.Text = btnDonhang.Text;
             sidebarTransition.Start();
         }
 
-        private void btnLoaiSP_Click(object sender, EventArgs e)
+        public void btnLoaiSP_Click(object sender, EventArgs e)
         {
-
+            lblFuncName.Text = btnLoaiSP.Text;
+            GUI_DSLoaiSP dsloaisp = new GUI_DSLoaiSP();
+            FormHelper.HienThiFormCon(dsloaisp, pnNoidung);
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        public void btnLogout_Click(object sender, EventArgs e)
         {
             GUI_Dangnhap dn = new GUI_Dangnhap();
             dn.Show();
@@ -250,22 +248,37 @@ namespace ĐA1
 
         }
 
-        private void btnqlchucvu_Click(object sender, EventArgs e)
+        public void btnqlchucvu_Click(object sender, EventArgs e)
         {
-            Chuyenmau(sender);
+            Chuyendong(sender);
             GUI_DSChucvu frm = new GUI_DSChucvu();
             FormHelper.HienThiFormCon(frm, pnNoidung);
             HienThiFormCon(frm);
-            lblFuncName.Text = btnBanhang.Text;
+            lblFuncName.Text = btnqlchucvu.Text;
         }
 
-        private void btndonbanhang_Click(object sender, EventArgs e)
+        public void btndonbanhang_Click(object sender, EventArgs e)
         {
-            Chuyenmau(sender);
             GUI_DSHoadonban frm = new GUI_DSHoadonban(id);
             FormHelper.HienThiFormCon(frm, pnNoidung);
             HienThiFormCon(frm);
-            lblFuncName.Text = btnBanhang.Text;
+            lblFuncName.Text = btndonbanhang.Text;
+        }
+
+        public void btnKhuyenmai_Click(object sender, EventArgs e)
+        {
+            Chuyendong(sender);
+            GUI_Khuyenmai frm = new GUI_Khuyenmai();
+            FormHelper.HienThiFormCon(frm, pnNoidung);
+            HienThiFormCon(frm);
+            lblFuncName.Text = btnKhuyenmai.Text;
+        }
+
+        public void btnDonnhap_Click(object sender, EventArgs e)
+        {
+            lblFuncName.Text = btnDonnhap.Text;
+            GUI_DSHDnhap frm = new GUI_DSHDnhap();
+            FormHelper.HienThiFormCon(frm, pnNoidung);
         }
     }
 }

@@ -157,6 +157,7 @@
           <Property Name="NOTE" Type="nvarchar" MaxLength="255" />
           <Property Name="STATUS" Type="nvarchar" MaxLength="255" />
           <Property Name="BANGGIA" Type="nvarchar" MaxLength="100" />
+          <Property Name="MONEY_AFTER_DISCOUNT" Type="float" />
         </EntityType>
         <EntityType Name="SALEBILL_DETAIL">
           <Key>
@@ -168,6 +169,15 @@
           <Property Name="QUANTITY" Type="int" Nullable="false" />
           <Property Name="PRICE" Type="float" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'CuaHangMayTinh.dbo.STOREINFO' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="STOREINFO">
+          <Property Name="STR_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="STR_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="STR_GPKD_NUMBER" Type="varchar" MaxLength="100" />
+          <Property Name="STR_PHONE" Type="varchar" MaxLength="15" />
+          <Property Name="STR_ADDRESS" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -591,6 +601,7 @@
           <Property Name="BANGGIA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_SALEBILL_CUSTOMER" FromRole="SALEBILL" ToRole="CUSTOMER" />
           <NavigationProperty Name="SALEBILL_DETAIL" Relationship="Self.FK_SALEBILL_DETAIL_SALEBILL" FromRole="SALEBILL" ToRole="SALEBILL_DETAIL" />
+          <Property Name="MONEY_AFTER_DISCOUNT" Type="Double" />
         </EntityType>
         <EntityType Name="SALEBILL_DETAIL">
           <Key>
@@ -1049,6 +1060,7 @@
           <EntitySetMapping Name="SALEBILLs">
             <EntityTypeMapping TypeName="CuaHangMayTinhModel.SALEBILL">
               <MappingFragment StoreEntitySet="SALEBILL">
+                <ScalarProperty Name="MONEY_AFTER_DISCOUNT" ColumnName="MONEY_AFTER_DISCOUNT" />
                 <ScalarProperty Name="SL_ID" ColumnName="SL_ID" />
                 <ScalarProperty Name="SL_DATE" ColumnName="SL_DATE" />
                 <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />

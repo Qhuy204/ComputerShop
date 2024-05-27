@@ -10,12 +10,18 @@ namespace DAL
     {
         private CuaHangMayTinhEntities1 db = new CuaHangMayTinhEntities1();
 
-        public void Add(PRODUCTTYPE pt)
+        public void NewPDT(
+        string id,
+        string name)
         {
-            db.PRODUCTTYPEs.Add(pt);
+            var pdt = new PRODUCTTYPE
+            {
+                PRD_TYPE_ID = id,
+                PRD_TYPE_NAME = name,
+            };
+            db.PRODUCTTYPEs.Add(pdt);
             db.SaveChanges();
         }
-
         public void Delete(PRODUCTTYPE pt)
         {
             db.PRODUCTTYPEs.Remove(pt);
@@ -45,6 +51,11 @@ namespace DAL
         {
             var ptid = db.PRODUCTTYPEs.FirstOrDefault(p => p.PRD_TYPE_NAME == ptName);
             return ptid != null ? ptid.PRD_TYPE_ID : null;
+        }
+
+        public PRODUCTTYPE GetbyName(string name)
+        {
+            return db.PRODUCTTYPEs.FirstOrDefault(p => p.PRD_TYPE_NAME == name);
         }
     }
 }

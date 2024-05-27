@@ -63,5 +63,9 @@ namespace BUS
             }
             return false;
         }
+        public List<DISCOUNT> GetDiscountCodes(string code, string discountStatus, DateTime? startDate, DateTime? endDate = null)
+        {
+            return dalMgg.GetDiscountCodes(code, discountStatus, startDate, endDate);
+        }
     }
 }

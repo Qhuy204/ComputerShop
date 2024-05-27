@@ -80,7 +80,7 @@ namespace ĐA1
         private void DisplayNhanVienBanNhieuNhatChart(List<sp_ThongKeNhanVienBanNhieuNhat_Result> data)
         {
             charttopnv.Series.Clear();
-            var series = new Series("Nhân viên bán nhiều nhất");
+            var series = new Series("Tổng doanh thu từng nhân viên");
             series.ChartType = SeriesChartType.Column;
 
             foreach (var item in data)

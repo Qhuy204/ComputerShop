@@ -167,6 +167,7 @@
     <Property Name="BANGGIA" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_SALEBILL_CUSTOMER" FromRole="SALEBILL" ToRole="CUSTOMER" />
     <NavigationProperty Name="SALEBILL_DETAIL" Relationship="Self.FK_SALEBILL_DETAIL_SALEBILL" FromRole="SALEBILL" ToRole="SALEBILL_DETAIL" />
+    <Property Name="MONEY_AFTER_DISCOUNT" Type="Double" />
   </EntityType>
   <EntityType Name="SALEBILL_DETAIL">
     <Key>

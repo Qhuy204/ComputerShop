@@ -36,10 +36,10 @@
             this.btnXuatfile = new Guna.UI2.WinForms.Guna2Button();
             this.btnNhapfile = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnKQtimkiem = new Guna.UI2.WinForms.Guna2Button();
             this.btnTatcakh = new Guna.UI2.WinForms.Guna2Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnBoloc = new Guna.UI2.WinForms.Guna2Button();
+            this.btnXoafilter = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTimkiem = new Guna.UI2.WinForms.Guna2Button();
             this.txtTimkiemKH = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvKH = new Guna.UI2.WinForms.Guna2DataGridView();
             this.clMakh = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -88,6 +88,7 @@
             this.btnXuatfile.TabIndex = 1;
             this.btnXuatfile.Text = "Xuất File";
             this.btnXuatfile.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnXuatfile.Click += new System.EventHandler(this.btnXuatfile_Click);
             this.btnXuatfile.MouseEnter += new System.EventHandler(this.btnXuatfile_MouseEnter);
             this.btnXuatfile.MouseLeave += new System.EventHandler(this.btnXuatfile_MouseLeave);
             // 
@@ -106,6 +107,7 @@
             this.btnNhapfile.TabIndex = 1;
             this.btnNhapfile.Text = "Nhập File";
             this.btnNhapfile.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnNhapfile.Click += new System.EventHandler(this.btnImport_Click);
             this.btnNhapfile.MouseEnter += new System.EventHandler(this.btnNhapfile_MouseEnter);
             this.btnNhapfile.MouseLeave += new System.EventHandler(this.btnNhapfile_MouseLeave);
             // 
@@ -114,30 +116,11 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btnKQtimkiem);
             this.panel1.Controls.Add(this.btnTatcakh);
             this.panel1.Location = new System.Drawing.Point(12, 71);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1043, 50);
             this.panel1.TabIndex = 2;
-            // 
-            // btnKQtimkiem
-            // 
-            this.btnKQtimkiem.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.btnKQtimkiem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnKQtimkiem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnKQtimkiem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnKQtimkiem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnKQtimkiem.FillColor = System.Drawing.Color.White;
-            this.btnKQtimkiem.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKQtimkiem.ForeColor = System.Drawing.Color.Black;
-            this.btnKQtimkiem.Location = new System.Drawing.Point(143, 0);
-            this.btnKQtimkiem.Name = "btnKQtimkiem";
-            this.btnKQtimkiem.Size = new System.Drawing.Size(142, 50);
-            this.btnKQtimkiem.TabIndex = 3;
-            this.btnKQtimkiem.Text = "Kết quả tìm kiếm";
-            this.btnKQtimkiem.Click += new System.EventHandler(this.btnKQtimkiem_Click);
-            this.btnKQtimkiem.Leave += new System.EventHandler(this.btnKQtimkiem_Leave);
             // 
             // btnTatcakh
             // 
@@ -162,26 +145,43 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.btnBoloc);
+            this.panel2.Controls.Add(this.btnXoafilter);
+            this.panel2.Controls.Add(this.btnTimkiem);
             this.panel2.Controls.Add(this.txtTimkiemKH);
             this.panel2.Location = new System.Drawing.Point(12, 123);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1043, 69);
             this.panel2.TabIndex = 2;
             // 
-            // btnBoloc
+            // btnXoafilter
             // 
-            this.btnBoloc.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBoloc.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBoloc.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBoloc.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBoloc.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBoloc.ForeColor = System.Drawing.Color.White;
-            this.btnBoloc.Location = new System.Drawing.Point(833, 15);
-            this.btnBoloc.Name = "btnBoloc";
-            this.btnBoloc.Size = new System.Drawing.Size(97, 35);
-            this.btnBoloc.TabIndex = 1;
-            this.btnBoloc.Text = "Bộ lọc";
+            this.btnXoafilter.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnXoafilter.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnXoafilter.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnXoafilter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnXoafilter.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoafilter.ForeColor = System.Drawing.Color.White;
+            this.btnXoafilter.Location = new System.Drawing.Point(936, 15);
+            this.btnXoafilter.Name = "btnXoafilter";
+            this.btnXoafilter.Size = new System.Drawing.Size(97, 35);
+            this.btnXoafilter.TabIndex = 1;
+            this.btnXoafilter.Text = "Xóa filter";
+            this.btnXoafilter.Click += new System.EventHandler(this.btnXoafilter_Click);
+            // 
+            // btnTimkiem
+            // 
+            this.btnTimkiem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTimkiem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTimkiem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTimkiem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTimkiem.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimkiem.ForeColor = System.Drawing.Color.White;
+            this.btnTimkiem.Location = new System.Drawing.Point(833, 15);
+            this.btnTimkiem.Name = "btnTimkiem";
+            this.btnTimkiem.Size = new System.Drawing.Size(97, 35);
+            this.btnTimkiem.TabIndex = 1;
+            this.btnTimkiem.Text = "Tìm kiếm";
+            this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
             // 
             // txtTimkiemKH
             // 
@@ -276,6 +276,7 @@
             this.dgvKH.ThemeStyle.RowsStyle.Height = 40;
             this.dgvKH.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(241)))), ((int)(((byte)(243)))));
             this.dgvKH.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvKH.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKH_CellContentClick);
             // 
             // clMakh
             // 
@@ -375,8 +376,7 @@
         private System.Windows.Forms.Panel panel2;
         private Guna.UI2.WinForms.Guna2TextBox txtTimkiemKH;
         private Guna.UI2.WinForms.Guna2Button btnTatcakh;
-        private Guna.UI2.WinForms.Guna2Button btnKQtimkiem;
-        private Guna.UI2.WinForms.Guna2Button btnBoloc;
+        private Guna.UI2.WinForms.Guna2Button btnTimkiem;
         private Guna.UI2.WinForms.Guna2DataGridView dgvKH;
         private System.Windows.Forms.DataGridViewLinkColumn clMakh;
         private System.Windows.Forms.DataGridViewTextBoxColumn clTenkh;
@@ -387,6 +387,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clTongtien;
         private System.Windows.Forms.DataGridViewTextBoxColumn clTongSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn clTongsldonhang;
+        private Guna.UI2.WinForms.Guna2Button btnXoafilter;
     }
 }
 

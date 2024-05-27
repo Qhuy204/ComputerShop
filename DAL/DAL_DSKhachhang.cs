@@ -66,28 +66,23 @@ namespace DAL
             db.SaveChanges();
         }
 
-        /*public List<CUSTOMER> TimKiemKhachang(string nhanhieu, string loaisp, string keyword)
+        public List<CUSTOMER> TimKiemKhachang(string keyword)
         {
-            var query = db.PRODUCTs.AsQueryable();
-
-            if (!string.IsNullOrEmpty(nhanhieu))
-            {
-                query = query.Where(p => p.BRD_ID.ToLower().Contains(nhanhieu));
-            }
-
-            if (!string.IsNullOrEmpty(loaisp))
-            {
-                query = query.Where(p => p.PRD_TYPE_ID.ToLower().Contains(loaisp));
-            }
+            var query = db.CUSTOMERs.AsQueryable();
 
             if (!string.IsNullOrEmpty(keyword))
             {
-                query = query.Where(p => p.PRD_NAME.ToLower().Contains(keyword));
+                keyword = keyword.ToLower(); // Chuyển từ khóa thành chữ thường để tìm kiếm không phân biệt chữ hoa/chữ thường
+                query = query.Where(p => p.CUS_ID.ToLower().Contains(keyword) ||
+                                         p.CUS_PHONE_NUMBER.ToLower().Contains(keyword) ||
+                                         p.CUS_NAME.ToLower().Contains(keyword) ||
+                                         p.CUS_ADDRESS.ToLower().Contains(keyword));
             }
 
             return query.ToList();
         }
-*/
+
+
         public string getCUS_ID(string Name)
         {
             var product = db.CUSTOMERs.FirstOrDefault(p => p.CUS_NAME == Name);

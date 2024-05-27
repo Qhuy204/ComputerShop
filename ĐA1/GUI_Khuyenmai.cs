@@ -10,6 +10,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace ĐA1
 {
@@ -131,6 +132,44 @@ namespace ĐA1
             pnCTGG.Enabled = false;
             pnCTGG.Visible = false;
             btnMagiamgia.PerformClick();
+        }
+
+        private void btnsearchmgg_Click(object sender, EventArgs e)
+        {
+            string code = txtTimmgg.Text.ToLower().Trim();
+            string status = cbbTrangthaictgg.Text.ToLower().Trim();
+            DateTime start = dtstartdatemgg.Value;
+            DateTime end = dtenđatemgg.Value;
+            var filteredMGG = busMgg.GetDiscountCodes(code, status, start, end);
+            Loaddgvmagg(filteredMGG);
+        }
+
+        private void btnxoamgg_Click(object sender, EventArgs e)
+        {
+            cbbTrangthaimgg.SelectedIndex = -1;
+            txtTimmgg.Clear();
+            dtstartdatemgg.ResetText();
+            dtenđatemgg.ResetText();
+            Loaddgvmagg(busMgg.GetAll());
+        }
+
+        private void btnTimkiemctgg_Click(object sender, EventArgs e)
+        {
+            string name = txtTimkiemCTGG.Text.ToLower().Trim();
+            string status = cbbTrangthaictgg.Text.ToLower().Trim();
+            DateTime start = dtstartctgg.Value;
+            DateTime end = dtendctgg.Value;
+            var filteredCTKM = busCtkm.GetDiscountPromo(name, status, start, end);
+            Loaddgvctrinhgg(filteredCTKM);
+        }
+
+        private void btnClearctgg_Click(object sender, EventArgs e)
+        {
+            cbbTrangthaictgg.SelectedIndex = -1;
+            txtTimkiemCTGG.Clear();
+            dtstartctgg.ResetText();
+            dtendctgg.ResetText();
+            Loaddgvctrinhgg(busCtkm.GetAll());
         }
     }
 }

@@ -11,10 +11,11 @@ namespace BUS
     {
         private DAL_DSLoaiSP dalLSP = new DAL_DSLoaiSP();
 
-        public void Add(PRODUCTTYPE pt)
+        public void NewPDT(
+        string id,
+        string name)
         {
-            pt.PRD_TYPE_ID= GetNewID();
-            dalLSP.Add(pt);
+            dalLSP.NewPDT(id, name);
         }
 
         public bool Delete(string ptID)
@@ -40,8 +41,22 @@ namespace BUS
 
         public string GetNewID()
         {
-            int id = GetAll().Count() == 0 ? 1 : Int32.Parse(GetAll().Last().PRD_TYPE_ID.Substring(2)) + 1;
-            return "PT" + id;
+            var allItems = GetAll();
+            int maxID = 0;
+
+            if (allItems.Any())
+            {
+                maxID = allItems
+                            .Select(p =>
+                            {
+                                int id;
+                                bool success = Int32.TryParse(p.PRD_TYPE_ID.Substring(2), out id);
+                                return success ? id : 0;
+                            })
+                            .Max();
+            }
+
+            return "PT" + (maxID + 1);
         }
 
         public List<PRODUCTTYPE> SearchProductTypeByName(string keyword)
@@ -62,6 +77,11 @@ namespace BUS
         public string getPD_TYPE_ID(string ptName)
         {
             return dalLSP.getPD_TYPE_ID(ptName);
+        }
+
+        public PRODUCTTYPE GetbyName(string name)
+        {
+            return dalLSP.GetbyName(name);
         }
     }
 }

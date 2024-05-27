@@ -63,6 +63,21 @@
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -105,11 +120,23 @@
     <Compile Include="GUI_DSChucvu.Designer.cs">
       <DependentUpon>GUI_DSChucvu.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_DSHDnhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_DSHDnhap.Designer.cs">
+      <DependentUpon>GUI_DSHDnhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_DSHoadonban.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI_DSHoadonban.Designer.cs">
       <DependentUpon>GUI_DSHoadonban.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_DSLoaiSP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_DSLoaiSP.Designer.cs">
+      <DependentUpon>GUI_DSLoaiSP.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI_TaoCtrinhKm.cs">
       <SubType>Form</SubType>
@@ -177,12 +204,6 @@
     <Compile Include="GUI_MainForm.Designer.cs">
       <DependentUpon>GUI_MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI_Nhacungcap_Details.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI_Nhacungcap_Details.Designer.cs">
-      <DependentUpon>GUI_Nhacungcap_Details.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI_QLNhacungcap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,11 +222,23 @@
     <Compile Include="GUI_Themchucvu.Designer.cs">
       <DependentUpon>GUI_Themchucvu.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_ThemCTHDNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_ThemCTHDNhap.Designer.cs">
+      <DependentUpon>GUI_ThemCTHDNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_ThemKH.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI_ThemKH.Designer.cs">
       <DependentUpon>GUI_ThemKH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_ThemLoaiSP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_ThemLoaiSP.Designer.cs">
+      <DependentUpon>GUI_ThemLoaiSP.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI_ThemNV.cs">
       <SubType>Form</SubType>
@@ -231,11 +264,23 @@
     <Compile Include="GUI_ThongtinCTKM.Designer.cs">
       <DependentUpon>GUI_ThongtinCTKM.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_ThongtinKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_ThongtinKH.Designer.cs">
+      <DependentUpon>GUI_ThongtinKH.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_ThongtinMGG.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI_ThongtinMGG.Designer.cs">
       <DependentUpon>GUI_ThongtinMGG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_ThongtinNCC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_ThongtinNCC.Designer.cs">
+      <DependentUpon>GUI_ThongtinNCC.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI_ThongtinSP.cs">
       <SubType>Form</SubType>
@@ -281,8 +326,14 @@
     <EmbeddedResource Include="GUI_DSChucvu.resx">
       <DependentUpon>GUI_DSChucvu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI_DSHDnhap.resx">
+      <DependentUpon>GUI_DSHDnhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_DSHoadonban.resx">
       <DependentUpon>GUI_DSHoadonban.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_DSLoaiSP.resx">
+      <DependentUpon>GUI_DSLoaiSP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_TaoCtrinhKm.resx">
       <DependentUpon>GUI_TaoCtrinhKm.cs</DependentUpon>
@@ -317,9 +368,6 @@
     <EmbeddedResource Include="GUI_MainForm.resx">
       <DependentUpon>GUI_MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI_Nhacungcap_Details.resx">
-      <DependentUpon>GUI_Nhacungcap_Details.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI_QLNhacungcap.resx">
       <DependentUpon>GUI_QLNhacungcap.cs</DependentUpon>
     </EmbeddedResource>
@@ -329,8 +377,14 @@
     <EmbeddedResource Include="GUI_Themchucvu.resx">
       <DependentUpon>GUI_Themchucvu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI_ThemCTHDNhap.resx">
+      <DependentUpon>GUI_ThemCTHDNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_ThemKH.resx">
       <DependentUpon>GUI_ThemKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_ThemLoaiSP.resx">
+      <DependentUpon>GUI_ThemLoaiSP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_ThemNV.resx">
       <DependentUpon>GUI_ThemNV.cs</DependentUpon>
@@ -344,8 +398,14 @@
     <EmbeddedResource Include="GUI_ThongtinCTKM.resx">
       <DependentUpon>GUI_ThongtinCTKM.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI_ThongtinKH.resx">
+      <DependentUpon>GUI_ThongtinKH.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_ThongtinMGG.resx">
       <DependentUpon>GUI_ThongtinMGG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_ThongtinNCC.resx">
+      <DependentUpon>GUI_ThongtinNCC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_ThongtinSP.resx">
       <DependentUpon>GUI_ThongtinSP.cs</DependentUpon>

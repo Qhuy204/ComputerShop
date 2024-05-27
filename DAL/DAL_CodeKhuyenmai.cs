@@ -73,5 +73,31 @@ namespace DAL
             s.USED_COUNT = dt.USED_COUNT;
             db.SaveChanges();
         }
+        public List<DISCOUNT> GetDiscountCodes(string code, string discountStatus, DateTime? startDate, DateTime? endDate = null)
+        {
+            var query = db.DISCOUNTs.AsQueryable();
+
+            if (!string.IsNullOrEmpty(code))
+            {
+                query = query.Where(c => c.CODE.ToLower().Contains(code));
+            }
+
+            if (!string.IsNullOrEmpty(discountStatus))
+            {
+                query = query.Where(c => c.DISCOUNT_STATUS.ToLower().Contains(discountStatus));
+            }
+
+            if (startDate.HasValue)
+            {
+                query = query.Where(c => c.DISCOUNT_START_DATE >= startDate.Value);
+            }
+
+            if (endDate.HasValue)
+            {
+                query = query.Where(c => c.DISCOUNT_END_DATE <= endDate.Value);
+            }
+
+            return query.ToList();
+        }
     }
 }

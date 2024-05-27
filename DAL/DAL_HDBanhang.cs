@@ -38,6 +38,7 @@ namespace DAL
             s.PAYMENT = sl.PAYMENT;
             s.NOTE = sl.NOTE;
             s.STATUS = sl.STATUS;
+            s.MONEY_AFTER_DISCOUNT = sl.MONEY_AFTER_DISCOUNT;
             db.SaveChanges();
         }
 
@@ -85,7 +86,8 @@ namespace DAL
         string note,
         string status,
         float totalmoney, 
-        string banggia)
+        string banggia,
+        float moneyafterdiscount)
         {
             var salebill = new SALEBILL
             {
@@ -99,7 +101,8 @@ namespace DAL
                 PAYMENT = payment,
                 NOTE = note,
                 STATUS = status,
-                BANGGIA = banggia
+                BANGGIA = banggia,
+                MONEY_AFTER_DISCOUNT = moneyafterdiscount
             };
 
             db.SALEBILLs.Add(salebill);

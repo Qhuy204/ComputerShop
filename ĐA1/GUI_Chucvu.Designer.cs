@@ -362,6 +362,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GUI_Chucvu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GUI_Chucvu_FormClosing);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();

@@ -84,5 +84,37 @@ namespace DAL
             var ctkm = db.PROMOTIONs.FirstOrDefault(p => p.PROMOTION_NAME == name);
             return ctkm != null ? ctkm.PROMOTION_ID : null;
         }
+
+        public List<PROMOTION> GetDiscountPromo(string name, string Status, DateTime? startDate, DateTime? endDate = null)
+        {
+            var query = db.PROMOTIONs.AsQueryable();
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(c => c.PROMOTION_NAME.ToLower().Contains(name));
+            }
+
+            if (!string.IsNullOrEmpty(Status))
+            {
+                query = query.Where(c => c.PROMOTION_STATUS.ToLower().Contains(Status));
+            }
+
+            if (startDate.HasValue)
+            {
+                query = query.Where(c => c.PROMOTION_START_DATE >= startDate.Value);
+            }
+
+            if (endDate.HasValue)
+            {
+                query = query.Where(c => c.PROMOTION_END_DATE <= endDate.Value);
+            }
+
+            return query.ToList();
+        }
+
+        public PROMOTION GetbyName(string name)
+        {
+            return db.PROMOTIONs.FirstOrDefault(p => p.PROMOTION_NAME == name);
+        }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using ZXing.QrCode.Internal;
 
 namespace ĐA1
 {
@@ -105,6 +106,14 @@ namespace ĐA1
             }
         }
 
-
+        private void GUI_Chucvu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var thongtinKh = Application.OpenForms.OfType<GUI_MainForm>().FirstOrDefault();
+            if (thongtinKh != null)
+            {
+                // Nếu đã mở, chỉ cần cập nhật dữ liệu
+                thongtinKh.btnqlchucvu.PerformClick();
+            }
+        }
     }
 }

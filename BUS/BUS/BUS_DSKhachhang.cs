@@ -52,8 +52,22 @@ namespace BUS
 
         public string GetNewID()
         {
-            int id = GetAll().Count() == 0 ? 1 : Int32.Parse(GetAll().Last().CUS_ID.Substring(2)) + 1;
-            return "KH" + id;
+            var allItems = GetAll();
+            int maxID = 0;
+
+            if (allItems.Any())
+            {
+                maxID = allItems
+                            .Select(p =>
+                            {
+                                int id;
+                                bool success = Int32.TryParse(p.CUS_ID.Substring(2), out id);
+                                return success ? id : 0;
+                            })
+                            .Max();
+            }
+
+            return "KH" + (maxID + 1);
         }
 
         public List<CUSTOMER> SearchKhachhangByName(string keyword)
@@ -69,6 +83,11 @@ namespace BUS
                 return true;
             }
             return false;
+        }
+
+        public List<CUSTOMER> TimKiemKhachang(string keyword)
+        {
+            return dalKH.TimKiemKhachang(keyword);
         }
 
     }

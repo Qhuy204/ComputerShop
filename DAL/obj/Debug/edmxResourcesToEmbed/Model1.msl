@@ -153,6 +153,7 @@
     <EntitySetMapping Name="SALEBILLs">
       <EntityTypeMapping TypeName="CuaHangMayTinhModel.SALEBILL">
         <MappingFragment StoreEntitySet="SALEBILL">
+          <ScalarProperty Name="MONEY_AFTER_DISCOUNT" ColumnName="MONEY_AFTER_DISCOUNT" />
           <ScalarProperty Name="SL_ID" ColumnName="SL_ID" />
           <ScalarProperty Name="SL_DATE" ColumnName="SL_DATE" />
           <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />

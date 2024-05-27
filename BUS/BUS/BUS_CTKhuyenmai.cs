@@ -89,5 +89,15 @@ namespace BUS
         {
             return dalkm.getCTKM_ID(name);
         }
+
+        public List<PROMOTION> GetDiscountPromo(string name, string Status, DateTime? startDate, DateTime? endDate = null)
+        {
+            return dalkm.GetDiscountPromo(name, Status, startDate, endDate);
+        }
+
+        public PROMOTION GetbyName(string name)
+        {
+            return dalkm.GetbyName(name);
+        }
     }
 }

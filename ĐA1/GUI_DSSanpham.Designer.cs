@@ -35,6 +35,14 @@
             this.panelIfnodata = new System.Windows.Forms.Panel();
             this.pnIfhavedata = new System.Windows.Forms.Panel();
             this.dgvSP = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.clAnhSP = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clprdid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cltensp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTenLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clbrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clrdy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clquantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clNgayktao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnClear = new Guna.UI2.WinForms.Guna2Button();
             this.btnTimkiem = new Guna.UI2.WinForms.Guna2Button();
@@ -43,7 +51,6 @@
             this.txtTimkiemSP = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnTatcaSP = new Guna.UI2.WinForms.Guna2Button();
-            this.btnnhap = new Guna.UI2.WinForms.Guna2Button();
             this.btnXuatfile = new Guna.UI2.WinForms.Guna2Button();
             this.btnThemSP = new Guna.UI2.WinForms.Guna2Button();
             this.clAnh = new System.Windows.Forms.DataGridViewImageColumn();
@@ -53,14 +60,7 @@
             this.clNhanhieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clcotheban = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clSLtonkho = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clAnhSP = new System.Windows.Forms.DataGridViewImageColumn();
-            this.clprdid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cltensp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clTenLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clbrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clrdy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clquantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clNgayktao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnnhap = new Guna.UI2.WinForms.Guna2Button();
             this.panelIfnodata.SuspendLayout();
             this.pnIfhavedata.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSP)).BeginInit();
@@ -169,6 +169,65 @@
             this.dgvSP.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvSP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSP_CellContentClick);
             // 
+            // clAnhSP
+            // 
+            this.clAnhSP.DataPropertyName = "PRD_IMG";
+            this.clAnhSP.HeaderText = "Ảnh";
+            this.clAnhSP.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.clAnhSP.Name = "clAnhSP";
+            this.clAnhSP.ReadOnly = true;
+            this.clAnhSP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clAnhSP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // clprdid
+            // 
+            this.clprdid.DataPropertyName = "PRD_ID";
+            this.clprdid.HeaderText = "Mã sản phẩm";
+            this.clprdid.Name = "clprdid";
+            this.clprdid.ReadOnly = true;
+            // 
+            // cltensp
+            // 
+            this.cltensp.DataPropertyName = "PRD_NAME";
+            this.cltensp.HeaderText = "Tên sản phẩm";
+            this.cltensp.Name = "cltensp";
+            this.cltensp.ReadOnly = true;
+            // 
+            // clTenLoaiSP
+            // 
+            this.clTenLoaiSP.DataPropertyName = "PRD_TYPE_NAME";
+            this.clTenLoaiSP.HeaderText = "Loại sản phẩm";
+            this.clTenLoaiSP.Name = "clTenLoaiSP";
+            this.clTenLoaiSP.ReadOnly = true;
+            // 
+            // clbrand
+            // 
+            this.clbrand.DataPropertyName = "BRD_NAME";
+            this.clbrand.HeaderText = "Hãng";
+            this.clbrand.Name = "clbrand";
+            this.clbrand.ReadOnly = true;
+            // 
+            // clrdy
+            // 
+            this.clrdy.DataPropertyName = "RDY_FOR_SALE";
+            this.clrdy.HeaderText = "Có thể bán";
+            this.clrdy.Name = "clrdy";
+            this.clrdy.ReadOnly = true;
+            // 
+            // clquantity
+            // 
+            this.clquantity.DataPropertyName = "INVENTORY_QUANTITY";
+            this.clquantity.HeaderText = "Tồn kho";
+            this.clquantity.Name = "clquantity";
+            this.clquantity.ReadOnly = true;
+            // 
+            // clNgayktao
+            // 
+            this.clNgayktao.DataPropertyName = "CREATE_DAY";
+            this.clNgayktao.HeaderText = "Ngày khởi tạo";
+            this.clNgayktao.Name = "clNgayktao";
+            this.clNgayktao.ReadOnly = true;
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -258,7 +317,7 @@
             this.txtTimkiemSP.Location = new System.Drawing.Point(12, 16);
             this.txtTimkiemSP.Name = "txtTimkiemSP";
             this.txtTimkiemSP.PasswordChar = '\0';
-            this.txtTimkiemSP.PlaceholderText = "Tìm kiếm theo mã sản phẩm, tên sản phẩm";
+            this.txtTimkiemSP.PlaceholderText = "Tìm kiếm theo tên sản phẩm";
             this.txtTimkiemSP.SelectedText = "";
             this.txtTimkiemSP.Size = new System.Drawing.Size(363, 36);
             this.txtTimkiemSP.TabIndex = 0;
@@ -290,23 +349,6 @@
             this.btnTatcaSP.Size = new System.Drawing.Size(130, 50);
             this.btnTatcaSP.TabIndex = 3;
             this.btnTatcaSP.Text = "Tất cả sản phẩm";
-            // 
-            // btnnhap
-            // 
-            this.btnnhap.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnnhap.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnnhap.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnnhap.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnnhap.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.btnnhap.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnnhap.ForeColor = System.Drawing.Color.Black;
-            this.btnnhap.Location = new System.Drawing.Point(130, 13);
-            this.btnnhap.Name = "btnnhap";
-            this.btnnhap.Size = new System.Drawing.Size(113, 43);
-            this.btnnhap.TabIndex = 5;
-            this.btnnhap.Text = "Nhập File";
-            this.btnnhap.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btnnhap.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnXuatfile
             // 
@@ -397,64 +439,22 @@
             this.clSLtonkho.Name = "clSLtonkho";
             this.clSLtonkho.ReadOnly = true;
             // 
-            // clAnhSP
+            // btnnhap
             // 
-            this.clAnhSP.DataPropertyName = "PRD_IMG";
-            this.clAnhSP.HeaderText = "Ảnh";
-            this.clAnhSP.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.clAnhSP.Name = "clAnhSP";
-            this.clAnhSP.ReadOnly = true;
-            this.clAnhSP.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clAnhSP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // clprdid
-            // 
-            this.clprdid.DataPropertyName = "PRD_ID";
-            this.clprdid.HeaderText = "Mã sản phẩm";
-            this.clprdid.Name = "clprdid";
-            this.clprdid.ReadOnly = true;
-            // 
-            // cltensp
-            // 
-            this.cltensp.DataPropertyName = "PRD_NAME";
-            this.cltensp.HeaderText = "Tên sản phẩm";
-            this.cltensp.Name = "cltensp";
-            this.cltensp.ReadOnly = true;
-            // 
-            // clTenLoaiSP
-            // 
-            this.clTenLoaiSP.DataPropertyName = "PRD_TYPE_NAME";
-            this.clTenLoaiSP.HeaderText = "Loại sản phẩm";
-            this.clTenLoaiSP.Name = "clTenLoaiSP";
-            this.clTenLoaiSP.ReadOnly = true;
-            // 
-            // clbrand
-            // 
-            this.clbrand.DataPropertyName = "BRD_NAME";
-            this.clbrand.HeaderText = "Hãng";
-            this.clbrand.Name = "clbrand";
-            this.clbrand.ReadOnly = true;
-            // 
-            // clrdy
-            // 
-            this.clrdy.DataPropertyName = "RDY_FOR_SALE";
-            this.clrdy.HeaderText = "Có thể bán";
-            this.clrdy.Name = "clrdy";
-            this.clrdy.ReadOnly = true;
-            // 
-            // clquantity
-            // 
-            this.clquantity.DataPropertyName = "INVENTORY_QUANTITY";
-            this.clquantity.HeaderText = "Tồn kho";
-            this.clquantity.Name = "clquantity";
-            this.clquantity.ReadOnly = true;
-            // 
-            // clNgayktao
-            // 
-            this.clNgayktao.DataPropertyName = "CREATE_DAY";
-            this.clNgayktao.HeaderText = "Ngày khởi tạo";
-            this.clNgayktao.Name = "clNgayktao";
-            this.clNgayktao.ReadOnly = true;
+            this.btnnhap.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnnhap.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnnhap.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnnhap.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnnhap.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.btnnhap.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnnhap.ForeColor = System.Drawing.Color.Black;
+            this.btnnhap.Location = new System.Drawing.Point(130, 13);
+            this.btnnhap.Name = "btnnhap";
+            this.btnnhap.Size = new System.Drawing.Size(113, 43);
+            this.btnnhap.TabIndex = 5;
+            this.btnnhap.Text = "Nhập File";
+            this.btnnhap.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnnhap.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // GUI_DSSanpham
             // 
@@ -491,7 +491,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtTimkiemSP;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button btnTatcaSP;
-        private Guna.UI2.WinForms.Guna2Button btnnhap;
         private Guna.UI2.WinForms.Guna2Button btnXuatfile;
         private Guna.UI2.WinForms.Guna2Button btnThemSP;
         private System.Windows.Forms.DataGridViewImageColumn clAnh;
@@ -509,5 +508,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clrdy;
         private System.Windows.Forms.DataGridViewTextBoxColumn clquantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn clNgayktao;
+        private Guna.UI2.WinForms.Guna2Button btnnhap;
     }
 }

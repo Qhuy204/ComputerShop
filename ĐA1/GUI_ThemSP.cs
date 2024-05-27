@@ -83,43 +83,45 @@ namespace ĐA1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            /*try
             {
-                if (pbhinhanh.Image == null)
-                {
-                    MessageBox.Show("Không thể thêm sản phẩm mới! Thiếu ảnh.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Chuyển đổi ảnh sang dạng byte[]
-                byte[] image;
-                using (MemoryStream memoryStream = new MemoryStream())
-                {
-                    pbhinhanh.Image.Save(memoryStream, pbhinhanh.Image.RawFormat);
-                    image = memoryStream.ToArray();
-                }
-
-                // Kiểm tra và chuyển đổi dữ liệu đầu vào
-                string id = busKhohang.GetNewID();
-                string name = txtTensp.Text;
-                string brand_id = busNCC.getBRD_ID(cbbNcc.Text);
-                string producttype_id = busLoaiSP.getPD_TYPE_ID(cbbLoaiSP.Text);
-                if (!float.TryParse(txtgianhap.Text, out float importprice) ||
-                    !float.TryParse(txtGiabanle.Text, out float retailprice) ||
-                    !float.TryParse(txtgiabanbuon.Text, out float wholesaleprice))
-                {
-                    MessageBox.Show("Giá trị không hợp lệ. Vui lòng kiểm tra lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Thêm sản phẩm mới vào cơ sở dữ liệu
-                busKhohang.NewProduct(image, id, name, brand_id, producttype_id, importprice, retailprice, wholesaleprice);
-                MessageBox.Show("Thêm sản phẩm thành công.");
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Không thể thêm sản phẩm mới. Hãy kiểm tra lại dữ liệu đầu vào!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
+
+            if (pbhinhanh.Image == null)
+            {
+                MessageBox.Show("Không thể thêm sản phẩm mới! Thiếu ảnh.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            // Chuyển đổi ảnh sang dạng byte[]
+            byte[] image;
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                pbhinhanh.Image.Save(memoryStream, pbhinhanh.Image.RawFormat);
+                image = memoryStream.ToArray();
+            }
+
+            // Kiểm tra và chuyển đổi dữ liệu đầu vào
+            string id = busKhohang.GetNewID();
+            string name = txtTensp.Text;
+            string brand_id = busNCC.getBRD_ID(cbbNcc.Text);
+            string producttype_id = busLoaiSP.getPD_TYPE_ID(cbbLoaiSP.Text);
+            if (!float.TryParse(txtgianhap.Text, out float importprice) ||
+                !float.TryParse(txtGiabanle.Text, out float retailprice) ||
+                !float.TryParse(txtgiabanbuon.Text, out float wholesaleprice))
+            {
+                MessageBox.Show("Giá trị không hợp lệ. Vui lòng kiểm tra lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Thêm sản phẩm mới vào cơ sở dữ liệu
+            busKhohang.NewProduct(image, id, name, brand_id, producttype_id, importprice, retailprice, wholesaleprice);
+            MessageBox.Show("Thêm sản phẩm thành công.");
         }
 
 
