@@ -87,6 +87,17 @@ namespace BUS
             return dalKhohang.getPRD_ID(prdName);
         }
 
+        public List<WAREHOUSE> getPRD_NAME(string brd_id)
+        {
+            return dalKhohang.getPRD_NAME(brd_id);
+        }
+
+        public double? getPRD_IMPORT_PRICE(string id)
+        {
+            return dalKhohang.getPRD_IMPORT_PRICE(id);
+
+        }
+
         public void NewProduct(
         byte[] image,
         string id,

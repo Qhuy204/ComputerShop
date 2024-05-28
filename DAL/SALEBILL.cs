@@ -21,7 +21,7 @@ namespace DAL
         }
     
         public string SL_ID { get; set; }
-        public System.DateTime SL_DATE { get; set; }
+        public Nullable<System.DateTime> SL_DATE { get; set; }
         public string CUS_ID { get; set; }
         public string EMP_ID { get; set; }
         public string DISCOUNT_CODE { get; set; }

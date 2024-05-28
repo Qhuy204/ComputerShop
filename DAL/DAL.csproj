@@ -113,6 +113,12 @@
     <Compile Include="EMPLOYEE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetHourlyRevenue_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetHourlySalesCount_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="IMPORTBILL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

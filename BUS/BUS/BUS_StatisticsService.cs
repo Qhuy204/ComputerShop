@@ -47,6 +47,22 @@ namespace BUS
         {
             return dal.GetDoanhThuTheoNgay(startDate, endDate);
         }
+
+        public List<GetHourlyRevenue_Result> GetDoanhThuTheogio()
+        {
+            return dal.GetDoanhThuTheogio().ToList();
+        }
+
+        public List<GetHourlySalesCount_Result> GetSodonhangtheogio()
+        {
+            return dal.GetSodonhangtheogio().ToList();
+        }
+
+        public List<int?> GetSLdonhangnay()
+        {
+            return dal.GetSLdonhangnay().ToList();
+        }
+
     }
 
 }

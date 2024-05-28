@@ -96,6 +96,23 @@ namespace DAL
             return product != null ? product.PRD_ID : null;
         }
 
+        public double? getPRD_IMPORT_PRICE(string id)
+        {
+            var product = db.WAREHOUSEs.FirstOrDefault(p => p.PRD_ID == id);
+            return product?.IMPORT_PRICE;
+        }
+
+
+        public List<WAREHOUSE> getPRD_NAME(string BRD_ID)
+        {
+            var products = db.WAREHOUSEs
+                             .Where(p => p.BRD_ID == BRD_ID)
+                             .ToList();
+
+            return products;
+        }
+
+
         public void NewProduct(
         byte[] image,
         string id,

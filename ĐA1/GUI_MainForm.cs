@@ -159,7 +159,10 @@ namespace ĐA1
 
         public void btnTongquan_Click(object sender, EventArgs e)
         {
-            //pnNoidung.Hide();
+            Chuyendong(sender);
+            GUI_Tongquan frm = new GUI_Tongquan();
+            FormHelper.HienThiFormCon(frm, pnNoidung);
+            lblFuncName.Text = btnTongquan.Text;
         }
 
         public void Chuyendong(object sender)
@@ -277,7 +280,7 @@ namespace ĐA1
         public void btnDonnhap_Click(object sender, EventArgs e)
         {
             lblFuncName.Text = btnDonnhap.Text;
-            GUI_DSHDnhap frm = new GUI_DSHDnhap();
+            GUI_DSHDnhap frm = new GUI_DSHDnhap(id);
             FormHelper.HienThiFormCon(frm, pnNoidung);
         }
     }

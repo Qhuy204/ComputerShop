@@ -166,7 +166,7 @@ GO
 
 CREATE TABLE SALEBILL (
     SL_ID VARCHAR(100) PRIMARY KEY,
-    SL_DATE DATE NOT NULL,
+    SL_DATE DATETIME NOT NULL,
     CUS_ID VARCHAR(100) NOT NULL,
     EMP_ID VARCHAR(100) NOT NULL, 
 	DISCOUNT_CODE VARCHAR(100),
@@ -180,6 +180,9 @@ CREATE TABLE SALEBILL (
     CONSTRAINT FK_SALEBILL_CUSTOMER FOREIGN KEY (CUS_ID) REFERENCES CUSTOMER(CUS_ID)
 );
 GO
+
+ALTER SALEBILL
+SET SL_DATE DATETIME NOT NULL
 
 ALTER TABLE SALEBILL
 ADD MONEY_AFTER_DISCOUNT FLOAT
@@ -410,6 +413,8 @@ BEGIN
     DECLARE @NEW_QUANTITY INT;
     DECLARE @OLD_IB_PRICE FLOAT;
     DECLARE @NEW_IB_PRICE FLOAT;
+    DECLARE @OLD_RDY_FOR_SALE INT;
+    DECLARE @NEW_RDY_FOR_SALE INT;
 
     -- Handle INSERT and UPDATE
     IF EXISTS (SELECT * FROM inserted)
@@ -432,54 +437,38 @@ BEGIN
     )
     WHERE IB_ID = @IB_ID;
 
-    -- Adjust PRODUCT RDY_FOR_SALE
+    -- Adjust WAREHOUSE INVENTORY_QUANTITY and RDY_FOR_SALE
     IF EXISTS (SELECT * FROM inserted) AND NOT EXISTS (SELECT * FROM deleted)
     BEGIN
         -- INSERT
-        UPDATE PRODUCT
-        SET RDY_FOR_SALE = RDY_FOR_SALE + @NEW_QUANTITY
+        UPDATE WAREHOUSE
+        SET INVENTORY_QUANTITY = INVENTORY_QUANTITY + @NEW_QUANTITY,
+            RDY_FOR_SALE = RDY_FOR_SALE + @NEW_QUANTITY
         WHERE PRD_ID = @PRD_ID;
     END
     ELSE IF EXISTS (SELECT * FROM deleted) AND NOT EXISTS (SELECT * FROM inserted)
     BEGIN
         -- DELETE
-        UPDATE PRODUCT
-        SET RDY_FOR_SALE = RDY_FOR_SALE - @OLD_QUANTITY
+        UPDATE WAREHOUSE
+        SET INVENTORY_QUANTITY = INVENTORY_QUANTITY - @OLD_QUANTITY,
+            RDY_FOR_SALE = RDY_FOR_SALE - @OLD_QUANTITY
         WHERE PRD_ID = @PRD_ID;
     END
     ELSE
     BEGIN
         -- UPDATE
-        SELECT @OLD_QUANTITY = d.QUANTITY FROM deleted d JOIN inserted i ON d.IB_DETAIL_ID = i.IB_DETAIL_ID;
-        UPDATE PRODUCT
-        SET RDY_FOR_SALE = RDY_FOR_SALE - @OLD_QUANTITY + @NEW_QUANTITY
-        WHERE PRD_ID = @PRD_ID;
-    END
+        SELECT @OLD_QUANTITY = d.QUANTITY, @NEW_QUANTITY = i.QUANTITY
+        FROM deleted d 
+        JOIN inserted i ON d.IB_DETAIL_ID = i.IB_DETAIL_ID;
 
-    -- Adjust WAREHOUSE INVENTORY_QUANTITY
-    IF EXISTS (SELECT * FROM inserted) AND NOT EXISTS (SELECT * FROM deleted)
-    BEGIN
-        -- INSERT
         UPDATE WAREHOUSE
-        SET INVENTORY_QUANTITY = INVENTORY_QUANTITY + @NEW_QUANTITY
-        WHERE PRD_ID = @PRD_ID;
-    END
-    ELSE IF EXISTS (SELECT * FROM deleted) AND NOT EXISTS (SELECT * FROM inserted)
-    BEGIN
-        -- DELETE
-        UPDATE WAREHOUSE
-        SET INVENTORY_QUANTITY = INVENTORY_QUANTITY - @OLD_QUANTITY
-        WHERE PRD_ID = @PRD_ID;
-    END
-    ELSE
-    BEGIN
-        -- UPDATE
-        UPDATE WAREHOUSE
-        SET INVENTORY_QUANTITY = INVENTORY_QUANTITY - @OLD_QUANTITY + @NEW_QUANTITY
+        SET INVENTORY_QUANTITY = INVENTORY_QUANTITY - @OLD_QUANTITY + @NEW_QUANTITY,
+            RDY_FOR_SALE = RDY_FOR_SALE - @OLD_QUANTITY + @NEW_QUANTITY
         WHERE PRD_ID = @PRD_ID;
     END
 END;
 GO
+
 
 ----------
 -- trigger cập nhật TOTAL_MONEY của SALEBILL, (RDY_FOR_SALE = QUANTITY =  SALEBILL_DETAIL.QUANTITY) của PRODUCT,  
@@ -948,6 +937,43 @@ GO
 EXEC sp_ThongKeNhanVienBanNhieuNhat '2024-05-01', '2024-05-15'
 
 
+-- Tạo thủ tục để tính số lượng đơn hàng trong ngày hiện tại
+ALTER PROCEDURE GetDailySalesCount
+AS
+BEGIN
+     -- Tính số lượng sản phẩm bán ra trong ngày hiện tại
+    SELECT 
+        SUM(d.QUANTITY) AS TotalProductSalesCount
+    FROM 
+        SALEBILL s
+    JOIN 
+        SALEBILL_DETAIL d ON s.SL_ID = d.SL_ID
+    WHERE 
+        CAST(s.SL_DATE AS DATE) = CAST(GETDATE() AS DATE);
+END
+GO
+
+-- Gọi thủ tục để tính số lượng đơn hàng trong ngày hiện tại
+EXEC GetDailySalesCount;
+
+CREATE PROCEDURE GetTodayTotalRevenue
+AS
+BEGIN
+    DECLARE @StartOfDay DATETIME, @EndOfDay DATETIME;
+
+    -- Đặt thời gian bắt đầu là 0 giờ sáng và thời gian kết thúc là 23 giờ 59 phút 59 giây
+    SET @StartOfDay = CAST(CAST(GETDATE() AS DATE) AS DATETIME);
+    SET @EndOfDay = DATEADD(SECOND, -1, DATEADD(DAY, 1, @StartOfDay));
+
+    -- Tính tổng doanh thu trong ngày hiện tại
+    SELECT SUM(TOTAL_MONEY) AS TotalRevenue
+    FROM SALEBILL
+    WHERE SL_DATE BETWEEN @StartOfDay AND @EndOfDay;
+END;
+GO
+exec GetTodayTotalRevenue
+
+
 --Function
 --Function tính tổng số hóa đơn bán hàng trong khoảng thời gian:
 CREATE FUNCTION dbo.fn_TotalSaleBills (
@@ -1015,6 +1041,39 @@ BEGIN
         SL_DATE BETWEEN @StartDate AND @EndDate;
 END;
 GO
+
+--Tạo thủ tục thống kê doanh thu theo giờ trong ngày hiện tại
+CREATE PROCEDURE 
+AS
+BEGIN
+    SELECT 
+        DATEPART(HOUR, SL_DATE) AS Hour,
+        SUM(TOTAL_MONEY) AS TotalRevenue
+    FROM SALEBILL
+    WHERE CAST(SL_DATE AS DATE) = CAST(GETDATE() AS DATE)
+    GROUP BY DATEPART(HOUR, SL_DATE)
+    ORDER BY Hour;
+END
+GO
+EXEC GetHourlyRevenue;
+--Tạo thủ tục thống kê số đơn hàng theo giờ trong ngày hiện tại
+
+CREATE PROCEDURE GetHourlySalesCount
+AS
+BEGIN
+    SELECT 
+        DATEPART(HOUR, SL_DATE) AS Hour,
+        COUNT(*) AS SalesCount
+    FROM SALEBILL
+    WHERE CAST(SL_DATE AS DATE) = CAST(GETDATE() AS DATE)
+    GROUP BY DATEPART(HOUR, SL_DATE)
+    ORDER BY Hour;
+END
+GO
+
+EXEC GetHourlySalesCount;
+
+
 
 
 

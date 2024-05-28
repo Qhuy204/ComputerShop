@@ -55,5 +55,22 @@ namespace DAL
         {
             return db.sp_ThongKeDoanhThuTheoKhoangThoiGian(startDate, endDate).ToList();
         }
+
+        public List<GetHourlyRevenue_Result> GetDoanhThuTheogio()
+        {
+            return db.GetHourlyRevenue().ToList();
+        }
+
+        public List<GetHourlySalesCount_Result> GetSodonhangtheogio()
+        {
+            return db.GetHourlySalesCount().ToList();
+        }
+
+        public List<int?> GetSLdonhangnay()
+        {
+            var result = db.GetDailySalesCount().ToList();
+            return result;
+        }
+
     }
 }

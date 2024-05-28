@@ -291,5 +291,23 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetHourlyRevenue" FunctionName="CuaHangMayTinhModel.Store.GetHourlyRevenue">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.GetHourlyRevenue_Result">
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+          <ScalarProperty Name="TotalRevenue" ColumnName="TotalRevenue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetHourlySalesCount" FunctionName="CuaHangMayTinhModel.Store.GetHourlySalesCount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.GetHourlySalesCount_Result">
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+          <ScalarProperty Name="SalesCount" ColumnName="SalesCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetDailySalesCount" FunctionName="CuaHangMayTinhModel.Store.GetDailySalesCount" />
+    <FunctionImportMapping FunctionImportName="GetTodayTotalRevenue" FunctionName="CuaHangMayTinhModel.Store.GetTodayTotalRevenue" />
   </EntityContainerMapping>
 </Mapping>

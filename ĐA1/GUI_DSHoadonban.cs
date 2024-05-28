@@ -11,7 +11,7 @@ namespace ĐA1
     public partial class GUI_DSHoadonban : Form
     {
         BUS_HDBanhang bushdban = new BUS_HDBanhang();
-
+        BUS_DSKhachhang buskhachhang = new BUS_DSKhachhang();
         public string id;
         public GUI_DSHoadonban(string id)
         {
@@ -19,6 +19,7 @@ namespace ĐA1
             this.id = id;
             var data = bushdban.GetAll();
             Loaddgv(data);
+            loadcbbKhachhang();
         }
 
         private void dgvKH_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -41,7 +42,7 @@ namespace ĐA1
         private void Loaddgv(List<SALEBILL> sl)
         {
             
-            dgvhdban.DataSource = sl.Select(x => new { x.CUS_ID, x.PAYMENT, x.NOTE, x.EMP_ID, x.SL_ID, x.PROMOTION_ID, x.DISCOUNT_CODE, x.BANGGIA, x.STATUS, x.TOTAL_MONEY, x.SL_DATE}).ToList() ;
+            dgvhdban.DataSource = sl.Select(x => new { x.CUS_ID, x.PAYMENT, x.NOTE, x.EMP_ID, x.SL_ID, x.PROMOTION_ID, x.DISCOUNT_CODE, x.BANGGIA, x.STATUS, x.MONEY_AFTER_DISCOUNT, x.SL_DATE}).ToList() ;
         }
 
 
@@ -103,16 +104,39 @@ namespace ĐA1
             System.Runtime.InteropServices.Marshal.ReleaseComObject(application);
         }
 
+        private void loadcbbKhachhang()
+        {
+            var data = buskhachhang.GetAll();
+            cbbKhachhang.DataSource = data.Select(x => new { x.CUS_NAME }).ToList();
+            cbbKhachhang.DisplayMember = "CUS_NAME";
+            cbbKhachhang.ValueMember = "CUS_NAME";
+            cbbKhachhang.SelectedIndex = -1;
+        }
+
 
         private void btnsearch_Click(object sender, EventArgs e)
         {
+            string khachhang = cbbKhachhang.Text;
+            string idkh = buskhachhang.getCUS_ID(khachhang);
+            
+            string id = txtTimmgg.Text;
+            string nhanvien = "";
+            DateTime start = dtstartdate.Value;
+            DateTime end = dtpendate.Value;
+            UpdateDgv(idkh, nhanvien, id, start, end);
+        }
+
+        private void UpdateDgv(string khachhang, string nhanvien, string id, DateTime? startDate, DateTime? endDate)
+        {
+            var dataSource = bushdban.TimKiemHoadonban(khachhang, nhanvien, id, startDate, endDate);
+            dgvhdban.DataSource = dataSource.Select(x => new { x.CUS_ID, x.PAYMENT, x.NOTE, x.EMP_ID, x.SL_ID, x.PROMOTION_ID, x.DISCOUNT_CODE, x.BANGGIA, x.STATUS, x.MONEY_AFTER_DISCOUNT, x.SL_DATE }).ToList();
 
         }
 
         private void btnxoafilter_Click(object sender, EventArgs e)
         {
             txtTimmgg.Clear();
-            cbbKhachhang.ResetText();
+            cbbKhachhang.SelectedIndex = -1;
             dtpendate.ResetText();
             dtstartdate.ResetText();
             Loaddgv(bushdban.GetAll());

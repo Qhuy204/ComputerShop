@@ -16,10 +16,11 @@ namespace ĐA1
     {
         BUS_Hoadonnhaphang bushdnh = new BUS_Hoadonnhaphang();
         BUS_CTHoadonnhaphang busctnh = new BUS_CTHoadonnhaphang();
-
-        public GUI_DSHDnhap()
+        public string id;
+        public GUI_DSHDnhap(string id)
         {
             InitializeComponent();
+            this.id = id;
             var data = bushdnh.GetAll();
             Loaddgv(data);
         }
@@ -32,7 +33,7 @@ namespace ĐA1
 
         private void btnNhaphang_Click(object sender, EventArgs e)
         {
-            GUI_ThemCTHDNhap cthdn = new GUI_ThemCTHDNhap();
+            GUI_ThemCTHDNhap cthdn = new GUI_ThemCTHDNhap(id);
             cthdn.ShowDialog();
         }
     }

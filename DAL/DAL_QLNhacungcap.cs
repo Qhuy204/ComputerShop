@@ -51,9 +51,9 @@ namespace DAL
         {
             BRAND s = db.BRANDs.SingleOrDefault(x => x.BRD_ID == brd.BRD_ID);
             s.BRD_NAME = brd.BRD_NAME;
-            s.BRD_ADDRESS= brd.BRD_ADDRESS;
-            s.BRD_PHONE= brd.BRD_PHONE;
-            s.BRD_EMAIL= brd.BRD_EMAIL;
+            s.BRD_ADDRESS = brd.BRD_ADDRESS;
+            s.BRD_PHONE = brd.BRD_PHONE;
+            s.BRD_EMAIL = brd.BRD_EMAIL;
             s.BRD_STATUS = brd.BRD_STATUS;
             db.SaveChanges();
         }
@@ -77,7 +77,7 @@ namespace DAL
             }
 
             return query.ToList();
-        }
 
+        }
     }
 }

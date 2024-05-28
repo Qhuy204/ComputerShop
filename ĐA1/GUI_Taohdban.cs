@@ -95,7 +95,10 @@ namespace ĐA1
             {
                 if (dc[i].USED_COUNT < dc[i].MAXIMUM_USE)
                 {
-                    dskm.Add(dc[i]);
+                    if(dc[i].DISCOUNT_STATUS != "Đã kết thúc")
+                    {
+                        dskm.Add(dc[i]);
+                    }
                 }
             }
 

@@ -155,7 +155,7 @@
       <PropertyRef Name="SL_ID" />
     </Key>
     <Property Name="SL_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="SL_DATE" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SL_DATE" Type="DateTime" Precision="3" />
     <Property Name="CUS_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="EMP_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DISCOUNT_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -424,6 +424,10 @@
       <Parameter Name="StartDate" Mode="In" Type="DateTime" />
       <Parameter Name="EndDate" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <FunctionImport Name="GetHourlyRevenue" ReturnType="Collection(CuaHangMayTinhModel.GetHourlyRevenue_Result)" />
+    <FunctionImport Name="GetHourlySalesCount" ReturnType="Collection(CuaHangMayTinhModel.GetHourlySalesCount_Result)" />
+    <FunctionImport Name="GetDailySalesCount" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetTodayTotalRevenue" ReturnType="Collection(Double)" />
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -467,5 +471,13 @@
   <ComplexType Name="sp_ThongKeDoanhThuTheoKhoangThoiGian_Result">
     <Property Type="DateTime" Name="Date" Nullable="true" />
     <Property Type="Double" Name="TotalRevenue" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetHourlyRevenue_Result">
+    <Property Type="Int32" Name="Hour" Nullable="true" />
+    <Property Type="Double" Name="TotalRevenue" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetHourlySalesCount_Result">
+    <Property Type="Int32" Name="Hour" Nullable="true" />
+    <Property Type="Int32" Name="SalesCount" Nullable="true" />
   </ComplexType>
 </Schema>

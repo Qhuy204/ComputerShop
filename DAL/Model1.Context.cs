@@ -229,5 +229,20 @@ namespace DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_ThongKeDoanhThuTheoKhoangThoiGian_Result>("sp_ThongKeDoanhThuTheoKhoangThoiGian", startDateParameter, endDateParameter);
         }
+    
+        public virtual ObjectResult<GetHourlyRevenue_Result> GetHourlyRevenue()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetHourlyRevenue_Result>("GetHourlyRevenue");
+        }
+    
+        public virtual ObjectResult<GetHourlySalesCount_Result> GetHourlySalesCount()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetHourlySalesCount_Result>("GetHourlySalesCount");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> GetDailySalesCount()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetDailySalesCount");
+        }
     }
 }

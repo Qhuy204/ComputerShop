@@ -44,35 +44,37 @@ namespace DAL
 
         public List<SALEBILL> TimKiemHoadonban(string khachhang, string nhanvien, string id, DateTime? startDate, DateTime? endDate)
         {
+            // Start with the full queryable set of SALEBILLs
             var query = db.SALEBILLs.AsQueryable();
 
+            // Filter by id if provided
             if (!string.IsNullOrEmpty(id))
             {
                 query = query.Where(p => p.SL_ID.ToLower().Contains(id.ToLower()));
             }
 
+            // Filter by khachhang if provided
             if (!string.IsNullOrEmpty(khachhang))
             {
                 query = query.Where(p => p.CUS_ID.ToLower().Contains(khachhang.ToLower()));
             }
 
-            if (!string.IsNullOrEmpty(nhanvien))
-            {
-                query = query.Where(p => p.EMP_ID.ToLower().Contains(nhanvien.ToLower()));
-            }
-
+            // Filter by startDate if provided
             if (startDate.HasValue)
             {
                 query = query.Where(p => p.SL_DATE >= startDate.Value);
             }
 
+            // Filter by endDate if provided
             if (endDate.HasValue)
             {
                 query = query.Where(p => p.SL_DATE <= endDate.Value);
             }
 
+            // Execute the query and return the results as a list
             return query.ToList();
         }
+
 
 
         public void NewSalebill(

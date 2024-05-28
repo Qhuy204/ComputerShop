@@ -373,8 +373,8 @@
             // 
             // cltotalmoney
             // 
-            this.cltotalmoney.DataPropertyName = "TOTAL_MONEY";
-            this.cltotalmoney.HeaderText = "Tổng tiền";
+            this.cltotalmoney.DataPropertyName = "MONEY_AFTER_DISCOUNT";
+            this.cltotalmoney.HeaderText = "Tổng khách phải trả";
             this.cltotalmoney.Name = "cltotalmoney";
             this.cltotalmoney.ReadOnly = true;
             // 
@@ -425,6 +425,16 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Panel btnXuatdulieu;
         private Guna.UI2.WinForms.Guna2DataGridView dgvhdban;
+        private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtpendate;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dtstartdate;
+        private Guna.UI2.WinForms.Guna2Button btnxoafilter;
+        private Guna.UI2.WinForms.Guna2Button btnsearch;
+        private Guna.UI2.WinForms.Guna2ComboBox cbbKhachhang;
+        private Guna.UI2.WinForms.Guna2TextBox txtTimmgg;
+        private Guna.UI2.WinForms.Guna2Button btnTaodonhangsi;
+        private Guna.UI2.WinForms.Guna2Button btXuatdulieu;
+        private Guna.UI2.WinForms.Guna2Button btntaodonhangle;
         private System.Windows.Forms.DataGridViewTextBoxColumn clID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cldate;
         private System.Windows.Forms.DataGridViewTextBoxColumn clcuss;
@@ -436,15 +446,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clpayment;
         private System.Windows.Forms.DataGridViewTextBoxColumn clstatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnote;
-        private System.Windows.Forms.Label label3;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtpendate;
-        private Guna.UI2.WinForms.Guna2DateTimePicker dtstartdate;
-        private Guna.UI2.WinForms.Guna2Button btnxoafilter;
-        private Guna.UI2.WinForms.Guna2Button btnsearch;
-        private Guna.UI2.WinForms.Guna2ComboBox cbbKhachhang;
-        private Guna.UI2.WinForms.Guna2TextBox txtTimmgg;
-        private Guna.UI2.WinForms.Guna2Button btnTaodonhangsi;
-        private Guna.UI2.WinForms.Guna2Button btXuatdulieu;
-        private Guna.UI2.WinForms.Guna2Button btntaodonhangle;
     }
 }
