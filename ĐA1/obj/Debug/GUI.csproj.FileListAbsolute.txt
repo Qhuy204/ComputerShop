@@ -111,3 +111,10 @@ D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_DSLoaiSP.resou
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_ThemLoaiSP.resources
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_DSHDnhap.resources
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_ThemCTHDNhap.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_ThongtinHDban.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\SqlServerTypes\x64\msvcr120.dll
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\SqlServerTypes\x86\msvcr120.dll
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\Microsoft.SqlServer.Types.dll
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\HDBH.rdlc

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DAL
@@ -52,6 +53,20 @@ namespace DAL
             db.SALEBILL_DETAIL.Add(salebillDETAIL);
             db.SaveChanges();
 
+        }
+
+        public List<SALEBILL_DETAIL> TimKiemCTHoadonban(string mahd)
+        {
+            // Start with the full queryable set of SALEBILLs
+            var query = db.SALEBILL_DETAIL.AsQueryable();
+
+            // Filter by id if provided
+            if (!string.IsNullOrEmpty(mahd))
+            {
+                query = query.Where(p => p.SL_ID.ToLower() == (mahd.ToLower()));
+            }
+
+            return query.ToList();
         }
     }
 }

@@ -72,5 +72,10 @@ namespace BUS
         {
             dalcthdbh.NewSalebill(id, slid, prdid, quantity, prices);
         }
+
+        public List<SALEBILL_DETAIL> TimKiemCTHoadonban(string mahd)
+        {
+            return dalcthdbh.TimKiemCTHoadonban(mahd);
+        }
     }
 }

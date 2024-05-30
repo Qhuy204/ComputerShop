@@ -55,19 +55,19 @@ CREATE TABLE EMPLOYEES(
 );
 GO
 
-CREATE TABLE CUSTOMER (
-    CUS_ID VARCHAR(100) PRIMARY KEY,
-    CUS_NAME NVARCHAR(255) NOT NULL,
-	CUS_BIRTHDAY DATE,
-	CUS_GENDER NVARCHAR(3),
-	CUS_PHONE_NUMBER VARCHAR(10) NOT NULL,
-    CUS_ADDRESS NVARCHAR(255) NOT NULL,
-	CUS_TOTAL_SPENDING_MONEY INT,
-	CUS_TOTAL_PRODUCTS_PURCHASED INT,
-	CUS_TOTAL_QUANTITY_OF_ORDER INT,
-	CUS_DATE_OF_LAST_PURCHASE DATE,
-);
-GO
+	CREATE TABLE CUSTOMER (
+		CUS_ID VARCHAR(100) PRIMARY KEY,
+		CUS_NAME NVARCHAR(255) NOT NULL,
+		CUS_BIRTHDAY DATE,
+		CUS_GENDER NVARCHAR(3),
+		CUS_PHONE_NUMBER VARCHAR(10) NOT NULL,
+		CUS_ADDRESS NVARCHAR(255) NOT NULL,
+		CUS_TOTAL_SPENDING_MONEY INT,
+		CUS_TOTAL_PRODUCTS_PURCHASED INT,
+		CUS_TOTAL_QUANTITY_OF_ORDER INT,
+		CUS_DATE_OF_LAST_PURCHASE DATE,
+	);
+	GO
 ALTER TABLE CUSTOMER
 ADD EMAIL VARCHAR(255) 
 
@@ -493,6 +493,7 @@ BEGIN
     DECLARE @OLD_PRICE FLOAT;
     DECLARE @NEW_PRICE FLOAT;
     DECLARE @SL_DATE DATE;
+    DECLARE @MONEY_AFTER_DISCOUNT FLOAT;
 
     -- Handle INSERT and UPDATE
     IF EXISTS (SELECT * FROM inserted)
@@ -515,8 +516,9 @@ BEGIN
     )
     WHERE SL_ID = @SL_ID;
 
-    -- Get customer ID and sale date
-    SELECT @CUS_ID = CUS_ID, @SL_DATE = SL_DATE FROM SALEBILL WHERE SL_ID = @SL_ID;
+    -- Get customer ID, sale date and money after discount
+    SELECT @CUS_ID = CUS_ID, @SL_DATE = SL_DATE, @MONEY_AFTER_DISCOUNT = MONEY_AFTER_DISCOUNT
+    FROM SALEBILL WHERE SL_ID = @SL_ID;
 
     -- Adjust WAREHOUSE INVENTORY_QUANTITY and RDY_FOR_SALE
     IF EXISTS (SELECT * FROM inserted) AND NOT EXISTS (SELECT * FROM deleted)
@@ -554,11 +556,7 @@ BEGIN
     -- Update customer statistics
     UPDATE CUSTOMER
     SET 
-        CUS_TOTAL_SPENDING_MONEY = (
-            SELECT SUM(TOTAL_MONEY)
-            FROM SALEBILL
-            WHERE CUS_ID = @CUS_ID
-        ),
+        CUS_TOTAL_SPENDING_MONEY = ISNULL(CUS_TOTAL_SPENDING_MONEY, 0) + ISNULL(@MONEY_AFTER_DISCOUNT, 0),
         CUS_TOTAL_PRODUCTS_PURCHASED = (
             SELECT SUM(QUANTITY)
             FROM SALEBILL_DETAIL
@@ -578,6 +576,7 @@ BEGIN
     WHERE CUS_ID = @CUS_ID;
 END;
 GO
+
 
 
 
@@ -758,7 +757,7 @@ BEGIN
     FROM 
         DateRange DR
     LEFT JOIN 
-        SALEBILL SL ON DR.Date = SL.SL_DATE
+        SALEBILL SL ON CONVERT(VARCHAR(10), SL.SL_DATE, 112) = CONVERT(VARCHAR(10), DR.Date, 112)
     LEFT JOIN 
         SALEBILL_DETAIL SL_DETAIL ON SL.SL_ID = SL_DETAIL.SL_ID
     GROUP BY 
@@ -770,7 +769,7 @@ END;
 GO
 
 
-exec sp_ThongKeSanPhamBanRaTheoNgay '2024-05-01', '2024-05-30'
+exec sp_ThongKeSanPhamBanRaTheoNgay '2024-05-27', '2024-05-30'
 
 --2. Thống kê Khách hàng có số tiền chi tiêu nhiều nhất trong 1 khoảng thời gian:
 CREATE PROCEDURE sp_ThongKeKhachHangChiTieuNhieuNhat
@@ -893,7 +892,7 @@ BEGIN
         PRD.PRD_ID,
         PRD.PRD_NAME,
         SUM(SL_DETAIL.QUANTITY) AS TotalQuantitySold,
-        SUM(SL_DETAIL.QUANTITY * SL_DETAIL.PRICE) AS Tongtiendaban
+        SUM(SL_DETAIL.QUANTITY * SL_DETAIL.PRICE) AS TongTienDaBan
     FROM 
         SALEBILL_DETAIL SL_DETAIL
     INNER JOIN 
@@ -901,15 +900,16 @@ BEGIN
     INNER JOIN 
         SALEBILL SL ON SL_DETAIL.SL_ID = SL.SL_ID
     WHERE 
-        SL.SL_DATE BETWEEN @StartDate AND @EndDate
+        SL.SL_DATE >= @StartDate AND SL.SL_DATE < DATEADD(DAY, 1, @EndDate)
     GROUP BY 
         PRD.PRD_ID, PRD.PRD_NAME
     ORDER BY 
         TotalQuantitySold DESC;
 END;
 GO
+
  
-exec sp_ThongKeSanPhamBanChay '2024-05-01', '2024-05-30'
+exec sp_ThongKeSanPhamBanChay '2024-05-28', '2024-05-30'
 
 --6. Thống kê nhân viên bán được nhiều nhất:
 ALTER PROCEDURE sp_ThongKeNhanVienBanNhieuNhat
@@ -926,7 +926,7 @@ BEGIN
     INNER JOIN 
         EMPLOYEES EMP ON SL.EMP_ID = EMP.EMP_ID
     WHERE 
-        SL.SL_DATE BETWEEN @StartDate AND @EndDate
+        SL.SL_DATE >= @StartDate AND SL.SL_DATE < DATEADD(DAY, 1, @EndDate)
     GROUP BY 
         EMP.EMP_ID, EMP.EMP_NAME
     ORDER BY 
@@ -934,7 +934,7 @@ BEGIN
 END;
 GO
 
-EXEC sp_ThongKeNhanVienBanNhieuNhat '2024-05-01', '2024-05-15'
+EXEC sp_ThongKeNhanVienBanNhieuNhat '2024-05-28', '2024-05-30'
 
 
 -- Tạo thủ tục để tính số lượng đơn hàng trong ngày hiện tại
@@ -1016,7 +1016,7 @@ BEGIN
     FROM 
         DateRange d
     LEFT JOIN 
-        SALEBILL s ON d.[Date] = s.SL_DATE
+        SALEBILL s ON CONVERT(DATE, s.SL_DATE) = d.[Date]
     GROUP BY 
         d.[Date]
     ORDER BY 
@@ -1025,7 +1025,7 @@ BEGIN
 END;
 GO
 
-EXEC sp_ThongKeDoanhThuTheoKhoangThoiGian '2024-05-01', '2024-05-15';
+EXEC sp_ThongKeDoanhThuTheoKhoangThoiGian '2024-05-27', '2024-05-29';
 
 CREATE PROCEDURE sp_ThongKeDoanhThuTheoKhoangThoiGian
     @StartDate DATE,
@@ -1072,6 +1072,75 @@ END
 GO
 
 EXEC GetHourlySalesCount;
+
+
+ALTER PROCEDURE GetSaleBillData
+    @SL_ID VARCHAR(100)
+AS
+BEGIN
+    -- Select từ bảng SALEBILL và CUSTOMER với các thông tin bổ sung
+    SELECT
+        SB.SL_ID,
+        SB.SL_DATE,
+        SB.CUS_ID,
+        C.CUS_NAME,
+        C.CUS_ADDRESS,
+        C.CUS_PHONE_NUMBER,
+        C.EMAIL AS EMAIL,
+        SB.EMP_ID,
+        SB.DISCOUNT_CODE,
+        SB.PROMOTION_ID,
+        SB.BANGGIA,
+        SB.NOTE,
+        SB.TOTAL_MONEY,
+        SB.PAYMENT,
+        SB.STATUS,
+        SB.MONEY_AFTER_DISCOUNT,
+        NULL AS STT,
+        NULL AS SL_DETAIL_ID,
+        NULL AS PRD_ID,
+        NULL AS QUANTITY,
+        NULL AS PRICE
+    FROM SALEBILL SB
+    JOIN CUSTOMER C ON SB.CUS_ID = C.CUS_ID
+    WHERE SB.SL_ID = @SL_ID
+
+    UNION ALL
+
+    -- Select từ bảng SALEBILL_DETAIL với STT
+    SELECT
+        SB.SL_ID,
+        SB.SL_DATE,
+        SB.CUS_ID,
+        NULL AS CUS_NAME,
+        NULL AS CUS_ADDRESS,
+        NULL AS CUS_PHONE_NUMBER,
+        NULL AS EMAIL,
+        SB.EMP_ID,
+        NULL AS DISCOUNT_CODE,
+        NULL AS PROMOTION_ID,
+        NULL AS BANGGIA,
+        NULL AS NOTE,
+        NULL AS TOTAL_MONEY,
+        NULL AS PAYMENT,
+        NULL AS STATUS,
+        NULL AS MONEY_AFTER_DISCOUNT,
+        ROW_NUMBER() OVER (ORDER BY SD.SL_DETAIL_ID) AS STT,
+        SD.SL_DETAIL_ID,
+        SD.PRD_ID,
+        SD.QUANTITY,
+        SD.PRICE
+    FROM SALEBILL SB
+    JOIN SALEBILL_DETAIL SD ON SB.SL_ID = SD.SL_ID
+    WHERE SB.SL_ID = @SL_ID;
+END;
+GO
+
+
+
+
+EXEC GetSaleBillData @SL_ID = 'SB13';
+
 
 
 

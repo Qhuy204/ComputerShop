@@ -22,5 +22,16 @@ namespace ĐA1.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=Qhuy\\sqlexpress;Initial Catalog=CuaHangMayTinh;Integrated Security=Tr" +
+            "ue")]
+        public string CuaHangMayTinhConnectionString {
+            get {
+                return ((string)(this["CuaHangMayTinhConnectionString"]));
+            }
+        }
     }
 }

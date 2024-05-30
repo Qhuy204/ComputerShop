@@ -244,5 +244,19 @@ namespace DAL
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetDailySalesCount");
         }
+    
+        public virtual ObjectResult<Nullable<double>> GetTodayTotalRevenue()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<double>>("GetTodayTotalRevenue");
+        }
+    
+        public virtual ObjectResult<GetSaleBillData_Result> GetSaleBillData(string sL_ID)
+        {
+            var sL_IDParameter = sL_ID != null ?
+                new ObjectParameter("SL_ID", sL_ID) :
+                new ObjectParameter("SL_ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSaleBillData_Result>("GetSaleBillData", sL_IDParameter);
+        }
     }
 }

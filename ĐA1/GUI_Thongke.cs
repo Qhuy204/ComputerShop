@@ -3,13 +3,8 @@ using DAL;
 using Guna.Charts.WinForms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -108,7 +103,7 @@ namespace ĐA1
             }
 
             // Thêm Dataset vào chart
-            chartluongdonhang.Datasets.Add(dataset);
+            chartluongdonhang1.Datasets.Add(dataset);
 
             dataset.Label = "Số lượng sản phẩm bán ra theo ngày";
             dataset.FillColor = Color.White;
@@ -116,14 +111,14 @@ namespace ĐA1
 
 
             // Cập nhật chart để hiển thị dữ liệu mới
-            chartluongdonhang.Update();
+            chartluongdonhang1.Update();
         }
 
         private void btnloc_Click(object sender, EventArgs e)
         {
             updatedata();
-            chartluongdonhang.Datasets.Clear();
-            chartdoanhthu.Datasets.Clear();
+            chartluongdonhang1.Datasets.Clear();
+            chartdoanhthu1.Datasets.Clear();
             DisplayLuongdonhangChart();
             DisplayDoanhthuchart();
             txtDoanhthu.Text = lbldoanhthu.Text;
@@ -161,7 +156,7 @@ namespace ĐA1
             }
 
             // Thêm Dataset vào chart
-            chartdoanhthu.Datasets.Add(dataset);
+            chartdoanhthu1.Datasets.Add(dataset);
 
             dataset.Label = "Doanh thu theo ngày";
             dataset.FillColor = Color.White;
@@ -169,7 +164,12 @@ namespace ĐA1
 
 
             // Cập nhật chart để hiển thị dữ liệu mới
-            chartdoanhthu.Update();
+            chartdoanhthu1.Update();
+        }
+
+        private void guna2Panel6_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 

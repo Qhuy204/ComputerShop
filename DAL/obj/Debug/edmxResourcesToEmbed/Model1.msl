@@ -309,5 +309,27 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="GetDailySalesCount" FunctionName="CuaHangMayTinhModel.Store.GetDailySalesCount" />
     <FunctionImportMapping FunctionImportName="GetTodayTotalRevenue" FunctionName="CuaHangMayTinhModel.Store.GetTodayTotalRevenue" />
+    <FunctionImportMapping FunctionImportName="GetSaleBillData" FunctionName="CuaHangMayTinhModel.Store.GetSaleBillData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.GetSaleBillData_Result">
+          <ScalarProperty Name="SL_ID" ColumnName="SL_ID" />
+          <ScalarProperty Name="SL_DATE" ColumnName="SL_DATE" />
+          <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />
+          <ScalarProperty Name="CUS_NAME" ColumnName="CUS_NAME" />
+          <ScalarProperty Name="CUS_ADDRESS" ColumnName="CUS_ADDRESS" />
+          <ScalarProperty Name="CUS_PHONE_NUMBER" ColumnName="CUS_PHONE_NUMBER" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="DISCOUNT_CODE" ColumnName="DISCOUNT_CODE" />
+          <ScalarProperty Name="PROMOTION_ID" ColumnName="PROMOTION_ID" />
+          <ScalarProperty Name="BANGGIA" ColumnName="BANGGIA" />
+          <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+          <ScalarProperty Name="TOTAL_MONEY" ColumnName="TOTAL_MONEY" />
+          <ScalarProperty Name="PAYMENT" ColumnName="PAYMENT" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="MONEY_AFTER_DISCOUNT" ColumnName="MONEY_AFTER_DISCOUNT" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

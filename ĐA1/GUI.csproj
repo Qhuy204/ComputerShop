@@ -38,6 +38,18 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CommonObjectModel.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.CommonObjectModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CubeDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CubeDefModel.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.CubeDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.DataDefModel.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.DataDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -78,6 +90,9 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -108,6 +123,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CuaHangMayTinhDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CuaHangMayTinhDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CuaHangMayTinhDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CuaHangMayTinhDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CuaHangMayTinhDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CuaHangMayTinhDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="GUI_Chucvu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +294,12 @@
     <Compile Include="GUI_ThongtinCTKM.Designer.cs">
       <DependentUpon>GUI_ThongtinCTKM.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_ThongtinHDban.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_ThongtinHDban.Designer.cs">
+      <DependentUpon>GUI_ThongtinHDban.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_ThongtinKH.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +336,7 @@
     <Compile Include="GUI_Tongquan.Designer.cs">
       <DependentUpon>GUI_Tongquan.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UC_ProductControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -398,6 +435,9 @@
     <EmbeddedResource Include="GUI_ThongtinCTKM.resx">
       <DependentUpon>GUI_ThongtinCTKM.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI_ThongtinHDban.resx">
+      <DependentUpon>GUI_ThongtinHDban.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_ThongtinKH.resx">
       <DependentUpon>GUI_ThongtinKH.cs</DependentUpon>
     </EmbeddedResource>
@@ -415,6 +455,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_Tongquan.resx">
       <DependentUpon>GUI_Tongquan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HDbanhang.rdlc" />
+    <EmbeddedResource Include="HDBH.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_ProductControl.resx">
       <DependentUpon>UC_ProductControl.cs</DependentUpon>
@@ -435,7 +479,56 @@
     <EmbeddedResource Include="UC_SearchResult.resx">
       <DependentUpon>UC_SearchResult.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="CuaHangMayTinhDataSet.xsc">
+      <DependentUpon>CuaHangMayTinhDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CuaHangMayTinhDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CuaHangMayTinhDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CuaHangMayTinhDataSet.xss">
+      <DependentUpon>CuaHangMayTinhDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CuaHangMayTinhDataSet1.xsc">
+      <DependentUpon>CuaHangMayTinhDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CuaHangMayTinhDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CuaHangMayTinhDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CuaHangMayTinhDataSet1.xss">
+      <DependentUpon>CuaHangMayTinhDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CuaHangMayTinhDataSet2.xsc">
+      <DependentUpon>CuaHangMayTinhDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="CuaHangMayTinhDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CuaHangMayTinhDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CuaHangMayTinhDataSet2.xss">
+      <DependentUpon>CuaHangMayTinhDataSet2.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\BUS.BUS_Chucvu.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_CodeKhuyenmai.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_CTHDBanhang.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_CTHoadonnhaphang.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_CTKhuyenmai.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_DSKhachhang.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_DSLoaiSP.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_DSNhanvien.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_HDBanhang.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_Hoadonnhaphang.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_Khohang.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_Payment.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_QLNhacungcap.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_Quyen.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_QuyenofChucvu.datasource" />
+    <None Include="Properties\DataSources\BUS.BUS_StatisticsService.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -459,9 +552,24 @@
       <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\logo_momo.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

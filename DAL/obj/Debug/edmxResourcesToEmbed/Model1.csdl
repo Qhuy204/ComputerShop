@@ -428,6 +428,9 @@
     <FunctionImport Name="GetHourlySalesCount" ReturnType="Collection(CuaHangMayTinhModel.GetHourlySalesCount_Result)" />
     <FunctionImport Name="GetDailySalesCount" ReturnType="Collection(Int32)" />
     <FunctionImport Name="GetTodayTotalRevenue" ReturnType="Collection(Double)" />
+    <FunctionImport Name="GetSaleBillData" ReturnType="Collection(CuaHangMayTinhModel.GetSaleBillData_Result)">
+      <Parameter Name="SL_ID" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -479,5 +482,23 @@
   <ComplexType Name="GetHourlySalesCount_Result">
     <Property Type="Int32" Name="Hour" Nullable="true" />
     <Property Type="Int32" Name="SalesCount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="GetSaleBillData_Result">
+    <Property Type="String" Name="SL_ID" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="SL_DATE" Nullable="true" Precision="23" />
+    <Property Type="String" Name="CUS_ID" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="CUS_NAME" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="CUS_ADDRESS" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="CUS_PHONE_NUMBER" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="EMP_ID" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DISCOUNT_CODE" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PROMOTION_ID" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="BANGGIA" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NOTE" Nullable="true" MaxLength="255" />
+    <Property Type="Double" Name="TOTAL_MONEY" Nullable="true" />
+    <Property Type="String" Name="PAYMENT" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="STATUS" Nullable="true" MaxLength="255" />
+    <Property Type="Double" Name="MONEY_AFTER_DISCOUNT" Nullable="true" />
   </ComplexType>
 </Schema>

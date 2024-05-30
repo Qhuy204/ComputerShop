@@ -315,6 +315,9 @@
         <Function Name="GetDailySalesCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetHourlyRevenue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="GetHourlySalesCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetSaleBillData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SL_ID" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetTodayTotalRevenue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -857,6 +860,9 @@
           <FunctionImport Name="GetHourlySalesCount" ReturnType="Collection(CuaHangMayTinhModel.GetHourlySalesCount_Result)" />
           <FunctionImport Name="GetDailySalesCount" ReturnType="Collection(Int32)" />
           <FunctionImport Name="GetTodayTotalRevenue" ReturnType="Collection(Double)" />
+          <FunctionImport Name="GetSaleBillData" ReturnType="Collection(CuaHangMayTinhModel.GetSaleBillData_Result)">
+          <Parameter Name="SL_ID" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -908,6 +914,24 @@
         <ComplexType Name="GetHourlySalesCount_Result">
           <Property Type="Int32" Name="Hour" Nullable="true" />
           <Property Type="Int32" Name="SalesCount" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetSaleBillData_Result">
+          <Property Type="String" Name="SL_ID" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="SL_DATE" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CUS_ID" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CUS_NAME" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="CUS_ADDRESS" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="CUS_PHONE_NUMBER" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="EMP_ID" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DISCOUNT_CODE" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PROMOTION_ID" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="BANGGIA" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NOTE" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="TOTAL_MONEY" Nullable="true" />
+          <Property Type="String" Name="PAYMENT" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="STATUS" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="MONEY_AFTER_DISCOUNT" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1223,6 +1247,28 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetDailySalesCount" FunctionName="CuaHangMayTinhModel.Store.GetDailySalesCount" />
           <FunctionImportMapping FunctionImportName="GetTodayTotalRevenue" FunctionName="CuaHangMayTinhModel.Store.GetTodayTotalRevenue" />
+          <FunctionImportMapping FunctionImportName="GetSaleBillData" FunctionName="CuaHangMayTinhModel.Store.GetSaleBillData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CuaHangMayTinhModel.GetSaleBillData_Result">
+                <ScalarProperty Name="SL_ID" ColumnName="SL_ID" />
+                <ScalarProperty Name="SL_DATE" ColumnName="SL_DATE" />
+                <ScalarProperty Name="CUS_ID" ColumnName="CUS_ID" />
+                <ScalarProperty Name="CUS_NAME" ColumnName="CUS_NAME" />
+                <ScalarProperty Name="CUS_ADDRESS" ColumnName="CUS_ADDRESS" />
+                <ScalarProperty Name="CUS_PHONE_NUMBER" ColumnName="CUS_PHONE_NUMBER" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+                <ScalarProperty Name="DISCOUNT_CODE" ColumnName="DISCOUNT_CODE" />
+                <ScalarProperty Name="PROMOTION_ID" ColumnName="PROMOTION_ID" />
+                <ScalarProperty Name="BANGGIA" ColumnName="BANGGIA" />
+                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="TOTAL_MONEY" ColumnName="TOTAL_MONEY" />
+                <ScalarProperty Name="PAYMENT" ColumnName="PAYMENT" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="MONEY_AFTER_DISCOUNT" ColumnName="MONEY_AFTER_DISCOUNT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
