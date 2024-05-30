@@ -318,6 +318,9 @@
         <Function Name="GetSaleBillData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SL_ID" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetSaleBillDataz" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SL_ID" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetTodayTotalRevenue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -863,6 +866,9 @@
           <FunctionImport Name="GetSaleBillData" ReturnType="Collection(CuaHangMayTinhModel.GetSaleBillData_Result)">
           <Parameter Name="SL_ID" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetSaleBillDataz" ReturnType="Collection(CuaHangMayTinhModel.GetSaleBillDataz_Result)">
+            <Parameter Name="SL_ID" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -932,6 +938,16 @@
           <Property Type="String" Name="PAYMENT" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="STATUS" Nullable="true" MaxLength="255" />
           <Property Type="Double" Name="MONEY_AFTER_DISCOUNT" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetSaleBillDataz_Result">
+          <Property Type="Int64" Name="STT" Nullable="true" />
+          <Property Type="String" Name="SL_DETAIL_ID" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="PRD_ID" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="PRD_NAME" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="QUANTITY" Nullable="false" />
+          <Property Type="Double" Name="PRICE" Nullable="true" />
+          <Property Type="String" Name="STATUS" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="TOTAL_MONEY_DETAIL" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1266,6 +1282,20 @@
                 <ScalarProperty Name="PAYMENT" ColumnName="PAYMENT" />
                 <ScalarProperty Name="STATUS" ColumnName="STATUS" />
                 <ScalarProperty Name="MONEY_AFTER_DISCOUNT" ColumnName="MONEY_AFTER_DISCOUNT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSaleBillDataz" FunctionName="CuaHangMayTinhModel.Store.GetSaleBillDataz">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CuaHangMayTinhModel.GetSaleBillDataz_Result">
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="SL_DETAIL_ID" ColumnName="SL_DETAIL_ID" />
+                <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
+                <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="TOTAL_MONEY_DETAIL" ColumnName="TOTAL_MONEY_DETAIL" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

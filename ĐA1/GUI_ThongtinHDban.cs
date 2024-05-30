@@ -14,6 +14,8 @@ namespace ĐA1
         BUS_HDBanhang bushdban = new BUS_HDBanhang();
         BUS_DSKhachhang buskh = new BUS_DSKhachhang();
         BUS_Khohang buskho = new BUS_Khohang();
+        BUS_StatisticsService BUS_StatisticsService = new BUS_StatisticsService();
+
         public GUI_ThongtinHDban()
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace ĐA1
             }
 
             // Tìm kiếm chi tiết hóa đơn bán
-            var data = buscthd.TimKiemCTHoadonban(txtmahd.Text);
+            var data = BUS_StatisticsService.GetSaleBillData(txtmahd.Text);
             if (data == null || !data.Any())
             {
                 MessageBox.Show("Không tìm thấy chi tiết hóa đơn bán cho mã hóa đơn này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -44,6 +46,8 @@ namespace ĐA1
                 return;
             }
 
+            var datasp = bushdban.GetAll();
+
             // Tìm kiếm thông tin khách hàng
             var datakh = buskh.GetByID(datasb.CUS_ID.ToString());
             if (datakh == null)
@@ -51,47 +55,53 @@ namespace ĐA1
                 MessageBox.Show("Không tìm thấy thông tin khách hàng cho mã khách hàng này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            var datacthd = buscthd.SearchSalebilldetail(txtmahd.Text).ToList();
-            // Assuming PRD_ID is a string type, you can join the IDs into a comma-separated string
-            string mahd = string.Join(",", datacthd.Select(x => x.PRD_ID));
-            // Corrected line to call GetByID method
-            var datasp = buskho.GetByID(mahd);
-
 
             // Thiết lập các tham số cho báo cáo
-            List<ReportParameter> parametersList = new List<ReportParameter>();
-
-            parametersList.Add(new ReportParameter("SL_ID", datasb?.SL_ID.ToString() ?? ""));
-            parametersList.Add(new ReportParameter("SL_DATE", datasb?.SL_DATE?.ToString("dd/MM/yyyy") ?? ""));
-            parametersList.Add(new ReportParameter("EMP_ID", datasb?.EMP_ID.ToString() ?? ""));
-            parametersList.Add(new ReportParameter("CUS_NAME", datakh?.CUS_NAME ?? "Không có tên"));
-            parametersList.Add(new ReportParameter("CUS_ADDRESS", datakh?.CUS_ADDRESS ?? "Không có địa chỉ"));
-            parametersList.Add(new ReportParameter("CUS_PHONE_NUMBER", datakh?.CUS_PHONE_NUMBER ?? "Không có số điện thoại"));
-            parametersList.Add(new ReportParameter("EMAIL", datakh?.EMAIL ?? ""));
-            parametersList.Add(new ReportParameter("TOTAL_MONEY", datasb?.TOTAL_MONEY.ToString() ?? ""));
-            parametersList.Add(new ReportParameter("DISCOUNT_CODE", datasb?.DISCOUNT_CODE ?? ""));
-            parametersList.Add(new ReportParameter("MONEY_AFTER_DISCOUNT", datasb?.MONEY_AFTER_DISCOUNT.ToString() ?? ""));
-            parametersList.Add(new ReportParameter("CUS_NAME", datakh?.CUS_NAME ?? "Không có tên"));
-            parametersList.Add(new ReportParameter("PRD_NAME", datasp?.PRD_NAME ?? "Không có tên"));
+            List<ReportParameter> parametersList = new List<ReportParameter>
+    {
+        new ReportParameter("SL_ID", datasb?.SL_ID.ToString() ?? ""),
+        new ReportParameter("SL_DATE", datasb?.SL_DATE?.ToString("dd/MM/yyyy") ?? ""),
+        new ReportParameter("EMP_ID", datasb?.EMP_ID.ToString() ?? ""),
+        new ReportParameter("CUS_NAME", datakh?.CUS_NAME ?? "Không có tên"),
+        new ReportParameter("CUS_ADDRESS", datakh?.CUS_ADDRESS ?? "Không có địa chỉ"),
+        new ReportParameter("CUS_PHONE_NUMBER", datakh?.CUS_PHONE_NUMBER ?? "Không có số điện thoại"),
+        new ReportParameter("EMAIL", datakh?.EMAIL ?? ""),
+        new ReportParameter("TOTAL_MONEY", datasb?.TOTAL_MONEY.ToString() ?? ""),
+        new ReportParameter("DISCOUNT_CODE", datasb?.DISCOUNT_CODE ?? ""),
+        new ReportParameter("MONEY_AFTER_DISCOUNT", datasb?.MONEY_AFTER_DISCOUNT.ToString() ?? ""),
+        new ReportParameter("CUS_NAME", datakh?.CUS_NAME ?? "Không có tên")
+    };
 
             ReportParameter[] parameters = parametersList.ToArray();
 
-
             // Cập nhật nguồn dữ liệu cho báo cáo
             this.rpvHoadonban.LocalReport.ReportPath = "HDBH.rdlc";
+
+            // Assuming 'data' is a list of sale bill items, which should match DataSet1
             var reportDataSource1 = new ReportDataSource("DataSet1", data);
-            var reportDataSource2 = new ReportDataSource("DataSet2", new List<object>()); // Thay thế danh sách rỗng này bằng dữ liệu thực tế nếu cần
-            var reportDataSource3 = new ReportDataSource("DataSet3", new List<object>()); // Thay thế danh sách rỗng này bằng dữ liệu thực tế nếu cần
-            var reportDataSource4 = new ReportDataSource("DataSet4", new List<object>()); // Thay thế danh sách rỗng này bằng dữ liệu thực tế nếu cần
 
+            // Wrap datasb in a list to make it compatible as a data source
+            var reportDataSource2 = new ReportDataSource("DataSet2", new List<object> { datasb });
+
+            // Assuming 'datasp' is a list of all products, which should match DataSet4
+            var reportDataSource4 = new ReportDataSource("DataSet4", datasp);
+
+            // Clear existing data sources
             this.rpvHoadonban.LocalReport.DataSources.Clear();
-            this.rpvHoadonban.LocalReport.DataSources.Add(reportDataSource1);
-            this.rpvHoadonban.LocalReport.DataSources.Add(reportDataSource2); // Thêm DataSet2 vào
-            this.rpvHoadonban.LocalReport.DataSources.Add(reportDataSource3); // Thêm DataSet3 vào
-            this.rpvHoadonban.LocalReport.DataSources.Add(reportDataSource4); // Thêm DataSet3 vào
 
+            // Add new data sources
+            this.rpvHoadonban.LocalReport.DataSources.Add(reportDataSource1);
+            this.rpvHoadonban.LocalReport.DataSources.Add(reportDataSource2);
+            this.rpvHoadonban.LocalReport.DataSources.Add(reportDataSource4);
+
+            // Set the parameters for the report
             this.rpvHoadonban.LocalReport.SetParameters(parameters);
+
+            // Refresh the report
             this.rpvHoadonban.RefreshReport();
         }
+
+
+
     }
 }

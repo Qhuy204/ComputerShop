@@ -116,6 +116,9 @@
     <Compile Include="GetHourlySalesCount_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetSaleBillDataz_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetSaleBillData_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

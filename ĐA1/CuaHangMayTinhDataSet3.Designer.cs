@@ -20,9 +20,9 @@ namespace ĐA1 {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("CuaHangMayTinhDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("CuaHangMayTinhDataSet3")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class CuaHangMayTinhDataSet : global::System.Data.DataSet {
+    public partial class CuaHangMayTinhDataSet3 : global::System.Data.DataSet {
         
         private GetSaleBillDataDataTable tableGetSaleBillData;
         
@@ -30,7 +30,7 @@ namespace ĐA1 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public CuaHangMayTinhDataSet() {
+        public CuaHangMayTinhDataSet3() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace ĐA1 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected CuaHangMayTinhDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected CuaHangMayTinhDataSet3(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace ĐA1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            CuaHangMayTinhDataSet cln = ((CuaHangMayTinhDataSet)(base.Clone()));
+            CuaHangMayTinhDataSet3 cln = ((CuaHangMayTinhDataSet3)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace ĐA1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "CuaHangMayTinhDataSet";
+            this.DataSetName = "CuaHangMayTinhDataSet3";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/CuaHangMayTinhDataSet.xsd";
+            this.Namespace = "http://tempuri.org/CuaHangMayTinhDataSet3.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableGetSaleBillData = new GetSaleBillDataDataTable();
@@ -225,7 +225,7 @@ namespace ĐA1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            CuaHangMayTinhDataSet ds = new CuaHangMayTinhDataSet();
+            CuaHangMayTinhDataSet3 ds = new CuaHangMayTinhDataSet3();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -281,35 +281,19 @@ namespace ĐA1 {
             
             private global::System.Data.DataColumn columnSL_ID;
             
-            private global::System.Data.DataColumn columnSL_DATE;
+            private global::System.Data.DataColumn columnSTT;
             
-            private global::System.Data.DataColumn columnCUS_ID;
+            private global::System.Data.DataColumn columnSL_DETAIL_ID;
             
-            private global::System.Data.DataColumn columnCUS_NAME;
+            private global::System.Data.DataColumn columnPRD_ID;
             
-            private global::System.Data.DataColumn columnCUS_ADDRESS;
+            private global::System.Data.DataColumn columnPRD_NAME;
             
-            private global::System.Data.DataColumn columnCUS_PHONE_NUMBER;
+            private global::System.Data.DataColumn columnQUANTITY;
             
-            private global::System.Data.DataColumn columnEMAIL;
+            private global::System.Data.DataColumn columnPRICE;
             
-            private global::System.Data.DataColumn columnEMP_ID;
-            
-            private global::System.Data.DataColumn columnDISCOUNT_CODE;
-            
-            private global::System.Data.DataColumn columnPROMOTION_ID;
-            
-            private global::System.Data.DataColumn columnBANGGIA;
-            
-            private global::System.Data.DataColumn columnNOTE;
-            
-            private global::System.Data.DataColumn columnTOTAL_MONEY;
-            
-            private global::System.Data.DataColumn columnPAYMENT;
-            
-            private global::System.Data.DataColumn columnSTATUS;
-            
-            private global::System.Data.DataColumn columnMONEY_AFTER_DISCOUNT;
+            private global::System.Data.DataColumn columnTOTAL_MONEY_DETAIL;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -354,121 +338,57 @@ namespace ĐA1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn SL_DATEColumn {
+            public global::System.Data.DataColumn STTColumn {
                 get {
-                    return this.columnSL_DATE;
+                    return this.columnSTT;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CUS_IDColumn {
+            public global::System.Data.DataColumn SL_DETAIL_IDColumn {
                 get {
-                    return this.columnCUS_ID;
+                    return this.columnSL_DETAIL_ID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CUS_NAMEColumn {
+            public global::System.Data.DataColumn PRD_IDColumn {
                 get {
-                    return this.columnCUS_NAME;
+                    return this.columnPRD_ID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CUS_ADDRESSColumn {
+            public global::System.Data.DataColumn PRD_NAMEColumn {
                 get {
-                    return this.columnCUS_ADDRESS;
+                    return this.columnPRD_NAME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn CUS_PHONE_NUMBERColumn {
+            public global::System.Data.DataColumn QUANTITYColumn {
                 get {
-                    return this.columnCUS_PHONE_NUMBER;
+                    return this.columnQUANTITY;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn EMAILColumn {
+            public global::System.Data.DataColumn PRICEColumn {
                 get {
-                    return this.columnEMAIL;
+                    return this.columnPRICE;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn EMP_IDColumn {
+            public global::System.Data.DataColumn TOTAL_MONEY_DETAILColumn {
                 get {
-                    return this.columnEMP_ID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn DISCOUNT_CODEColumn {
-                get {
-                    return this.columnDISCOUNT_CODE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PROMOTION_IDColumn {
-                get {
-                    return this.columnPROMOTION_ID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn BANGGIAColumn {
-                get {
-                    return this.columnBANGGIA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn NOTEColumn {
-                get {
-                    return this.columnNOTE;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TOTAL_MONEYColumn {
-                get {
-                    return this.columnTOTAL_MONEY;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PAYMENTColumn {
-                get {
-                    return this.columnPAYMENT;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn STATUSColumn {
-                get {
-                    return this.columnSTATUS;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn MONEY_AFTER_DISCOUNTColumn {
-                get {
-                    return this.columnMONEY_AFTER_DISCOUNT;
+                    return this.columnTOTAL_MONEY_DETAIL;
                 }
             }
             
@@ -509,51 +429,20 @@ namespace ĐA1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public GetSaleBillDataRow AddGetSaleBillDataRow(
-                        string SL_ID, 
-                        System.DateTime SL_DATE, 
-                        string CUS_ID, 
-                        string CUS_NAME, 
-                        string CUS_ADDRESS, 
-                        string CUS_PHONE_NUMBER, 
-                        string EMAIL, 
-                        string EMP_ID, 
-                        string DISCOUNT_CODE, 
-                        string PROMOTION_ID, 
-                        string BANGGIA, 
-                        string NOTE, 
-                        double TOTAL_MONEY, 
-                        string PAYMENT, 
-                        string STATUS, 
-                        double MONEY_AFTER_DISCOUNT) {
+            public GetSaleBillDataRow AddGetSaleBillDataRow(string SL_ID, long STT, string SL_DETAIL_ID, string PRD_ID, string PRD_NAME, int QUANTITY, double PRICE, double TOTAL_MONEY_DETAIL) {
                 GetSaleBillDataRow rowGetSaleBillDataRow = ((GetSaleBillDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SL_ID,
-                        SL_DATE,
-                        CUS_ID,
-                        CUS_NAME,
-                        CUS_ADDRESS,
-                        CUS_PHONE_NUMBER,
-                        EMAIL,
-                        EMP_ID,
-                        DISCOUNT_CODE,
-                        PROMOTION_ID,
-                        BANGGIA,
-                        NOTE,
-                        TOTAL_MONEY,
-                        PAYMENT,
-                        STATUS,
-                        MONEY_AFTER_DISCOUNT};
+                        STT,
+                        SL_DETAIL_ID,
+                        PRD_ID,
+                        PRD_NAME,
+                        QUANTITY,
+                        PRICE,
+                        TOTAL_MONEY_DETAIL};
                 rowGetSaleBillDataRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowGetSaleBillDataRow);
                 return rowGetSaleBillDataRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public GetSaleBillDataRow FindBySL_ID(string SL_ID) {
-                return ((GetSaleBillDataRow)(this.Rows.Find(new object[] {
-                            SL_ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -574,21 +463,13 @@ namespace ĐA1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
                 this.columnSL_ID = base.Columns["SL_ID"];
-                this.columnSL_DATE = base.Columns["SL_DATE"];
-                this.columnCUS_ID = base.Columns["CUS_ID"];
-                this.columnCUS_NAME = base.Columns["CUS_NAME"];
-                this.columnCUS_ADDRESS = base.Columns["CUS_ADDRESS"];
-                this.columnCUS_PHONE_NUMBER = base.Columns["CUS_PHONE_NUMBER"];
-                this.columnEMAIL = base.Columns["EMAIL"];
-                this.columnEMP_ID = base.Columns["EMP_ID"];
-                this.columnDISCOUNT_CODE = base.Columns["DISCOUNT_CODE"];
-                this.columnPROMOTION_ID = base.Columns["PROMOTION_ID"];
-                this.columnBANGGIA = base.Columns["BANGGIA"];
-                this.columnNOTE = base.Columns["NOTE"];
-                this.columnTOTAL_MONEY = base.Columns["TOTAL_MONEY"];
-                this.columnPAYMENT = base.Columns["PAYMENT"];
-                this.columnSTATUS = base.Columns["STATUS"];
-                this.columnMONEY_AFTER_DISCOUNT = base.Columns["MONEY_AFTER_DISCOUNT"];
+                this.columnSTT = base.Columns["STT"];
+                this.columnSL_DETAIL_ID = base.Columns["SL_DETAIL_ID"];
+                this.columnPRD_ID = base.Columns["PRD_ID"];
+                this.columnPRD_NAME = base.Columns["PRD_NAME"];
+                this.columnQUANTITY = base.Columns["QUANTITY"];
+                this.columnPRICE = base.Columns["PRICE"];
+                this.columnTOTAL_MONEY_DETAIL = base.Columns["TOTAL_MONEY_DETAIL"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -596,59 +477,31 @@ namespace ĐA1 {
             private void InitClass() {
                 this.columnSL_ID = new global::System.Data.DataColumn("SL_ID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSL_ID);
-                this.columnSL_DATE = new global::System.Data.DataColumn("SL_DATE", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSL_DATE);
-                this.columnCUS_ID = new global::System.Data.DataColumn("CUS_ID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCUS_ID);
-                this.columnCUS_NAME = new global::System.Data.DataColumn("CUS_NAME", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCUS_NAME);
-                this.columnCUS_ADDRESS = new global::System.Data.DataColumn("CUS_ADDRESS", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCUS_ADDRESS);
-                this.columnCUS_PHONE_NUMBER = new global::System.Data.DataColumn("CUS_PHONE_NUMBER", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCUS_PHONE_NUMBER);
-                this.columnEMAIL = new global::System.Data.DataColumn("EMAIL", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEMAIL);
-                this.columnEMP_ID = new global::System.Data.DataColumn("EMP_ID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEMP_ID);
-                this.columnDISCOUNT_CODE = new global::System.Data.DataColumn("DISCOUNT_CODE", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDISCOUNT_CODE);
-                this.columnPROMOTION_ID = new global::System.Data.DataColumn("PROMOTION_ID", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPROMOTION_ID);
-                this.columnBANGGIA = new global::System.Data.DataColumn("BANGGIA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnBANGGIA);
-                this.columnNOTE = new global::System.Data.DataColumn("NOTE", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNOTE);
-                this.columnTOTAL_MONEY = new global::System.Data.DataColumn("TOTAL_MONEY", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTOTAL_MONEY);
-                this.columnPAYMENT = new global::System.Data.DataColumn("PAYMENT", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPAYMENT);
-                this.columnSTATUS = new global::System.Data.DataColumn("STATUS", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSTATUS);
-                this.columnMONEY_AFTER_DISCOUNT = new global::System.Data.DataColumn("MONEY_AFTER_DISCOUNT", typeof(double), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMONEY_AFTER_DISCOUNT);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnSL_ID}, true));
+                this.columnSTT = new global::System.Data.DataColumn("STT", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSTT);
+                this.columnSL_DETAIL_ID = new global::System.Data.DataColumn("SL_DETAIL_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSL_DETAIL_ID);
+                this.columnPRD_ID = new global::System.Data.DataColumn("PRD_ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRD_ID);
+                this.columnPRD_NAME = new global::System.Data.DataColumn("PRD_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRD_NAME);
+                this.columnQUANTITY = new global::System.Data.DataColumn("QUANTITY", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQUANTITY);
+                this.columnPRICE = new global::System.Data.DataColumn("PRICE", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRICE);
+                this.columnTOTAL_MONEY_DETAIL = new global::System.Data.DataColumn("TOTAL_MONEY_DETAIL", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTOTAL_MONEY_DETAIL);
                 this.columnSL_ID.AllowDBNull = false;
-                this.columnSL_ID.Unique = true;
                 this.columnSL_ID.MaxLength = 100;
-                this.columnCUS_ID.AllowDBNull = false;
-                this.columnCUS_ID.MaxLength = 100;
-                this.columnCUS_NAME.AllowDBNull = false;
-                this.columnCUS_NAME.MaxLength = 255;
-                this.columnCUS_ADDRESS.AllowDBNull = false;
-                this.columnCUS_ADDRESS.MaxLength = 255;
-                this.columnCUS_PHONE_NUMBER.AllowDBNull = false;
-                this.columnCUS_PHONE_NUMBER.MaxLength = 10;
-                this.columnEMAIL.MaxLength = 255;
-                this.columnEMP_ID.AllowDBNull = false;
-                this.columnEMP_ID.MaxLength = 100;
-                this.columnDISCOUNT_CODE.MaxLength = 100;
-                this.columnPROMOTION_ID.MaxLength = 10;
-                this.columnBANGGIA.MaxLength = 100;
-                this.columnNOTE.MaxLength = 255;
-                this.columnPAYMENT.AllowDBNull = false;
-                this.columnPAYMENT.MaxLength = 50;
-                this.columnSTATUS.MaxLength = 255;
+                this.columnSTT.ReadOnly = true;
+                this.columnSL_DETAIL_ID.AllowDBNull = false;
+                this.columnSL_DETAIL_ID.MaxLength = 100;
+                this.columnPRD_ID.AllowDBNull = false;
+                this.columnPRD_ID.MaxLength = 100;
+                this.columnPRD_NAME.AllowDBNull = false;
+                this.columnPRD_NAME.MaxLength = 100;
+                this.columnQUANTITY.AllowDBNull = false;
+                this.columnTOTAL_MONEY_DETAIL.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -716,7 +569,7 @@ namespace ĐA1 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CuaHangMayTinhDataSet ds = new CuaHangMayTinhDataSet();
+                CuaHangMayTinhDataSet3 ds = new CuaHangMayTinhDataSet3();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -802,321 +655,130 @@ namespace ĐA1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public System.DateTime SL_DATE {
+            public long STT {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableGetSaleBillData.SL_DATEColumn]));
+                        return ((long)(this[this.tableGetSaleBillData.STTColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SL_DATE\' in table \'GetSaleBillData\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'STT\' in table \'GetSaleBillData\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGetSaleBillData.SL_DATEColumn] = value;
+                    this[this.tableGetSaleBillData.STTColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string CUS_ID {
+            public string SL_DETAIL_ID {
                 get {
-                    return ((string)(this[this.tableGetSaleBillData.CUS_IDColumn]));
+                    return ((string)(this[this.tableGetSaleBillData.SL_DETAIL_IDColumn]));
                 }
                 set {
-                    this[this.tableGetSaleBillData.CUS_IDColumn] = value;
+                    this[this.tableGetSaleBillData.SL_DETAIL_IDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string CUS_NAME {
+            public string PRD_ID {
                 get {
-                    return ((string)(this[this.tableGetSaleBillData.CUS_NAMEColumn]));
+                    return ((string)(this[this.tableGetSaleBillData.PRD_IDColumn]));
                 }
                 set {
-                    this[this.tableGetSaleBillData.CUS_NAMEColumn] = value;
+                    this[this.tableGetSaleBillData.PRD_IDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string CUS_ADDRESS {
+            public string PRD_NAME {
                 get {
-                    return ((string)(this[this.tableGetSaleBillData.CUS_ADDRESSColumn]));
+                    return ((string)(this[this.tableGetSaleBillData.PRD_NAMEColumn]));
                 }
                 set {
-                    this[this.tableGetSaleBillData.CUS_ADDRESSColumn] = value;
+                    this[this.tableGetSaleBillData.PRD_NAMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string CUS_PHONE_NUMBER {
+            public int QUANTITY {
                 get {
-                    return ((string)(this[this.tableGetSaleBillData.CUS_PHONE_NUMBERColumn]));
+                    return ((int)(this[this.tableGetSaleBillData.QUANTITYColumn]));
                 }
                 set {
-                    this[this.tableGetSaleBillData.CUS_PHONE_NUMBERColumn] = value;
+                    this[this.tableGetSaleBillData.QUANTITYColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string EMAIL {
+            public double PRICE {
                 get {
                     try {
-                        return ((string)(this[this.tableGetSaleBillData.EMAILColumn]));
+                        return ((double)(this[this.tableGetSaleBillData.PRICEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'EMAIL\' in table \'GetSaleBillData\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PRICE\' in table \'GetSaleBillData\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGetSaleBillData.EMAILColumn] = value;
+                    this[this.tableGetSaleBillData.PRICEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string EMP_ID {
-                get {
-                    return ((string)(this[this.tableGetSaleBillData.EMP_IDColumn]));
-                }
-                set {
-                    this[this.tableGetSaleBillData.EMP_IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string DISCOUNT_CODE {
+            public double TOTAL_MONEY_DETAIL {
                 get {
                     try {
-                        return ((string)(this[this.tableGetSaleBillData.DISCOUNT_CODEColumn]));
+                        return ((double)(this[this.tableGetSaleBillData.TOTAL_MONEY_DETAILColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DISCOUNT_CODE\' in table \'GetSaleBillData\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TOTAL_MONEY_DETAIL\' in table \'GetSaleBillData\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableGetSaleBillData.DISCOUNT_CODEColumn] = value;
+                    this[this.tableGetSaleBillData.TOTAL_MONEY_DETAILColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string PROMOTION_ID {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetSaleBillData.PROMOTION_IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PROMOTION_ID\' in table \'GetSaleBillData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetSaleBillData.PROMOTION_IDColumn] = value;
-                }
+            public bool IsSTTNull() {
+                return this.IsNull(this.tableGetSaleBillData.STTColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string BANGGIA {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetSaleBillData.BANGGIAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'BANGGIA\' in table \'GetSaleBillData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetSaleBillData.BANGGIAColumn] = value;
-                }
+            public void SetSTTNull() {
+                this[this.tableGetSaleBillData.STTColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string NOTE {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetSaleBillData.NOTEColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NOTE\' in table \'GetSaleBillData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetSaleBillData.NOTEColumn] = value;
-                }
+            public bool IsPRICENull() {
+                return this.IsNull(this.tableGetSaleBillData.PRICEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double TOTAL_MONEY {
-                get {
-                    try {
-                        return ((double)(this[this.tableGetSaleBillData.TOTAL_MONEYColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TOTAL_MONEY\' in table \'GetSaleBillData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetSaleBillData.TOTAL_MONEYColumn] = value;
-                }
+            public void SetPRICENull() {
+                this[this.tableGetSaleBillData.PRICEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string PAYMENT {
-                get {
-                    return ((string)(this[this.tableGetSaleBillData.PAYMENTColumn]));
-                }
-                set {
-                    this[this.tableGetSaleBillData.PAYMENTColumn] = value;
-                }
+            public bool IsTOTAL_MONEY_DETAILNull() {
+                return this.IsNull(this.tableGetSaleBillData.TOTAL_MONEY_DETAILColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string STATUS {
-                get {
-                    try {
-                        return ((string)(this[this.tableGetSaleBillData.STATUSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'STATUS\' in table \'GetSaleBillData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableGetSaleBillData.STATUSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public double MONEY_AFTER_DISCOUNT {
-                get {
-                    try {
-                        return ((double)(this[this.tableGetSaleBillData.MONEY_AFTER_DISCOUNTColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MONEY_AFTER_DISCOUNT\' in table \'GetSaleBillData\' is DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableGetSaleBillData.MONEY_AFTER_DISCOUNTColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSL_DATENull() {
-                return this.IsNull(this.tableGetSaleBillData.SL_DATEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSL_DATENull() {
-                this[this.tableGetSaleBillData.SL_DATEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsEMAILNull() {
-                return this.IsNull(this.tableGetSaleBillData.EMAILColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetEMAILNull() {
-                this[this.tableGetSaleBillData.EMAILColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsDISCOUNT_CODENull() {
-                return this.IsNull(this.tableGetSaleBillData.DISCOUNT_CODEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetDISCOUNT_CODENull() {
-                this[this.tableGetSaleBillData.DISCOUNT_CODEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPROMOTION_IDNull() {
-                return this.IsNull(this.tableGetSaleBillData.PROMOTION_IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPROMOTION_IDNull() {
-                this[this.tableGetSaleBillData.PROMOTION_IDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsBANGGIANull() {
-                return this.IsNull(this.tableGetSaleBillData.BANGGIAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetBANGGIANull() {
-                this[this.tableGetSaleBillData.BANGGIAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsNOTENull() {
-                return this.IsNull(this.tableGetSaleBillData.NOTEColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetNOTENull() {
-                this[this.tableGetSaleBillData.NOTEColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTOTAL_MONEYNull() {
-                return this.IsNull(this.tableGetSaleBillData.TOTAL_MONEYColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTOTAL_MONEYNull() {
-                this[this.tableGetSaleBillData.TOTAL_MONEYColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsSTATUSNull() {
-                return this.IsNull(this.tableGetSaleBillData.STATUSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetSTATUSNull() {
-                this[this.tableGetSaleBillData.STATUSColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsMONEY_AFTER_DISCOUNTNull() {
-                return this.IsNull(this.tableGetSaleBillData.MONEY_AFTER_DISCOUNTColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetMONEY_AFTER_DISCOUNTNull() {
-                this[this.tableGetSaleBillData.MONEY_AFTER_DISCOUNTColumn] = global::System.Convert.DBNull;
+            public void SetTOTAL_MONEY_DETAILNull() {
+                this[this.tableGetSaleBillData.TOTAL_MONEY_DETAILColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1155,7 +817,7 @@ namespace ĐA1 {
         }
     }
 }
-namespace ĐA1.CuaHangMayTinhDataSetTableAdapters {
+namespace ĐA1.CuaHangMayTinhDataSet3TableAdapters {
     
     
     /// <summary>
@@ -1280,21 +942,13 @@ namespace ĐA1.CuaHangMayTinhDataSetTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "GetSaleBillData";
             tableMapping.ColumnMappings.Add("SL_ID", "SL_ID");
-            tableMapping.ColumnMappings.Add("SL_DATE", "SL_DATE");
-            tableMapping.ColumnMappings.Add("CUS_ID", "CUS_ID");
-            tableMapping.ColumnMappings.Add("CUS_NAME", "CUS_NAME");
-            tableMapping.ColumnMappings.Add("CUS_ADDRESS", "CUS_ADDRESS");
-            tableMapping.ColumnMappings.Add("CUS_PHONE_NUMBER", "CUS_PHONE_NUMBER");
-            tableMapping.ColumnMappings.Add("EMAIL", "EMAIL");
-            tableMapping.ColumnMappings.Add("EMP_ID", "EMP_ID");
-            tableMapping.ColumnMappings.Add("DISCOUNT_CODE", "DISCOUNT_CODE");
-            tableMapping.ColumnMappings.Add("PROMOTION_ID", "PROMOTION_ID");
-            tableMapping.ColumnMappings.Add("BANGGIA", "BANGGIA");
-            tableMapping.ColumnMappings.Add("NOTE", "NOTE");
-            tableMapping.ColumnMappings.Add("TOTAL_MONEY", "TOTAL_MONEY");
-            tableMapping.ColumnMappings.Add("PAYMENT", "PAYMENT");
-            tableMapping.ColumnMappings.Add("STATUS", "STATUS");
-            tableMapping.ColumnMappings.Add("MONEY_AFTER_DISCOUNT", "MONEY_AFTER_DISCOUNT");
+            tableMapping.ColumnMappings.Add("STT", "STT");
+            tableMapping.ColumnMappings.Add("SL_DETAIL_ID", "SL_DETAIL_ID");
+            tableMapping.ColumnMappings.Add("PRD_ID", "PRD_ID");
+            tableMapping.ColumnMappings.Add("PRD_NAME", "PRD_NAME");
+            tableMapping.ColumnMappings.Add("QUANTITY", "QUANTITY");
+            tableMapping.ColumnMappings.Add("PRICE", "PRICE");
+            tableMapping.ColumnMappings.Add("TOTAL_MONEY_DETAIL", "TOTAL_MONEY_DETAIL");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1321,7 +975,7 @@ namespace ĐA1.CuaHangMayTinhDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CuaHangMayTinhDataSet.GetSaleBillDataDataTable dataTable, string SL_ID) {
+        public virtual int Fill(CuaHangMayTinhDataSet3.GetSaleBillDataDataTable dataTable, string SL_ID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((SL_ID == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -1340,7 +994,7 @@ namespace ĐA1.CuaHangMayTinhDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CuaHangMayTinhDataSet.GetSaleBillDataDataTable GetData(string SL_ID) {
+        public virtual CuaHangMayTinhDataSet3.GetSaleBillDataDataTable GetData(string SL_ID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((SL_ID == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -1348,7 +1002,7 @@ namespace ĐA1.CuaHangMayTinhDataSetTableAdapters {
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(SL_ID));
             }
-            CuaHangMayTinhDataSet.GetSaleBillDataDataTable dataTable = new CuaHangMayTinhDataSet.GetSaleBillDataDataTable();
+            CuaHangMayTinhDataSet3.GetSaleBillDataDataTable dataTable = new CuaHangMayTinhDataSet3.GetSaleBillDataDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1422,7 +1076,7 @@ namespace ĐA1.CuaHangMayTinhDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(CuaHangMayTinhDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(CuaHangMayTinhDataSet3 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1432,7 +1086,7 @@ namespace ĐA1.CuaHangMayTinhDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(CuaHangMayTinhDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(CuaHangMayTinhDataSet3 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1442,7 +1096,7 @@ namespace ĐA1.CuaHangMayTinhDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(CuaHangMayTinhDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(CuaHangMayTinhDataSet3 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1476,7 +1130,7 @@ namespace ĐA1.CuaHangMayTinhDataSetTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(CuaHangMayTinhDataSet dataSet) {
+        public virtual int UpdateAll(CuaHangMayTinhDataSet3 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

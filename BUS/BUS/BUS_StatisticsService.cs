@@ -63,6 +63,16 @@ namespace BUS
             return dal.GetSLdonhangnay().ToList();
         }
 
+        public List<GetSaleBillData_Result> GetSaleBillData(string id)
+        {
+            return dal.GetSaleBillData(id).ToList();
+        }
+
+        public List<GetSaleBillDataz_Result> GetSaleBillDataz(string id)
+        {
+            return dal.GetSaleBillDataz(id).ToList();
+        }
+
     }
 
 }

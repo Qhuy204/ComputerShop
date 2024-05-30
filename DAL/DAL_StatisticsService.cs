@@ -72,5 +72,15 @@ namespace DAL
             return result;
         }
 
+        public List<GetSaleBillData_Result> GetSaleBillData(string id)
+        {
+            return db.GetSaleBillData(id).ToList();
+        }
+
+        public List<GetSaleBillDataz_Result> GetSaleBillDataz(string id)
+        {
+            return db.GetSaleBillDataz(id).ToList();
+        }
+
     }
 }

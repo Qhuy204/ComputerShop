@@ -38,6 +38,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <HintPath>..\packages\CrystalReports.ReportAppServer.CommonObjectModel.13.0.4003\lib\net40\CrystalDecisions.ReportAppServer.CommonObjectModel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -70,6 +73,9 @@
     </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net45\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
@@ -123,20 +129,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CuaHangMayTinhDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CuaHangMayTinhDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="CuaHangMayTinhDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CuaHangMayTinhDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="CuaHangMayTinhDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CuaHangMayTinhDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CuaHangMayTinhDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CuaHangMayTinhDataSet3.xsd</DependentUpon>
     </Compile>
     <Compile Include="GUI_Chucvu.cs">
       <SubType>Form</SubType>
@@ -336,6 +337,12 @@
     <Compile Include="GUI_Tongquan.Designer.cs">
       <DependentUpon>GUI_Tongquan.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_XuatHDBH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_XuatHDBH.Designer.cs">
+      <DependentUpon>GUI_XuatHDBH.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UC_ProductControl.cs">
       <SubType>UserControl</SubType>
@@ -456,6 +463,9 @@
     <EmbeddedResource Include="GUI_Tongquan.resx">
       <DependentUpon>GUI_Tongquan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI_XuatHDBH.resx">
+      <DependentUpon>GUI_XuatHDBH.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HDbanhang.rdlc" />
     <EmbeddedResource Include="HDBH.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -479,28 +489,6 @@
     <EmbeddedResource Include="UC_SearchResult.resx">
       <DependentUpon>UC_SearchResult.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="CuaHangMayTinhDataSet.xsc">
-      <DependentUpon>CuaHangMayTinhDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="CuaHangMayTinhDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CuaHangMayTinhDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="CuaHangMayTinhDataSet.xss">
-      <DependentUpon>CuaHangMayTinhDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="CuaHangMayTinhDataSet1.xsc">
-      <DependentUpon>CuaHangMayTinhDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="CuaHangMayTinhDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CuaHangMayTinhDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="CuaHangMayTinhDataSet1.xss">
-      <DependentUpon>CuaHangMayTinhDataSet1.xsd</DependentUpon>
-    </None>
     <None Include="CuaHangMayTinhDataSet2.xsc">
       <DependentUpon>CuaHangMayTinhDataSet2.xsd</DependentUpon>
     </None>
@@ -511,6 +499,17 @@
     </None>
     <None Include="CuaHangMayTinhDataSet2.xss">
       <DependentUpon>CuaHangMayTinhDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="CuaHangMayTinhDataSet3.xsc">
+      <DependentUpon>CuaHangMayTinhDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="CuaHangMayTinhDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CuaHangMayTinhDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CuaHangMayTinhDataSet3.xss">
+      <DependentUpon>CuaHangMayTinhDataSet3.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\BUS.BUS_Chucvu.datasource" />
@@ -538,6 +537,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\SaleInvoiceTemplate.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

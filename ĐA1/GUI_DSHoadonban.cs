@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using ZXing.QrCode.Internal;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ĐA1
@@ -24,7 +25,24 @@ namespace ĐA1
 
         private void dgvKH_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewRow row = dgvhdban.Rows[e.RowIndex];
+                DataGridViewCell cell = row.Cells[4];
+                string code = cell.Value.ToString();
 
+                var thongtinSP = Application.OpenForms.OfType<GUI_XuatHDBH>().FirstOrDefault();
+                if (thongtinSP != null)
+                {
+                    thongtinSP.LoadData();
+                }
+                else
+                {
+                    //MessageBox.Show(code);
+                    GUI_XuatHDBH newthongtinSP = new GUI_XuatHDBH(code);
+                    newthongtinSP.ShowDialog();
+                }
+            }
         }
 
         private void btntaodonhangle_Click(object sender, EventArgs e)

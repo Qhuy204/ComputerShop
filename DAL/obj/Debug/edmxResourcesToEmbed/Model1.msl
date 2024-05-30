@@ -331,5 +331,19 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetSaleBillDataz" FunctionName="CuaHangMayTinhModel.Store.GetSaleBillDataz">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CuaHangMayTinhModel.GetSaleBillDataz_Result">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="SL_DETAIL_ID" ColumnName="SL_DETAIL_ID" />
+          <ScalarProperty Name="PRD_ID" ColumnName="PRD_ID" />
+          <ScalarProperty Name="PRD_NAME" ColumnName="PRD_NAME" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="TOTAL_MONEY_DETAIL" ColumnName="TOTAL_MONEY_DETAIL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

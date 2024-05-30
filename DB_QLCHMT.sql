@@ -1078,68 +1078,43 @@ ALTER PROCEDURE GetSaleBillData
     @SL_ID VARCHAR(100)
 AS
 BEGIN
-    -- Select từ bảng SALEBILL và CUSTOMER với các thông tin bổ sung
+    -- Set NOCOUNT to ON to prevent extra result sets from interfering with SELECT statements
+    SET NOCOUNT ON;
     SELECT
         SB.SL_ID,
-        SB.SL_DATE,
-        SB.CUS_ID,
-        C.CUS_NAME,
-        C.CUS_ADDRESS,
-        C.CUS_PHONE_NUMBER,
-        C.EMAIL AS EMAIL,
-        SB.EMP_ID,
-        SB.DISCOUNT_CODE,
-        SB.PROMOTION_ID,
-        SB.BANGGIA,
-        SB.NOTE,
-        SB.TOTAL_MONEY,
-        SB.PAYMENT,
-        SB.STATUS,
-        SB.MONEY_AFTER_DISCOUNT,
-        NULL AS STT,
-        NULL AS SL_DETAIL_ID,
-        NULL AS PRD_ID,
-        NULL AS QUANTITY,
-        NULL AS PRICE
-    FROM SALEBILL SB
-    JOIN CUSTOMER C ON SB.CUS_ID = C.CUS_ID
-    WHERE SB.SL_ID = @SL_ID
-
-    UNION ALL
-
-    -- Select từ bảng SALEBILL_DETAIL với STT
-    SELECT
-        SB.SL_ID,
-        SB.SL_DATE,
-        SB.CUS_ID,
-        NULL AS CUS_NAME,
-        NULL AS CUS_ADDRESS,
-        NULL AS CUS_PHONE_NUMBER,
-        NULL AS EMAIL,
-        SB.EMP_ID,
-        NULL AS DISCOUNT_CODE,
-        NULL AS PROMOTION_ID,
-        NULL AS BANGGIA,
-        NULL AS NOTE,
-        NULL AS TOTAL_MONEY,
-        NULL AS PAYMENT,
-        NULL AS STATUS,
-        NULL AS MONEY_AFTER_DISCOUNT,
         ROW_NUMBER() OVER (ORDER BY SD.SL_DETAIL_ID) AS STT,
         SD.SL_DETAIL_ID,
         SD.PRD_ID,
+		WR.PRD_NAME,
         SD.QUANTITY,
-        SD.PRICE
+        SD.PRICE,
+		SB.SL_DATE,
+		CUS.CUS_ID,
+		CUS.CUS_NAME,
+		CUS.CUS_ADDRESS,
+		CUS.EMAIL,
+		CUS.CUS_PHONE_NUMBER,
+		EMP.EMP_ID,
+		SB.DISCOUNT_CODE,
+		SB.PROMOTION_ID,
+		SB.BANGGIA,
+		SB.NOTE,
+		SB.TOTAL_MONEY,
+		SB.PAYMENT,
+		SB.STATUS,
+		SB.MONEY_AFTER_DISCOUNT,
+        (SD.QUANTITY * SD.PRICE) AS TOTAL_MONEY_DETAIL
     FROM SALEBILL SB
     JOIN SALEBILL_DETAIL SD ON SB.SL_ID = SD.SL_ID
+	JOIN WAREHOUSE WR ON SD.PRD_ID = WR.PRD_ID
+	JOIN CUSTOMER CUS ON SB.CUS_ID = CUS.CUS_ID
+	JOIN EMPLOYEES EMP ON SB.EMP_ID = EMP.EMP_ID
     WHERE SB.SL_ID = @SL_ID;
 END;
 GO
 
 
-
-
-EXEC GetSaleBillData @SL_ID = 'SB13';
+EXEC GetSaleBillData @SL_ID = 'SB10';
 
 
 

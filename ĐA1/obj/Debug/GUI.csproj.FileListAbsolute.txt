@@ -118,3 +118,8 @@ D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\SqlServerTypes\x86\msvc
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\SqlServerTypes\x86\SqlServerSpatial140.dll
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\Microsoft.SqlServer.Types.dll
 D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\HDBH.rdlc
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\obj\Debug\ĐA1.GUI_XuatHDBH.resources
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\Resources\SaleInvoiceTemplate.xlsx
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\BouncyCastle.Crypto.dll
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\itextsharp.dll
+D:\Visual Studio\Windows Form\Project\DA1\ĐA1\bin\Debug\itextsharp.xml

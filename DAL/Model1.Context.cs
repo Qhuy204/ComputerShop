@@ -258,5 +258,14 @@ namespace DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSaleBillData_Result>("GetSaleBillData", sL_IDParameter);
         }
+    
+        public virtual ObjectResult<GetSaleBillDataz_Result> GetSaleBillDataz(string sL_ID)
+        {
+            var sL_IDParameter = sL_ID != null ?
+                new ObjectParameter("SL_ID", sL_ID) :
+                new ObjectParameter("SL_ID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSaleBillDataz_Result>("GetSaleBillDataz", sL_IDParameter);
+        }
     }
 }
